@@ -3091,6 +3091,11 @@ $(window).on("resize", function () {
       }
     })();
 
+    // Fix absolute links that break on subdirectory deployments (e.g., GitHub Pages)
+    if (basePath) {
+      $('a[href="/index.html"]').attr('href', basePath + '/index.html');
+    }
+
     // Get appropriate URL based on current location
     let productUrl = basePath + '/autosync/autosync-home.html';
     let taskUrl = basePath + '/tasks/placeholders/task-landing-get-started.html'; // Default task entry point
