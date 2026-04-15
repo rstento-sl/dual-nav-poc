@@ -3093,7 +3093,12 @@ $(window).on("resize", function () {
 
     // Fix absolute links that break on subdirectory deployments (e.g., GitHub Pages)
     if (basePath) {
-      $('a[href="/index.html"]').attr('href', basePath + '/index.html');
+      $('a[href^="/"]').each(function() {
+        var href = $(this).attr('href');
+        if (href && href.startsWith('/') && !href.startsWith(basePath + '/')) {
+          $(this).attr('href', basePath + href);
+        }
+      });
     }
 
     // Get appropriate URL based on current location
