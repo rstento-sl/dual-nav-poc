@@ -389,12 +389,20 @@ function DisplayBreadcrumbs(){
     var breadcrumbs = [];
     var isTaskView = window.location.pathname.includes('/tasks/');
     var homeLabel = isTaskView ? "All Tasks" : "All Products";
-    var Breadcrumb_home_link = $("<a>").attr("href", "#").addClass("breadcrumb-link").text(homeLabel);
-    Breadcrumb_home_link.on("click", function(e) {
-      e.preventDefault();
-      var navLink = isTaskView ? ".nav-context-link-tasks" : ".nav-context-link-products";
-      $(navLink).trigger("click");
-    });
+    // Build landing page URL, detecting base path for subdirectory deployments
+    var bp = '';
+    (function() {
+      var cp = window.location.pathname;
+      var segs = ['/autosync/', '/admin-manager/', '/designer/', '/snapgpt/', '/monitor/', '/tasks/'];
+      for (var s = 0; s < segs.length; s++) {
+        var si = cp.indexOf(segs[s]);
+        if (si >= 0) { bp = cp.substring(0, si); return; }
+      }
+      var stripped = cp.replace(/\/[^/]*\.html$/, '').replace(/\/$/, '');
+      if (stripped) bp = stripped;
+    })();
+    var homeLandingUrl = isTaskView ? bp + '/tasks/all-tasks.html' : bp + '/all-products.html';
+    var Breadcrumb_home_link = $("<a>").attr("href", homeLandingUrl).addClass("breadcrumb-link").text(homeLabel);
     var Breadcrumb_home = $("<span>").addClass("breadcrumb-item").append(Breadcrumb_home_link);
     breadcrumbElement.append(Breadcrumb_home);
     // Traverse up the DOM from the active li to collect breadcrumbs
@@ -3084,7 +3092,7 @@ $(window).on("resize", function () {
       var knownSegments = ['/autosync/', '/admin-manager/', '/designer/', '/snapgpt/', '/monitor/', '/tasks/'];
       for (var i = 0; i < knownSegments.length; i++) {
         var idx = currentPath.indexOf(knownSegments[i]);
-        if (idx > 0) {
+        if (idx >= 0) {
           basePath = currentPath.substring(0, idx);
           return;
         }
@@ -3106,7 +3114,11 @@ $(window).on("resize", function () {
       });
     }
 
-    // Get appropriate URL based on current location
+    // Landing page URLs (used as real href fallbacks when JS is unavailable)
+    var allProductsLandingUrl = basePath + '/all-products.html';
+    var allTasksLandingUrl = basePath + '/tasks/all-tasks.html';
+
+    // Get appropriate URL based on current location (used for AJAX nav swap)
     let productUrl = basePath + '/autosync/autosync-home.html';
     let taskUrl = basePath + '/tasks/placeholders/task-landing-get-started.html'; // Default task entry point
 
@@ -3177,9 +3189,9 @@ $(window).on("resize", function () {
         '<div class="nav-context-links">' +
           '<span class="nav-context-view-label">Switch to:</span>' +
           '<div class="nav-context-link-row">' +
-            '<a href="#" class="nav-context-link nav-context-link-products ' + (viewingLabel === 'All Products' ? 'current' : '') + '">All Products</a>' +
+            '<a href="' + allProductsLandingUrl + '" class="nav-context-link nav-context-link-products ' + (viewingLabel === 'All Products' ? 'current' : '') + '">All Products</a>' +
             '<span class="nav-context-separator">|</span>' +
-            '<a href="#" class="nav-context-link nav-context-link-tasks ' + (viewingLabel === 'All Tasks' ? 'current' : '') + '">All Tasks</a>' +
+            '<a href="' + allTasksLandingUrl + '" class="nav-context-link nav-context-link-tasks ' + (viewingLabel === 'All Tasks' ? 'current' : '') + '">All Tasks</a>' +
           '</div>' +
         '</div>' +
       '</li>';
@@ -3221,6 +3233,12 @@ $(window).on("resize", function () {
         }
       }).fail(function(jqXHR, textStatus, errorThrown) {
         console.error('[swapNav] Failed to fetch:', sourceUrl, textStatus, errorThrown);
+        // Fall back to navigating to the landing page
+        if (sourceUrl.includes('/tasks/')) {
+          window.location.href = allTasksLandingUrl;
+        } else {
+          window.location.href = allProductsLandingUrl;
+        }
       });
     }
 

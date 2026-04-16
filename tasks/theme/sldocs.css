@@ -5980,6 +5980,12 @@ nav.toc a.nav-context-link.current:hover {
 .product-home-hero-troubleshoot {
   background: linear-gradient(135deg, var(--SL-orange08) 0%, var(--SL-orange06) 60%, var(--SL-orange04) 100%);
 }
+.product-home-hero-all-products {
+  background: linear-gradient(135deg, var(--SL-indigo08) 0%, var(--SL-indigo06) 60%, var(--SL-blue06) 100%);
+}
+.product-home-hero-all-tasks {
+  background: linear-gradient(135deg, var(--SL-teal08) 0%, var(--SL-green06) 60%, var(--SL-blue06) 100%);
+}
 
 /* Quick Start / Top Tasks Section */
 .product-home-quickstart {
