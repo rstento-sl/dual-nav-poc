@@ -3142,22 +3142,19 @@ $(window).on("resize", function () {
 
 
     function renderNavContext() {
-      // Highlight the active link in the header view switch
-      var showingTasks = isTaskView || $('nav.toc').hasClass('task-view');
-
       var $headerSwitch = $('#headerViewSwitch');
       if ($headerSwitch.length) {
         // Fix hrefs for subdirectory deployment
         $headerSwitch.find('.header-switch-products').attr('href', allProductsLandingUrl);
         $headerSwitch.find('.header-switch-tasks').attr('href', allTasksLandingUrl);
 
-        // Mark the active view
-        // Product view includes product pages AND the all-products landing page
+        // Mark active only on landing pages — not on content pages
         var isProductLanding = currentPath.includes('/all-products');
+        var isTaskLanding = currentPath.endsWith('/all-tasks.html');
         $headerSwitch.find('.header-switch-link').removeClass('active');
-        if (showingTasks) {
+        if (isTaskLanding) {
           $headerSwitch.find('.header-switch-tasks').addClass('active');
-        } else if (isProductView || isProductLanding) {
+        } else if (isProductLanding) {
           $headerSwitch.find('.header-switch-products').addClass('active');
         }
       }
