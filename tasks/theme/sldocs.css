@@ -5661,15 +5661,16 @@ header .header-switch-link:hover {
 }
 
 header .header-switch-link.active {
-  background-color: #fff;
-  color: #0a1a3a;
+  color: #fff;
   font-weight: 700;
-  cursor: default;
+  border-bottom: 2px solid #fff;
+  border-radius: 0;
+  padding-bottom: 2px;
 }
 
 header .header-switch-link.active:hover {
-  background-color: #fff;
-  color: #0a1a3a;
+  background-color: transparent;
+  color: #fff;
 }
 
 .header-switch-separator {
