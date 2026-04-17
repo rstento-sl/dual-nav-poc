@@ -362,6 +362,17 @@
   </div>
 
   <!-- <script src="https://d3132s9xzuu9s8.cloudfront.net/k/sldocs.js"/> -->
-  <script src="../theme/sldocs.js"></script>
+  <!-- Dynamically resolve JS path from DITA-OT-generated CSS link (works for
+       both root-level and subdirectory pages, and on subdirectory deployments) -->
+  <script>
+  (function() {
+    var css = document.querySelector('link[href$="sldocs.css"]');
+    if (css) {
+      var s = document.createElement('script');
+      s.src = css.getAttribute('href').replace('sldocs.css', 'sldocs.js');
+      document.body.appendChild(s);
+    }
+  })();
+  </script>
 
 </div></footer></body></html>
