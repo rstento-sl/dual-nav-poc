@@ -8,14 +8,6 @@
 // Add the "navparent" class if it's a parent.
 function MarkParents()  {
   $("nav.toc li").has("ul").addClass("navparent");
-  // Remove navparent from items whose children are all flat empty topicheads
-  // (no links AND no nested ul — nothing meaningful to expand)
-  $("nav.toc li.navparent").each(function() {
-    var $childUl = $(this).children("ul");
-    if ($childUl.length && $childUl.find("a").length === 0 && $childUl.find("ul").length === 0) {
-      $(this).removeClass("navparent");
-    }
-  });
 }
 // If a element is active, add "navexpand" to it and all its ascendants.
 function MarkActiveTree()  {
@@ -382,53 +374,29 @@ function ReleaseNotes(){
 // Breadcrumbs
 function DisplayBreadcrumbs(){
   var articleElement = $("article");
+  var breadcrumbmain=$("article")
   var activeListItem = $(".toc li.active");
 
   if (articleElement.length && activeListItem.length) {
     var breadcrumbElement = $("<div>").addClass("breadcrumb-header");
     var breadcrumbs = [];
-    var isTaskView = window.location.pathname.includes('/tasks/');
-    var homeLabel = isTaskView ? "All Tasks" : "All Products";
-    // Build landing page URL, detecting base path for subdirectory deployments
-    var bp = '';
-    (function() {
-      var cp = window.location.pathname;
-      var segs = ['/autosync/', '/admin-manager/', '/designer/', '/snapgpt/', '/monitor/', '/apim/', '/classic-apim/', '/public-apis/', '/tasks/', '/all-products', '/all-tasks'];
-      for (var s = 0; s < segs.length; s++) {
-        var si = cp.indexOf(segs[s]);
-        if (si >= 0) { bp = cp.substring(0, si); return; }
-      }
-      var stripped = cp.replace(/\/[^/]*\.html$/, '').replace(/\/$/, '');
-      if (stripped) bp = stripped;
-    })();
-    var homeLandingUrl = isTaskView ? bp + '/tasks/all-tasks.html' : bp + '/all-products.html';
-    var Breadcrumb_home_link = $("<a>").attr("href", homeLandingUrl).addClass("breadcrumb-link").text(homeLabel);
+    var Breadcrumb_image = $("<i>").addClass("fa-solid fa-house");
+    var Breadcrumb_home_link = $("<a>").attr("href", "/index.html").addClass("breadcrumb-link").append(Breadcrumb_image);
     var Breadcrumb_home = $("<span>").addClass("breadcrumb-item").append(Breadcrumb_home_link);
-    breadcrumbElement.append(Breadcrumb_home);
+    breadcrumbElement.append(Breadcrumb_home); 
     // Traverse up the DOM from the active li to collect breadcrumbs
-    // Include both <a> (product topics) and <span> (topichead) parents
-    // Prefer <a> over <span> since spans may be expand arrows
     activeListItem.parentsUntil(".toc", "li").each(function() {
-      if ($(this).hasClass('nav-context')) return;
-      var $link = $(this).children("a").first();
-      var $span = $(this).children("span").first();
-      if ($link.length) {
-        breadcrumbs.unshift($link.clone());
-      } else if ($span.length) {
-        breadcrumbs.unshift($("<span>").text($span.text().trim()));
-      }
+      var listItem = $(this).children("a").clone(); 
+      breadcrumbs.unshift(listItem);
     });
-    // Add the current page as plain text (not a link)
-    var $activeCrumb = activeListItem.children("a").first();
-    if ($activeCrumb.length) {
-      breadcrumbs.push($("<span>").text($activeCrumb.text().trim()));
-    }
+    breadcrumbs.push(activeListItem.children("a").clone());
     for (var i = 0; i < breadcrumbs.length; i++) {
       var span = $("<span>").addClass("breadcrumb-item").append(breadcrumbs[i]);
       breadcrumbElement.append(span);
     }
-    articleElement.prepend(breadcrumbElement);
+    breadcrumbmain.prepend(breadcrumbElement);
     breadcrumbElement.find("a").addClass("breadcrumb-link");
+
   }
 }
 
@@ -674,7 +642,7 @@ function ExecuteSearch(term) {
 //   isFetching = true;
 
 //   const googleSearchEndpoint = 'https://www.googleapis.com/customsearch/v1'; // Google Custom Search API endpoint
-//   const apiKey = 'REMOVED'; // Replace with your Google API key
+//   const apiKey = 'AIzaSyCiI_vt8-JOOWqwQf3IBUAhb2j3qBq9ieU'; // Replace with your Google API key
 //   const searchEngineId = '25d4aa9829a3148ff'; // Replace with your Search Engine ID
 //   const allowedDomains = [
 //     "docs.snaplogic.com",
@@ -734,7 +702,7 @@ function fetchResults(searchTerm, startIndex) {
   isFetching = true;
 
   const googleSearchEndpoint = 'https://www.googleapis.com/customsearch/v1'; // Google Custom Search API endpoint
-  const apiKey = 'REMOVED'; // Replace with your Google API key
+  const apiKey = 'AIzaSyCiI_vt8-JOOWqwQf3IBUAhb2j3qBq9ieU'; // Replace with your Google API key
   const searchEngineId = '25d4aa9829a3148ff';// Replace with your Search Engine ID
 
   $.ajax({
@@ -1887,6 +1855,39 @@ $(document).ready(function() {
   // -- initialize --
   MarkParents();
 
+  // POC: Add icons to top-level nav section headings
+  // Defined as a named function so it can be called after swapNav
+  var sectionIcons = {
+    // Task view categories
+    'Get Started': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2L10 6H14L11 9L12 13L8 10.5L4 13L5 9L2 6H6L8 2Z"/></svg>',
+    'Administer the Environment': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 7h6M5 10h4"/></svg>',
+    'Develop Agents': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 1.5"/></svg>',
+    'Develop & Deploy Integrations': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 1.5"/></svg>',
+    'Manage APIs': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8l2 4-2 4H4L2 6l2-4z"/><path d="M5 6h6"/></svg>',
+    'Monitor': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="2.5" width="13" height="9" rx="1"/><path d="M5 14h6"/><path d="M4 7l3 -2 2 3 3 -4"/></svg>',
+    'Observe': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="8" cy="8" r="6"/></svg>',
+    'Troubleshoot': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="4.5"/><path d="M8 8v1"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/><path d="M6.5 12h3l0.5 2h-4z"/></svg>',
+    // Product view products
+    'Admin Manager': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 7h6M5 10h4"/></svg>',
+    'AutoSync': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a5 5 0 019-2"/><path d="M12 6l1-3 3 1"/><path d="M13 8a5 5 0 01-9 2"/><path d="M4 10l-1 3-3-1"/></svg>',
+    'Designer': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11l7-7 3 3-7 7H2v-3z"/></svg>',
+    'SnapGPT': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4a1 1 0 011-1h8a1 1 0 011 1v5a1 1 0 01-1 1H6l-3 2z"/></svg>'
+  };
+
+  function addSectionIcons() {
+    $('nav.toc > ul > li:not(.nav-view-switcher-li)').each(function() {
+      var $heading = $(this).children('a, span').first();
+      // Skip if icon already added
+      if ($heading.find('.nav-section-icon').length) return;
+      var text = $heading.text().trim();
+      var icon = sectionIcons[text];
+      if (icon) {
+        $heading.prepend(icon + ' ');
+      }
+    });
+  }
+  addSectionIcons();
+
   // POC: Mark active nav item based on current page URL
   // (DITA-OT build does not add the 'active' class automatically)
   (function() {
@@ -2981,16 +2982,11 @@ $(window).on("resize", function () {
   const currentPath = window.location.pathname;
 
   // Helper to detect product view (not task view)
-  const isInProductView = (currentPath.includes('/autosync/') || currentPath.includes('/admin-manager/') || currentPath.includes('/designer/') || currentPath.includes('/snapgpt/') || currentPath.includes('/monitor/') || currentPath.includes('/apim/') || currentPath.includes('/classic-apim/') || currentPath.includes('/public-apis/')) && !currentPath.includes('/tasks/');
+  const isInProductView = (currentPath.includes('/autosync/') || currentPath.includes('/admin-manager/') || currentPath.includes('/designer/') || currentPath.includes('/snapgpt/') || currentPath.includes('/monitor/')) && !currentPath.includes('/tasks/');
 
-  // Clear showFullTree when landing on a product-specific page, since the user
-  // has navigated into a product (from home page, All Products, or direct link)
-  if (isInProductView) {
-    sessionStorage.removeItem('showFullTree');
-  }
-
-  // Highlight dropdowns when we're in the product view
-  if (isInProductView) {
+  // Only highlight dropdowns if we're in the product view AND not showing all products
+  const showFullTreeHeader = sessionStorage.getItem('showFullTree');
+  if (isInProductView && showFullTreeHeader !== 'true') {
     // Check if we're on an AutoSync page
     if (currentPath.includes('/autosync/')) {
       $('.product-menu-header .dropdown').each(function() {
@@ -3014,7 +3010,7 @@ $(window).on("resize", function () {
         const $dropdown = $(this);
         const $toggle = $dropdown.find('.dropdown-toggle');
 
-        if ($toggle.text().trim().startsWith('Administration')) {
+        if ($toggle.text().includes('Administration')) {
           $dropdown.addClass('active');
           $dropdown.find('.dropdown-menu a').each(function() {
             if ($(this).text().includes('Admin Manager')) {
@@ -3061,16 +3057,11 @@ $(window).on("resize", function () {
   }
 
   // POC: Add View Switcher to Left Nav
-
-  // SVG icons for nav context (inline so they inherit currentColor)
-  var svgIconProducts = '<svg class="nav-icon" width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>';
-  var svgIconTasks = '<svg class="nav-icon" width="11" height="11" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="1" y="0" width="14" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="5" y="-1" width="6" height="3" rx="1" fill="currentColor"/><line x1="4" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.5"/><line x1="4" y1="9.5" x2="12" y2="9.5" stroke="currentColor" stroke-width="1.5"/><line x1="4" y1="13" x2="9" y2="13" stroke="currentColor" stroke-width="1.5"/></svg>';
-
   const $toc = $('nav.toc');
   if ($toc.length > 0) {
     // Determine current view
     const isTaskView = currentPath.includes('/tasks/');
-    const isProductView = (currentPath.includes('/autosync/') || currentPath.includes('/admin-manager/') || currentPath.includes('/designer/') || currentPath.includes('/snapgpt/') || currentPath.includes('/monitor/') || currentPath.includes('/apim/') || currentPath.includes('/classic-apim/') || currentPath.includes('/public-apis/')) && !currentPath.includes('/tasks/');
+    const isProductView = (currentPath.includes('/autosync/') || currentPath.includes('/admin-manager/') || currentPath.includes('/designer/') || currentPath.includes('/snapgpt/') || currentPath.includes('/monitor/')) && !currentPath.includes('/tasks/');
 
     // Add class to nav for CSS styling
     if (isTaskView) {
@@ -3079,173 +3070,98 @@ $(window).on("resize", function () {
       $toc.addClass('product-view');
     }
 
-    // Check if we're showing filtered or full tree
-    const filteredProductCheck = sessionStorage.getItem('filteredProduct');
-    const showFullTreeCheck = sessionStorage.getItem('showFullTree');
+    // Determine which switcher link should be active based on what was last clicked
+    const activeNav = sessionStorage.getItem('activeNav');
+    const isShowingAllProducts = isProductView && activeNav === 'products';
+    const isShowingAllTasks = isTaskView && activeNav === 'tasks';
 
-    // If in product view with no filter set, initialize showFullTree
-    if (isProductView && !filteredProductCheck && showFullTreeCheck !== 'true') {
-      sessionStorage.setItem('showFullTree', 'true');
+    // Get appropriate URL based on current location
+    let productUrl = '/autosync/autosync-home.html';
+    let taskUrl = '/tasks/admin-manager/create-user-account.html'; // Default task entry point
+
+    if (currentPath.includes('/autosync/')) {
+      productUrl = '/autosync/autosync-home.html';
+      taskUrl = '/tasks/autosync/create-data-pipeline.html';
+    } else if (currentPath.includes('/admin-manager/')) {
+      productUrl = '/admin-manager/admin-manager-home.html';
+      taskUrl = '/tasks/admin-manager/create-user-account.html';
+    } else if (currentPath.includes('/monitor/')) {
+      productUrl = '/monitor/monitor-home.html';
+      taskUrl = '/tasks/admin-manager/create-user-account.html';
+    } else if (currentPath.includes('/designer/')) {
+      productUrl = '/designer/designer-home.html';
+      taskUrl = '/tasks/admin-manager/create-user-account.html';
+    } else if (currentPath.includes('/snapgpt/')) {
+      productUrl = '/snapgpt/snapgpt-home.html';
+      taskUrl = '/tasks/snapgpt/snapgpt-pipe-gen-rag.html';
     }
 
-    // (State variables used by getViewingLabel via sessionStorage reads)
+    // Create view switcher HTML
+    // SVG icons: package (products) and checkmark (tasks)
+    const iconProducts = '<svg class="nav-view-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1L1.5 4.5V11.5L8 15L14.5 11.5V4.5L8 1Z"/><path d="M8 8L14.5 4.5"/><path d="M8 8L1.5 4.5"/><path d="M8 8V15"/></svg>';
+    const iconTasks = '<svg class="nav-view-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5L6.5 12L13 4"/></svg>';
 
-    // Auto-detect base path for deployments under a subdirectory (e.g., GitHub Pages)
-    // Looks for the first known product or task path segment and treats everything before it as the base.
-    var basePath = '';
-    (function() {
-      var knownSegments = ['/autosync/', '/admin-manager/', '/designer/', '/snapgpt/', '/monitor/', '/apim/', '/classic-apim/', '/public-apis/', '/tasks/', '/all-products', '/all-tasks'];
-      for (var i = 0; i < knownSegments.length; i++) {
-        var idx = currentPath.indexOf(knownSegments[i]);
-        if (idx >= 0) {
-          basePath = currentPath.substring(0, idx);
-          return;
-        }
-      }
-      // Fallback for root pages (index.html): strip the filename to get the base
-      var pathWithoutFile = currentPath.replace(/\/[^/]*\.html$/, '').replace(/\/$/, '');
-      if (pathWithoutFile) {
-        basePath = pathWithoutFile;
-      }
-    })();
+    const productsClass = isShowingAllProducts ? 'active' : '';
+    const tasksClass = isShowingAllTasks ? 'active' : '';
 
-    // Fix absolute links that break on subdirectory deployments (e.g., GitHub Pages)
-    if (basePath) {
-      $('a[href^="/"]').each(function() {
-        var href = $(this).attr('href');
-        if (href && href.startsWith('/') && !href.startsWith(basePath + '/')) {
-          $(this).attr('href', basePath + href);
+    const viewSwitcherHtml = `
+      <div class="nav-view-switcher">
+        <a href="#" class="nav-view-link nav-view-button-products ${productsClass}">${iconProducts} All Products</a>
+        <span class="nav-view-separator">|</span>
+        <a href="${taskUrl}" class="nav-view-link nav-view-button-tasks ${tasksClass}">${iconTasks} All Tasks</a>
+      </div>
+    `;
+
+    // Insert as first <li> inside the scrollable <ul>
+    $toc.find('> ul').prepend('<li class="nav-view-switcher-li">' + viewSwitcherHtml + '</li>');
+
+    // Helper: fetch nav from another page and swap it into the current nav
+    function swapNav(sourceUrl, callback) {
+      $.get(sourceUrl, function(html) {
+        var $parsed = $('<div>').html(html);
+        var $newNav = $parsed.find('nav.toc');
+        if ($newNav.length) {
+          // Fix relative hrefs: resolve them against the source URL
+          var sourceBase = sourceUrl.substring(0, sourceUrl.lastIndexOf('/') + 1);
+          $newNav.find('a[href]').each(function() {
+            var href = $(this).attr('href');
+            if (href && !href.startsWith('/') && !href.startsWith('http')) {
+              // Resolve relative path against source page's directory
+              var resolved = new URL(href, window.location.origin + sourceBase).pathname;
+              $(this).attr('href', resolved);
+            }
+          });
+          // Preserve the view switcher li, replace everything else
+          var $switcherLi = $('nav.toc .nav-view-switcher-li').detach();
+          $('nav.toc').html($newNav.html());
+          $('nav.toc > ul').prepend($switcherLi);
+          // Reinitialize nav classes
+          MarkParents();
+          if (callback) callback();
         }
       });
     }
 
-    // Landing page URLs (used as real href fallbacks when JS is unavailable)
-    var allProductsLandingUrl = basePath + '/all-products.html';
-    var allTasksLandingUrl = basePath + '/tasks/all-tasks.html';
+    // Clear activeNav and full-tree flags when user clicks any regular nav link (not the switcher)
+    $(document).on('click', 'nav.toc a:not(.nav-view-link)', function() {
+      sessionStorage.removeItem('activeNav');
+      sessionStorage.removeItem('showFullTree');
+      sessionStorage.removeItem('showFullTaskTree');
+    });
 
-    // Product name lookup for display
-
-    // Build and insert (or replace) the nav context component
-    // Reads current state from sessionStorage each time it's called
-    // Detect current product from URL path
-    function getProductFromPath() {
-      if (currentPath.includes('/admin-manager/')) return 'Admin Manager';
-      if (currentPath.includes('/autosync/')) return 'AutoSync';
-      if (currentPath.includes('/designer/')) return 'Designer';
-      if (currentPath.includes('/snapgpt/')) return 'SnapGPT';
-      if (currentPath.includes('/monitor/')) return 'Monitor';
-      if (currentPath.includes('/apim/')) return 'API Management 3.0';
-      if (currentPath.includes('/classic-apim/')) return 'Classic API Management';
-      if (currentPath.includes('/public-apis/')) return 'Public APIs';
-      return null;
-    }
-
-
-    function renderNavContext(overrideLabel) {
-      var filteredTask = sessionStorage.getItem('filteredTaskSection');
-      var filteredTaskParent = sessionStorage.getItem('filteredTaskParent');
-      var showFullTask = sessionStorage.getItem('showFullTaskTree');
-
-      // Determine viewing label
-      var viewingLabel;
-
-      // Determine if we're showing task or product nav
-      // Check: 1) override, 2) nav element's CSS class (set by AJAX swap), 3) URL path
-      var showingTasks = isTaskView || $('nav.toc').hasClass('task-view');
-
-      if (overrideLabel !== undefined) {
-        viewingLabel = overrideLabel;
-      } else if (showingTasks) {
-        if (filteredTask && showFullTask !== 'true') {
-          viewingLabel = filteredTaskParent || filteredTask;
-        } else {
-          viewingLabel = 'All Tasks';
-        }
-      } else {
-        viewingLabel = getProductFromPath() || 'All Products';
-      }
-
-      // Remove existing nav context if present
-      $('nav.toc > ul > li.nav-context').remove();
-
-      // Build and insert
-      var html = '<li class="nav-context">' +
-        '<div class="nav-context-links">' +
-          '<span class="nav-context-view-label">Switch to:</span>' +
-          '<div class="nav-context-link-row">' +
-            '<a href="' + allProductsLandingUrl + '" class="nav-context-link nav-context-link-products ' + (viewingLabel === 'All Products' ? 'current' : '') + '">' + svgIconProducts + ' All Products</a>' +
-            '<span class="nav-context-separator">|</span>' +
-            '<a href="' + allTasksLandingUrl + '" class="nav-context-link nav-context-link-tasks ' + (viewingLabel === 'All Tasks' ? 'current' : '') + '">' + svgIconTasks + ' All Tasks</a>' +
-          '</div>' +
-        '</div>' +
-      '</li>';
-
-      $('nav.toc > ul').prepend(html);
-      // Bind click handlers on the freshly inserted links
-      bindNavContextHandlers();
-    }
-
-    // Initial render
-    renderNavContext();
-    if (isTaskView) {
-      bindTaskNavHandlers();
-    }
-
-    // First-visit orientation banner (appears at top of content area)
-    if (!localStorage.getItem('docNavOriented')) {
-      var bannerHtml = '<div class="orientation-banner">' +
-        '<button class="orientation-banner-dismiss">Dismiss</button>' +
-        'Use the switch in the left nav to browse by:' +
-        '<br>' + svgIconProducts + ' <strong>All Products</strong> &mdash; explore by product or feature' +
-        '<br>' + svgIconTasks + ' <strong>All Tasks</strong> &mdash; find instructions to accomplish a goal' +
-      '</div>';
-      $('article[role="article"]').prepend(bannerHtml);
-      $('.orientation-banner-dismiss').on('click', function() {
-        localStorage.setItem('docNavOriented', 'true');
-        $('.orientation-banner').slideUp(200, function() { $(this).remove(); });
-      });
-    }
-
-    // Bind expand/collapse and filtering handlers for task nav
-    function bindTaskNavHandlers() {
-      // Top-level category spans: click to filter and expand
-      $('nav.toc').off('click', '> ul > li > span').on('click', '> ul > li > span', function(ev) {
-        ev.stopPropagation();
-        var $clickedLi = $(this).closest('li');
-        if ($clickedLi.hasClass('nav-context')) return;
-        var categoryName = $(this).text().trim();
-
-        // Filter: hide other categories, expand this one
-        $('nav.toc > ul > li').each(function() {
-          var $li = $(this);
-          if ($li.hasClass('nav-context')) return;
-          if ($li.is($clickedLi)) {
-            $li.show().addClass('navexpand');
-            $li.find('li').show();
-            $li.find('li.navparent').addClass('navexpand');
-          } else {
-            $li.hide();
-          }
-        });
-
-        // Update sessionStorage and Viewing label
-        sessionStorage.setItem('filteredTaskSection', categoryName);
-        sessionStorage.setItem('filteredTaskParent', categoryName);
-        sessionStorage.removeItem('showFullTaskTree');
-        renderNavContext(categoryName);
-      });
-
-      // Nested spans: expand/collapse only
-      $('nav.toc').off('click', 'li li span').on('click', 'li li span', function(ev) {
+    // Helper to rebind nav item click handlers after a swapNav
+    function rebindNavHandlers() {
+      $('nav.toc li span').off('click').on('click', function(ev) {
         var item = $(this).closest('li');
         if (item.hasClass('navparent')) {
           ev.stopPropagation();
           item.toggleClass('navexpand');
         }
       });
-
-      // Nested links: arrow or active toggles expand
-      $('nav.toc').off('click', 'li li.navparent > a').on('click', 'li li.navparent > a', function(ev) {
+      $('nav.toc > ul > li.navparent > a').off('click').on('click', function(ev) {
+        $(this).closest('li.navparent').addClass('navexpand');
+      });
+      $('nav.toc li li.navparent > a').off('click').on('click', function(ev) {
         var item = $(this).closest('li.navparent');
         var clickedOnArrow = ev.offsetX < 50;
         if (clickedOnArrow || item.hasClass('active')) {
@@ -3256,42 +3172,62 @@ $(window).on("resize", function () {
       });
     }
 
-    // Bind click handlers for nav context links
-    // Called each time renderNavContext rebuilds the component
-    function bindNavContextHandlers() {
+    // Handle All Products link click (delegated to survive swapNav DOM replacement)
+    $(document).on('click', '.nav-view-button-products', function(e) {
+      e.preventDefault();
+      sessionStorage.setItem('showFullTree', 'true');
+      sessionStorage.setItem('activeNav', 'products');
+      sessionStorage.removeItem('filteredProduct');
 
-      // Handle View All Products link click
-      $('.nav-context-link-products').off('click').on('click', function(e) {
-        if ($(this).hasClass('current')) {
-          e.preventDefault();
-          return;
-        }
+      $('.product-menu-header .dropdown').removeClass('active');
+      $('.product-menu-header .dropdown-menu a').removeClass('active');
 
-        // Set flags so the landing page renders correctly
-        sessionStorage.setItem('showFullTree', 'true');
-        sessionStorage.setItem('activeNav', 'products');
-        sessionStorage.removeItem('filteredProduct');
+      // Check current DOM state, not the stale isTaskView variable
+      var currentlyShowingTasks = $('nav.toc').hasClass('task-view');
 
-        // Navigate to the All Products landing page (href is already set on the link)
-      });
+      if (currentlyShowingTasks) {
+        swapNav(productUrl, function() {
+          $('nav.toc').addClass('product-view').removeClass('task-view');
+          $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
+          rebindNavHandlers();
+          addSectionIcons();
+        });
+      } else {
+        // Already in product view — show all products collapsed
+        $('nav.toc > ul > li:not(.nav-view-switcher-li)').show().removeClass('navexpand');
+        $('nav.toc .task-view-prompt').remove();
+      }
+      // Update link states
+      $('.nav-view-button-products').addClass('active');
+      $('.nav-view-button-tasks').removeClass('active');
+    });
 
-      // Handle View All Tasks link click
-      $('.nav-context-link-tasks').off('click').on('click', function(e) {
-        if ($(this).hasClass('current')) {
-          e.preventDefault();
-          return;
-        }
+    // Handle All Tasks link click (delegated to survive swapNav DOM replacement)
+    $(document).on('click', '.nav-view-button-tasks', function(e) {
+      e.preventDefault();
+      sessionStorage.setItem('showFullTaskTree', 'true');
+      sessionStorage.setItem('activeNav', 'tasks');
+      sessionStorage.removeItem('filteredTaskSection');
+      sessionStorage.removeItem('filteredTaskCategory');
 
-        // Set flags so the landing page renders correctly
-        sessionStorage.setItem('showFullTaskTree', 'true');
-        sessionStorage.setItem('activeNav', 'tasks');
-        sessionStorage.removeItem('filteredTaskSection');
-        sessionStorage.removeItem('filteredTaskCategory');
-        sessionStorage.removeItem('filteredTaskParent');
+      // Check current DOM state, not the stale isTaskView variable
+      var currentlyShowingProducts = !$('nav.toc').hasClass('task-view');
 
-        // Navigate to the All Tasks landing page (href is already set on the link)
-      });
-    }
+      if (currentlyShowingProducts) {
+        swapNav(taskUrl, function() {
+          $('nav.toc').addClass('task-view').removeClass('product-view');
+          $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
+          rebindNavHandlers();
+          addSectionIcons();
+        });
+      } else {
+        // Already in task view — show all categories collapsed
+        $('nav.toc > ul > li:not(.nav-view-switcher-li)').show().removeClass('navexpand');
+      }
+      // Update link states
+      $('.nav-view-button-tasks').addClass('active');
+      $('.nav-view-button-products').removeClass('active');
+    });
 
   // POC: Filter left navigation based on dropdown selection
   $('.product-menu-header .dropdown-menu a').on('click', function(e) {
@@ -3302,6 +3238,8 @@ $(window).on("resize", function () {
     sessionStorage.setItem('filteredProduct', clickedProduct);
     // Clear showFullTree flag so dropdown will be highlighted
     sessionStorage.removeItem('showFullTree');
+    // Clear activeNav so neither switcher link shows as active
+    sessionStorage.removeItem('activeNav');
 
     // Don't prevent default navigation
     // The filtering will happen on the target page
@@ -3312,39 +3250,26 @@ $(window).on("resize", function () {
   const showFullTree = sessionStorage.getItem('showFullTree');
 
   // Check if we're in product view (autosync or admin-manager or snapgpt or monitor, but not tasks)
-  const isInProductViewForNav = (currentPath.includes('/autosync/') || currentPath.includes('/admin-manager/') || currentPath.includes('/designer/') || currentPath.includes('/snapgpt/') || currentPath.includes('/monitor/') || currentPath.includes('/apim/') || currentPath.includes('/classic-apim/') || currentPath.includes('/public-apis/')) && !currentPath.includes('/tasks/');
+  const isInProductViewForNav = (currentPath.includes('/autosync/') || currentPath.includes('/admin-manager/') || currentPath.includes('/designer/') || currentPath.includes('/snapgpt/') || currentPath.includes('/monitor/')) && !currentPath.includes('/tasks/');
 
   if (isInProductViewForNav) {
-    // Detect which product the current page belongs to
-    var currentProduct = null;
-    if (currentPath.includes('/admin-manager/')) currentProduct = 'ADMIN MANAGER';
-    else if (currentPath.includes('/autosync/')) currentProduct = 'AUTOSYNC';
-    else if (currentPath.includes('/designer/')) currentProduct = 'DESIGNER';
-    else if (currentPath.includes('/snapgpt/')) currentProduct = 'SNAPGPT';
-    else if (currentPath.includes('/monitor/')) currentProduct = 'MONITOR';
-    else if (currentPath.includes('/apim/')) currentProduct = 'API MANAGEMENT 3.0';
-    else if (currentPath.includes('/classic-apim/')) currentProduct = 'CLASSIC API MANAGEMENT';
-    else if (currentPath.includes('/public-apis/')) currentProduct = 'PUBLIC APIS';
-
-    // If stored filter doesn't match the current page's product, update it
-    if (filteredProduct && currentProduct && filteredProduct !== currentProduct) {
-      sessionStorage.setItem('filteredProduct', currentProduct);
-    }
-    var effectiveFilter = currentProduct || filteredProduct;
-
-    if (effectiveFilter) {
-      // Show filtered view for the current product
+    if (filteredProduct) {
+      // User has selected a product from dropdown - show filtered view
       let selectedProductLi = null;
 
       // First pass: find and isolate the selected product
-      $('nav.toc > ul > li').each(function() {
+      $('nav.toc > ul > li:not(.nav-view-switcher-li)').each(function() {
         const $li = $(this);
 
         // Check if this li has a direct child link (product level)
         const $productLink = $li.children('a').first();
         const productName = $productLink.text().trim().toUpperCase();
 
-        if (productName === effectiveFilter) {
+        if ((filteredProduct === 'ADMIN MANAGER' && productName === 'ADMIN MANAGER') ||
+            (filteredProduct === 'AUTOSYNC' && productName === 'AUTOSYNC') ||
+            (filteredProduct === 'DESIGNER' && productName === 'DESIGNER') ||
+            (filteredProduct === 'SNAPGPT' && productName === 'SNAPGPT') ||
+            (filteredProduct === 'MONITOR' && productName === 'MONITOR')) {
           // Found the selected product
           selectedProductLi = $li;
         } else if ($productLink.length > 0) {
@@ -3359,61 +3284,32 @@ $(window).on("resize", function () {
         selectedProductLi.find("li").has("ul").addClass("navparent");
         // Expand the product so first-level categories are visible
         selectedProductLi.addClass('navexpand');
+        console.log('Product filtered, navexpand added to:', selectedProductLi.children('a').first().text());
 
         // The existing click handlers will work for the filtered view
         // No need to add additional handlers - they're already bound to 'nav.toc li span'
       }
     } else if (showFullTree === 'true') {
-      // If a topic is active, auto-filter to its product
-      var $activeLi = $('nav.toc li.active');
-      if ($activeLi.length) {
-        // Walk up to the top-level product li, or use activeLi itself if it IS top-level
-        var $topProductLi = $activeLi.parents('li').last();
-        if (!$topProductLi.length || $topProductLi.hasClass('nav-context')) {
-          // Active item is itself a top-level li (e.g., clicked product name directly)
-          $topProductLi = $activeLi;
-        }
-        if ($topProductLi.length && !$topProductLi.hasClass('nav-context')) {
-          var productName = $topProductLi.children('a').first().text().trim().toUpperCase();
-          if (productName) {
-            // Filter to just this product
-            sessionStorage.setItem('filteredProduct', productName);
-            sessionStorage.removeItem('showFullTree');
-            // Hide other products
-            $('nav.toc > ul > li').each(function() {
-              var $li = $(this);
-              if ($li.hasClass('nav-context')) return;
-              var $link = $li.children('a').first();
-              if ($link.length && $link.text().trim().toUpperCase() === productName) {
-                $li.show().addClass('navexpand');
-              } else if ($link.length) {
-                $li.hide();
-              }
-            });
-            // Update viewing label
-            renderNavContext(getProductFromPath() || 'All Products');
-          }
+      // User clicked "Products & Features" - show full tree (expansion handled in init)
+      $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
+    } else {
+      // Default: auto-filter to show only the product matching the current page
+      var $activeProductItem = $('nav.toc li.active');
+      if ($activeProductItem.length) {
+        var $topProductLi = $activeProductItem.closest('nav.toc > ul > li');
+        if ($topProductLi.length) {
+          $('nav.toc > ul > li:not(.nav-view-switcher-li)').each(function() {
+            if ($(this).is($topProductLi)) {
+              $(this).show().addClass('navexpand');
+            } else {
+              $(this).hide();
+            }
+          });
         }
       } else {
-        // No active topic — show full tree
-        $('nav.toc > ul > li').show();
+        // No active item found — show all products collapsed
+        $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
       }
-    } else {
-      // Default: hide navigation and prompt user to choose
-      $('nav.toc > ul > li').not('.nav-context').hide();
-
-      // Add prompt message
-      const taskViewPrompt = `
-        <li class="task-view-prompt">
-          <div style="padding: 15px; text-align: center; background: var(--SL-blue01); border-radius: 4px; margin: 10px;">
-            <p style="margin: 0 0 10px 0; color: var(--c2-grey2); font-size: 12px;">
-              Click <strong>All Tasks</strong> above to browse by workflow,<br>
-              or <strong>All Products</strong> to browse by product.
-            </p>
-          </div>
-        </li>
-      `;
-      $('nav.toc > ul').prepend(taskViewPrompt);
     }
 
     // Check if we're on a Monitor page
@@ -3433,63 +3329,14 @@ $(window).on("resize", function () {
       });
     }
 
-    // Check if we're on an APIM 3.0 page
-    if (currentPath.includes('/apim/')) {
-      $('.product-menu-header .dropdown').each(function() {
-        const $dropdown = $(this);
-        const $toggle = $dropdown.find('.dropdown-toggle');
-
-        if ($toggle.text().includes('APIs')) {
-          $dropdown.addClass('active');
-          $dropdown.find('.dropdown-menu a').each(function() {
-            if ($(this).text().includes('API Management 3.0')) {
-              $(this).addClass('active');
-            }
-          });
-        }
-      });
-    }
-
-    // Check if we're on a Classic APIM page
-    if (currentPath.includes('/classic-apim/')) {
-      $('.product-menu-header .dropdown').each(function() {
-        const $dropdown = $(this);
-        const $toggle = $dropdown.find('.dropdown-toggle');
-
-        if ($toggle.text().includes('APIs')) {
-          $dropdown.addClass('active');
-          $dropdown.find('.dropdown-menu a').each(function() {
-            if ($(this).text().includes('Classic API Management')) {
-              $(this).addClass('active');
-            }
-          });
-        }
-      });
-    }
-
-    // Check if we're on a Public APIs page
-    if (currentPath.includes('/public-apis/')) {
-      $('.product-menu-header .dropdown').each(function() {
-        const $dropdown = $(this);
-        const $toggle = $dropdown.find('.dropdown-toggle');
-
-        if ($toggle.text().includes('APIs')) {
-          $dropdown.addClass('active');
-          $dropdown.find('.dropdown-menu a').each(function() {
-            if ($(this).text().includes('Public APIs')) {
-              $(this).addClass('active');
-            }
-          });
-        }
-      });
-    }
-
     } // end if (isInProductViewForNav)
 
     // POC: Apply task navigation filtering on page load
+    console.log('POC DEBUG: isTaskView=', isTaskView, 'currentPath=', currentPath);
     if (isTaskView) {
       var filteredTaskSection = sessionStorage.getItem('filteredTaskSection');
       var showFullTaskTree = sessionStorage.getItem('showFullTaskTree');
+      console.log('POC DEBUG: filteredTaskSection=', filteredTaskSection, 'showFullTaskTree=', showFullTaskTree);
 
       // Known category names (top-level groupings in the task view)
       var TASK_CATEGORIES = [
@@ -3498,34 +3345,37 @@ $(window).on("resize", function () {
         'Develop Agents',
         'Develop & Deploy Integrations',
         'Manage APIs',
-        'Monitor the Runtime',
-        'Observe with a Third-Party Tool',
+        'Monitor',
+        'Observe',
         'Troubleshoot'
       ];
 
-      // If viewing full task tree and a topic is active, auto-filter to its category
-      if (showFullTaskTree === 'true') {
-        var $activeLi = $('nav.toc li.active');
-        if ($activeLi.length) {
-          var $topLi = $activeLi.parents('li').last();
-          if (!$topLi.length || $topLi.hasClass('nav-context')) {
-            $topLi = $activeLi;
-          }
-          if ($topLi.length && !$topLi.hasClass('nav-context')) {
-            var categoryName = $topLi.children('span, a').first().text().trim();
-            filteredTaskSection = categoryName;
-            showFullTaskTree = null;
-            sessionStorage.setItem('filteredTaskSection', categoryName);
-            sessionStorage.setItem('filteredTaskParent', categoryName);
-            sessionStorage.removeItem('showFullTaskTree');
-            renderNavContext(categoryName);
+      // Auto-filter task nav to show only the category containing the current page,
+      // unless user explicitly clicked "All Tasks" (activeNav === 'tasks')
+      var activeNavCheck = sessionStorage.getItem('activeNav');
+      console.log('POC DEBUG: activeNavCheck=', activeNavCheck);
+      if (activeNavCheck !== 'tasks') {
+        var $activeItem = $('nav.toc li.active');
+        console.log('POC DEBUG: $activeItem.length=', $activeItem.length);
+        if ($activeItem.length) {
+          var $topCategory = $activeItem.closest('nav.toc > ul > li');
+          console.log('POC DEBUG: $topCategory text=', $topCategory.children('span, a').first().text().trim());
+          if ($topCategory.length) {
+            $('nav.toc > ul > li:not(.nav-view-switcher-li)').each(function() {
+              if ($(this).is($topCategory)) {
+                $(this).show().addClass('navexpand');
+              } else {
+                $(this).hide();
+              }
+            });
           }
         }
       }
 
       if (filteredTaskSection && showFullTaskTree !== 'true') {
         // Categories are top-level <li> items; headings are nested inside <ul> children
-        var $categoryItems = $('nav.toc > ul > li');
+        var $categoryItems = $('nav.toc > ul > li:not(.nav-view-switcher-li)');
+        var matched = false;
         var filteredCategory = sessionStorage.getItem('filteredTaskCategory');
 
         $categoryItems.each(function() {
@@ -3536,8 +3386,8 @@ $(window).on("resize", function () {
           if (isCategoryMatch) {
             // Show entire category expanded with all headings
             $cat.show().addClass('navexpand');
-            $cat.find('li').show();
-            $cat.find('li.navparent').addClass('navexpand');
+            $cat.find('li').show().addClass('navexpand');
+            matched = true;
           } else {
             // Check if a heading inside this category matches
             // If filteredCategory is set, only match within that category
@@ -3559,12 +3409,14 @@ $(window).on("resize", function () {
 
             if (headingMatched) {
               $cat.show().addClass('navexpand');
-              } else {
+              matched = true;
+            } else {
               $cat.hide();
             }
           }
         });
 
+        console.log('Task section filtered:', filteredTaskSection, 'matched:', matched);
       }
       // else: show full tree (default behavior)
     }

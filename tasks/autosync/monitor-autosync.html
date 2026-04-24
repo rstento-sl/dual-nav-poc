@@ -76,59 +76,75 @@
     </a>
     <ph class="site-title site-title-compact"><a href="/index.html">SnapLogic Documentation</a></ph>
 
-    <!-- Search bar (compact) -->
+    <!-- Search bar (right-aligned in top row) -->
     <div class="search-container-compact desktop-nav">
       <span onclick="showPopup()" class="search-icon-compact"><i><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-white.svg" alt="search-icon"></i></span>
       <input type="text" id="searchQuery" placeholder="Search docs" spellcheck="false" autocomplete="off" onfocus="showdropdown()">
     </div>
-
-    <!-- Product Dropdown Menus (smaller) -->
-    <nav class="product-menu-header desktop-nav">
-      <!-- Dropdown 1: Integration Platform -->
-      <div class="dropdown">
-        <button class="dropdown-toggle">
-          Integration Platform <span class="arrow">▼</span>
-        </button>
-        <div class="dropdown-menu">
-          <a href="/autosync/autosync-home.html">AutoSync</a>
-          <a href="/designer/designer-home.html">Designer</a>
-          <a href="/snapgpt/snapgpt-home.html">SnapGPT</a>
-        </div>
-      </div>
-
-      <!-- Dropdown 2: Administration -->
-      <div class="dropdown">
-        <button class="dropdown-toggle">
-          Administration <span class="arrow">▼</span>
-        </button>
-        <div class="dropdown-menu">
-          <a href="/admin-manager/admin-manager-home.html">Admin Manager</a>
-        </div>
-      </div>
-
-      <!-- Dropdown 3: APIs -->
-      <div class="dropdown">
-        <button class="dropdown-toggle">
-          APIs <span class="arrow">▼</span>
-        </button>
-        <div class="dropdown-menu">
-          <a href="/apim/apim-home.html">API Management 3.0</a>
-          <a href="/classic-apim/classic-apim-home.html">Classic API Management</a>
-          <a href="/public-apis/public-apis-home.html">Public APIs</a>
-        </div>
-      </div>
-
-      <!-- Dropdown 4: Observability -->
-      <div class="dropdown">
-        <button class="dropdown-toggle">
-          Observability <span class="arrow">▼</span>
-        </button>
-        <div class="dropdown-menu">
-          <a href="/monitor/monitor-home.html">Monitor</a>
-        </div>
-      </div>
-    </nav>
   </ul>
+
+  <!-- Product Dropdown Menus (separate row) -->
+  <nav class="product-menu-header desktop-nav">
+    <!-- Dropdown 1: Integration Platform -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Integration platform <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="/autosync/autosync-home.html">AutoSync</a>
+        <a href="/designer/designer-home.html">Designer</a>
+        <a href="/snapgpt/snapgpt-home.html">SnapGPT</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 2: Administration &amp; Governance -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Administration and governance <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="/admin-manager/admin-manager-home.html">Admin Manager</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 3: Observability -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Observability <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="/monitor/monitor-home.html">Monitor</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 4: Tutorials -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Tutorials <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="/tutorials/tutorials-admin-manager.html">Admin Manager</a>
+        <a href="/tutorials/tutorials-autosync.html">AutoSync</a>
+        <a href="/tutorials/tutorials-designer.html">Designer</a>
+        <a href="/tutorials/tutorials-monitor.html">Monitor</a>
+        <a href="/tutorials/tutorials-snapgpt.html">SnapGPT</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 5: Examples -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Examples <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="/examples/examples-admin-manager.html">Admin Manager</a>
+        <a href="/examples/examples-autosync.html">AutoSync</a>
+        <a href="/examples/examples-designer.html">Designer</a>
+        <a href="/examples/examples-monitor.html">Monitor</a>
+        <a href="/examples/examples-snapgpt.html">SnapGPT</a>
+      </div>
+    </div>
+  </nav>
 
   <ul class="topmenu">
     <!-- Original search for mobile -->
@@ -209,14 +225,14 @@
       </div>
     </div>
   </div>
-</div></header><nav class="toc" role="navigation"><ul><li><a href="../placeholders/task-landing-get-started.html">Get Started</a><ul><li><a href="../placeholders/agent-developers.html">Agent Developers</a></li><li><a href="../placeholders/environment-admins.html">Environment Admins</a><ul><li><a href="../create-user-account.html">Create User Accounts</a></li><li><a href="../admin-manager-create-snaplex.html">Create a Snaplex</a></li><li><a href="../placeholders/manage-snap-packs.html">Manage Snap Packs</a></li></ul></li><li><a href="../placeholders/integration-developers.html">Integration Developers</a><ul><li><a href="../placeholders/configure-your-profile.html">Configure Your Profile</a></li><li><a href="../placeholders/configure-snap-accounts.html">Configure Snap Accounts</a></li><li><a href="../placeholders/monitor-integrations.html">Monitor Integrations</a></li></ul></li><li><a href="../placeholders/tutorials.html">Tutorials</a><ul><li><a href="../placeholders/create-first-pipeline-designer.html">Create Your First Pipeline in Designer</a></li><li><a href="../placeholders/create-first-autosync-pipeline.html">Create Your First AutoSync Pipeline</a></li><li><a href="../placeholders/create-first-agent.html">Create Your First Agent</a></li><li><a href="../placeholders/create-first-apim-service.html">Create Your First APIM Service</a></li></ul></li></ul></li><li><a href="../placeholders/task-landing-administer.html">Administer the Environment</a><ul><li><a href="../placeholders/control-plane.html">Control Plane</a><ul><li><a href="../configure-custom-org-branding.html">Configure Custom Organization Branding</a></li><li><a href="../placeholders/autosync-settings-snap-pack.html">AutoSync Settings: Snap Pack Versions &amp; Allow Nullable Columns</a></li><li><a href="../placeholders/apim-3-settings.html">APIM 3.0 Settings</a></li><li><a href="../placeholders/designer-settings-validation.html">Designer Settings: Pipeline Validation &amp; Data Preview</a></li><li><a href="../placeholders/snapgpt-settings-task.html">SnapGPT Settings</a></li><li><a href="../placeholders/user-session-timeouts.html">User Session Timeouts</a></li><li><a href="../placeholders/password-expiration.html">Password Expiration</a></li><li><a href="../create-user-account.html">Create User Accounts</a></li><li><a href="../create-team-account.html">Create Team Accounts</a></li><li><a href="../create-service-account.html">Create Service Accounts</a></li><li><a href="../edit-user-account.html">Edit User Accounts</a></li><li><a href="../account-groups.html">Organize Accounts into Groups</a></li></ul></li><li><a href="../placeholders/data-plane.html">Data Plane</a><ul><li><a href="../admin-manager-create-snaplex.html">Create a Snaplex</a></li><li><a href="../admin-manager-update-snaplex.html">Update a Snaplex</a></li><li><a href="../placeholders/configure-snaplex-allowlists.html">Configure Snaplex Allowlists</a></li><li><a href="../placeholders/add-snaplogic-ips-allowlists.html">Add SnapLogic IPs to Client Allowlists</a></li><li><a href="../placeholders/configure-snaplex-auto-upgrade.html">Configure Snaplex Auto-Upgrade</a></li><li><a href="../placeholders/start-a-snaplex.html">Start a Snaplex</a></li><li><a href="../placeholders/stop-a-snaplex.html">Stop a Snaplex</a></li><li><a href="../placeholders/install-a-groundplex.html">Install a Groundplex</a></li><li><a href="../placeholders/configure-a-groundplex.html">Configure a Groundplex</a></li><li><a href="../upgrade-snaplex-version.html">Upgrade to a New Snaplex Version</a></li></ul></li><li><a href="../placeholders/security-task.html">Security</a><ul><li><a href="../create-idp-integration.html">Create Identity Provider Integration</a></li><li><a href="../configure-sso.html">Configure Single Sign-On</a></li><li><a href="../enhanced-encryption.html">Enable Enhanced Encryption (Admin)</a></li><li><a href="../enhanced-account-encryption.html">Enable Enhanced Encryption (AutoSync)</a></li></ul></li></ul></li><li><a href="../placeholders/task-landing-develop-integrations.html">Develop &amp; Deploy Integrations</a><ul><li><a href="../placeholders/autosync-data-pipelines.html">AutoSync Data Pipelines</a><ul><li><a href="../create-credentials.html">Create Data Source Credentials</a></li><li><a href="../create-data-pipeline.html">Create a Data Pipeline</a></li><li><a href="../choose-tables.html">Choose Tables to Sync</a></li><li><a href="../view-data-pipeline.html">View Data Pipeline Status</a></li><li><a href="../enable-notifications.html">Enable Data Pipeline Notifications</a></li></ul></li><li><a href="../placeholders/designer-pipelines.html">Designer Pipelines</a><ul><li><a href="../snapgpt-pipe-gen-rag.html">Generate a Pipeline with SnapGPT</a></li><li><a href="../snapgpt-gen-expressions.html">Generate Expressions with SnapGPT</a></li><li><a href="../mapper-expr-example1.html">Generate Mapper Expressions with SnapGPT</a></li><li><a href="../generate-queries.html">Generate SQL Queries with SnapGPT</a></li><li><a href="../mapper-expr-example2.html">Extract Pipeline Parameters with SnapGPT</a></li><li><a href="../snapgpt-analyze-pipelines.html">Analyze Pipelines with SnapGPT</a></li><li><a href="../snapgpt-refine-pipelines.html">Refine Pipelines with SnapGPT</a></li><li><a href="../snapgpt-pipe-gen-image.html">Generate a Pipeline from an Image</a></li><li><a href="../print-pipeline.html">Print a Pipeline</a></li><li><a href="../using-pipeline-notes.html">Use Pipeline Notes in Designer</a></li></ul></li></ul></li><li><a href="../placeholders/task-landing-develop-agents.html">Develop Agents</a><ul><li><a href="../placeholders/develop-agents.html">Develop Agents</a></li></ul></li><li><a href="../placeholders/task-landing-manage-apis.html">Manage APIs</a><ul><li><a href="../placeholders/api-management.html">API Management</a></li><li><a href="../placeholders/snaplogic-public-apis.html">SnapLogic Public APIs</a></li></ul></li><li><a href="../placeholders/task-landing-monitor.html">Monitor the Runtime</a><ul><li><a href="../placeholders/monitor-apis.html">APIs</a><ul><li><a href="../observe-api-metrics.html">View API Metrics</a></li></ul></li><li><a href="../placeholders/monitor-environment-assets.html">Environment Assets</a><ul><li><a href="../catalog.html">Browse the Asset Catalog</a></li><li><a href="../view-metadata.html">View Asset Metadata</a></li><li><a href="../asset-table-config.html">Configure the Asset Table</a></li><li><a href="../custom-metadata.html">Manage Custom Metadata</a></li><li><a href="../download-upload-metadata.html">Download and Upload Metadata</a></li><li><a href="../add-supplemental-metadata.html">Add Supplemental Metadata</a></li><li><a href="../edit-task-metadata.html">Edit Task Metadata</a></li></ul></li><li><a href="../placeholders/monitor-mcp.html">MCP</a></li><li><a href="../placeholders/monitor-pipelines.html">Pipelines</a><ul><li><a href="../monitor-analyze.html">Analyze Pipelines</a></li><li><a href="../insights.html">View Pipeline Insights</a></li><li><a href="../analyze-execution.html">Analyze Execution</a></li><li><a href="../find-executions.html">Find Executions</a></li><li><a href="../stop-executions.html">Stop Executions</a></li><li><a href="../download-executions.html">Download Executions</a></li><li><a href="../pipeline-details-panel.html">View Pipeline Details</a></li><li><a href="../snap-statistics-tab.html">View Snap Statistics</a></li><li><a href="../pipeline-logs-tab.html">View Pipeline Logs</a></li><li><a href="../pipeline-parameters-tab.html">View Pipeline Parameters</a></li><li><a href="../state-transition-tab.html">View State Transitions</a></li></ul></li><li><a href="../placeholders/monitor-snaplexes.html">Snaplexes</a></li><li><a href="../placeholders/monitor-snaps.html">Snaps</a><ul><li><a href="../snap-statistics-tab.html">View Snap Statistics</a></li></ul></li></ul></li><li><a href="../placeholders/task-landing-observe.html">Observe with a Third-Party Tool</a><ul><li><a href="../observe-api-metrics.html">View API Metrics</a></li><li><a href="../insights.html">View Pipeline Insights</a></li><li><a href="../analyze-metrics.html">Analyze Snaplex Metrics</a></li></ul></li><li><a href="../placeholders/task-landing-troubleshoot.html">Troubleshoot</a><ul><li><a href="../placeholders/troubleshoot-accounts.html">Accounts</a></li><li><a href="../placeholders/troubleshoot-agents.html">Agents</a></li><li><a href="../placeholders/troubleshoot-apim-services.html">APIM Services</a></li><li><a href="../placeholders/troubleshoot-mcp-servers.html">MCP Servers</a></li><li><a href="../placeholders/troubleshoot-pipelines.html">Pipelines</a></li><li><a href="../placeholders/troubleshoot-runtime-behavior.html">Runtime Behavior</a></li><li><a href="../placeholders/troubleshoot-snaplexes.html">Snaplexes</a></li><li><a href="../placeholders/troubleshoot-snaps.html">Snaps</a></li><li><a href="../placeholders/troubleshoot-tasks.html">Tasks</a></li></ul></li></ul></nav><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+</div></header><nav class="toc" role="navigation"><ul><li><span>Get Started</span><ul><li><span>Agent Developers</span></li><li><span>Environment Admins</span><ul><li><a href="../admin-manager/create-user-account.html">Create User Accounts</a></li><li><a href="../admin-manager/admin-manager-create-snaplex.html">Create a Snaplex</a></li><li><span>Manage Snap Packs</span></li></ul></li><li><span>Integration Developers</span><ul><li><span>Configure Your Profile</span></li><li><span>Configure Snap Accounts</span></li><li><span>Monitor Integrations</span></li><li><span>Tutorials</span><ul><li><span>Create Your First Pipeline in Designer</span></li><li><span>Create Your First AutoSync Pipeline</span></li><li><span>Create Your First Agent</span></li><li><span>Create Your First APIM Service</span></li></ul></li></ul></li></ul></li><li><span>Administer the Environment</span><ul><li><span>Control Plane</span><ul><li><a href="../designer/configure-custom-org-branding.html">Configure Custom Organization Branding</a></li><li><span>AutoSync Settings: Snap Pack Versions &amp; Allow Nullable Columns</span></li><li><span>APIM 3.0 Settings</span></li><li><span>Designer Settings: Pipeline Validation &amp; Data Preview</span></li><li><span>SnapGPT Settings</span></li><li><span>User Session Timeouts</span></li><li><span>Password Expiration</span></li><li><a href="../admin-manager/create-user-account.html">Create User Accounts</a></li><li><a href="../admin-manager/create-team-account.html">Create Team Accounts</a></li><li><a href="../admin-manager/create-service-account.html">Create Service Accounts</a></li><li><a href="../admin-manager/edit-user-account.html">Edit User Accounts</a></li><li><a href="../autosync/account-groups.html">Organize Accounts into Groups</a></li></ul></li><li><span>Data Plane</span><ul><li><a href="../admin-manager/admin-manager-create-snaplex.html">Create a Snaplex</a></li><li><a href="../admin-manager/admin-manager-update-snaplex.html">Update a Snaplex</a></li><li><span>Configure Snaplex Allowlists</span></li><li><span>Add SnapLogic IPs to Client Allowlists</span></li><li><span>Configure Snaplex Auto-Upgrade</span></li><li><span>Start a Snaplex</span></li><li><span>Stop a Snaplex</span></li><li><span>Install a Groundplex</span></li><li><span>Configure a Groundplex</span></li><li><a href="../designer/upgrade-to-a-new-snaplex-version.html">Upgrade to a New Snaplex Version</a></li></ul></li><li><span>Security</span><ul><li><a href="../admin-manager/create-idp-integration.html">Create Identity Provider Integration</a></li><li><a href="../admin-manager/configure-sso.html">Configure Single Sign-On</a></li><li><a href="../admin-manager/enhanced-encryption.html">Enable Enhanced Encryption (Admin)</a></li><li><a href="../autosync/enhanced-account-encryption.html">Enable Enhanced Encryption (AutoSync)</a></li></ul></li></ul></li><li><span>Develop &amp; Deploy Integrations</span><ul><li><span>AutoSync Data Pipelines</span><ul><li><a href="../autosync/create-credentials.html">Create Data Source Credentials</a></li><li><a href="../autosync/create-data-pipeline.html">Create a Data Pipeline</a></li><li><a href="../autosync/choose-tables.html">Choose Tables to Sync</a></li><li><a href="../autosync/view-data-pipeline.html">View Data Pipeline Status</a></li><li><a href="../autosync/enable-notifications.html">Enable Data Pipeline Notifications</a></li></ul></li><li><span>Designer Pipelines</span><ul><li><a href="../snapgpt/snapgpt-pipe-gen-rag.html">Generate a Pipeline with SnapGPT</a></li><li><a href="../snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate Expressions with SnapGPT</a></li><li><a href="../snapgpt/mapper-expr-example1.html">Generate Mapper Expressions with SnapGPT</a></li><li><a href="../snapgpt/generate-queries.html">Generate SQL Queries with SnapGPT</a></li><li><a href="../snapgpt/mapper-expr-example2.html">Extract Pipeline Parameters with SnapGPT</a></li><li><a href="../snapgpt/snapgpt-analyze-pipelines.html">Analyze Pipelines with SnapGPT</a></li><li><a href="../snapgpt/snapgpt-refine-pipelines.html">Refine Pipelines with SnapGPT</a></li><li><a href="../snapgpt/snapgpt-pipe-gen-image.html">Generate a Pipeline from an Image</a></li><li><a href="../designer/print-pipeline.html">Print a Pipeline</a></li><li><a href="../designer/using-pipeline-notes-in-designer.html">Use Pipeline Notes in Designer</a></li></ul></li></ul></li><li><span>Develop Agents</span><ul></ul></li><li><span>Manage APIs</span><ul><li><span>API Management</span></li><li><span>SnapLogic Public APIs</span></li></ul></li><li><span>Monitor</span><ul><li><span>APIs</span><ul><li><a href="../monitor/observe-api-metrics.html">View API Metrics</a></li></ul></li><li><span>Environment Assets</span><ul><li><a href="../monitor/catalog.html">Browse the Asset Catalog</a></li><li><a href="../monitor/view-metadata.html">View Asset Metadata</a></li><li><a href="../monitor/asset-table-config.html">Configure the Asset Table</a></li><li><a href="../monitor/custom-metadata.html">Manage Custom Metadata</a></li><li><a href="../monitor/download-upload-metadata.html">Download and Upload Metadata</a></li><li><a href="../monitor/add-supplemental-metadata.html">Add Supplemental Metadata</a></li><li><a href="../monitor/edit-task-metadata.html">Edit Task Metadata</a></li></ul></li><li><span>MCP</span></li><li><span>Pipelines</span><ul><li><a href="../monitor/monitor-analyze.html">Analyze Pipelines</a></li><li><a href="../monitor/insights.html">View Pipeline Insights</a></li><li><a href="../monitor/analyze-execution.html">Analyze Execution</a></li><li><a href="../monitor/find-executions.html">Find Executions</a></li><li><a href="../monitor/stop-executions.html">Stop Executions</a></li><li><a href="../monitor/download-executions.html">Download Executions</a></li><li><a href="../monitor/pipeline-details-panel.html">View Pipeline Details</a></li><li><a href="../monitor/snap-statistics-tab.html">View Snap Statistics</a></li><li><a href="../monitor/pipeline-logs-tab.html">View Pipeline Logs</a></li><li><a href="../monitor/pipeline-parameters-tab.html">View Pipeline Parameters</a></li><li><a href="../monitor/state-transition-tab.html">View State Transitions</a></li></ul></li><li><span>Snaplexes</span></li><li><span>Snaps</span><ul><li><a href="../monitor/snap-statistics-tab.html">View Snap Statistics</a></li></ul></li></ul></li><li><span>Observe</span><ul><li><a href="../monitor/observe-api-metrics.html">View API Metrics</a></li><li><a href="../monitor/insights.html">View Pipeline Insights</a></li><li><a href="../monitor/analyze-metrics.html">Analyze Snaplex Metrics</a></li></ul></li><li><span>Troubleshoot</span><ul><li><span>Accounts</span></li><li><span>Agents</span></li><li><span>APIM Services</span></li><li><span>MCP Servers</span></li><li><span>Pipelines</span></li><li><span>Runtime Behavior</span></li><li><span>Snaplexes</span></li><li><span>Snaps</span></li><li><span>Tasks</span></li></ul></li></ul></nav><main role="main"><article role="article" aria-labelledby="ariaid-title1">
 
   <h1 class="title topictitle1" id="ariaid-title1">Monitor data pipelines</h1>
 
 
   
 
-  <div class="body conbody" id="monitor-autosync__monitor-autosync-body">
+  <div class="body conbody">
 
     <section class="section">
       <p class="p">AutoSync users can view summary information about their own data pipelines. Environment admins can
