@@ -112,7 +112,36 @@ h1, h2, h3, h4, h5, h6 {
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 12px;
+}
+
+.homepage-search {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 4px 10px;
+  gap: 6px;
+}
+
+.homepage-search-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+}
+
+.homepage-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 13px;
+  width: 160px;
+}
+
+.homepage-search input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* === Mobile Hamburger === */
