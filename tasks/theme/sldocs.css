@@ -843,14 +843,10 @@ article ul,article ol {
   font-family: var(--font-bold);
 }
 .breadcrumb-header .breadcrumb-item:not(:last-child) .breadcrumb-link:after {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  font-size: 80%;                        
+  font-size: 80%;
   display: inline-block;
-  padding-left: .5ch; 
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  content: "    \f054";
+  padding-left: .5ch;
+  content: "  ›";
   margin: 0 5px;
 }
 

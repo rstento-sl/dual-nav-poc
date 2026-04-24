@@ -380,7 +380,7 @@ function DisplayBreadcrumbs(){
   if (articleElement.length && activeListItem.length) {
     var breadcrumbElement = $("<div>").addClass("breadcrumb-header");
     var breadcrumbs = [];
-    var Breadcrumb_image = $("<i>").addClass("fa-solid fa-house");
+    var Breadcrumb_image = $("<span>").text("⌂").css({"font-size": "15px", "line-height": "1"});
     var Breadcrumb_home_link = $("<a>").attr("href", "/index.html").addClass("breadcrumb-link").append(Breadcrumb_image);
     var Breadcrumb_home = $("<span>").addClass("breadcrumb-item").append(Breadcrumb_home_link);
     breadcrumbElement.append(Breadcrumb_home); 
