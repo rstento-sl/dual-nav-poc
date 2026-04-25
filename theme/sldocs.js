@@ -70,43 +70,8 @@ function scrollToActiveelement() {
     }, 200);
   }
 }
-// Headers
-function AddHeaders()  {
-  $('.prereq').prepend('<h2 class="title sectiontitle">Prerequisites</h2>');
-  $('.result').prepend('<h2 class="title sectiontitle">Results</h2>');
-  $('.example').prepend('<h2 class="title sectiontitle">Example</h2>');
-  $('.tasktroubleshooting').prepend('<h2 class="title sectiontitle">Troubleshooting</h2>');
-  $('.troublebody .condition').prepend('<h2 class="title sectiontitle">Condition</h2>');
-  $('.troublebody .solution').prepend('<h3 class="title sectiontitle">Solution</h3>');
-  $('.troublebody .cause').prepend('<h3 class="title sectiontitle">Cause</h3>');
-  $('.troublebody .remedy').prepend('<h3 class="title sectiontitle">Remedy</h3>');
-  $('.postreq').prepend('<h2 class="title sectiontitle">Next steps</h2>');
-  // $('.related-links').prepend('<h2 class="title sectiontitle">Related content</h2>');
-
-  // The 'steps' class is in the ol tag, not in the section tag.
-  $('section:not(.remedy):has(ol.steps)').prepend('<h2 class="title sectiontitle">Steps</h2>');
-  $('section:has(ul.steps-unordered)').prepend('<h2 class="title sectiontitle">Steps</h2>');
-}
-
-
-// Details
-function Details()  {
-  $('.details').each( function() {
-    $(this).replaceWith( $('<details/>').html($('.details').html()).attr("open","true"))
-    });
-  $('.details-open').each( function() {
-    $(this).replaceWith( $('<details/>').html($('.details-open').html()).attr("open","true"))
-    });
-  $('.detsumm').each( function() {
-    $(this).replaceWith( $('<summary/>').html($('.detsumm').html()))
-    });
-  $('.detsummtitle').each( function() {
-    $(this).replaceWith( $('<summary/>').html($(this).html()).addClass("title detsummtitle"))
-    });
-  $('.detsummdivtitle').each( function() {
-    $(this).replaceWith( $('<summary/>').html($(this).html()).addClass("title detsummdivtitle"))
-    });
-}
+// Headers - MOVED TO BUILD TIME (postprocess.py: section-headers)
+// Details - MOVED TO BUILD TIME (postprocess.py: details)
 
 
 // Tabs
@@ -371,153 +336,11 @@ function ReleaseNotes(){
   });
 }
 
-// Breadcrumbs
-function DisplayBreadcrumbs(){
-  var articleElement = $("article");
-  var breadcrumbmain=$("article")
-  var activeListItem = $(".toc li.active");
+// Breadcrumbs - MOVED TO BUILD TIME (postprocess.py: breadcrumbs)
 
-  if (articleElement.length && activeListItem.length) {
-    var breadcrumbElement = $("<div>").addClass("breadcrumb-header");
-    var breadcrumbs = [];
-    var Breadcrumb_image = $("<span>").text("⌂").css({"font-size": "15px", "line-height": "1"});
-    var Breadcrumb_home_link = $("<a>").attr("href", "/index.html").addClass("breadcrumb-link").append(Breadcrumb_image);
-    var Breadcrumb_home = $("<span>").addClass("breadcrumb-item").append(Breadcrumb_home_link);
-    breadcrumbElement.append(Breadcrumb_home); 
-    // Traverse up the DOM from the active li to collect breadcrumbs
-    activeListItem.parentsUntil(".toc", "li").each(function() {
-      var listItem = $(this).children("a").clone(); 
-      breadcrumbs.unshift(listItem);
-    });
-    breadcrumbs.push(activeListItem.children("a").clone());
-    for (var i = 0; i < breadcrumbs.length; i++) {
-      var span = $("<span>").addClass("breadcrumb-item").append(breadcrumbs[i]);
-      breadcrumbElement.append(span);
-    }
-    breadcrumbmain.prepend(breadcrumbElement);
-    breadcrumbElement.find("a").addClass("breadcrumb-link");
-
-  }
-}
-
-// Codeblocks
-
-// Requires highlight.js to be loaded on the page
-function prettifyCodeBlocks() {
-  $(".codeblock").each(function () {
-    var codeElem = $(this).find("code");
-    if (!codeElem.length) return;
-    var codeText = codeElem.text();
-    var lang = codeElem.attr("class");
-
-    // If it's normal text (no code class, no JSON, no HTML, no XML), left-align and remove leading spaces
-    if (!lang || (!lang.includes("json") && !lang.includes("html") && !lang.includes("xml"))) {
-      var looksLikeJson = codeText.trim().startsWith("{") || codeText.trim().startsWith("[");
-      var looksLikeHtml = codeText.trim().startsWith("<");
-      var looksLikeXml = codeText.trim().startsWith("<") && codeText.trim().includes("</");
-      if (looksLikeJson) {
-        let pretty = codeText;
-        try {
-          let fixed = codeText.replace(/([,{]\s*)([a-zA-Z0-9_]+)(\s*:)/g, '$1"$2"$3');
-          pretty = JSON.stringify(JSON.parse(fixed), null, 2);
-        } catch (e) {
-          pretty = codeText.replace(/([,{]\s*)([a-zA-Z0-9_]+)(\s*:)/g, '$1"$2"$3');
-        }
-        var jsonLines = pretty.split(/\r?\n/);
-        if (jsonLines.length > 0) {
-          jsonLines[0] = jsonLines[0].trimStart();
-        }
-        codeElem.text(jsonLines.join("\n"));
-        codeElem.addClass("json");
-        codeElem.css("text-align", "left");
-        if (window.hljs) hljs.highlightElement(codeElem[0]);
-      } else if (looksLikeHtml) {
-        try {
-          let formatted = prettyHtml(codeText);
-          codeElem.text(formatted);
-        } catch (e) {
-          codeElem.text(codeText);
-        }
-        codeElem.addClass("html");
-        if (window.hljs) hljs.highlightElement(codeElem[0]);
-      } else if (looksLikeXml) {
-        try {
-          let formatted = prettyXml(codeText);
-          codeElem.text(formatted);
-        } catch (e) {
-          codeElem.text(codeText);
-        }
-        codeElem.addClass("xml");
-        if (window.hljs) hljs.highlightElement(codeElem[0]);
-      } else {
-        var lines = codeText.split(/\r?\n/).map(function(line){ return line.trimStart(); });
-        codeElem.text(lines.join("\n"));
-        codeElem.css("text-align", "left");
-      }
-    } else if (lang.includes("json")) {
-    } else if (lang.includes("xml")) {
-      try {
-        let formatted = prettyXml(codeText);
-        codeElem.text(formatted);
-      } catch (e) {
-        codeElem.text(codeText);
-      }
-      codeElem.addClass("xml");
-      if (window.hljs) hljs.highlightElement(codeElem[0]);
-      let pretty = codeText;
-      try {
-        let fixed = codeText.replace(/([,{]\s*)([a-zA-Z0-9_]+)(\s*:)/g, '$1"$2"$3');
-        pretty = JSON.stringify(JSON.parse(fixed), null, 2);
-      } catch (e) {
-        pretty = codeText.replace(/([,{]\s*)([a-zA-Z0-9_]+)(\s*:)/g, '$1"$2"$3');
-      }
-      codeElem.text(pretty);
-      codeElem.addClass("json");
-      if (window.hljs) hljs.highlightElement(codeElem[0]);
-    } else if (lang.includes("html")) {
-      try {
-        let formatted = prettyHtml(codeText);
-        codeElem.text(formatted);
-      } catch (e) {
-        codeElem.text(codeText);
-      }
-      codeElem.addClass("html");
-      if (window.hljs) hljs.highlightElement(codeElem[0]);
-    } else {
-      if (window.hljs) hljs.highlightElement(codeElem[0]);
-    }
-  });
-}
-
-function prettyXml(xml) {
-  var tab = '  ';
-  var result = '';
-  var indentLevel = 0;
-  xml = xml.replace(/>\s+</g, '><'); // Remove whitespace between tags
-  xml.split(/(?=<)/g).forEach(function(fragment) {
-    fragment = fragment.trim();
-    if (!fragment) return;
-    if (fragment.match(/^<\//)) indentLevel = Math.max(indentLevel - 1, 0);
-    result += tab.repeat(indentLevel) + fragment + '\n';
-    if (fragment.match(/^<[^!?/][^>]*[^/]?>/)) indentLevel++;
-  });
-  return result.trim();
-}
-
-function prettyHtml(html) {
-  var tab = '  ';
-  var result = '';
-  var indentLevel = 0;
-  html = html.replace(/>\s+</g, '><'); // Remove whitespace between tags
-  html.split(/(?=<)/g).forEach(function(fragment) {
-    fragment = fragment.trim();
-    if (!fragment) return;
-    if (fragment.match(/^<\//)) indentLevel = Math.max(indentLevel - 1, 0);
-    result += tab.repeat(indentLevel) + fragment + '\n';
-    if (fragment.match(/^<[^!?/][^>]*[^/]?>/)) indentLevel++;
-  });
-  return result.trim();
-}
+// Codeblocks - MOVED TO BUILD TIME (postprocess.py: codeblocks)
+// highlight.js runtime call remains if loaded
+if (window.hljs) { $(function() { hljs.highlightAll(); }); }
 
 // Existing code for copy functionality
 function CopycodeBlocks(){
@@ -565,7 +388,9 @@ function CopycodeBlocks(){
 }
 
 // Permalinks
-function AddPermalinks(){
+// Permalinks - markup MOVED TO BUILD TIME (postprocess.py: permalinks)
+// Runtime: only the click-to-copy and hover handlers
+function AddPermalinkHandlers(){
   var PermalinkPopup = $("<div>").text("Copied to clipboard").addClass("permalink-popup")
   .css({
     display: "none",
@@ -579,34 +404,23 @@ function AddPermalinks(){
     zIndex: "999",
   });
   $("body").append(PermalinkPopup);
+  // Update permalink hrefs to use current page URL (for bookmarked/shared links)
   var currentURL = window.location.href.split('#')[0];
-  $(".sectiontitle,.sectiondivtitle").each(function() {
-    var sectionContent = $(this).text().trim();
-    if (sectionContent.length > 0) {
-      var sectionID = sectionContent.toLowerCase().replace(/\s/g, '-');
-      var permalink = "<span class='permalinkmaintag' style='display:none;'><a class='permalink' href='" + currentURL + "#" + sectionID + "'><img class='noborder permalinkicon' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg' alt='permalink-icon'/></a><span class='permalinktext'></span></span>"
-      $(this).append(permalink);
-    }
-  }); 
+  $(".permalink").each(function() {
+    var hash = this.href.split('#')[1] || '';
+    $(this).attr("href", currentURL + "#" + hash);
+  });
   $(".permalink img").hover(
     function() {
-      var href = $(this).parent().attr("href");
-      // var sectionID = href.substring(href.indexOf('#') + 1);
-      var tooltipText = "Copy link to this section";
-      $(this).closest(".permalinkmaintag").find(".permalinktext").text(tooltipText).css({ "opacity": 1, "visibility": "visible"});
+      $(this).closest(".permalinkmaintag").find(".permalinktext").text("Copy link to this section").css({ "opacity": 1, "visibility": "visible"});
     },
     function() {
       $(this).closest(".permalinkmaintag").find(".permalinktext").css({"opacity": "0","visibility": "hidden"});
     }
   );
-  $(".permalink").click(function() {
+  $(".permalink").click(function(event) {
     event.preventDefault();
-    var permalinkContent = $(this).attr("href");
-    // Creating a temporary textarea element to copy the permalink to clipboard
-    var textarea = $("<textarea>").val(permalinkContent).appendTo("body").select();
-    // Copying permalink to clipboard
-    document.execCommand("copy");
-    textarea.remove();
+    navigator.clipboard.writeText($(this).attr("href"));
     $(".permalink-popup").css("display", "block !important").fadeIn(300).delay(3000).fadeOut(300);
   });
 }
@@ -1819,13 +1633,7 @@ function handleSidenavWidthChange() {
   checkOverflowAndAddTooltips(); // Recheck overflow 
 }
 
-function removeOverviewHeadings() {
-  $('h1, h2, h3, h4, h5, h6').each(function() {
-    if ($(this).text().trim().toLowerCase() === 'overview') {
-      $(this).remove();
-    }
-  });
-}
+// removeOverviewHeadings - MOVED TO BUILD TIME (postprocess.py: overview)
 
 function handleFeedbackPopupPlacement() {
   const feedbackPopup = $(".feedback-popupmain");
@@ -1847,8 +1655,8 @@ function handleFeedbackPopupPlacement() {
 $(document).ready(function() {
 
   CopyrightYyyy();  // copyright year
-  AddHeaders();  // header titles
-  Details();  // replace with details-summary
+  // AddHeaders() - moved to build time (postprocess.py)
+  // Details() - moved to build time (postprocess.py)
   Downloadable();  // add 'download' to downloadable links
 
   // Sidenav TOC
@@ -1886,7 +1694,8 @@ $(document).ready(function() {
       }
     });
   }
-  addSectionIcons();
+  // addSectionIcons() - initial call removed, icons now in static HTML
+  // Function kept for swapNav compatibility (checks for existing icons)
 
   // POC: Mark active nav item based on current page URL
   // (DITA-OT build does not add the 'active' class automatically)
@@ -1957,7 +1766,7 @@ $(document).ready(function() {
   })
 
   sidenavigationPopup();
-  removeOverviewHeadings();
+  // removeOverviewHeadings() - moved to build time (postprocess.py)
   MarkParentsmobile();
   MarkActiveTreemobile();
   scrollToActiveelement();
@@ -2042,22 +1851,7 @@ $(document).ready(function() {
           }, 0); //fast scroll to reduce jerkiness
       }
   }
-  $("nav.toc a").each(function () {
-    const text = $(this).text().trim();
-    if (text.endsWith("Beta")) { 
-      const rest = text.slice(0, -6);
-      const lastPart = text.slice(-4);
-      $(this).html(`${rest}<b class="nav-beta">${lastPart}</b>`);
-    }
-  });
-  $(".sidenav_element a").each(function () {
-    const text = $(this).text().trim();
-    if (text.endsWith("Beta")) {
-      const rest = text.slice(0, -6);
-      const lastPart = text.slice(-4);
-      $(this).html(`${rest}<b class="nav-beta">${lastPart}</b>`);
-    }
-  });
+  // Beta badges - moved to build time (postprocess.py)
   // $('.tabs>li:first-child').trigger( 'click' );
   // $('.tabs>li:first-child').click( ShowTab( $(this) ) );
   // Modal images
@@ -2066,8 +1860,7 @@ $(document).ready(function() {
   //Release Notes 
   ReleaseNotes();
 
-  // Breadcrumbs
-  DisplayBreadcrumbs();
+  // Breadcrumbs - moved to build time (postprocess.py)
 
   // Codeblocks
   CopycodeBlocks();
@@ -2076,13 +1869,7 @@ $(document).ready(function() {
   ResizableSidenav();
   $('.resizable-sidenav').hover(AddHover, RemoveHover);
 
-  //notes
-  $('.note_important').prepend('<span class="note_important_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/IMPORTANT.svg" class="noborder" alt="icon" style=""></span>');
-  $('.note_note ').prepend('<span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon" style=""></span>');
-  $('.note_tip ').prepend('<span class="note_tip_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/TIP.svg" class="noborder" alt="icon" style=""></span>');
-  $('.note_remember').prepend('<span class="note_remember_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/REMEMBER.svg" class="noborder" alt="icon" style=""></span>');
-  $('.note_warning').prepend('<span class="note_warning_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/WARNING.svg" class="noborder" alt="icon" style=""></span>');
-  $('.note_caution').prepend('<span class="note_caution_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/CAUTION.svg" class="noborder" alt="icon" style=""></span>');
+  // Note icons - moved to build time (postprocess.py)
   const $navContainer = $('.toc ul');
   const $mainContainer = $('main');
   let prevNavScrollTop = 0;
@@ -2857,7 +2644,7 @@ updateAllCheckbox();
   scrollToActiveItem()
 
   // Permalinks
-  AddPermalinks();
+  AddPermalinkHandlers();  // permalink markup now in static HTML
 
   //FeedBackPopup
   FeedBackPopup();
@@ -3423,5 +3210,5 @@ $(window).on("resize", function () {
 
   } // end if ($toc.length > 0)
 
-  prettifyCodeBlocks();
+  // prettifyCodeBlocks() - moved to build time (postprocess.py)
 });
