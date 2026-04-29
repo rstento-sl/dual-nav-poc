@@ -3181,7 +3181,7 @@ $(window).on("resize", function () {
       var isOnTaskLandingPage = currentPath.match(/-about\.html/);
 
       if (activeNavCheck === 'tasks' && isOnTaskLandingPage) {
-        // Keep all categories visible (user is browsing landing pages)
+        // Keep all categories visible (user is browsing All Tasks landing)
         $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
       } else {
         // Filter to show only the category containing the active item
@@ -3196,6 +3196,34 @@ $(window).on("resize", function () {
                 $(this).hide();
               }
             });
+          }
+        } else if (isOnTaskLandingPage) {
+          // Landing page with toc="no" — no active item in nav.
+          // Match category from URL slug (e.g., troubleshoot-about.html → "Troubleshoot")
+          var SLUG_TO_CATEGORY = {
+            'get-started': 'Get Started',
+            'administer': 'Administer the Environment',
+            'develop-agents': 'Develop Agents',
+            'develop-integrations': 'Develop & Deploy Integrations',
+            'manage-apis': 'Manage APIs',
+            'monitoring': 'Monitor',
+            'observe': 'Observe',
+            'troubleshoot': 'Troubleshoot'
+          };
+          var slugMatch = currentPath.match(/\/([^/]+)-about\.html/);
+          if (slugMatch && slugMatch[1] !== 'tasks') {
+            var categoryName = SLUG_TO_CATEGORY[slugMatch[1]];
+            if (categoryName) {
+              var $categoryItems = $('nav.toc > ul > li:not(.nav-view-switcher-li)');
+              $categoryItems.each(function() {
+                var catText = $(this).children('span, a').first().text().trim();
+                if (catText === categoryName) {
+                  $(this).show().addClass('navexpand');
+                } else {
+                  $(this).hide();
+                }
+              });
+            }
           }
         }
       }
