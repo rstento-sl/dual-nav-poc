@@ -3032,10 +3032,10 @@ $(window).on("resize", function () {
       sessionStorage.removeItem('filteredProduct');
 
       // Navigate to All Products landing page
-      // Resolve relative path based on current page depth
-      var depth = currentPath.replace(/^\//, '').split('/').length - 1;
-      var prefix = depth === 0 ? '' : '../'.repeat(depth);
-      window.location.href = prefix + 'products-about.html';
+      // Derive base path from the header logo link (always points to site root index.html)
+      var logoHref = $('a.header-logo-link').attr('href') || '../index.html';
+      var basePrefix = logoHref.replace('index.html', '');
+      window.location.href = basePrefix + 'products-about.html';
     });
 
     // Handle "Show all tasks" click — navigate to All Tasks landing page
@@ -3049,9 +3049,9 @@ $(window).on("resize", function () {
       sessionStorage.removeItem('filteredTaskCategory');
 
       // Navigate to All Tasks landing page
-      var depth = currentPath.replace(/^\//, '').split('/').length - 1;
-      var prefix = depth === 0 ? '' : '../'.repeat(depth);
-      window.location.href = prefix + 'tasks/tasks/tasks-about.html';
+      var logoHref = $('a.header-logo-link').attr('href') || '../index.html';
+      var basePrefix = logoHref.replace('index.html', '');
+      window.location.href = basePrefix + 'tasks/tasks/tasks-about.html';
     });
 
   // POC: Filter left navigation based on dropdown selection
