@@ -119,7 +119,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Add animation to nav cards on scroll
+
+// Add animation to topic cards on scroll
 const observerOptions = {
   threshold: 0.1,
   rootMargin: '0px 0px -50px 0px'
@@ -134,9 +135,8 @@ const observer = new IntersectionObserver(function(entries) {
   });
 }, observerOptions);
 
-// Observe nav cards and topic cards
 document.addEventListener('DOMContentLoaded', function() {
-  const cards = document.querySelectorAll('.nav-card, .topic-card');
+  const cards = document.querySelectorAll('.topic-card');
   cards.forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
@@ -145,33 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Simple carousel rotation for What's New section
-let currentCarouselIndex = 0;
-
-function rotateCarousel() {
-  const items = document.querySelectorAll('.carousel-item');
-  if (items.length === 0) return;
-
-  // Hide all items
-  items.forEach(item => {
-    item.style.display = 'none';
-  });
-
-  // Show current item
-  items[currentCarouselIndex].style.display = 'block';
-
-  // Move to next item
-  currentCarouselIndex = (currentCarouselIndex + 1) % items.length;
-}
-
-// Start carousel if items exist
-document.addEventListener('DOMContentLoaded', function() {
-  const carouselItems = document.querySelectorAll('.carousel-item');
-  if (carouselItems.length > 0) {
-    rotateCarousel(); // Show first item immediately
-    setInterval(rotateCarousel, 5000); // Rotate every 5 seconds
-  }
-});
 
 // Set product filter when clicking product links on homepage
 document.addEventListener('DOMContentLoaded', function() {

@@ -1718,18 +1718,28 @@ $(document).ready(function() {
 
   // Check if we should skip full tree expansion
   const showFullTreeInit = sessionStorage.getItem('showFullTree');
+  const showFullTaskTreeInit = sessionStorage.getItem('showFullTaskTree');
+  const isTaskViewInit = window.location.pathname.includes('/tasks/');
+
   if (showFullTreeInit === 'true' && isProductView()) {
     // Show all products collapsed in "All Products" view
     var $activeLi = $("nav.toc > ul li.active");
     var isTopLevelProduct = $activeLi.parent().is("nav.toc > ul");
     if (!isTopLevelProduct) {
-      // Active item is nested - expand its path but stop before top-level product
       if ($activeLi.hasClass("navparent")) {
         $activeLi.addClass("navexpand");
       }
       $activeLi.parentsUntil("nav.toc > ul", ".navparent").addClass("navexpand");
     }
-    // If active item IS the top-level product, leave it collapsed
+  } else if (showFullTaskTreeInit === 'true' && isTaskViewInit) {
+    // Show all task categories collapsed in "All Tasks" view
+    var $activeLi = $("nav.toc > ul li.active");
+    if ($activeLi.length) {
+      if ($activeLi.hasClass("navparent")) {
+        $activeLi.addClass("navexpand");
+      }
+      $activeLi.parentsUntil("nav.toc > ul", ".navparent").addClass("navexpand");
+    }
   } else {
     MarkActiveTree();
   }
@@ -2729,6 +2739,12 @@ $(window).on("resize", function () {
 
     // Prevent navigation if already on the index.html page
     if (curUrl.endsWith("/index.html")) {
+      // Clear nav state so navigating from homepage starts fresh
+      sessionStorage.removeItem('activeNav');
+      sessionStorage.removeItem('showFullTree');
+      sessionStorage.removeItem('showFullTaskTree');
+      sessionStorage.removeItem('filteredProduct');
+
       if (headerLink.length) {
         headerLink.on("click", function (event) {
           event.preventDefault();
@@ -2771,9 +2787,8 @@ $(window).on("resize", function () {
   // Helper to detect product view (not task view)
   const isInProductView = (currentPath.includes('/autosync/') || currentPath.includes('/admin-manager/') || currentPath.includes('/designer/') || currentPath.includes('/snapgpt/') || currentPath.includes('/monitor/')) && !currentPath.includes('/tasks/');
 
-  // Only highlight dropdowns if we're in the product view AND not showing all products
-  const showFullTreeHeader = sessionStorage.getItem('showFullTree');
-  if (isInProductView && showFullTreeHeader !== 'true') {
+  // Highlight the category dropdown when viewing a product page
+  if (isInProductView) {
     // Check if we're on an AutoSync page
     if (currentPath.includes('/autosync/')) {
       $('.product-menu-header .dropdown').each(function() {
@@ -2859,8 +2874,10 @@ $(window).on("resize", function () {
 
     // Determine which switcher link should be active based on what was last clicked
     const activeNav = sessionStorage.getItem('activeNav');
-    const isShowingAllProducts = isProductView && activeNav === 'products';
-    const isShowingAllTasks = isTaskView && activeNav === 'tasks';
+    const isOnProductsLanding = currentPath.includes('/products-about.html');
+    const isOnTasksLanding = currentPath.includes('/tasks-about.html');
+    const isShowingAllProducts = isOnProductsLanding && activeNav === 'products';
+    const isShowingAllTasks = isOnTasksLanding && activeNav === 'tasks';
 
     // Get appropriate URL based on current location
     let productUrl = '/autosync/autosync-home.html';
@@ -2888,14 +2905,36 @@ $(window).on("resize", function () {
     const iconProducts = '<svg class="nav-view-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1L1.5 4.5V11.5L8 15L14.5 11.5V4.5L8 1Z"/><path d="M8 8L14.5 4.5"/><path d="M8 8L1.5 4.5"/><path d="M8 8V15"/></svg>';
     const iconTasks = '<svg class="nav-view-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5L6.5 12L13 4"/></svg>';
 
-    const productsClass = isShowingAllProducts ? 'active' : '';
-    const tasksClass = isShowingAllTasks ? 'active' : '';
+    // Determine initial button states based on sessionStorage
+    const productsIsLabel = isShowingAllProducts;
+    const tasksIsLabel = isShowingAllTasks;
+
+    const productsText = productsIsLabel ? 'Choose a product' : 'Show all products';
+    const tasksText = tasksIsLabel ? 'Choose a task' : 'Show all tasks';
+    const productsClass = productsIsLabel ? 'active' : '';
+    const tasksClass = tasksIsLabel ? 'active' : '';
+
+    // Determine the "Viewing:" context label — product name or task category
+    var $activeNavItem = $toc.find('li.active');
+    var $topItem = $activeNavItem.closest('nav.toc > ul > li');
+    var viewingName = '';
+    if ($topItem.length) {
+      // Get the text of the top-level item (strip SVG icon text)
+      var $topLink = $topItem.children('a, span').first();
+      viewingName = $topLink.text().trim();
+    }
+    var viewingHtml = viewingName && !isShowingAllProducts && !isShowingAllTasks
+      ? '<div class="nav-viewing-label">Viewing: <strong>' + viewingName + '</strong></div>'
+      : '';
 
     const viewSwitcherHtml = `
       <div class="nav-view-switcher">
-        <a href="#" class="nav-view-link nav-view-button-products ${productsClass}">${iconProducts} All Products</a>
-        <span class="nav-view-separator">|</span>
-        <a href="${taskUrl}" class="nav-view-link nav-view-button-tasks ${tasksClass}">${iconTasks} All Tasks</a>
+        ${viewingHtml}
+        <div class="nav-view-buttons">
+          <a href="#" class="nav-view-link nav-view-button-products ${productsClass}">${iconProducts} <span class="nav-view-text">${productsText}</span></a>
+          <span class="nav-view-separator">|</span>
+          <a href="#" class="nav-view-link nav-view-button-tasks ${tasksClass}">${iconTasks} <span class="nav-view-text">${tasksText}</span></a>
+        </div>
       </div>
     `;
 
@@ -2929,11 +2968,35 @@ $(window).on("resize", function () {
       });
     }
 
-    // Clear activeNav and full-tree flags when user clicks any regular nav link (not the switcher)
+    // Helper: update switcher button states (text + active class)
+    function updateSwitcherState(productsActive, tasksActive) {
+      var $prodBtn = $('.nav-view-button-products');
+      var $taskBtn = $('.nav-view-button-tasks');
+
+      if (productsActive) {
+        $prodBtn.addClass('active').find('.nav-view-text').text('Choose a product');
+      } else {
+        $prodBtn.removeClass('active').find('.nav-view-text').text('Show all products');
+      }
+
+      if (tasksActive) {
+        $taskBtn.addClass('active').find('.nav-view-text').text('Choose a task');
+      } else {
+        $taskBtn.removeClass('active').find('.nav-view-text').text('Show all tasks');
+      }
+    }
+
+    // Clear activeNav and full-tree flags when user clicks a regular nav link (not the switcher)
+    // Landing pages (*-about, *-home) keep the expanded view; other topics collapse to their map
     $(document).on('click', 'nav.toc a:not(.nav-view-link)', function() {
-      sessionStorage.removeItem('activeNav');
-      sessionStorage.removeItem('showFullTree');
-      sessionStorage.removeItem('showFullTaskTree');
+      var href = $(this).attr('href') || '';
+      var isLandingPage = href.match(/-about\.html/) || href.match(/-home\.html/);
+      if (!isLandingPage) {
+        sessionStorage.removeItem('activeNav');
+        sessionStorage.removeItem('showFullTree');
+        sessionStorage.removeItem('showFullTaskTree');
+        updateSwitcherState(false, false);
+      }
     });
 
     // Helper to rebind nav item click handlers after a swapNav
@@ -2959,61 +3022,36 @@ $(window).on("resize", function () {
       });
     }
 
-    // Handle All Products link click (delegated to survive swapNav DOM replacement)
+    // Handle "Show all products" click — navigate to All Products landing page
     $(document).on('click', '.nav-view-button-products', function(e) {
       e.preventDefault();
+      if ($(this).hasClass('active')) return;
+
       sessionStorage.setItem('showFullTree', 'true');
       sessionStorage.setItem('activeNav', 'products');
       sessionStorage.removeItem('filteredProduct');
 
-      $('.product-menu-header .dropdown').removeClass('active');
-      $('.product-menu-header .dropdown-menu a').removeClass('active');
-
-      // Check current DOM state, not the stale isTaskView variable
-      var currentlyShowingTasks = $('nav.toc').hasClass('task-view');
-
-      if (currentlyShowingTasks) {
-        swapNav(productUrl, function() {
-          $('nav.toc').addClass('product-view').removeClass('task-view');
-          $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
-          rebindNavHandlers();
-          addSectionIcons();
-        });
-      } else {
-        // Already in product view — show all products collapsed
-        $('nav.toc > ul > li:not(.nav-view-switcher-li)').show().removeClass('navexpand');
-        $('nav.toc .task-view-prompt').remove();
-      }
-      // Update link states
-      $('.nav-view-button-products').addClass('active');
-      $('.nav-view-button-tasks').removeClass('active');
+      // Navigate to All Products landing page
+      // Resolve relative path based on current page depth
+      var depth = currentPath.replace(/^\//, '').split('/').length - 1;
+      var prefix = depth === 0 ? '' : '../'.repeat(depth);
+      window.location.href = prefix + 'products-about.html';
     });
 
-    // Handle All Tasks link click (delegated to survive swapNav DOM replacement)
+    // Handle "Show all tasks" click — navigate to All Tasks landing page
     $(document).on('click', '.nav-view-button-tasks', function(e) {
       e.preventDefault();
+      if ($(this).hasClass('active')) return;
+
       sessionStorage.setItem('showFullTaskTree', 'true');
       sessionStorage.setItem('activeNav', 'tasks');
       sessionStorage.removeItem('filteredTaskSection');
       sessionStorage.removeItem('filteredTaskCategory');
 
-      // Check current DOM state, not the stale isTaskView variable
-      var currentlyShowingProducts = !$('nav.toc').hasClass('task-view');
-
-      if (currentlyShowingProducts) {
-        swapNav(taskUrl, function() {
-          $('nav.toc').addClass('task-view').removeClass('product-view');
-          $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
-          rebindNavHandlers();
-          addSectionIcons();
-        });
-      } else {
-        // Already in task view — show all categories collapsed
-        $('nav.toc > ul > li:not(.nav-view-switcher-li)').show().removeClass('navexpand');
-      }
-      // Update link states
-      $('.nav-view-button-tasks').addClass('active');
-      $('.nav-view-button-products').removeClass('active');
+      // Navigate to All Tasks landing page
+      var depth = currentPath.replace(/^\//, '').split('/').length - 1;
+      var prefix = depth === 0 ? '' : '../'.repeat(depth);
+      window.location.href = prefix + 'tasks/tasks/tasks-about.html';
     });
 
   // POC: Filter left navigation based on dropdown selection
@@ -3138,15 +3176,18 @@ $(window).on("resize", function () {
       ];
 
       // Auto-filter task nav to show only the category containing the current page,
-      // unless user explicitly clicked "All Tasks" (activeNav === 'tasks')
+      // unless user explicitly clicked "All Tasks" AND we're on a landing page
       var activeNavCheck = sessionStorage.getItem('activeNav');
-      console.log('POC DEBUG: activeNavCheck=', activeNavCheck);
-      if (activeNavCheck !== 'tasks') {
+      var isOnTaskLandingPage = currentPath.match(/-about\.html/);
+
+      if (activeNavCheck === 'tasks' && isOnTaskLandingPage) {
+        // Keep all categories visible (user is browsing landing pages)
+        $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
+      } else {
+        // Filter to show only the category containing the active item
         var $activeItem = $('nav.toc li.active');
-        console.log('POC DEBUG: $activeItem.length=', $activeItem.length);
         if ($activeItem.length) {
           var $topCategory = $activeItem.closest('nav.toc > ul > li');
-          console.log('POC DEBUG: $topCategory text=', $topCategory.children('span, a').first().text().trim());
           if ($topCategory.length) {
             $('nav.toc > ul > li:not(.nav-view-switcher-li)').each(function() {
               if ($(this).is($topCategory)) {
