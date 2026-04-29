@@ -2876,8 +2876,9 @@ $(window).on("resize", function () {
     const activeNav = sessionStorage.getItem('activeNav');
     const isOnProductsLanding = currentPath.includes('/products-about.html');
     const isOnTasksLanding = currentPath.includes('/tasks-about.html');
+    const isOnAnyTaskLanding = currentPath.includes('/tasks/') && currentPath.match(/-about\.html/);
     const isShowingAllProducts = isOnProductsLanding && activeNav === 'products';
-    const isShowingAllTasks = isOnTasksLanding && activeNav === 'tasks';
+    const isShowingAllTasks = isOnAnyTaskLanding && activeNav === 'tasks';
 
     // Get appropriate URL based on current location
     let productUrl = '/autosync/autosync-home.html';
