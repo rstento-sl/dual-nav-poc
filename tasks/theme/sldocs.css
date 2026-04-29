@@ -5747,6 +5747,7 @@ li.nav-view-switcher-li {
   background: #ffffff;
   padding: 0;
   margin: 0;
+  overflow: visible !important;
 }
 
 .nav-view-switcher {
@@ -5780,7 +5781,8 @@ li.nav-view-switcher-li {
 
 /* Override nav.toc a/span ellipsis rule for switcher elements */
 nav.toc a.nav-view-link,
-nav.toc .nav-view-separator {
+nav.toc .nav-view-separator,
+nav.toc .nav-view-text {
   overflow: visible !important;
   white-space: nowrap !important;
   text-overflow: unset !important;
