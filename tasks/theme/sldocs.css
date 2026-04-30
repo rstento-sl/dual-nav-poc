@@ -6303,4 +6303,161 @@ a.xref.landing-card:hover {
   }
 }
 
+/* ============= Task Category Landing Pages ============= */
+
+.task-home-page-title,
+.task-home-page-shortdesc {
+  display: none;
+}
+
+.task-home-hero {
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+  border-left: 4px solid var(--SL-indigo06, #4f46e5);
+  border-radius: 0 12px 12px 0;
+  padding: 28px 32px;
+  margin-bottom: 28px;
+}
+
+.task-home-hero .sectiontitle,
+.task-home-hero .section-title,
+.task-home-hero h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--c2-grey1);
+  margin: 0 0 8px 0;
+}
+
+.task-home-hero-subtitle {
+  font-size: 1rem;
+  color: var(--c2-grey3);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Color variants for task hero borders */
+.task-home-hero-getstarted { border-left-color: #10B981; }
+.task-home-hero-administer { border-left-color: var(--SL-blue06); }
+.task-home-hero-develop { border-left-color: var(--SL-purple06, #7c3aed); }
+.task-home-hero-agents { border-left-color: var(--SL-teal06); }
+.task-home-hero-apis { border-left-color: #6366F1; }
+.task-home-hero-monitor { border-left-color: var(--SL-teal06); }
+.task-home-hero-observe { border-left-color: #8B5CF6; }
+.task-home-hero-troubleshoot { border-left-color: #EF4444; }
+
+/* Task card grid */
+.task-home-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  margin: 8px 0 24px;
+}
+
+.task-home-card {
+  background: #ffffff;
+  border: 1px solid var(--c2-grey7, #e5e7eb);
+  border-radius: 12px;
+  padding: 20px 24px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.task-home-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--c2-grey5, #9ca3af);
+  transform: translateY(-2px);
+}
+
+.task-home-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.task-home-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.task-home-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--c2-grey1);
+  margin: 0;
+}
+
+.task-home-card p {
+  font-size: 0.85rem;
+  color: var(--c2-grey3);
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+}
+
+.task-home-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-home-card ul li {
+  padding: 3px 0;
+}
+
+.task-home-card ul li a {
+  font-size: 0.85rem;
+  color: var(--SL-blue06);
+  text-decoration: none;
+}
+
+.task-home-card ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Card icon color variants */
+.task-home-card-green { background: #10B981; }
+.task-home-card-blue { background: var(--SL-blue06); }
+.task-home-card-indigo { background: #6366F1; }
+.task-home-card-purple { background: #8B5CF6; }
+.task-home-card-teal { background: var(--SL-teal06); }
+.task-home-card-orange { background: #F59E0B; }
+.task-home-card-red { background: #EF4444; }
+.task-home-card-gray { background: #6B7280; }
+
+/* Section heading within task home */
+.task-home-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--c2-grey1);
+  margin: 24px 0 8px;
+}
+
+/* WIP badge */
+.task-home-wip {
+  display: inline-block;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  .task-home-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .task-home-hero {
+    padding: 20px;
+  }
+}
+
 /* ============================== END ============================== */
