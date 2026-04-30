@@ -105,9 +105,9 @@
         <div class="nav-card task-card">
           <h3><span class="card-icon">&#x2630;</span> What do you want to do?</h3>
 
-          <div class="card-content" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+          <div class="card-content" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
             <div>
-              <h4>Get Started</h4>
+              <h4><a href="tasks/tasks/get-started-about.html" onclick="filterTaskNav('Get Started')">Get Started</a></h4>
               <ul>
                 <li><a href="tasks/tasks/goal-integrate-data.html" onclick="filterTaskNav('Get Started')">Integrate Data</a></li>
                 <li><a href="tasks/tasks/goal-create-agent.html" onclick="filterTaskNav('Get Started')">Create an Intelligent Agent</a></li>
@@ -115,46 +115,51 @@
                 <li><a href="tasks/tasks/goal-govern-api-use.html" onclick="filterTaskNav('Get Started')">Govern API Use</a></li>
                 <li><a href="tasks/tasks/tutorials-about.html" onclick="filterTaskNav('Get Started')">Try a Tutorial</a></li>
               </ul>
-
-              <h4>Administer the Environment</h4>
+            </div>
+            <div>
+              <h4><a href="tasks/tasks/administer-about.html" onclick="filterTaskNav('Administer the Environment')">Administer</a></h4>
               <ul>
                 <li><a href="tasks/designer/configure-custom-org-branding.html" onclick="filterTaskNav('Control Plane')">Control Plane</a></li>
                 <li><a href="tasks/admin-manager/admin-manager-create-snaplex.html" onclick="filterTaskNav('Data Plane')">Data Plane</a></li>
                 <li><a href="tasks/admin-manager/configure-sso.html" onclick="filterTaskNav('Security')">Security</a></li>
               </ul>
-            </div>
-            <div>
-              <h4>Develop &amp; Deploy Integrations</h4>
+
+              <h4><a href="tasks/tasks/develop-integrations-about.html" onclick="filterTaskNav('Develop &amp; Deploy Integrations')">Develop Integrations</a></h4>
               <ul>
                 <li><a href="tasks/autosync/create-credentials.html" onclick="filterTaskNav('AutoSync Data Pipelines')">AutoSync Data Pipelines</a></li>
                 <li><a href="tasks/snapgpt/snapgpt-pipe-gen-rag.html" onclick="filterTaskNav('Designer Pipelines')">Designer Pipelines</a></li>
               </ul>
+            </div>
+            <div>
+              <h4><a href="tasks/tasks/develop-agents-about.html" onclick="filterTaskNav('Develop Agents')">Develop Agents</a></h4>
 
-              <h4>Develop Agents</h4>
-
-              <h4>Manage APIs</h4>
+              <h4><a href="tasks/tasks/manage-apis-about.html" onclick="filterTaskNav('Manage APIs')">Manage APIs</a></h4>
               <ul>
                 <li><a href="tasks/tasks/api-management-about.html" onclick="filterTaskNav('API Management')">API Management</a></li>
                 <li><a href="tasks/tasks/public-apis-about.html" onclick="filterTaskNav('SnapLogic Public APIs')">SnapLogic Public APIs</a></li>
               </ul>
             </div>
             <div>
-              <h4>Monitor</h4>
+              <h4><a href="tasks/tasks/monitoring-about.html" onclick="filterTaskNav('Monitor')">Monitor</a></h4>
               <ul>
                 <li><a href="tasks/monitor/find-executions.html" onclick="filterTaskNav('Pipelines', 'Monitor')">Pipelines</a></li>
                 <li><a href="tasks/monitor/snap-statistics-tab.html" onclick="filterTaskNav('Snaps', 'Monitor')">Snaps</a></li>
                 <li><a href="tasks/monitor/observe-api-metrics.html" onclick="filterTaskNav('Monitor')" style="font-style: italic;">more...</a></li>
               </ul>
 
-              <h4>Observe</h4>
+              <h4><a href="tasks/tasks/observe-about.html" onclick="filterTaskNav('Observe')">Observe</a></h4>
 
-              <h4>Troubleshoot</h4>
+              <h4><a href="tasks/tasks/troubleshoot-about.html" onclick="filterTaskNav('Troubleshoot')">Troubleshoot</a></h4>
             </div>
           </div>
+
+          <p style="margin-top: 1.2rem; margin-bottom: 0; text-align: right;">
+            <a href="products-about.html" style="font-size: 0.9rem; color: #6366F1; text-decoration: none; font-weight: 500;">Browse by product →</a>
+          </p>
         </div>
       </div>
 
-      <!-- Row 2: Get Started & Products -->
+      <!-- Row 2: Get Started & Browse by Product -->
       <div class="nav-cards" style="grid-template-columns: repeat(2, 1fr); max-width: 1200px;">
         <!-- Get Started Card -->
         <div class="nav-card get-started-card has-side-icon">
@@ -178,10 +183,10 @@
           </div>
         </div>
 
-        <!-- Product View Card -->
+        <!-- Browse by Product Card -->
         <div class="nav-card product-card has-side-icon">
           <div class="card-icon">⬡</div>
-          <h3>Products &amp; Features</h3>
+          <h3>Browse by Product</h3>
 
           <div class="card-content">
             <h4>Integration Platform</h4>
