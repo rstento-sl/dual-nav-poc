@@ -5786,14 +5786,14 @@ li.nav-view-switcher-li {
 .nav-viewing-label {
   font-size: 11px;
   font-family: var(--font-header);
-  color: var(--c2-grey3);
+  color: var(--c2-grey2);
   line-height: 1.3;
   padding: 0;
 }
 
 .nav-viewing-label strong {
-  color: var(--c2-grey1);
-  font-weight: 600;
+  color: var(--c2-grey2);
+  font-weight: 400;
 }
 
 /* Override nav.toc a/span ellipsis rule for switcher elements */
@@ -5814,8 +5814,8 @@ nav.toc .nav-view-text {
   font-size: 12px;
   font-weight: 500;
   font-family: var(--font-header);
-  color: var(--c1-blue) !important;
-  text-decoration: underline;
+  color: #1E5BD6 !important;
+  text-decoration: none !important;
   cursor: pointer;
   padding: 0 !important;
   background: none !important;
@@ -5825,25 +5825,26 @@ nav.toc .nav-view-text {
 }
 
 .nav-view-link:hover {
-  color: #004499 !important;
-  text-decoration: underline;
+  color: #1348A8 !important;
+  text-decoration: underline !important;
 }
 
 .nav-view-link.active {
-  font-weight: 600;
-  color: #555555 !important;
-  text-decoration: none;
+  font-weight: 500;
+  color: #6B7280 !important;
+  text-decoration: none !important;
   cursor: default;
   pointer-events: none;
 }
 
 .nav-view-link.active:hover {
-  color: #555555 !important;
-  text-decoration: none;
+  color: #6B7280 !important;
+  text-decoration: none !important;
 }
 
 .nav-view-text {
   white-space: nowrap;
+  color: inherit !important;
 }
 
 .nav-category-header {
