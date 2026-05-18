@@ -2959,7 +2959,7 @@ $(window).on("resize", function () {
     const productsIsLabel = isShowingAllProducts;
     const tasksIsLabel = isShowingAllTasks;
 
-    const productsText = productsIsLabel ? 'Choose a product' : 'Browse by product';
+    const productsText = productsIsLabel ? 'Choose a feature' : 'Browse by feature';
     const tasksText = tasksIsLabel ? 'Choose a goal' : 'Browse by goal';
     const productsClass = productsIsLabel ? 'active' : '';
     const tasksClass = tasksIsLabel ? 'active' : '';
@@ -3024,9 +3024,9 @@ $(window).on("resize", function () {
       var $taskBtn = $('.nav-view-button-tasks');
 
       if (productsActive) {
-        $prodBtn.addClass('active').find('.nav-view-text').text('Choose a product');
+        $prodBtn.addClass('active').find('.nav-view-text').text('Choose a feature');
       } else {
-        $prodBtn.removeClass('active').find('.nav-view-text').text('Browse by product');
+        $prodBtn.removeClass('active').find('.nav-view-text').text('Browse by feature');
       }
 
       if (tasksActive) {
@@ -3081,7 +3081,7 @@ $(window).on("resize", function () {
       $('nav.toc .nav-category-header').remove();
 
       var categories = [
-        { name: 'INTEGRATION PLATFORM', slugs: ['introduction', 'autosync', 'designer', 'snapgpt'] },
+        { name: 'INTEGRATION PLATFORM', slugs: ['autosync', 'designer', 'snapgpt'] },
         { name: 'ADMINISTRATION', slugs: ['admin-manager'] },
         { name: 'OBSERVABILITY', slugs: ['monitor'] }
       ];
@@ -3173,7 +3173,7 @@ $(window).on("resize", function () {
   const showFullTree = sessionStorage.getItem('showFullTree');
 
   // Check if we're in product view (autosync or admin-manager or snapgpt or monitor, but not tasks)
-  const isInProductViewForNav = (currentPath.includes('/autosync/') || currentPath.includes('/admin-manager/') || currentPath.includes('/designer/') || currentPath.includes('/snapgpt/') || currentPath.includes('/monitor/') || currentPath.includes('/introduction/')) && !currentPath.includes('/tasks/');
+  const isInProductViewForNav = (currentPath.includes('/autosync/') || currentPath.includes('/admin-manager/') || currentPath.includes('/designer/') || currentPath.includes('/snapgpt/') || currentPath.includes('/monitor/')) && !currentPath.includes('/tasks/');
 
   if (isInProductViewForNav) {
     if (filteredProduct) {
@@ -3192,8 +3192,7 @@ $(window).on("resize", function () {
             (filteredProduct === 'AUTOSYNC' && productName === 'AUTOSYNC') ||
             (filteredProduct === 'DESIGNER' && productName === 'DESIGNER') ||
             (filteredProduct === 'SNAPGPT' && productName === 'SNAPGPT') ||
-            (filteredProduct === 'MONITOR' && productName === 'MONITOR') ||
-            (filteredProduct === 'INTRODUCTION' && productName === 'INTRODUCTION')) {
+            (filteredProduct === 'MONITOR' && productName === 'MONITOR')) {
           // Found the selected product
           selectedProductLi = $li;
         } else if ($productLink.length > 0) {
@@ -3215,6 +3214,7 @@ $(window).on("resize", function () {
       // User clicked "Products & Features" - show full tree (expansion handled in init)
       $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
       insertNavCategoryHeaders();
+      rebindNavHandlers();
     } else {
       // Default: auto-filter to show only the product matching the current page
       var $activeProductItem = $('nav.toc li.active');
@@ -3258,6 +3258,7 @@ $(window).on("resize", function () {
     // Show category headers on the all-products landing page
     if (isOnProductsLanding) {
       insertNavCategoryHeaders();
+      rebindNavHandlers();
     }
 
     // POC: Apply task navigation filtering on page load
