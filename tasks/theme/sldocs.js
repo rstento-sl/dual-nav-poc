@@ -2954,11 +2954,14 @@ $(window).on("resize", function () {
     const productsClass = isShowingAllProducts ? 'active' : '';
     const tasksClass = isShowingAllTasks ? 'active' : '';
 
+    const productsLabel = isShowingAllProducts ? 'Choose a feature' : 'Browse by feature';
+    const tasksLabel = isShowingAllTasks ? 'Choose a goal' : 'Browse by goal';
+
     const viewSwitcherHtml = `
       <div class="nav-view-switcher">
         <div class="nav-view-buttons">
-          <a href="#" class="nav-view-link nav-view-button-products ${productsClass}"><span class="nav-view-text">Browse by feature</span></a>
-          <a href="#" class="nav-view-link nav-view-button-tasks ${tasksClass}"><span class="nav-view-text">Browse by goal</span></a>
+          <a href="#" class="nav-view-link nav-view-button-products ${productsClass}"><span class="nav-view-text">${productsLabel}</span></a>
+          <a href="#" class="nav-view-link nav-view-button-tasks ${tasksClass}"><span class="nav-view-text">${tasksLabel}</span></a>
         </div>
       </div>
     `;
@@ -3004,13 +3007,13 @@ $(window).on("resize", function () {
       var $taskBtn = $('.nav-view-button-tasks');
 
       if (productsActive) {
-        $prodBtn.addClass('active').find('.nav-view-text').text('Browse by feature');
+        $prodBtn.addClass('active').find('.nav-view-text').text('Choose a feature');
       } else {
         $prodBtn.removeClass('active').find('.nav-view-text').text('Browse by feature');
       }
 
       if (tasksActive) {
-        $taskBtn.addClass('active').find('.nav-view-text').text('Browse by goal');
+        $taskBtn.addClass('active').find('.nav-view-text').text('Choose a goal');
       } else {
         $taskBtn.removeClass('active').find('.nav-view-text').text('Browse by goal');
       }
