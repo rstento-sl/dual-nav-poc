@@ -6360,7 +6360,7 @@ a.xref.landing-card:hover {
 
 /* Task landing page title + description */
 .task-home-page-title {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #11378B;
   margin: 0 0 12px;
@@ -6487,7 +6487,7 @@ a.xref.landing-card:hover {
 
 /* Product landing page title + description */
 .product-landing-page-title {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #11378B;
   margin: 0 0 12px;
