@@ -14,7 +14,6 @@
         <div class="logo">
           <img src="https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-indigo-icon.svg" alt="SnapLogic Logo" class="logo-icon">
           <h1>SnapLogic Documentation</h1>
-          <span class="poc-badge">POC - Dual Navigation</span>
         </div>
 
         <!-- Desktop Navigation - Hidden on homepage -->
@@ -22,7 +21,7 @@
           <!-- Dropdown 1: Integration Platform -->
           <div class="dropdown">
             <button class="dropdown-toggle">
-              Integration Platform <span class="arrow">▼</span>
+              Integration Platform <span class="arrow">&#9660;</span>
             </button>
             <div class="dropdown-menu">
               <a href="autosync/autosync-home.html">AutoSync</a>
@@ -34,7 +33,7 @@
           <!-- Dropdown 2: Administration & Governance -->
           <div class="dropdown">
             <button class="dropdown-toggle">
-              Administration &amp; Governance <span class="arrow">▼</span>
+              Administration &amp; Governance <span class="arrow">&#9660;</span>
             </button>
             <div class="dropdown-menu">
               <a href="admin-manager/admin-manager-home.html">Admin Manager</a>
@@ -44,7 +43,7 @@
           <!-- Dropdown 3: Observability -->
           <div class="dropdown">
             <button class="dropdown-toggle">
-              Observability <span class="arrow">▼</span>
+              Observability <span class="arrow">&#9660;</span>
             </button>
             <div class="dropdown-menu">
               <a href="monitor/monitor-home.html">Monitor</a>
@@ -54,6 +53,11 @@
       </div>
 
       <div class="nav-right">
+        <!-- Search box -->
+        <div class="header-search">
+          <svg class="search-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+          <input type="text" placeholder="Search docs, tasks, products..." class="search-input" disabled>
+        </div>
         <!-- Mobile Hamburger -->
         <button class="hamburger" onclick="toggleMobileMenu()">
           <span></span>
@@ -97,124 +101,198 @@
     </nav>
   </header>
 
-  <!-- Hero Section: Navigation Choice -->
+  <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <div class="hero-intro">
-        <h2 class="hero-title">What do you want to do?</h2>
-        <p class="hero-subtitle">Learn about how SnapLogic products can accelerate modernization and integrate data to satisfy your business goals. Choose your learning path by product or by the task you want to accomplish.</p>
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h2 class="hero-title">What do you want to do?</h2>
+          <p class="hero-subtitle">Learn about how SnapLogic products can accelerate modernization and integrate data to satisfy your business goals. Choose your learning path by feature or by what you want to accomplish.</p>
+        </div>
+        <div class="hero-illustration">
+          <img src="images/hero-illustration.png" alt="SnapLogic platform interface showing pipeline orchestration" class="hero-img">
+        </div>
+      </div>
+    </div>
+    <!-- Decorative background arcs -->
+    <div class="hero-bg-decoration"></div>
+  </section>
+
+  <!-- Browse by Goal Section -->
+  <section class="browse-goals">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Browse by goals</h2>
       </div>
 
-      <!-- Row 1: What do you want to do? (task-based, full width) -->
-      <div class="nav-cards" style="grid-template-columns: 1fr; max-width: 1200px;">
-        <div class="nav-card task-card">
+      <div class="goal-cards">
+        <!-- Card 1: Get Started -->
+        <div class="goal-card">
+          <div class="card-accent"></div>
+          <h4><a href="tasks/tasks/get-started-about.html" onclick="filterTaskNav('Get Started')">Get Started</a></h4>
+          <ul>
+            <li><a href="tasks/tasks/learn-platform-about.html" onclick="filterTaskNav('Learn about the SnapLogic Platform')">Learn about the SnapLogic Platform</a></li>
+            <li><a href="tasks/tasks/goal-integrate-data.html" onclick="filterTaskNav('Get Started')">Integrate Data</a></li>
+            <li><a href="tasks/tasks/goal-create-agent.html" onclick="filterTaskNav('Get Started')">Create an Intelligent Agent</a></li>
+          </ul>
+          <a href="tasks/tasks/get-started-about.html" onclick="filterTaskNav('Get Started')" class="card-view-more">View more &rarr;</a>
+        </div>
 
-          <div class="card-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem;">
-            <div>
-              <h4><a href="tasks/tasks/get-started-about.html" onclick="filterTaskNav('Get Started')">Get Started</a></h4>
-              <ul>
-                <li><a href="tasks/tasks/learn-platform-about.html" onclick="filterTaskNav('Learn about the SnapLogic Platform')">Learn about the SnapLogic Platform</a></li>
-                <li><a href="tasks/tasks/goal-integrate-data.html" onclick="filterTaskNav('Get Started')">Integrate Data</a></li>
-                <li><a href="tasks/tasks/goal-create-agent.html" onclick="filterTaskNav('Get Started')">Create an Intelligent Agent</a></li>
-                <li><a href="tasks/tasks/get-started-about.html" onclick="filterTaskNav('Get Started')" class="more-link">more...</a></li>
-              </ul>
+        <!-- Card 2: Administer -->
+        <div class="goal-card">
+          <div class="card-accent"></div>
+          <h4><a href="tasks/tasks/administer-about.html" onclick="filterTaskNav('Administer the SnapLogic environment')">Administer the SnapLogic environment</a></h4>
+          <ul>
+            <li><a href="tasks/designer/configure-custom-org-branding.html" onclick="filterTaskNav('Control Plane')">Control Plane</a></li>
+            <li><a href="tasks/admin-manager/admin-manager-create-snaplex.html" onclick="filterTaskNav('Data Plane')">Data Plane</a></li>
+          </ul>
+          <a href="tasks/tasks/administer-about.html" onclick="filterTaskNav('Administer the SnapLogic environment')" class="card-view-more">View more &rarr;</a>
+        </div>
 
-            </div>
-            <div>
-              <h4><a href="tasks/tasks/administer-about.html" onclick="filterTaskNav('Administer the SnapLogic environment')">Administer the SnapLogic environment</a></h4>
-              <ul>
-                <li><a href="tasks/designer/configure-custom-org-branding.html" onclick="filterTaskNav('Control Plane')">Control Plane</a></li>
-                <li><a href="tasks/admin-manager/admin-manager-create-snaplex.html" onclick="filterTaskNav('Data Plane')">Data Plane</a></li>
-                <li><a href="tasks/tasks/administer-about.html" onclick="filterTaskNav('Administer the SnapLogic environment')" class="more-link">more...</a></li>
-              </ul>
+        <!-- Card 3: Learn about the Platform -->
+        <div class="goal-card">
+          <div class="card-accent"></div>
+          <h4><a href="tasks/tasks/learn-platform-about.html" onclick="filterTaskNav('Learn about the SnapLogic Platform')">Learn about the SnapLogic Platform</a></h4>
+          <ul>
+            <li><a href="tasks/tasks/learn-platform-about.html" onclick="filterTaskNav('Learn about the SnapLogic Platform')">Platform components</a></li>
+            <li><a href="tasks/tasks/learn-platform-about.html" onclick="filterTaskNav('Learn about the SnapLogic Platform')">Workflow</a></li>
+            <li><a href="tasks/tasks/learn-platform-about.html" onclick="filterTaskNav('Learn about the SnapLogic Platform')">Manage your account</a></li>
+          </ul>
+          <a href="tasks/tasks/learn-platform-about.html" onclick="filterTaskNav('Learn about the SnapLogic Platform')" class="card-view-more">View more &rarr;</a>
+        </div>
 
-              <h4><a href="tasks/tasks/develop-integrations-about.html" onclick="filterTaskNav('Develop and Deploy Integrations')">Develop Integrations</a></h4>
-              <ul>
-                <li><a href="tasks/tasks/cdw-about.html" onclick="filterTaskNav('Automate data synchronization')"><span style="white-space: nowrap;">Automate data synchronization</span></a></li>
-                <li><a href="tasks/tasks/apps-databases-about.html" onclick="filterTaskNav('Custom data pipelines')">Custom data pipelines</a></li>
-                <li><a href="tasks/tasks/develop-integrations-about.html" onclick="filterTaskNav('Develop and Deploy Integrations')" class="more-link">more...</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4><a href="tasks/tasks/develop-agents-about.html" onclick="filterTaskNav('Develop Agents')">Develop Agents</a></h4>
-              <ul>
-                <li><a href="tasks/tasks/develop-agents-about.html" onclick="filterTaskNav('Develop Agents')">Use Prompt Composer</a></li>
-                <li><a href="tasks/tasks/develop-agents-about.html" onclick="filterTaskNav('Develop Agents')">Use MCP</a></li>
-              </ul>
+        <!-- Card 4: Develop Integrations -->
+        <div class="goal-card">
+          <div class="card-accent"></div>
+          <h4><a href="tasks/tasks/develop-integrations-about.html" onclick="filterTaskNav('Develop and Deploy Integrations')">Develop Integrations</a></h4>
+          <ul>
+            <li><a href="tasks/tasks/cdw-about.html" onclick="filterTaskNav('Automate data synchronization')">Automate data synchronization</a></li>
+            <li><a href="tasks/tasks/apps-databases-about.html" onclick="filterTaskNav('Custom data pipelines')">Custom data pipelines</a></li>
+          </ul>
+          <a href="tasks/tasks/develop-integrations-about.html" onclick="filterTaskNav('Develop and Deploy Integrations')" class="card-view-more">View more &rarr;</a>
+        </div>
 
-              <h4><a href="tasks/tasks/manage-apis-about.html" onclick="filterTaskNav('Manage APIs')">Manage APIs</a></h4>
-              <ul>
-                <li><a href="tasks/tasks/api-management-about.html" onclick="filterTaskNav('API Management')">API Management</a></li>
-                <li><a href="tasks/tasks/public-apis-about.html" onclick="filterTaskNav('SnapLogic Public APIs')">SnapLogic Public APIs</a></li>
-                <li><a href="tasks/tasks/manage-apis-about.html" onclick="filterTaskNav('Manage APIs')" class="more-link">more...</a></li>
-              </ul>
+        <!-- Card 5: Develop Agents -->
+        <div class="goal-card">
+          <div class="card-accent"></div>
+          <h4><a href="tasks/tasks/develop-agents-about.html" onclick="filterTaskNav('Develop Agents')">Develop Agents</a></h4>
+          <ul>
+            <li><a href="tasks/tasks/develop-agents-about.html" onclick="filterTaskNav('Develop Agents')">Use Prompt Composer</a></li>
+            <li><a href="tasks/tasks/develop-agents-about.html" onclick="filterTaskNav('Develop Agents')">Use MCP</a></li>
+          </ul>
+          <a href="tasks/tasks/develop-agents-about.html" onclick="filterTaskNav('Develop Agents')" class="card-view-more">View more &rarr;</a>
+        </div>
 
-              <h4><a href="tasks/tasks/monitoring-about.html" onclick="filterTaskNav('Monitor the runtime')">Monitor the runtime</a></h4>
-              <ul>
-                <li><a href="tasks/monitor/find-executions.html" onclick="filterTaskNav('Pipelines', 'Monitor the runtime')">Pipelines</a></li>
-                <li><a href="tasks/monitor/snap-statistics-tab.html" onclick="filterTaskNav('Snaps', 'Monitor the runtime')">Snaps</a></li>
-                <li><a href="tasks/tasks/monitoring-about.html" onclick="filterTaskNav('Monitor the runtime')" class="more-link">more...</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4><a href="tasks/tasks/observe-about.html" onclick="filterTaskNav('Observability')">Observability</a></h4>
-              <ul>
-                <li><a href="tasks/tool-integrations/observability-datadog.html" onclick="filterTaskNav('Observability')">Integrate with Datadog</a></li>
-                <li><a href="tasks/tool-integrations/observability-newrelic.html" onclick="filterTaskNav('Observability')">Integrate with New Relic</a></li>
-                <li><a href="tasks/tasks/observe-about.html" onclick="filterTaskNav('Observability')" class="more-link">more...</a></li>
-              </ul>
-
-              <h4><a href="tasks/tasks/troubleshoot-about.html" onclick="filterTaskNav('Troubleshoot')">Troubleshoot</a></h4>
-              <ul>
-                <li><a href="tasks/tasks/troubleshoot-about.html" onclick="filterTaskNav('Troubleshoot')">AutoSync data pipelines</a></li>
-                <li><a href="tasks/tasks/troubleshoot-about.html" onclick="filterTaskNav('Troubleshoot')">Custom pipelines</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4><a href="products-about.html">Browse by Feature</a></h4>
-              <ul>
-                <li><a href="autosync/autosync-home.html" data-product="AUTOSYNC">AutoSync</a></li>
-                <li><a href="designer/designer-home.html" data-product="DESIGNER">Designer</a></li>
-                <li><a href="snapgpt/snapgpt-home.html" data-product="SNAPGPT">SnapGPT</a></li>
-                <li><a href="admin-manager/admin-manager-home.html" data-product="ADMIN MANAGER">Admin Manager</a></li>
-                <li><a href="monitor/monitor-home.html" data-product="MONITOR">Monitor</a></li>
-              </ul>
-            </div>
-          </div>
+        <!-- Card 6: Manage APIs -->
+        <div class="goal-card">
+          <div class="card-accent"></div>
+          <h4><a href="tasks/tasks/manage-apis-about.html" onclick="filterTaskNav('Manage APIs')">Manage APIs</a></h4>
+          <ul>
+            <li><a href="tasks/tasks/api-management-about.html" onclick="filterTaskNav('API Management')">API Management</a></li>
+            <li><a href="tasks/tasks/public-apis-about.html" onclick="filterTaskNav('SnapLogic Public APIs')">SnapLogic Public APIs</a></li>
+          </ul>
+          <a href="tasks/tasks/manage-apis-about.html" onclick="filterTaskNav('Manage APIs')" class="card-view-more">View more &rarr;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- What's New Section -->
-  <section class="whats-new">
+  <!-- Browse by Feature Section -->
+  <section class="browse-features">
     <div class="container">
-      <h2 class="section-title">What's New</h2>
-      <div class="whats-new-content">
-        <div class="release-notes">
-          <h3>Latest Release</h3>
-          <ul>
-            <li>
-              <a href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/4350771203/January+2026+Release+Notes"
-                 target="_blank" rel="noopener">
-                January 2026 Release Notes
-              </a>
-            </li>
-          </ul>
+      <div class="section-header">
+        <h2 class="section-title">Browse by features</h2>
+      </div>
+
+      <div class="feature-cards">
+        <!-- AutoSync -->
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #FFF0E6; color: #E8590C;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0115-6.7"/><path d="M21 3v6h-6"/><path d="M21 12a9 9 0 01-15 6.7"/><path d="M3 21v-6h6"/></svg>
+          </div>
+          <h4><a href="autosync/autosync-home.html" data-product="AUTOSYNC">AutoSync</a></h4>
+          <p>Automate data synchronization from multiple sources to popular cloud data warehouses with a point-and-click interface.</p>
+          <a href="autosync/autosync-home.html" data-product="AUTOSYNC" class="read-more">Learn more &rarr;</a>
         </div>
 
-        <div class="carousel-container">
-          <div class="carousel-item">
-            <h4>Dual Navigation POC</h4>
-            <p>Experience both product-based and task-based navigation in this proof of concept.</p>
+        <!-- Designer -->
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #E6F7F6; color: #0E8C84;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4"/><path d="M6.5 10v4"/><path d="M17.5 10v4"/><path d="M10 17.5h4"/></svg>
           </div>
-          <div class="carousel-item">
-            <h4>Keyref Architecture</h4>
-            <p>Content reuse demonstrated with 27 topics appearing in multiple views.</p>
+          <h4><a href="designer/designer-home.html" data-product="DESIGNER">Designer</a></h4>
+          <p>Build, configure, and manage integration pipelines with a visual drag-and-drop interface.</p>
+          <a href="designer/designer-home.html" data-product="DESIGNER" class="read-more">Learn more &rarr;</a>
+        </div>
+
+        <!-- SnapGPT -->
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #E8EEFB; color: #1E5BD6;">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="12" cy="12" r="2.2"/><circle cx="8.5" cy="9" r="1.8"/><circle cx="15.5" cy="9" r="1.8"/><circle cx="8.5" cy="15" r="1.8"/><circle cx="15.5" cy="15" r="1.8"/><circle cx="6" cy="12" r="1.5"/><circle cx="18" cy="12" r="1.5"/><circle cx="12" cy="6.5" r="1.5"/><circle cx="12" cy="17.5" r="1.5"/></svg>
           </div>
-          <div class="carousel-item">
-            <h4>Cross-Product Workflows</h4>
-            <p>Task view unifies Admin Manager and AutoSync topics by workflow.</p>
+          <h4><a href="snapgpt/snapgpt-home.html" data-product="SNAPGPT">SnapGPT</a></h4>
+          <p>Leverage generative AI to build, analyze, and refine SnapLogic pipelines directly in Designer.</p>
+          <a href="snapgpt/snapgpt-home.html" data-product="SNAPGPT" class="read-more">Learn more &rarr;</a>
+        </div>
+
+        <!-- Admin Manager -->
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #E6F7F6; color: #0E8C84;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 005 15.9a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 5a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019 9.1a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          </div>
+          <h4><a href="admin-manager/admin-manager-home.html" data-product="ADMIN MANAGER">Admin Manager</a></h4>
+          <p>Configure your SnapLogic environment, manage users and security, and maintain runtime infrastructure from a single administration console.</p>
+          <a href="admin-manager/admin-manager-home.html" data-product="ADMIN MANAGER" class="read-more">Learn more &rarr;</a>
+        </div>
+
+        <!-- Agent Creator -->
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #FDE8F0; color: #E31C6B;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12a2 2 0 012 2v12a2 2 0 01-2 2H4V4z"/><path d="M8 8h6"/><path d="M8 12h4"/><path d="M8 16h2"/><path d="M18 8l3-3 1 1-3 3"/><path d="M19 9l-4 4v2h2l4-4"/></svg>
+          </div>
+          <h4><a href="snapgpt/snapgpt-home.html" data-product="SNAPGPT">Agent Creator</a></h4>
+          <p>Leverage generative AI to build, analyze, and refine SnapLogic pipelines directly in Designer.</p>
+          <a href="snapgpt/snapgpt-home.html" data-product="SNAPGPT" class="read-more">Learn more &rarr;</a>
+        </div>
+
+        <!-- Monitor -->
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #E8EEFB; color: #1E5BD6;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 10l3-3 2 2 5-5"/></svg>
+          </div>
+          <h4><a href="monitor/monitor-home.html" data-product="MONITOR">Monitor</a></h4>
+          <p>Track pipeline executions, monitor infrastructure health, manage notifications, and gain insights into your SnapLogic environment.</p>
+          <a href="monitor/monitor-home.html" data-product="MONITOR" class="read-more">Learn more &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's New Banner -->
+  <section class="whats-new">
+    <div class="container">
+      <div class="whats-new-banner">
+        <div class="banner-release">
+          <span class="banner-label">LATEST RELEASE</span>
+          <h3>May 2026 Release</h3>
+          <a href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/4350771203/January+2026+Release+Notes"
+             target="_blank" rel="noopener" class="banner-cta">Read release notes &rarr;</a>
+        </div>
+        <div class="banner-items">
+          <div class="banner-item">
+            <span class="badge badge-new">NEW</span>
+            <h4>Dual navigation</h4>
+            <p>Browse by task or product &mdash; content stays in sync.</p>
+          </div>
+          <div class="banner-item">
+            <span class="badge badge-new">NEW</span>
+            <h4>AgentKit GA</h4>
+            <p>Build agents with first-class tool binding and prompt-flow tracing.</p>
+          </div>
+          <div class="banner-item">
+            <span class="badge badge-updated">UPDATED</span>
+            <h4>Cross-product workflows</h4>
+            <p>Task view unifies Admin Manager and AutoSync topics by goal.</p>
           </div>
         </div>
       </div>
@@ -225,14 +303,16 @@
   <section class="trending-topics">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Trending Topics</h2>
-        <a href="products-about.html" class="view-more">View more →</a>
+        <h2 class="section-title">Trending topics</h2>
+
+        <a href="products-about.html" class="view-more">View more &rarr;</a>
       </div>
 
       <div class="topic-grid">
         <!-- Topic Card 1 -->
         <div class="topic-card">
-          <div class="topic-icon">◉</div>
+          <div class="topic-dot"></div>
+          <span class="badge badge-new-sm">&#10024; New</span>
           <h3><a href="admin-manager/create-user-account.html">Create User Accounts</a></h3>
           <p>Set up user accounts for your organization</p>
           <span class="topic-category">Admin Manager</span>
@@ -240,7 +320,7 @@
 
         <!-- Topic Card 2 -->
         <div class="topic-card">
-          <div class="topic-icon">◉</div>
+          <div class="topic-dot"></div>
           <h3><a href="autosync/create-data-pipeline.html">Create Data Pipeline</a></h3>
           <p>Build your first data synchronization pipeline</p>
           <span class="topic-category">AutoSync</span>
@@ -248,7 +328,7 @@
 
         <!-- Topic Card 3 -->
         <div class="topic-card">
-          <div class="topic-icon">◉</div>
+          <div class="topic-dot"></div>
           <h3><a href="admin-manager/configure-sso.html">Configure SSO</a></h3>
           <p>Set up single sign-on for secure access</p>
           <span class="topic-category">Admin Manager</span>
@@ -256,7 +336,7 @@
 
         <!-- Topic Card 4 -->
         <div class="topic-card">
-          <div class="topic-icon">◉</div>
+          <div class="topic-dot"></div>
           <h3><a href="autosync/monitor-autosync.html">Monitor AutoSync</a></h3>
           <p>Track pipeline status and performance</p>
           <span class="topic-category">AutoSync</span>
@@ -264,7 +344,7 @@
 
         <!-- Topic Card 5 -->
         <div class="topic-card">
-          <div class="topic-icon">◉</div>
+          <div class="topic-dot"></div>
           <h3><a href="admin-manager/admin-manager-create-snaplex.html">Create a Snaplex</a></h3>
           <p>Set up infrastructure for integration</p>
           <span class="topic-category">Admin Manager</span>
@@ -272,7 +352,7 @@
 
         <!-- Topic Card 6 -->
         <div class="topic-card">
-          <div class="topic-icon">◉</div>
+          <div class="topic-dot"></div>
           <h3><a href="autosync/troubleshoot-data-pipelines.html">Troubleshoot Pipelines</a></h3>
           <p>Diagnose and resolve pipeline issues</p>
           <span class="topic-category">AutoSync</span>
@@ -308,8 +388,8 @@
         <div class="footer-section">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="">Product View</a></li>
-            <li><a href="tasks/">Task View</a></li>
+            <li><a href="products-about.html">All features</a></li>
+            <li><a href="tasks/tasks/get-started-about.html">All goals</a></li>
             <li><a href="admin-manager/">Admin Manager</a></li>
             <li><a href="autosync/">AutoSync</a></li>
           </ul>
@@ -321,6 +401,15 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating AI agent icon (placeholder for future doc agent) -->
+  <button class="floating-icon" aria-label="AI Assistant">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/>
+      <path d="M17 14l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3z"/>
+      <path d="M6 16l.7 2.1L9 19l-2.3.9L6 22l-.7-2.1L3 19l2.3-.9L6 16z"/>
+    </svg>
+  </button>
 
   <script>
     // Store selected task section for nav filtering
