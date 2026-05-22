@@ -5045,8 +5045,24 @@ nav.toc.task-view > ul > li > a {
   padding-bottom: 6px;
 }
 
+/* Product view: category headers (topicheads) */
+nav.toc:not(.task-view) > ul > li > span {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6B7280;
+  padding: 14px 16px 4px;
+  cursor: default;
+  pointer-events: none;
+}
+
+nav.toc:not(.task-view) > ul > li:first-of-type > span {
+  padding-top: 8px;
+}
+
 /* Product view: Make product names blue */
-nav.toc:not(.task-view) > ul > li > a {
+nav.toc:not(.task-view) > ul > li > ul > li > a {
   color: var(--SL-blue05) !important;
   font-weight: 700;
   font-size: 13px;
@@ -5847,23 +5863,6 @@ nav.toc .nav-view-text {
   color: inherit !important;
 }
 
-.nav-category-header {
-  list-style: none;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #6B7280;
-  padding: 14px 16px 4px;
-  margin: 0;
-  cursor: default;
-  pointer-events: none;
-  user-select: none;
-}
-
-.nav-category-header:first-of-type {
-  padding-top: 8px;
-}
 
 .nav-view-icon {
   width: 12px;

@@ -2966,12 +2966,21 @@ $(window).on("resize", function () {
 
     // Determine the "Viewing:" context label — product name or task category
     var $activeNavItem = $toc.find('li.active');
-    var $topItem = $activeNavItem.closest('nav.toc > ul > li');
     var viewingName = '';
-    if ($topItem.length) {
-      // Get the text of the top-level item (strip SVG icon text)
-      var $topLink = $topItem.children('a, span').first();
-      viewingName = $topLink.text().trim();
+    if (isInProductView) {
+      // Product view: product is at second level (category > product)
+      var $productItem = $activeNavItem.closest('nav.toc > ul > li > ul > li');
+      if ($productItem.length) {
+        var $productLink = $productItem.children('a').first();
+        viewingName = $productLink.text().trim();
+      }
+    } else {
+      // Task view: category is at top level
+      var $topItem = $activeNavItem.closest('nav.toc > ul > li');
+      if ($topItem.length) {
+        var $topLink = $topItem.children('a, span').first();
+        viewingName = $topLink.text().trim();
+      }
     }
     var viewingHtml = viewingName && !isShowingAllProducts && !isShowingAllTasks
       ? '<div class="nav-viewing-label">Viewing: <strong>' + viewingName + '</strong></div>'
@@ -3075,51 +3084,6 @@ $(window).on("resize", function () {
       });
     }
 
-    // Insert category headers into product nav when full tree is shown
-    function insertNavCategoryHeaders() {
-      // Remove any existing headers first
-      $('nav.toc .nav-category-header').remove();
-
-      var categories = [
-        { name: 'INTEGRATION PLATFORM', slugs: ['autosync', 'designer', 'snapgpt'] },
-        { name: 'ADMINISTRATION', slugs: ['admin-manager'] },
-        { name: 'OBSERVABILITY', slugs: ['monitor'] }
-      ];
-
-      var $navUl = $('nav.toc > ul');
-      var $navItems = $navUl.children('li:not(.nav-view-switcher-li)');
-
-      // Build a map of slug → li element
-      var itemsBySlug = {};
-      $navItems.each(function() {
-        var href = $(this).children('a').first().attr('href') || '';
-        categories.forEach(function(cat) {
-          cat.slugs.forEach(function(slug) {
-            if (href.indexOf(slug + '/') !== -1) {
-              itemsBySlug[slug] = $(this);
-            }
-          }.bind(this));
-        }.bind(this));
-      });
-
-      // Reorder: detach all product items and re-append in category order
-      $navItems.detach();
-
-      categories.forEach(function(cat) {
-        $navUl.append('<li class="nav-category-header">' + cat.name + '</li>');
-        cat.slugs.forEach(function(slug) {
-          if (itemsBySlug[slug]) {
-            $navUl.append(itemsBySlug[slug]);
-          }
-        });
-      });
-    }
-
-    // Remove category headers (when filtering to single product)
-    function removeNavCategoryHeaders() {
-      $('nav.toc .nav-category-header').remove();
-    }
-
     // Handle "Browse by product" click — navigate to All Products landing page
     $(document).on('click', '.nav-view-button-products', function(e) {
       e.preventDefault();
@@ -3175,83 +3139,82 @@ $(window).on("resize", function () {
   // Check if we're in product view (autosync or admin-manager or snapgpt or monitor, but not tasks)
   const isInProductViewForNav = (currentPath.includes('/autosync/') || currentPath.includes('/admin-manager/') || currentPath.includes('/designer/') || currentPath.includes('/snapgpt/') || currentPath.includes('/monitor/')) && !currentPath.includes('/tasks/');
 
-  if (isInProductViewForNav) {
-    if (filteredProduct) {
-      // User has selected a product from dropdown - show filtered view
-      let selectedProductLi = null;
+  // Helper: detect product slug from URL path
+  function getProductSlugFromPath(path) {
+    if (path.includes('/autosync/')) return 'autosync';
+    if (path.includes('/admin-manager/')) return 'admin-manager';
+    if (path.includes('/designer/')) return 'designer';
+    if (path.includes('/snapgpt/')) return 'snapgpt';
+    if (path.includes('/monitor/')) return 'monitor';
+    return null;
+  }
 
-      // First pass: find and isolate the selected product
-      $('nav.toc > ul > li:not(.nav-view-switcher-li)').each(function() {
-        const $li = $(this);
-
-        // Check if this li has a direct child link (product level)
-        const $productLink = $li.children('a').first();
-        const productName = $productLink.text().trim().toUpperCase();
-
-        if ((filteredProduct === 'ADMIN MANAGER' && productName === 'ADMIN MANAGER') ||
-            (filteredProduct === 'AUTOSYNC' && productName === 'AUTOSYNC') ||
-            (filteredProduct === 'DESIGNER' && productName === 'DESIGNER') ||
-            (filteredProduct === 'SNAPGPT' && productName === 'SNAPGPT') ||
-            (filteredProduct === 'MONITOR' && productName === 'MONITOR')) {
-          // Found the selected product
-          selectedProductLi = $li;
-        } else if ($productLink.length > 0) {
-          // This is a different product - hide it completely
-          $li.hide();
-        }
-      });
-
-      // After filtering, reinitialize the navigation classes and expand the product
-      removeNavCategoryHeaders();
-      if (selectedProductLi) {
-        // Ensure navparent classes are correct
-        selectedProductLi.find("li").has("ul").addClass("navparent");
-        // Expand the product so first-level categories are visible
-        selectedProductLi.addClass('navexpand');
-        rebindNavHandlers();
+  // Helper: find the product <li> by slug within the category structure
+  function findProductLi(slug) {
+    var $found = null;
+    $('nav.toc > ul > li:not(.nav-view-switcher-li) > ul > li').each(function() {
+      var href = $(this).children('a').first().attr('href') || '';
+      if (href.indexOf(slug + '/') !== -1) {
+        $found = $(this);
+        return false;
       }
-    } else if (showFullTree === 'true') {
-      // User clicked "Products & Features" - show full tree (expansion handled in init)
-      $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
-      insertNavCategoryHeaders();
-      rebindNavHandlers();
-    } else {
-      // Default: auto-filter to show only the product matching the current page
-      var $activeProductItem = $('nav.toc li.active');
-      if ($activeProductItem.length) {
-        var $topProductLi = $activeProductItem.closest('nav.toc > ul > li');
-        if ($topProductLi.length) {
-          $('nav.toc > ul > li:not(.nav-view-switcher-li)').each(function() {
-            if ($(this).is($topProductLi)) {
-              $(this).show().addClass('navexpand');
-            } else {
-              $(this).hide();
-            }
-          });
-        }
+    });
+    return $found;
+  }
+
+  // Helper: show only one product, hiding categories and siblings
+  function filterToProduct(slug) {
+    var $productLi = findProductLi(slug);
+    if (!$productLi) return false;
+
+    var $categoryLi = $productLi.closest('nav.toc > ul > li');
+
+    // Hide all categories, then show only the one containing our product
+    $('nav.toc > ul > li:not(.nav-view-switcher-li)').hide();
+    $categoryLi.show();
+
+    // Hide sibling products within same category
+    $categoryLi.children('ul').children('li').each(function() {
+      if ($(this).is($productLi)) {
+        $(this).show().addClass('navexpand');
       } else {
-        // No active item found — detect product from URL path
-        var productSlug = null;
-        if (currentPath.includes('/autosync/')) productSlug = 'autosync';
-        else if (currentPath.includes('/admin-manager/')) productSlug = 'admin-manager';
-        else if (currentPath.includes('/designer/')) productSlug = 'designer';
-        else if (currentPath.includes('/snapgpt/')) productSlug = 'snapgpt';
-        else if (currentPath.includes('/monitor/')) productSlug = 'monitor';
-
-        if (productSlug) {
-          $('nav.toc > ul > li:not(.nav-view-switcher-li)').each(function() {
-            var href = $(this).children('a').first().attr('href') || '';
-            if (href.indexOf(productSlug + '/') !== -1) {
-              $(this).show().addClass('navexpand');
-            } else {
-              $(this).hide();
-            }
-          });
-        } else {
-          $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
-        }
+        $(this).hide();
       }
-      rebindNavHandlers();
+    });
+
+    // Hide category header span (don't show "Integration Platform" when filtered)
+    $categoryLi.children('span').hide();
+
+    // Ensure navparent classes are correct
+    $productLi.find("li").has("ul").addClass("navparent");
+    rebindNavHandlers();
+    return true;
+  }
+
+  // Helper: show full product tree with all categories visible
+  function showFullProductTree() {
+    $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
+    $('nav.toc > ul > li:not(.nav-view-switcher-li) > span').show();
+    $('nav.toc > ul > li:not(.nav-view-switcher-li) > ul > li').show();
+    rebindNavHandlers();
+  }
+
+  if (isInProductViewForNav) {
+    // Determine which product to show — URL is primary source of truth
+    var urlProductSlug = getProductSlugFromPath(currentPath);
+
+    if (filteredProduct) {
+      // User selected a product from dropdown
+      filterToProduct(filteredProduct.toLowerCase().replace(/ /g, '-'));
+    } else if (showFullTree === 'true') {
+      // User clicked "Products & Features" - show full tree
+      showFullProductTree();
+    } else if (urlProductSlug) {
+      // Default: auto-filter based on current URL (primary source of truth)
+      filterToProduct(urlProductSlug);
+    } else {
+      // Fallback: show full tree
+      showFullProductTree();
     }
 
     // Check if we're on a Monitor page
@@ -3273,9 +3236,8 @@ $(window).on("resize", function () {
 
     } // end if (isInProductViewForNav)
 
-    // Show category headers on the all-products landing page
+    // Rebind nav handlers on the all-products landing page
     if (isOnProductsLanding) {
-      insertNavCategoryHeaders();
       rebindNavHandlers();
     }
 
