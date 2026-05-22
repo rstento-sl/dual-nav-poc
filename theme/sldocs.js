@@ -1250,7 +1250,7 @@ function MoveRelatedLinksToSidebar(){
 
 //FeedBack
 function FeedBackPopup(){
-  var feedbacktext= $("<div class='feedbacktext'>Was this helpful?</div>");
+  var feedbacktext= $("<div class='feedbacktext'>Does this content help?</div>");
   // var Feedbackimages=$("<div class='feedbackicons'><span class='thumbs-up'><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-up.svg' alt='thumbsup-icon'/></span><span class='thumbs-down'><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-down.svg' alt='thumbsdown-icon'/></span></div>");
   var Feedbackimages=$(`<div class='feedbackicons'>
     <span class='thumbs-up-toggle'>
@@ -1262,7 +1262,7 @@ function FeedBackPopup(){
         <img class='thumbs-down-fill noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-down-fill-icon.svg' alt='thumbsdown-fill-icon'/>
     </span>
     </div>`)
-  var feedbackbutton =$("<div class='feedbackbutton'>Send feedback</div>");
+  var feedbackbutton =$("<div class='feedbackbutton'>Send Feedback</div>");
   var popupContainer = $("<div class='feedback-popup'></div>");
   popupContainer.append(feedbacktext,Feedbackimages,feedbackbutton)
   var PopuContainermain=$("<div class='feedback-popupmain'></div>");
