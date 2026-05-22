@@ -5225,6 +5225,12 @@ nav.toc span {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+nav.toc > ul > li.active > a,
+nav.toc > ul > li > ul > li.active > a {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
 .nav_emptyspace{
   position: absolute;
   top:0px;
@@ -5829,13 +5835,13 @@ nav.toc .nav-view-text {
   display: inline-flex !important;
   align-items: center;
   gap: 3px;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   font-family: var(--font-header);
   color: #1E5BD6 !important;
   text-decoration: none !important;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   cursor: pointer;
   padding: 0 !important;
   background: none !important;
