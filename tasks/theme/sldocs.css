@@ -5922,84 +5922,26 @@ nav.toc .nav-view-text {
    PRODUCT HOME LANDING PAGES
    ============================== */
 
-/* Hide page-level title and shortdesc on product home pages (hero replaces them) */
-.product-home-page-title,
+/* Product home page title + description */
+.product-home-page-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #11378B;
+  margin: 0 0 12px;
+}
 .product-home-page-shortdesc {
-  display: none !important;
+  display: block !important;
+  font-style: normal;
+  font-size: 0.95rem;
+  color: var(--c2-grey3);
+  line-height: 1.6;
+  margin: 0 0 28px;
 }
 
-/* Hero Section — clean white card with colored left border */
+/* Hero section — hidden; title/shortdesc serve this purpose */
 .product-home-hero {
-  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
-  border-radius: 0 12px 12px 0;
-  padding: 28px 32px;
-  margin: -10px 0 28px 0;
-  border-left: 4px solid var(--SL-blue06);
-  position: relative;
-  overflow: hidden;
-}
-.product-home-hero::before {
   display: none;
 }
-.product-home-hero .sectiontitle,
-.product-home-hero .section-title,
-.product-home-hero h2 {
-  color: var(--c2-grey1) !important;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0 0 8px 0;
-  border: none;
-}
-.product-home-hero-subtitle {
-  font-size: 1rem;
-  color: var(--c2-grey3) !important;
-  margin: 0 0 20px 0;
-  max-width: 600px;
-  line-height: 1.5;
-}
-.product-home-hero-cta {
-  display: flex;
-  gap: 10px;
-  margin: 0;
-}
-.product-home-btn-primary {
-  display: inline-block;
-  padding: 8px 20px;
-  background: var(--SL-blue06);
-  color: white !important;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 13px;
-  text-decoration: none !important;
-  transition: background 0.2s, transform 0.1s;
-}
-.product-home-btn-primary:hover {
-  background: var(--SL-blue08);
-  transform: translateY(-1px);
-}
-.product-home-btn-secondary {
-  display: inline-block;
-  padding: 8px 20px;
-  background: transparent;
-  color: var(--SL-blue06) !important;
-  border: 1.5px solid var(--SL-blue03);
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 13px;
-  text-decoration: none !important;
-  transition: border-color 0.2s, background 0.2s;
-}
-.product-home-btn-secondary:hover {
-  border-color: var(--SL-blue06);
-  background: var(--SL-blue01);
-}
-
-/* Hero color variants — left border color */
-.product-home-hero-admin { border-left-color: var(--SL-blue06); }
-.product-home-hero-autosync { border-left-color: var(--SL-green06); }
-.product-home-hero-designer { border-left-color: var(--SL-purple06); }
-.product-home-hero-monitor { border-left-color: var(--SL-teal06); }
-.product-home-hero-snapgpt { border-left-color: var(--SL-orange06); }
 
 /* Quick Start / Top Tasks Section */
 .product-home-quickstart {
@@ -6008,16 +5950,17 @@ nav.toc .nav-view-text {
 .product-home-quickstart .sectiontitle,
 .product-home-quickstart .section-title,
 .product-home-quickstart h2 {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--c2-grey1);
-  margin: 24px 0 8px;
+  margin: 32px 0 8px;
   border: none;
 }
 .product-home-task-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 16px 0 32px;
 }
 .product-home-task-item {
   display: flex;
@@ -6060,16 +6003,17 @@ nav.toc .nav-view-text {
 .product-home-features .sectiontitle,
 .product-home-features .section-title,
 .product-home-features h2 {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--c2-grey1);
-  margin: 24px 0 8px;
+  margin: 32px 0 8px;
   border: none;
 }
 .product-home-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  margin: 16px 0 32px;
 }
 .product-home-card {
   background: #ffffff;
@@ -6088,20 +6032,19 @@ nav.toc .nav-view-text {
 .product-home-card-header {
   padding: 0;
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 .product-home-card-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
   flex-shrink: 0;
-  color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 0;
+  overflow: hidden;
+  background: var(--SL-teal06);
 }
 .product-home-card-title {
   font-size: 0.95rem;
@@ -6109,19 +6052,6 @@ nav.toc .nav-view-text {
   color: var(--c2-grey1);
   margin: 0;
 }
-/* Card color variants — icon background only */
-.product-home-card-icon.product-home-card-blue,
-.product-home-card-blue .product-home-card-icon { background: #1A56DB; }
-.product-home-card-icon.product-home-card-green,
-.product-home-card-green .product-home-card-icon { background: #10B981; }
-.product-home-card-icon.product-home-card-indigo,
-.product-home-card-indigo .product-home-card-icon { background: #4A9EFF; }
-.product-home-card-icon.product-home-card-orange,
-.product-home-card-orange .product-home-card-icon { background: #F59E0B; }
-.product-home-card-icon.product-home-card-teal,
-.product-home-card-teal .product-home-card-icon { background: #09817F; }
-.product-home-card-icon.product-home-card-purple,
-.product-home-card-purple .product-home-card-icon { background: #8B5CF6; }
 
 .product-home-card > p {
   padding: 0;
