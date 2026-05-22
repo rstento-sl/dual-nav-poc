@@ -3230,8 +3230,26 @@ $(window).on("resize", function () {
           });
         }
       } else {
-        // No active item found — show all products collapsed
-        $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
+        // No active item found — detect product from URL path
+        var productSlug = null;
+        if (currentPath.includes('/autosync/')) productSlug = 'autosync';
+        else if (currentPath.includes('/admin-manager/')) productSlug = 'admin-manager';
+        else if (currentPath.includes('/designer/')) productSlug = 'designer';
+        else if (currentPath.includes('/snapgpt/')) productSlug = 'snapgpt';
+        else if (currentPath.includes('/monitor/')) productSlug = 'monitor';
+
+        if (productSlug) {
+          $('nav.toc > ul > li:not(.nav-view-switcher-li)').each(function() {
+            var href = $(this).children('a').first().attr('href') || '';
+            if (href.indexOf(productSlug + '/') !== -1) {
+              $(this).show().addClass('navexpand');
+            } else {
+              $(this).hide();
+            }
+          });
+        } else {
+          $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
+        }
       }
       rebindNavHandlers();
     }
