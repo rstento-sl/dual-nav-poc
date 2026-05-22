@@ -2950,55 +2950,26 @@ $(window).on("resize", function () {
       taskUrl = '/tasks/tasks/learn-platform-about.html';
     }
 
-    // Create view switcher HTML
-    // SVG icons: package (products) and checkmark (tasks)
-    const iconProducts = '<svg class="nav-view-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1L1.5 4.5V11.5L8 15L14.5 11.5V4.5L8 1Z"/><path d="M8 8L14.5 4.5"/><path d="M8 8L1.5 4.5"/><path d="M8 8V15"/></svg>';
-    const iconTasks = '<svg class="nav-view-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5L6.5 12L13 4"/></svg>';
-
-    // Determine initial button states based on sessionStorage
-    const productsIsLabel = isShowingAllProducts;
-    const tasksIsLabel = isShowingAllTasks;
-
-    const productsText = productsIsLabel ? 'Choose a feature' : 'Browse by feature';
-    const tasksText = tasksIsLabel ? 'Choose a goal' : 'Browse by goal';
-    const productsClass = productsIsLabel ? 'active' : '';
-    const tasksClass = tasksIsLabel ? 'active' : '';
-
-    // Determine the "Viewing:" context label — product name or task category
-    var $activeNavItem = $toc.find('li.active');
-    var viewingName = '';
-    if (isInProductView) {
-      // Product view: product is at second level (category > product)
-      var $productItem = $activeNavItem.closest('nav.toc > ul > li > ul > li');
-      if ($productItem.length) {
-        var $productLink = $productItem.children('a').first();
-        viewingName = $productLink.text().trim();
-      }
-    } else {
-      // Task view: category is at top level
-      var $topItem = $activeNavItem.closest('nav.toc > ul > li');
-      if ($topItem.length) {
-        var $topLink = $topItem.children('a, span').first();
-        viewingName = $topLink.text().trim();
-      }
-    }
-    var viewingHtml = viewingName && !isShowingAllProducts && !isShowingAllTasks
-      ? '<div class="nav-viewing-label">Viewing: <strong>' + viewingName + '</strong></div>'
-      : '';
+    // Create view switcher HTML — simple uppercase text labels
+    const productsClass = isShowingAllProducts ? 'active' : '';
+    const tasksClass = isShowingAllTasks ? 'active' : '';
 
     const viewSwitcherHtml = `
       <div class="nav-view-switcher">
-        ${viewingHtml}
         <div class="nav-view-buttons">
-          <a href="#" class="nav-view-link nav-view-button-products ${productsClass}">${iconProducts} <span class="nav-view-text">${productsText}</span></a>
-          <span class="nav-view-separator">|</span>
-          <a href="#" class="nav-view-link nav-view-button-tasks ${tasksClass}">${iconTasks} <span class="nav-view-text">${tasksText}</span></a>
+          <a href="#" class="nav-view-link nav-view-button-products ${productsClass}"><span class="nav-view-text">Browse by feature</span></a>
+          <a href="#" class="nav-view-link nav-view-button-tasks ${tasksClass}"><span class="nav-view-text">Browse by goal</span></a>
         </div>
       </div>
     `;
 
     // Insert as first <li> inside the scrollable <ul>
     $toc.find('> ul').prepend('<li class="nav-view-switcher-li">' + viewSwitcherHtml + '</li>');
+
+    // Add nav collapse button at bottom of nav
+    if (!$toc.find('.nav-collapse-btn').length) {
+      $toc.append('<button class="nav-collapse-btn" aria-label="Collapse navigation"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg></button>');
+    }
 
     // Helper: fetch nav from another page and swap it into the current nav
     function swapNav(sourceUrl, callback) {
@@ -3033,13 +3004,13 @@ $(window).on("resize", function () {
       var $taskBtn = $('.nav-view-button-tasks');
 
       if (productsActive) {
-        $prodBtn.addClass('active').find('.nav-view-text').text('Choose a feature');
+        $prodBtn.addClass('active').find('.nav-view-text').text('Browse by feature');
       } else {
         $prodBtn.removeClass('active').find('.nav-view-text').text('Browse by feature');
       }
 
       if (tasksActive) {
-        $taskBtn.addClass('active').find('.nav-view-text').text('Choose a goal');
+        $taskBtn.addClass('active').find('.nav-view-text').text('Browse by goal');
       } else {
         $taskBtn.removeClass('active').find('.nav-view-text').text('Browse by goal');
       }
