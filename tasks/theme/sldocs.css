@@ -6358,51 +6358,50 @@ a.xref.landing-card:hover {
 
 /* ============= Task Category Landing Pages ============= */
 
-.task-home-page-title,
+/* Task landing page title + description */
+.task-home-page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--c2-grey1);
+  margin: 0 0 12px;
+}
+
 .task-home-page-shortdesc {
+  display: block;
+  font-style: normal;
+  font-size: 0.95rem;
+  color: var(--c2-grey3);
+  line-height: 1.6;
+  margin: 0 0 28px;
+}
+
+/* Hero section — hidden; title/shortdesc serve this purpose */
+.task-home-hero {
   display: none;
 }
 
-.task-home-hero {
-  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
-  border-left: 4px solid var(--SL-indigo06, #4f46e5);
-  border-radius: 0 12px 12px 0;
-  padding: 28px 32px;
-  margin-bottom: 28px;
-}
-
-.task-home-hero .sectiontitle,
-.task-home-hero .section-title,
-.task-home-hero h2 {
-  font-size: 1.5rem;
+/* Section titles within the landing page */
+.task-home-section-title {
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--c2-grey1);
-  margin: 0 0 8px 0;
+  margin: 32px 0 8px;
 }
 
+/* Section description (p following section title) */
 .task-home-hero-subtitle {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--c2-grey3);
-  margin: 0;
-  line-height: 1.5;
+  margin: 0 0 16px;
+  line-height: 1.6;
 }
 
-/* Color variants for task hero borders */
-.task-home-hero-getstarted { border-left-color: #10B981; }
-.task-home-hero-administer { border-left-color: var(--SL-blue06); }
-.task-home-hero-develop { border-left-color: var(--SL-purple06, #7c3aed); }
-.task-home-hero-agents { border-left-color: var(--SL-teal06); }
-.task-home-hero-apis { border-left-color: #6366F1; }
-.task-home-hero-monitor { border-left-color: var(--SL-teal06); }
-.task-home-hero-observe { border-left-color: #8B5CF6; }
-.task-home-hero-troubleshoot { border-left-color: #EF4444; }
-
-/* Task card grid */
+/* Task card grid — 2 columns */
 .task-home-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  margin: 8px 0 24px;
+  margin: 16px 0 32px;
 }
 
 .task-home-card {
@@ -6486,47 +6485,40 @@ a.xref.landing-card:hover {
    PRODUCT LANDING PAGE (All Products)
    ============================== */
 
-.product-landing-page-title,
+/* Product landing page title + description */
+.product-landing-page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--c2-grey1);
+  margin: 0 0 12px;
+}
+
 .product-landing-page-shortdesc {
+  display: block;
+  font-style: normal;
+  font-size: 0.95rem;
+  color: var(--c2-grey3);
+  line-height: 1.6;
+  margin: 0 0 28px;
+}
+
+/* Hero section — hidden; title/shortdesc serve this purpose */
+.product-landing-hero {
   display: none;
 }
 
-.product-landing-hero {
-  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
-  border-left: 4px solid var(--c1-blue);
-  border-radius: 0 12px 12px 0;
-  padding: 28px 32px;
-  margin-bottom: 28px;
-}
-
-.product-landing-hero .sectiontitle,
-.product-landing-hero .section-title,
-.product-landing-hero h2 {
-  font-size: 1.5rem;
+.product-landing-section-title {
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--c2-grey1);
-  margin: 0 0 8px 0;
-}
-
-.product-landing-hero-subtitle {
-  font-size: 1rem;
-  color: var(--c2-grey3);
-  margin: 0;
-  line-height: 1.5;
-}
-
-.product-landing-section-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--c2-grey1);
-  margin: 24px 0 8px;
+  margin: 32px 0 8px;
 }
 
 .product-landing-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  margin: 8px 0 24px;
+  margin: 16px 0 32px;
 }
 
 .product-landing-card {
@@ -6546,21 +6538,20 @@ a.xref.landing-card:hover {
 
 .product-landing-card-header {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 .product-landing-card-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
   flex-shrink: 0;
-  color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 0;
+  overflow: hidden;
+  background: var(--SL-teal06);
 }
 
 .product-landing-card-title {
@@ -6608,10 +6599,10 @@ a.xref.landing-card:hover {
 
 /* Section heading within task home */
 .task-home-section-title {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--c2-grey1);
-  margin: 24px 0 8px;
+  margin: 32px 0 8px;
 }
 
 /* WIP badge */
