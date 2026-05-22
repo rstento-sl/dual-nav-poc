@@ -5033,6 +5033,7 @@ nav.toc.task-view > ul > li > span {
   letter-spacing: 0.5px;
   padding-top: 14px;
   padding-bottom: 6px;
+  white-space: normal;
 }
 
 /* Task view: top-level links (landing pages) */
@@ -5044,6 +5045,7 @@ nav.toc.task-view > ul > li > a {
   letter-spacing: 0.5px;
   padding-top: 14px;
   padding-bottom: 6px;
+  white-space: normal;
 }
 
 /* Product view: category headers (topicheads) */
