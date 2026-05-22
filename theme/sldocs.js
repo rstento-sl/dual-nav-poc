@@ -3167,7 +3167,7 @@ $(window).on("resize", function () {
 
   // Helper: show full product tree with all categories visible
   function showFullProductTree() {
-    $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
+    $('nav.toc > ul > li:not(.nav-view-switcher-li)').show().addClass('navexpand').removeClass('navcollapsed');
     $('nav.toc > ul > li:not(.nav-view-switcher-li) > span').show();
     $('nav.toc > ul > li:not(.nav-view-switcher-li) > ul > li').show();
     rebindNavHandlers();
@@ -3211,7 +3211,9 @@ $(window).on("resize", function () {
     } // end if (isInProductViewForNav)
 
     // Rebind nav handlers on the all-products landing page
-    if (isOnProductsLanding) {
+    if (isOnProductsLanding && activeNav === 'products') {
+      showFullProductTree();
+    } else if (isOnProductsLanding) {
       rebindNavHandlers();
     }
 
