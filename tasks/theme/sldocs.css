@@ -5091,6 +5091,15 @@ nav.toc > ul > li.navexpand > span:first-child:before {
   display: none !important;
 }
 
+/* Nav heading icon (applied via .nav-heading-icon class by JS, icon set inline) */
+.nav-heading-icon {
+  padding-left: 28px !important;
+  margin-left: 8px !important;
+  background-size: 16px 16px !important;
+  background-repeat: no-repeat !important;
+  background-position: 4px center !important;
+}
+
 /* Nav toggle: using ::before pseudo-elements (see navparent rules above) */
 .nav-toggle {
   display: none;
@@ -5856,18 +5865,12 @@ nav.toc .nav-view-text {
 }
 
 .nav-view-link + .nav-view-link::before {
-  content: '';
-  position: absolute;
-  left: -7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 12px;
-  background: #9CA3AF;
-}
-
-.nav-view-link + .nav-view-link {
+  content: '|';
   position: relative;
+  margin-right: 4px;
+  color: #6B7280;
+  font-weight: 300;
+  font-size: 14px;
 }
 
 .nav-view-link:hover {

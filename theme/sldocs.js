@@ -1112,7 +1112,7 @@ function RighthandToc() {
     return a.position - b.position;
   });
   if (SectionheadsArray.length === 0) {
-    $('main').append('<nav class="sidebar"></nav>');
+    // No sections — no OTP sidebar needed
   }
   if (SectionheadsArray.length > 0) {
     var listItems = SectionheadsArray
@@ -1123,13 +1123,22 @@ function RighthandToc() {
         return '<li data-target="' + item.className + '">' + item.text + '</li>';
       }).join('');
 
-    $('main').append('<nav class="sidebar"><div class="sidebarhead" style="display: none;">On this page</div><div class="progress-container" style="display: none;"><ul>' + listItems + '</ul></div></nav>');
-    $('main').on('click', '.sidebarhead', function() {
-      $('.sidebar li').removeClass('active');
+    var otpHtml = '<div class="sidebar-section otp-section"><h3 class="sidebar-heading">On this page</h3><ul class="otp-list">' + listItems + '</ul></div>';
+
+    // Inject into existing .right-sidebar if present, otherwise create one
+    // Skip if OTP already exists (e.g. from postprocess)
+    var $rightSidebar = $('aside.right-sidebar');
+    if ($rightSidebar.length && $rightSidebar.find('.otp-section').length === 0) {
+      $rightSidebar.prepend(otpHtml);
+    } else if (!$rightSidebar.length) {
+      $('main').append('<aside class="right-sidebar">' + otpHtml + '</aside>');
+    }
+    $('main').on('click', '.sidebar-heading', function() {
+      $('.otp-list li').removeClass('active');
       $('main').animate({ scrollTop: 0 }, 1000);
     });
-    $('main').on('click', '.sidebar li', function() {
-      $('.sidebar li').removeClass('active');
+    $('main').on('click', '.otp-list li', function() {
+      $('.otp-list li').removeClass('active');
       $(this).addClass('active');
       scrollToActiveItem();
       var targetClass = $(this).data('target');
@@ -1150,10 +1159,10 @@ function RighthandToc() {
         // Adjusting the offset to 20px below the top
         if (scrollTop >= elementTop - 20 && scrollTop < elementTop + $(this).outerHeight() - 20) {
           var targetClass = $(this).attr('class').split(' ').pop();
-          $('.sidebar li[data-target="' + targetClass + '"]').addClass('active');
+          $('.otp-list li[data-target="' + targetClass + '"]').addClass('active');
           scrollToActiveItem();
           // Remove 'active' class from the remaining elements
-          $('.sidebar li').not('[data-target="' + targetClass + '"]').removeClass('active');
+          $('.otp-list li').not('[data-target="' + targetClass + '"]').removeClass('active');
           activeSet = true;
           return false;
         }
@@ -1173,8 +1182,8 @@ function RighthandToc() {
 
         if (lastVisible) {
           var lastTargetClass = lastVisible.attr('class').split(' ').pop();
-          $('.sidebar li').removeClass('active');
-          $('.sidebar li[data-target="' + lastTargetClass + '"]').addClass('active');
+          $('.otp-list li').removeClass('active');
+          $('.otp-list li[data-target="' + lastTargetClass + '"]').addClass('active');
         }
       }
     });
@@ -1182,8 +1191,8 @@ function RighthandToc() {
 }
 
 function scrollToActiveItem() {
-  var $sidebar = $('.sidebar');
-  var $activeItem = $sidebar.find('li.active');
+  var $sidebar = $('.right-sidebar');
+  var $activeItem = $sidebar.find('.otp-list li.active');
 
   if ($activeItem.length) {
     // Calculate the active item's position relative to the sidebar
@@ -1234,13 +1243,15 @@ function MoveRelatedLinksToSidebar(){
     // Wrap in a div container with sidebar-specific class
     const relatedLinksContainer = $('<div class="sidebar-related-links"></div>').append(relatedLinksContent);
 
-    // Insert as third div container (after progress-container, before feedback-popupmain)
-    const feedbackPopup = $('nav.sidebar .feedback-popupmain');
-    if (feedbackPopup.length > 0) {
-      feedbackPopup.before(relatedLinksContainer);
-    } else {
-      // If feedback popup doesn't exist, append to sidebar
-      $('nav.sidebar').append(relatedLinksContainer);
+    // Insert into right-sidebar before feedback section
+    var $sidebar = $('aside.right-sidebar');
+    if ($sidebar.length) {
+      var $feedbackSection = $sidebar.find('.feedback-section');
+      if ($feedbackSection.length) {
+        $feedbackSection.before(relatedLinksContainer);
+      } else {
+        $sidebar.append(relatedLinksContainer);
+      }
     }
 
     // Remove from article (move, not copy)
@@ -1250,7 +1261,7 @@ function MoveRelatedLinksToSidebar(){
 
 //FeedBack
 function FeedBackPopup(){
-  var feedbacktext= $("<div class='feedbacktext'>Does this content help?</div>");
+  var feedbacktext= $("<div class='feedbacktext'>Was this helpful?</div>");
   // var Feedbackimages=$("<div class='feedbackicons'><span class='thumbs-up'><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-up.svg' alt='thumbsup-icon'/></span><span class='thumbs-down'><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-down.svg' alt='thumbsdown-icon'/></span></div>");
   var Feedbackimages=$(`<div class='feedbackicons'>
     <span class='thumbs-up-toggle'>
@@ -1644,9 +1655,9 @@ function handleFeedbackPopupPlacement() {
       $("main > article").append(feedbackPopup);
     }
   } else {
-    // Move feedback popup back to the right-hand TOC for larger screens
-    if (!$("nav.sidebar .feedback-popupmain").length) {
-      $("nav.sidebar").append(feedbackPopup);
+    // Move feedback popup back to the right sidebar for larger screens
+    if (!$("aside.right-sidebar .feedback-popupmain").length) {
+      $("aside.right-sidebar").append(feedbackPopup);
     }
   }
 }
@@ -3339,6 +3350,50 @@ $(window).on("resize", function () {
       }
       // else: show full tree (default behavior)
     }
+
+    // Product-specific nav icons (matching homepage feature cards)
+    var NAV_ICONS = {
+      'autosync': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12a9 9 0 0115-6.7'/%3E%3Cpath d='M21 3v6h-6'/%3E%3Cpath d='M21 12a9 9 0 01-15 6.7'/%3E%3Cpath d='M3 21v-6h6'/%3E%3C/svg%3E",
+      'designer': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='7' height='7' rx='1'/%3E%3Crect x='14' y='3' width='7' height='7' rx='1'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1'/%3E%3Crect x='14' y='14' width='7' height='7' rx='1'/%3E%3Cpath d='M10 6.5h4'/%3E%3Cpath d='M6.5 10v4'/%3E%3Cpath d='M17.5 10v4'/%3E%3Cpath d='M10 17.5h4'/%3E%3C/svg%3E",
+      'snapgpt': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231E5BD6' stroke='none'%3E%3Ccircle cx='12' cy='12' r='2.2'/%3E%3Ccircle cx='8.5' cy='9' r='1.8'/%3E%3Ccircle cx='15.5' cy='9' r='1.8'/%3E%3Ccircle cx='8.5' cy='15' r='1.8'/%3E%3Ccircle cx='15.5' cy='15' r='1.8'/%3E%3Ccircle cx='6' cy='12' r='1.5'/%3E%3Ccircle cx='18' cy='12' r='1.5'/%3E%3Ccircle cx='12' cy='6.5' r='1.5'/%3E%3Ccircle cx='12' cy='17.5' r='1.5'/%3E%3C/svg%3E",
+      'admin-manager': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 005 15.9a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 5a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019 9.1a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z'/%3E%3C/svg%3E",
+      'monitor': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='3' width='20' height='14' rx='2'/%3E%3Cpath d='M8 21h8'/%3E%3Cpath d='M12 17v4'/%3E%3Cpath d='M7 10l3-3 2 2 5-5'/%3E%3C/svg%3E",
+      'agent': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4h12a2 2 0 012 2v12a2 2 0 01-2 2H4V4z'/%3E%3Cpath d='M8 8h6'/%3E%3Cpath d='M8 12h4'/%3E%3Cpath d='M8 16h2'/%3E%3Cpath d='M18 8l3-3 1 1-3 3'/%3E%3Cpath d='M19 9l-4 4v2h2l4-4'/%3E%3C/svg%3E"
+    };
+    // Category-level icons (for "All Products" view)
+    var CATEGORY_ICONS = {
+      'integration platform': NAV_ICONS['designer'],
+      'administration': NAV_ICONS['admin-manager'],
+      'observability': NAV_ICONS['monitor']
+    };
+
+    function getNavIcon(text) {
+      var t = text.toLowerCase().trim();
+      for (var key in NAV_ICONS) {
+        if (t.indexOf(key.replace('-', ' ')) !== -1 || t.indexOf(key) !== -1) return NAV_ICONS[key];
+      }
+      for (var cat in CATEGORY_ICONS) {
+        if (t.indexOf(cat) !== -1) return CATEGORY_ICONS[cat];
+      }
+      return NAV_ICONS['designer']; // fallback
+    }
+
+    // Add icons to visible top-level nav headings (skip if inline SVG icon already present)
+    $('nav.toc > ul > li:not(.nav-view-switcher-li):visible').each(function() {
+      var $heading = $(this).children('a:first, span:first').filter(':visible');
+      if ($heading.length && $heading.find('.nav-section-icon').length === 0) {
+        var icon = getNavIcon($heading.text());
+        $heading.addClass('nav-heading-icon').css('background-image', 'url("' + icon + '")');
+      } else if (!$heading.length) {
+        // Product view: category span is hidden, icon goes on visible product items
+        $(this).find('> ul > li:visible > a:first-child').each(function() {
+          if ($(this).find('.nav-section-icon').length === 0) {
+            var icon = getNavIcon($(this).text());
+            $(this).addClass('nav-heading-icon').css('background-image', 'url("' + icon + '")');
+          }
+        });
+      }
+    });
 
   } // end if ($toc.length > 0)
 
