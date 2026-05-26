@@ -164,7 +164,7 @@
   --hover-textcolor: #1C1E21;
   --bordercolor: #E6E9EF;
   --borderline: 1px solid var(--bordercolor);
-  --border4img: 1px solid #E6E9EF;
+  --border4img: 1px solid #A0A8B4;
 
   /* header */
   --hdr-bgcolor: #0E1530;
@@ -2194,6 +2194,7 @@ img {
   cursor: pointer;
   transition: 0.3s;
 }
+
 
 img.card-icon,
 img.inline-logo,

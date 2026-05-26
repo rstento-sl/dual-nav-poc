@@ -1078,6 +1078,10 @@ function RemoveHover() {
 
 //Righthand toc
 function RighthandToc() {
+  // Build sidebar sections
+  var sidebarHtml = '';
+
+  // 1. On This Page (only if page has sections)
   var SectionheadsArray = [];
   $('.sectiontitle, .detsummdivtitle, .sectiondivtitle, .glossterm').each(function(index) {
     if ($(this).hasClass('detsummdivtitle') && $(this).closest('summary').length > 0) {
@@ -1087,14 +1091,11 @@ function RighthandToc() {
       var className;
       if ($(this).hasClass('sectiontitle')) {
         className = 'section_' + index;
-      }
-      else if ($(this).hasClass('sectiondivtitle')) {
+      } else if ($(this).hasClass('sectiondivtitle')) {
         className = 'sectiondiv_' + index;
-      }
-      else if ($(this).hasClass('glossterm')) {
+      } else if ($(this).hasClass('glossterm')) {
         className = 'glossterm_' + index;
-      }
-      else {
+      } else {
         className = 'detsummdiv_' + index;
       }
       $(this).addClass(className);
@@ -1102,37 +1103,32 @@ function RighthandToc() {
     }
   });
 
-  $('.relinfo strong').each(function(index) {
-    var className = 'related_' + index;
-    $(this).addClass(className);
-    SectionheadsArray.push({ text: $(this).text(), className: className, position: $(this).offset().top });
-  });
+  SectionheadsArray.sort(function(a, b) { return a.position - b.position; });
 
-  SectionheadsArray.sort(function(a, b) {
-    return a.position - b.position;
-  });
-  if (SectionheadsArray.length === 0) {
-    // No sections — no OTP sidebar needed
-  }
   if (SectionheadsArray.length > 0) {
     var listItems = SectionheadsArray
-      .filter(function(item) {
-        return !item.className.startsWith('related_');
-      })
+      .filter(function(item) { return !item.className.startsWith('related_'); })
       .map(function(item) {
         return '<li data-target="' + item.className + '">' + item.text + '</li>';
       }).join('');
+    sidebarHtml += '<div class="sidebar-section otp-section"><h3 class="sidebar-heading">On this page</h3><ul class="otp-list">' + listItems + '</ul></div>';
+  }
 
-    var otpHtml = '<div class="sidebar-section otp-section"><h3 class="sidebar-heading">On this page</h3><ul class="otp-list">' + listItems + '</ul></div>';
+  // 2. Feedback widget (always present)
+  sidebarHtml += '<div class="sidebar-section feedback-section">';
+  sidebarHtml += '<div class="feedback-prompt">Was this helpful?';
+  sidebarHtml += '<span class="feedback-icons">';
+  sidebarHtml += '<button class="feedback-btn" aria-label="Yes">&#128077;</button>';
+  sidebarHtml += '<button class="feedback-btn" aria-label="No">&#128078;</button>';
+  sidebarHtml += '</span></div>';
+  sidebarHtml += '<a href="#" class="feedback-send-btn">Send Feedback</a>';
+  sidebarHtml += '</div>';
 
-    // Inject into existing .right-sidebar if present, otherwise create one
-    // Skip if OTP already exists (e.g. from postprocess)
-    var $rightSidebar = $('aside.right-sidebar');
-    if ($rightSidebar.length && $rightSidebar.find('.otp-section').length === 0) {
-      $rightSidebar.prepend(otpHtml);
-    } else if (!$rightSidebar.length) {
-      $('main').append('<aside class="right-sidebar">' + otpHtml + '</aside>');
-    }
+  // Create the sidebar
+  $('main').append('<aside class="right-sidebar">' + sidebarHtml + '</aside>');
+
+  // OTP click and scroll handlers
+  if (SectionheadsArray.length > 0) {
     $('main').on('click', '.sidebar-heading', function() {
       $('.otp-list li').removeClass('active');
       $('main').animate({ scrollTop: 0 }, 1000);
@@ -1156,30 +1152,24 @@ function RighthandToc() {
       var activeSet = false;
       $('.sectiontitle, .detsummdivtitle, .sectiondivtitle, .glossterm, .relinfo strong').each(function() {
         var elementTop = $(this).offset().top - mainOffsetTop + scrollTop;
-        // Adjusting the offset to 20px below the top
         if (scrollTop >= elementTop - 20 && scrollTop < elementTop + $(this).outerHeight() - 20) {
           var targetClass = $(this).attr('class').split(' ').pop();
           $('.otp-list li[data-target="' + targetClass + '"]').addClass('active');
           scrollToActiveItem();
-          // Remove 'active' class from the remaining elements
           $('.otp-list li').not('[data-target="' + targetClass + '"]').removeClass('active');
           activeSet = true;
           return false;
         }
       });
 
-      // Handle the case when the scroll reaches the end
       if (!activeSet && scrollTop + $('main').innerHeight() >= $('main')[0].scrollHeight) {
         var lastVisible = null;
-
         $('.sectiontitle, .detsummdivtitle, .sectiondivtitle, .glossterm, .relinfo strong').each(function() {
           var elementTop = $(this).offset().top - mainOffsetTop + scrollTop;
-
           if (elementTop <= scrollTop) {
             lastVisible = $(this);
           }
         });
-
         if (lastVisible) {
           var lastTargetClass = lastVisible.attr('class').split(' ').pop();
           $('.otp-list li').removeClass('active');
@@ -1356,7 +1346,8 @@ function FeedBackPopup(){
   })
 
   // Show the popup when the feedback button is clicked
-  $('.feedbackbutton').click(function() {
+  $('.feedbackbutton, .feedback-send-btn').click(function(e) {
+    e.preventDefault();
     overlay.fadeIn();
     popupContainer.fadeIn();
   });
@@ -3369,13 +3360,20 @@ $(window).on("resize", function () {
 
     function getNavIcon(text) {
       var t = text.toLowerCase().trim();
-      for (var key in NAV_ICONS) {
-        if (t.indexOf(key.replace('-', ' ')) !== -1 || t.indexOf(key) !== -1) return NAV_ICONS[key];
-      }
-      for (var cat in CATEGORY_ICONS) {
-        if (t.indexOf(cat) !== -1) return CATEGORY_ICONS[cat];
-      }
-      return NAV_ICONS['designer']; // fallback
+      // Exact match against known product/category names
+      var NAME_TO_ICON = {
+        'autosync': NAV_ICONS['autosync'],
+        'designer': NAV_ICONS['designer'],
+        'snapgpt': NAV_ICONS['snapgpt'],
+        'admin manager': NAV_ICONS['admin-manager'],
+        'monitor': NAV_ICONS['monitor'],
+        'agent creator': NAV_ICONS['agent'],
+        'integration platform': CATEGORY_ICONS['integration platform'],
+        'administration': CATEGORY_ICONS['administration'],
+        'observability': CATEGORY_ICONS['observability']
+      };
+      var FALLBACK_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E";
+      return NAME_TO_ICON[t] || FALLBACK_ICON;
     }
 
     // Add icons to visible top-level nav headings (skip if inline SVG icon already present)
