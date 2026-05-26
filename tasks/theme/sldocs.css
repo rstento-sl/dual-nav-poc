@@ -5838,13 +5838,13 @@ nav.toc .nav-view-text {
   display: inline-flex !important;
   align-items: center;
   gap: 3px;
-  font-size: 9px;
-  font-weight: 700;
+  font-size: 9px !important;
+  font-weight: 700 !important;
   font-family: var(--font-header);
   color: #1E5BD6 !important;
   text-decoration: none !important;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
+  text-transform: uppercase !important;
+  letter-spacing: 0.4px !important;
   cursor: pointer;
   padding: 0 !important;
   background: none !important;
