@@ -5806,7 +5806,7 @@ li.nav-view-switcher-li {
 .nav-view-buttons {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: nowrap;
 }
 
@@ -5838,19 +5838,34 @@ nav.toc .nav-view-text {
   display: inline-flex !important;
   align-items: center;
   gap: 3px;
-  font-size: 9px !important;
-  font-weight: 700 !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
   font-family: var(--font-header);
   color: #1E5BD6 !important;
   text-decoration: none !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.4px !important;
+  letter-spacing: 0.3px !important;
   cursor: pointer;
   padding: 0 !important;
   background: none !important;
   border: none !important;
   line-height: 1.3;
   transition: color 0.2s ease;
+}
+
+.nav-view-link + .nav-view-link::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background: #9CA3AF;
+}
+
+.nav-view-link + .nav-view-link {
+  position: relative;
 }
 
 .nav-view-link:hover {
