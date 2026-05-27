@@ -309,7 +309,7 @@ h1, h2, h3, h4, h5, h6 {
 /* === Hero Section === */
 .hero {
   background: var(--bg-light);
-  padding: 28px 0 20px;
+  padding: 18px 0 12px;
   position: relative;
   overflow: hidden;
 }
@@ -326,10 +326,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 0.5fr;
-  gap: 24px;
-  align-items: center;
+  display: block;
 }
 
 .hero-text {
@@ -337,23 +334,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--primary-dark);
   line-height: 1.2;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .hero-subtitle {
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
-  line-height: 1.7;
+  line-height: 1.5;
 }
 
 .hero-illustration {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: none;
 }
 
 .hero-img {
@@ -367,11 +362,11 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
 }
 
 .section-title {
-  font-size: 1.35rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--primary-dark);
 }
@@ -391,20 +386,20 @@ h1, h2, h3, h4, h5, h6 {
 /* === Browse by Goals Section === */
 .browse-goals {
   background: var(--white);
-  padding: 28px 0 16px;
+  padding: 16px 0 10px;
 }
 
 .goal-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 6px;
 }
 
 .goal-card {
   background: var(--white);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-md);
-  padding: 22px 20px;
+  padding: 14px 16px;
   position: relative;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   display: flex;
@@ -417,18 +412,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card-accent {
-  width: 36px;
+  width: 28px;
   height: 3px;
   background: var(--accent-orange);
   border-radius: 2px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .goal-card h4 {
-  font-size: 0.95rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--primary-dark);
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   line-height: 1.3;
 }
 
@@ -449,9 +444,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .goal-card ul li {
-  padding: 4px 0;
-  font-size: 0.85rem;
-  line-height: 1.5;
+  padding: 2px 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.goal-card ul li:nth-child(n+3) {
+  display: none;
 }
 
 .goal-card ul li::before {
@@ -473,8 +472,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .card-view-more {
   display: inline-block;
-  margin-top: 16px;
-  font-size: 0.8rem;
+  margin-top: 8px;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--primary-color);
   text-decoration: none;
@@ -488,23 +487,55 @@ h1, h2, h3, h4, h5, h6 {
 /* === Browse by Features Section === */
 .browse-features {
   background: var(--bg-light);
-  padding: 28px 0;
+  padding: 16px 0 10px;
 }
 
 .feature-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 6px;
 }
 
 .feature-card {
   background: var(--white);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-md);
-  padding: 28px 24px;
+  padding: 14px 16px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  grid-template-rows: auto 1fr auto;
+  column-gap: 8px;
+}
+
+.feature-card .feature-icon {
+  grid-row: 1;
+  grid-column: 1;
+  align-self: center;
+}
+
+.feature-card h4 {
+  grid-row: 1;
+  grid-column: 2;
+  align-self: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 0;
+}
+
+.feature-card p {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: auto;
+}
+
+.feature-card .read-more {
+  grid-row: 3;
+  grid-column: 1 / -1;
 }
 
 .feature-card:hover {
@@ -513,25 +544,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .feature-icon {
-  width: 40px;
-  height: 40px;
+  width: 24px;
+  height: 24px;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
 }
 
 .feature-icon svg {
-  width: 20px;
-  height: 20px;
-}
-
-.feature-card h4 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--primary-dark);
-  margin-bottom: 8px;
+  width: 14px;
+  height: 14px;
 }
 
 .feature-card h4 a {
@@ -542,13 +565,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .feature-card h4 a:hover {
   color: var(--primary-color);
-}
-
-.feature-card p {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: auto;
 }
 
 .read-more {
@@ -567,46 +583,46 @@ h1, h2, h3, h4, h5, h6 {
 
 /* === What's New Banner === */
 .whats-new {
-  padding: 48px 0;
+  padding: 16px 0 12px;
   background: var(--white);
 }
 
 .whats-new-banner {
-  background: linear-gradient(135deg, #0E1530 0%, #1E5BD6 100%);
-  border-radius: var(--radius-lg);
-  padding: 36px 40px;
+  background: linear-gradient(to right, #0E1530 0%, #1E5BD6 50%, #0E8C84 100%);
+  border-radius: var(--radius-md);
+  padding: 16px 28px;
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 32px;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
   align-items: center;
   color: var(--white);
 }
 
 .banner-label {
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
   opacity: 0.8;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 1px;
 }
 
 .banner-release h3 {
-  font-size: 1.3rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
   color: var(--white);
 }
 
 .banner-cta {
   display: inline-block;
-  padding: 8px 18px;
-  border: 1.5px solid rgba(255, 255, 255, 0.6);
-  border-radius: 20px;
+  padding: 3px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
   color: var(--white);
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-weight: 500;
   transition: all 0.2s ease;
 }
@@ -619,24 +635,24 @@ h1, h2, h3, h4, h5, h6 {
 .banner-items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 16px;
 }
 
 .banner-item {
-  padding-left: 16px;
+  padding-left: 12px;
   border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .banner-item h4 {
-  font-size: 0.9rem;
+  font-size: 0.58rem;
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 1px;
   color: var(--white);
 }
 
 .banner-item p {
-  font-size: 0.78rem;
-  line-height: 1.5;
+  font-size: 0.5rem;
+  line-height: 1.3;
   opacity: 0.85;
   color: var(--white);
 }
@@ -664,8 +680,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* === Trending Topics Section === */
 .trending-topics {
-  padding: 48px 0;
-  background: var(--bg-light);
+  padding: 32px 0;
+  background: #F0F4FA;
 }
 
 .topic-grid {
@@ -746,10 +762,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* === Footer === */
 .footer {
-  background-color: var(--white);
-  color: var(--text-dark);
-  padding: 48px 0 24px;
-  border-top: 1px solid var(--card-border);
+  background-color: #0E1530;
+  color: #ffffff;
+  padding: 32px 0 18px;
+  border-top: none;
 }
 
 .footer-content {
@@ -760,16 +776,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-section h4 {
-  font-size: 0.9rem;
-  margin-bottom: 16px;
-  color: var(--text-dark);
+  font-size: 0.75rem;
+  margin-bottom: 12px;
+  color: #ffffff;
   font-weight: 600;
 }
 
 .footer-section p {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.7rem;
+  line-height: 1.5;
 }
 
 .footer-section ul {
@@ -777,26 +793,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-section ul li {
-  padding: 5px 0;
+  padding: 3px 0;
 }
 
 .footer-section ul li a {
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   transition: color 0.2s ease;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
 }
 
 .footer-section ul li a:hover {
-  color: var(--primary-color);
+  color: #ffffff;
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--card-border);
-  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 16px;
   text-align: center;
-  color: var(--text-muted);
-  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.65rem;
 }
 
 /* === Floating Icon === */
