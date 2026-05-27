@@ -2805,6 +2805,18 @@ $(window).on("resize", function () {
   }
   seedFromUrlParams();
 
+  // Homepage: enhance goal card links with URL params for nav filtering
+  if (document.getElementById('index')) {
+    $('.hp-goal-card .hp-card-title a, .hp-goal-card ul a, .hp-goal-card .hp-card-more a').each(function() {
+      var href = $(this).attr('href');
+      if (href && href.indexOf('tasks/') !== -1) {
+        var cardTitle = $(this).closest('.hp-goal-card').find('.hp-card-title a').first().text().trim();
+        var separator = href.indexOf('?') === -1 ? '?' : '&';
+        $(this).attr('href', href + separator + 'view=tasks&category=' + encodeURIComponent(cardTitle));
+      }
+    });
+  }
+
   function updateUrlState() {
     var params = new URLSearchParams();
     var activeNav = sessionStorage.getItem('activeNav');
