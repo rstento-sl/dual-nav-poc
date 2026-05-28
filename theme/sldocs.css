@@ -6888,6 +6888,54 @@ p.hp-hero-title {
   margin-bottom: 10px;
 }
 
+.hp-hero p.hp-hero-titlerow,
+p.hp-hero-titlerow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.hp-hero-title-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0E1530;
+}
+
+.hp-hero-search {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: #1E5BD6;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.hp-hero-search:hover {
+  background: #1a4fb8;
+  transform: translateY(-1px);
+}
+
+.hp-hero-search:active {
+  transform: translateY(0);
+}
+
+.hp-search-icon {
+  font-size: 0.85rem;
+  margin-right: 8px;
+  filter: brightness(0) invert(1);
+}
+
+.hp-search-input {
+  font-size: 0.82rem;
+  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
 #index p.hp-hero-subtitle,
 p.hp-hero-subtitle {
   font-size: 0.85rem;

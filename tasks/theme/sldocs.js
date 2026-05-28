@@ -3410,4 +3410,16 @@ $(window).on("resize", function () {
   } // end if ($toc.length > 0)
 
   // prettifyCodeBlocks() - moved to build time (postprocess.py)
+
+  // Hero search box — click triggers the header search
+  var heroSearch = document.querySelector('.hp-hero-search');
+  if (heroSearch) {
+    heroSearch.addEventListener('click', function() {
+      var searchInput = document.getElementById('searchQuery');
+      if (searchInput) {
+        searchInput.focus();
+        if (typeof showPopup === 'function') showPopup();
+      }
+    });
+  }
 });
