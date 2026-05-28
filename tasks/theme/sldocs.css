@@ -6871,6 +6871,10 @@ a.hp-banner-cta,
 }
 
 /* Hero */
+#index .search-container-compact {
+  display: none;
+}
+
 .hp-hero {
   padding: 12px 0 6px;
 }
