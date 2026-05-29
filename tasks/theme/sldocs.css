@@ -844,7 +844,7 @@ article ul,article ol {
  .breadcrumb-header{
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   padding: 8px 0 12px 0;
   font-size: 13px;
  }
