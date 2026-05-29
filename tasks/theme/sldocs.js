@@ -2805,16 +2805,14 @@ $(window).on("resize", function () {
   }
   seedFromUrlParams();
 
-  // Homepage: enhance goal card links with URL params for nav filtering
+  // Homepage: add nav-state params to goal card links
   if (document.getElementById('index')) {
     $('.hp-goal-card .hp-card-title a, .hp-goal-card ul a, .hp-goal-card .hp-card-more a').each(function() {
       var href = $(this).attr('href');
       if (href && href.indexOf('goals/') !== -1) {
         var cardTitle = $(this).closest('.hp-goal-card').find('.hp-card-title a').first().text().trim();
         var separator = href.indexOf('?') === -1 ? '?' : '&';
-        // Rewrite to point to task build output (tasks/goals/) and add view params
-        var taskHref = 'tasks/' + href;
-        $(this).attr('href', taskHref + separator + 'view=tasks&category=' + encodeURIComponent(cardTitle));
+        $(this).attr('href', href + separator + 'view=tasks&category=' + encodeURIComponent(cardTitle));
       }
     });
   }
