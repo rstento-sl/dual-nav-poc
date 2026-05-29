@@ -13,8 +13,23 @@
   <!-- Google Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/2.1.4/themes/github.css" /> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/2.1.4/rainbow.min.js"></script> -->
+
+  <!-- Highlight.js for syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/gradient-light.min.css" integrity="sha512-6GvgqJ7t7UxZlT1V0sPyyZt5C+Kd7gR0dleu1G0uQxGm3k2FNc+6qXo5KcYqvSxgkXcVqYwGmTtX2C8rM1FJyA==" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-1c+VZVZPp4GqV1GZx1xA7YpXzXhY+S8o8QGx5yR3kS7E2T+I9vZbHcB6uOt+O6fQ1f+uR5u9jY8Cj7KvU3pRmA==" crossorigin="anonymous"></script>
+
+  <!-- Optional: Add specific language support -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js" integrity="sha512-fh7FqY7p8e2LP4xG1bH2AfGHlC3FJf8oU7GYo6vQ3zj6Z1+5pJH8qv5SW2Uu1eOoqsgqF8os2xHjlGcE1O3Npw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js" integrity="sha512-X9sBVkC+Xh1KmN6lVgKXoxc5A5FE1kP7V7sCFbfJEu2p7G2t3wH2Vx7XzH1E5dZlTQql2aR9ZT7gWZ7XqB5K4Q==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js" integrity="sha512-0q4H0TkvhH9e7j8C1uBl3xD4C9h1cUZg42jF0cF2d7u1N8g9PwJ1sH0F6uZ4xkJvXz2o8Y6k1v5lW7HP6v9ySQ==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js" integrity="sha512-3tU1a1FxPl8H1s2Ck0VqgZq3O/8wH6pH1PqR6mJ5vIu9zJxC1B8oN8lD1Q+Uu2p6P2rZ5jvYkR1nYVZ3fZ7hLw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js" integrity="sha512-5J7YxqV4mP3u+zL5fY3ZpF5H1nD8bQxU7tXvQh4pO1zD2xL8rV7hK9YcQnZrE1lM8fHh3vH8K5Kf7oW4R3VxvA==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/sql.min.js" integrity="sha512-l4sZx3rS4Lw3d1BvI1kVwL5gT3bD9uP3VfCqY6N7pX8jK0wT2yJ+YwU9mN4qV3ZxW1pD7bH5nE6uK5qT2U6xXg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js" integrity="sha512-G2lYw9qF6NnD4vQ5oT0yU3bU9lX7eP3hQ6rVwZ7mL2kJ3fP9qW4vR8yS6uJxN2oT4tZcW1sF8uV9yH3nB1k2xQ==" crossorigin="anonymous"></script>
+
+  <!-- Rainbow (Deprecated) -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/2.1.4/themes/github.css" /> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/2.1.4/rainbow.min.js"></script> -->
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <!-- <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script> -->
@@ -228,121 +243,283 @@
       </div>
     </div>
   </div>
-</div></header><nav class="toc" role="navigation"><ul><li><span>Integration Platform</span><ul><li><a href="../autosync/autosync-home.html">AutoSync</a><ul><li><a href="../autosync/autosync-about.html">Introduction</a></li><li><a href="../autosync/use-autosync.html">How to use AutoSync</a><ul><li><a href="../autosync/create-data-pipeline.html">Create a data pipeline</a></li><li><a href="../autosync/view-data-pipeline.html">View data pipeline</a></li><li><a href="../autosync/dashboard-list-view.html">Use dashboard list view</a></li><li><a href="../autosync/multiple-sources.html">Use multiple sources</a></li><li><a href="../autosync/choose-tables.html">Choose tables</a></li><li><a href="../autosync/transformations.html">Define transformations</a><ul><li><a href="../autosync/filter-columns.html">Filter columns</a></li><li><a href="../autosync/empty-values.html">Replace empty values</a></li><li><a href="../autosync/merge-columns.html">Merge columns</a></li><li><a href="../autosync/mask-data.html">Mask data</a></li><li><a href="../autosync/transformations-csv.html">CSV file transformations</a></li><li><a href="../autosync/transformations-guidelines.html">Transformation tips</a></li></ul></li><li><a href="../autosync/edit-data-pipeline.html">Edit a data pipeline</a></li><li><a href="../autosync/share-pipeline.html">Share a data pipeline</a></li><li><a href="../autosync/enable-notifications.html">Enable notifications</a></li><li><a href="../autosync/stop-data-pipeline.html">Stop a data pipeline</a></li><li><a href="../autosync/delete-data-pipeline.html">Delete a data pipeline</a></li><li><a href="../autosync/retrieve-deleted-data-pipeline.html">Retrieve or remove deleted</a></li><li><a href="../autosync/upgrade-data-pipeline.html">Upgrade data pipelines</a></li><li><a href="../autosync/export-import-pipeline.html">Migrate a data pipeline across environments</a></li></ul></li><li><a href="../autosync/data-load.html">How AutoSync loads data</a><ul><li><a href="../autosync/name-data-type.html">Names and data types</a></li><li><a href="../autosync/precision-scale.html">Precision and scale</a></li><li><a href="../autosync/change-capture.html">Reconcile changes</a></li><li><a href="../autosync/handle-errors.html">Error handling</a></li><li><a href="../autosync/synchronization-schedules.html">Synchronization schedules</a></li><li><a href="../autosync/load-type.html">Load types</a><ul><li><a href="../autosync/file-load.html">Load from files</a></li><li><a href="../autosync/incremental.html">Incremental</a></li><li><a href="../autosync/scd2.html">SCD2</a></li></ul></li></ul></li><li><a href="../autosync/map-data.html">How AutoSync maps data</a><ul></ul></li><li><a href="../autosync/connection-overview.html">Configure endpoints</a><ul><li><a href="../autosync/on-prem-overview.html">On-premises endpoints</a></li><li><a href="../autosync/create-credentials.html">Create credentials</a></li><li><a href="../autosync/edit-credentials.html">Edit or delete credentials</a></li></ul></li><li><a href="../autosync/supported-endpoints.html">Supported endpoints</a><ul><li><a href="../autosync/adls-gen2-as-target.html">ADLS Gen2 target</a></li><li><a href="../autosync/config-redshift-acct-as-data-source.html">Amazon Redshift source</a></li><li><a href="../autosync/config-redshift-acct-as-data-destination.html">Amazon Redshift target</a></li><li><a href="../autosync/config-aws-s3-acct-as-data-source.html">Amazon S3 source</a></li><li><a href="../autosync/aws-s3-as-target.html">Amazon S3 target</a></li><li><a href="../autosync/config-azure-synapse-acct-as-data-source.html">Azure Synapse source</a></li><li><a href="../autosync/config-azure-synapse-acct-as-data-destination.html">Azure Synapse target</a></li><li><a href="../autosync/config-csv-as-data-source.html">CSV file source</a></li><li><a href="../autosync/databricks-as-target.html">Databricks target</a></li><li><a href="../autosync/config-dynamics-365-acct-as-data-source.html">Microsoft Dynamics 365 for Sales source</a></li><li><a href="../autosync/config-gainsightpx-as-data-source.html">Gainsight PX source</a></li><li><a href="../autosync/config-google-analytics-acct-as-data-source.html">Google Analytics 4 source</a></li><li><a href="../autosync/config-bigquery-as-data-source.html">Google BigQuery source</a></li><li><a href="../autosync/config-bigquery-as-destination.html">Google BigQuery target</a></li><li><a href="../autosync/config-google-sheets-acct-as-data-source.html">Google Sheets source</a></li><li><a href="../autosync/source-http-client.html">HTTP client source</a></li><li><a href="../autosync/config-jdbc-acct-as-data-source.html">Generic JDBC source</a></li><li><a href="../autosync/config-marketo-acct-as-data-source.html">Marketo source</a></li><li><a href="../autosync/config-mysql-server-acct-as-data-source.html">MySQL source</a></li><li><a href="../autosync/config-mysql-server-acct-as-data-destination.html">MySQL target</a></li><li><a href="../autosync/config-oracle-acct-as-data-source.html">Oracle source</a></li><li><a href="../autosync/config-oracle-acct-as-data-destination.html">Oracle target</a></li><li><a href="../autosync/config-postgre-as-data-source.html">PostgreSQL source</a></li><li><a href="../autosync/config-postgre-as-data-destination.html">PostgreSQL target</a></li><li><a href="../autosync/config-salesforce-acct-as-data-source.html">Salesforce source</a></li><li><a href="../autosync/config-sap-hana-acct-as-data-destination.html">SAP HANA target</a></li><li><a href="../autosync/config-servicenow-acct-as-data-source.html">ServiceNow source</a></li><li><a href="../autosync/config-sftp-acct-as-data-source.html">SFTP source</a></li><li><a href="../autosync/config-snowflake-acct-as-data-source.html">Snowflake source</a></li><li><a href="../autosync/config-snowflake-acct-as-data-destination.html">Snowflake target</a></li><li><a href="../autosync/config-sql-server-acct-as-data-source.html">SQL Server source</a></li><li><a href="../autosync/config-sql-server-acct-as-data-destination.html">SQL Server target</a></li><li><a href="../autosync/sql-server-target-bulk.html">SQL Server Bulk Load target</a></li><li><a href="../autosync/config-zendesk-acct-as-data-source.html">Zendesk source</a></li></ul></li><li><a href="../autosync/custom-endpoints.html">Create custom endpoints</a><ul><li><a href="../autosync/endpoint-components.html">Endpoint components</a></li><li><a href="../autosync/maven-archetype.html">Maven archetype</a></li><li><a href="../autosync/folder-structure.html">Project folder structure</a></li><li><a href="../autosync/endpoint-schema.html">Endpoint schema</a></li><li><a href="../autosync/common-model.html">Common data model</a></li><li><a href="../autosync/endpoint-mapping-examples.html">CDM mapping examples</a></li><li><a href="../autosync/maven-package.html">Package and deploy</a></li></ul></li><li><a href="../autosync/administration-overview.html">Administration</a><ul><li><a href="../autosync/management-overview.html">Manage AutoSync users</a></li><li><a href="../autosync/account-groups.html">Manage user groups</a></li><li><a href="../autosync/enhanced-account-encryption.html">Interaction with Enhanced Account Encryption</a></li><li><a href="../autosync/monitor-autosync.html">Monitor data pipelines</a></li><li><a href="../autosync/troubleshoot-data-pipelines.html">Troubleshoot data pipelines</a></li></ul></li></ul></li><li><a href="../designer/designer-home.html">Designer</a><ul><li><a href="../designer/designer-about.html">Introduction</a></li><li><a href="../designer/designer-toolbar.html">Designer Toolbar</a></li><li><a href="../designer/keyboard-commands.html">Keyboard Commands</a></li><li><a href="../designer/print-pipeline.html">Print Pipeline</a></li><li><a href="../designer/using-pipeline-notes-in-designer.html">Using Pipeline Notes in SnapLogic Designer</a></li></ul></li><li><a href="../snapgpt/snapgpt-home.html">SnapGPT</a><ul><li><a href="../snapgpt/snapgpt-about.html">Introduction</a></li><li><a href="../snapgpt/snapgpt-use.html">Interact with SnapGPT</a><ul><li><a href="../snapgpt/snapgpt-pipe-gen-rag.html">Generate pipeline</a></li><li><a href="../snapgpt/snapgpt-analyze-pipelines.html">Analyze pipeline</a></li><li><a href="../snapgpt/generate-queries.html">Generate queries</a></li><li><a href="../snapgpt/snapgpt-copilot.html">Configure Snaps with Snap copilot</a><ul><li><a href="../snapgpt/snapgpt-copilot-snap-banner.html">Launch SnapGPT from Snap settings </a></li></ul></li><li><a href="../snapgpt/snapgpt-refine-pipelines.html">Refine pipelines</a></li><li><a href="../snapgpt/snapgpt-pipe-gen-image.html">Generate a pipeline from an image</a></li><li><a href="../snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate expressions</a><ul><li><a href="../snapgpt/mapper-expr-example1.html">Map to target</a></li><li><a href="../snapgpt/mapper-expr-example2.html">Extract pipeline parameters</a></li></ul></li></ul></li><li><a href="../snapgpt/snapgpt-settings.html">Configure SnapGPT</a></li><li><a href="../snapgpt/snapgpt-best-practices.html">Prompt tips</a></li><li><a href="../snapgpt/snapgpt-thinking-modes.html">Thinking modes</a></li><li><a href="../snapgpt/snapgpt-question-and-answer.html">SnapGPT FAQ</a></li></ul></li></ul></li><li><span>Administration</span><ul><li><a href="../admin-manager/admin-manager-home.html">Admin Manager</a><ul><li><a href="../admin-manager/admin-manager-about.html">Introduction</a></li><li><a href="../admin-manager/administration-get-started.html">Get Started</a></li><li><a href="../admin-manager/designer-settings.html">Designer settings</a></li><li><a href="../admin-manager/snapgpt-settings.html">SnapGPT settings</a></li><li><a href="../admin-manager/apim.html">API Management 3.0 settings</a></li><li><a href="../admin-manager/asset-catalog.html">Asset catalog settings</a></li><li><a href="../admin-manager/autosync-settings.html">AutoSync settings</a></li><li><a href="../admin-manager/users-groups-roles.html">User management</a><ul><li><a href="../admin-manager/admin-manager-users.html">Manage user accounts</a><ul><li><a href="../admin-manager/create-user-account.html">Create user account</a></li><li><a href="../admin-manager/create-team-account.html">Create team account</a></li><li><a href="../admin-manager/create-service-account.html">Create service account</a></li><li><a href="../admin-manager/approve-portal-user.html">Approve or reject Portal users</a></li><li><a href="../admin-manager/delete-account.html">Delete accounts</a></li><li><a href="../admin-manager/edit-user-account.html">Edit accounts</a></li></ul></li><li><a href="../admin-manager/admin-manager-groups.html">Manage groups</a></li><li><a href="../admin-manager/admin-manager-roles.html">Manage roles</a></li></ul></li><li><a href="../admin-manager/general-settings.html">Environment settings</a></li><li><a href="../admin-manager/snaplexes.html">Snaplexes</a><ul><li><a href="../admin-manager/admin-manager-create-snaplex.html">Add a Groundplex</a></li><li><a href="../admin-manager/admin-manager-update-snaplex.html">Update a Snaplex</a></li></ul></li><li><a href="../admin-manager/git-integration.html">Git Integration</a></li><li><a href="../admin-manager/slack.html">Slack setup</a></li><li><a href="../admin-manager/custom-privacy-notice.html">Custom privacy notice</a></li><li><a href="../admin-manager/snap-packs.html">Snap Packs</a><ul><li><a href="../admin-manager/restrict-snap-visibility.html">Restrict Snap visibility</a></li></ul></li><li><a href="../admin-manager/password-expiration.html">Password expiry</a></li><li><a href="../admin-manager/admin-manager-sessions.html">Session timeouts</a></li><li><a href="../admin-manager/authentication.html">Authentication</a><ul><li><a href="../admin-manager/sso.html">SSO authentication</a><ul><li><a href="../admin-manager/create-idp-integration.html">Create IdP application</a></li><li><a href="../admin-manager/configure-sso.html">Configure SSO</a></li></ul></li><li><a href="../admin-manager/jwt.html">JWT authentication</a><ul><li><a href="../admin-manager/jwt-config.html">JWT configuration</a></li></ul></li></ul></li><li><a href="../admin-manager/email-encryption.html">Email encryption</a></li><li><a href="../admin-manager/allowlist.html">Allowlists</a><ul><li><a href="../admin-manager/cloud-triggered-allowlist.html">Cloud-triggered allowlist</a></li><li><a href="../admin-manager/cors-allowlist.html">CORS allowlist</a></li><li><a href="../admin-manager/groundplex-allowlist.html">Groundplex allowlist</a></li><li><a href="../admin-manager/email-allowlist.html">Email domain allowlist</a></li></ul></li><li><a href="../admin-manager/account-encryption.html">Account encryption</a><ul><li><a href="../admin-manager/enhanced-encryption.html">Enable Enhanced Account Encryption (EAE)</a></li><li><a href="../admin-manager/trusted-environment.html">Trusted environments</a></li></ul></li></ul></li></ul></li><li><span><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="8" cy="8" r="6"/></svg> Observability</span><ul><li><a href="../monitor/monitor-home.html">Monitor</a><ul><li><a href="../monitor/monitor-about.html">Introduction</a></li><li><a href="../monitor/faq.html">FAQs</a></li><li><a href="../monitor/monitor-quick-reference.html">Monitor quick reference</a></li><li><a href="../monitor/monitor-analyze.html">Analyze pipelines and infrastructure</a></li><li><a href="../monitor/insights.html">Insights</a></li><li><a href="../monitor/catalog.html">Asset catalog</a><ul><li><a href="../monitor/view-metadata.html">View metadata and relationships</a><ul><li><a href="../monitor/catalog-task-details.html">View task details</a></li><li><a href="../monitor/catalog-pipeline-details.html">View pipeline details</a></li><li><a href="../monitor/catalog-account-details.html">View account details</a></li></ul></li><li><a href="../monitor/asset-table-config.html">Configure asset table</a></li><li><a href="../monitor/custom-metadata.html">Manage custom metadata</a><ul><li><a href="../monitor/download-upload-metadata.html">Download and upload</a></li><li><a href="../monitor/add-supplemental-metadata.html">Add custom metadata</a></li><li><a href="../monitor/edit-task-metadata.html">Edit task metadata</a></li><li><a href="../monitor/ic-reserved-names.html">Reserved names</a></li></ul></li><li><a href="../monitor/catalog-faq.html">FAQs</a></li></ul></li><li><a href="../monitor/analyze-execution.html">Pipeline executions</a><ul><li><a href="../monitor/find-executions.html">Find executions</a></li><li><a href="../monitor/stop-executions.html">Stop executions</a></li><li><a href="../monitor/execution-table.html">Configure the executions table</a></li><li><a href="../monitor/download-executions.html">Download execution records</a></li><li><a href="../monitor/pipeline-details-panel.html">View pipeline details</a><ul><li><a href="../monitor/snap-statistics-tab.html">Snap Statistics tab</a></li><li><a href="../monitor/pipeline-logs-tab.html">Pipeline Logs tab</a></li><li><a href="../monitor/pipeline-parameters-tab.html">Pipeline Parameters tab</a></li><li><a href="../monitor/state-transition-tab.html">State Transition tab</a></li></ul></li></ul></li><li><a href="../monitor/monitor-snaplex.html">Infrastructure</a><ul><li><a href="../monitor/sys-overview-graph-view.html">System overview graph view</a></li><li><a href="../monitor/sys-overview-list-view.html">System overview table view</a></li><li><a href="../monitor/analyze-infrastructure.html">Analyze and manage Snaplexes</a></li><li><a href="../monitor/snaplex-details-panel.html">Snaplex details panel</a></li><li><a href="../monitor/node-details-panel.html">Node details panel</a></li></ul></li><li><a href="../monitor/metrics-about.html">Metrics</a><ul><li><a href="../monitor/analyze-metrics.html">Graph descriptions</a></li><li><a href="../monitor/use-metric-charts.html">Work with Metrics graphs</a></li></ul></li><li><a href="../monitor/observe-api-metrics.html">API metrics</a><ul><li><a href="../monitor/troubleshooting-api-metrics.html">Troubleshoot APIM requests and Ultra Tasks</a></li></ul></li><li><a href="../monitor/api-usage.html">API usage</a></li><li><a href="../monitor/notification-center.html">Notification center</a><ul><li><a href="../monitor/alerts-tab.html">Alerts tab</a></li><li><a href="../monitor/activity-tab.html">Activity tab</a></li><li><a href="../monitor/notices-tab.html">Notices tab</a></li><li><a href="../monitor/notification-settings-tab.html">Notification settings tab</a></li><li><a href="../monitor/new-notification.html">Create a notification</a></li><li><a href="../monitor/new-broadcast.html">Create a broadcast notice</a></li><li><a href="../monitor/snaplex-node-notification.html">Create a Snaplex node notification</a></li><li><a href="../monitor/task-notification.html">Create a task notification</a></li><li><a href="../monitor/configure-slack.html">Manage the Slack integration</a></li><li><a href="../monitor/node-init-alerts.html">Node initialization alerts</a></li></ul></li><li><a href="../monitor/review-alert-history.html">Alert history</a></li><li><a href="../monitor/review-activity-log.html">Activity logs</a></li><li><a href="../monitor/troubleshooting.html">Troubleshooting</a></li></ul></li></ul></li></ul></nav><main role="main"><article role="article" aria-labelledby="ariaid-title1"><div class="breadcrumb-header"><span class="breadcrumb-item breadcrumb-view-indicator">Feature:</span><span class="breadcrumb-item"><span class="breadcrumb-label">Observability</span></span><span class="breadcrumb-item"><a href="../monitor/monitor-home.html" class="breadcrumb-link">Monitor</a></span><span class="breadcrumb-item"><a href="../monitor/analyze-execution.html" class="breadcrumb-link">Pipeline executions</a></span></div>
+</div></header><nav class="toc" role="navigation"><ul><li><span>Integration Platform</span><ul><li><a href="../agentcreator/agentcreator-about.html">AgentCreator</a><ul><li><a href="../agentcreator/agentcreator-support-matrix.html">Support matrix</a></li><li><a href="../agentcreator/agentcreator-build-agents.html">AgentCreator Architecture and Pipeline Design</a><ul><li><a href="../agentcreator/agentcreator-getstarted-build-agents.html">Build Agent Pipelines in AgentCreator</a></li><li><a href="../agentcreator/agent-creator-tool-pipelines.html">Create Tools for your Agents</a></li><li><a href="../agentcreator/agentcreator-usecase-briefing-agent.html">Use Case: Briefing Agent</a></li></ul></li><li><a href="../agentcreator/prompt-composer/agentcreator-promptcomposer-about.html">Prompt Composer</a><ul><li><a href="../agentcreator/prompt-composer/agentcreator-promptcomposer-ref.html">Prompt Composer Layout</a></li><li><a href="../agentcreator/prompt-composer/agentcreator-promptcomposer-launch.html">Get Started with Prompt Composer</a></li><li><a href="../agentcreator/prompt-composer/agentcreator-promptcomposer-assistance.html">SnapGPT for Prompts</a></li><li><a href="../agentcreator/prompt-composer/agentcreator-promptcomposer-troubleshooting.html">Troubleshoot Prompt Composer</a></li></ul></li><li><a href="../agentcreator/agentvis/agentcreator-agent-visualizer-about.html">Agent Visualizer</a><ul><li><a href="../agentcreator/agentvis/agentvis-launch.html">Get Started with Agent Visualizer</a></li><li><a href="../agentcreator/agentvis/agentvis-ui-reference.html">Agent Visualizer Diagram and Log Layout</a></li><li><a href="../agentcreator/agentvis/agentvis-troubleshooting.html">Troubleshooting Visualization Errors</a></li></ul></li><li><a href="../agentcreator/agentcreator-use-cases.html">AgentCreator Pipelines for Retrieval-Augmented Generation UseCases</a><ul><li><a href="../agentcreator/agentcreator-use-cases/use-case-hr-qna.html">HR Demo</a></li><li><a href="../agentcreator/agentcreator-use-cases/use-case-legal-contract-analysis.html">Legal contract analysis</a></li><li><a href="../agentcreator/agentcreator-use-cases/use-case-sec-filing.html">Financial Portfolio Information Extraction from SEC Filings</a></li><li><a href="../agentcreator/agentcreator-use-cases/agentcreator-evaluation-tutorial.html">AgentCreator Evaluation</a></li></ul></li><li><a href="../agentcreator/agentcreator-workflow.html">Resources for getting started in AgentCreator</a></li><li><a href="../agentcreator/agentcreator-concepts.html">Concepts</a><ul><li><a href="../agentcreator/ac-concepts/parse-message-lists.html">Parse message list</a></li></ul></li><li><a href="../agentcreator/agentcreator-faq.html">AgentCreator FAQ</a></li></ul></li><li><a href="../autosync/autosync-home.html">AutoSync</a><ul><li><a href="../autosync/autosync-about.html">Introduction</a></li><li><a href="../autosync/use-autosync.html">How to use AutoSync</a><ul><li><a href="../autosync/create-data-pipeline.html">Create a data pipeline</a></li><li><a href="../autosync/view-data-pipeline.html">View data pipeline</a></li><li><a href="../autosync/dashboard-list-view.html">Use dashboard list view</a></li><li><a href="../autosync/multiple-sources.html">Use multiple sources</a></li><li><a href="../autosync/choose-tables.html">Choose tables</a></li><li><a href="../autosync/transformations.html">Define transformations</a><ul><li><a href="../autosync/filter-columns.html">Filter columns</a></li><li><a href="../autosync/empty-values.html">Replace empty values</a></li><li><a href="../autosync/merge-columns.html">Merge columns</a></li><li><a href="../autosync/mask-data.html">Mask data</a></li><li><a href="../autosync/transformations-csv.html">CSV file transformations</a></li><li><a href="../autosync/transformations-guidelines.html">Transformation tips</a></li></ul></li><li><a href="../autosync/edit-data-pipeline.html">Edit a data pipeline</a></li><li><a href="../autosync/share-pipeline.html">Share a data pipeline</a></li><li><a href="../autosync/enable-notifications.html">Enable notifications</a></li><li><a href="../autosync/stop-data-pipeline.html">Stop a data pipeline</a></li><li><a href="../autosync/delete-data-pipeline.html">Delete a data pipeline</a></li><li><a href="../autosync/retrieve-deleted-data-pipeline.html">Retrieve or remove deleted</a></li><li><a href="../autosync/upgrade-data-pipeline.html">Upgrade data pipelines</a></li><li><a href="../autosync/export-import-pipeline.html">Migrate a data pipeline across environments</a></li></ul></li><li><a href="../autosync/data-load.html">How AutoSync loads data</a><ul><li><a href="../autosync/name-data-type.html">Names and data types</a></li><li><a href="../autosync/precision-scale.html">Precision and scale</a></li><li><a href="../autosync/change-capture.html">Reconcile changes</a></li><li><a href="../autosync/handle-errors.html">Error handling</a></li><li><a href="../autosync/synchronization-schedules.html">Synchronization schedules</a></li><li><a href="../autosync/load-type.html">Load types</a><ul><li><a href="../autosync/file-load.html">Load from files</a></li><li><a href="../autosync/incremental.html">Incremental</a></li><li><a href="../autosync/scd2.html">SCD2</a></li></ul></li></ul></li><li><a href="../autosync/map-data.html">How AutoSync maps data</a><ul></ul></li><li><a href="../autosync/connection-overview.html">Configure endpoints</a><ul><li><a href="../autosync/on-prem-overview.html">On-premises endpoints</a></li><li><a href="../autosync/create-credentials.html">Create credentials</a></li><li><a href="../autosync/edit-credentials.html">Edit or delete credentials</a></li></ul></li><li><a href="../autosync/supported-endpoints.html">Supported endpoints</a><ul><li><a href="../autosync/adls-gen2-as-target.html">ADLS Gen2 target</a></li><li><a href="../autosync/config-redshift-acct-as-data-source.html">Amazon Redshift source</a></li><li><a href="../autosync/config-redshift-acct-as-data-destination.html">Amazon Redshift target</a></li><li><a href="../autosync/config-aws-s3-acct-as-data-source.html">Amazon S3 source</a></li><li><a href="../autosync/aws-s3-as-target.html">Amazon S3 target</a></li><li><a href="../autosync/config-azure-synapse-acct-as-data-source.html">Azure Synapse source</a></li><li><a href="../autosync/config-azure-synapse-acct-as-data-destination.html">Azure Synapse target</a></li><li><a href="../autosync/config-csv-as-data-source.html">CSV file source</a></li><li><a href="../autosync/databricks-as-target.html">Databricks target</a></li><li><a href="../autosync/config-dynamics-365-acct-as-data-source.html">Microsoft Dynamics 365 for Sales source</a></li><li><a href="../autosync/config-gainsightpx-as-data-source.html">Gainsight PX source</a></li><li><a href="../autosync/config-google-analytics-acct-as-data-source.html">Google Analytics 4 source</a></li><li><a href="../autosync/config-bigquery-as-data-source.html">Google BigQuery source</a></li><li><a href="../autosync/config-bigquery-as-destination.html">Google BigQuery target</a></li><li><a href="../autosync/config-google-sheets-acct-as-data-source.html">Google Sheets source</a></li><li><a href="../autosync/source-http-client.html">HTTP client source</a></li><li><a href="../autosync/config-jdbc-acct-as-data-source.html">Generic JDBC source</a></li><li><a href="../autosync/config-marketo-acct-as-data-source.html">Marketo source</a></li><li><a href="../autosync/config-mysql-server-acct-as-data-source.html">MySQL source</a></li><li><a href="../autosync/config-mysql-server-acct-as-data-destination.html">MySQL target</a></li><li><a href="../autosync/config-oracle-acct-as-data-source.html">Oracle source</a></li><li><a href="../autosync/config-oracle-acct-as-data-destination.html">Oracle target</a></li><li><a href="../autosync/config-postgre-as-data-source.html">PostgreSQL source</a></li><li><a href="../autosync/config-postgre-as-data-destination.html">PostgreSQL target</a></li><li><a href="../autosync/config-salesforce-acct-as-data-source.html">Salesforce source</a></li><li><a href="../autosync/config-sap-hana-acct-as-data-destination.html">SAP HANA target</a></li><li><a href="../autosync/config-servicenow-acct-as-data-source.html">ServiceNow source</a></li><li><a href="../autosync/config-sftp-acct-as-data-source.html">SFTP source</a></li><li><a href="../autosync/config-snowflake-acct-as-data-source.html">Snowflake source</a></li><li><a href="../autosync/config-snowflake-acct-as-data-destination.html">Snowflake target</a></li><li><a href="../autosync/config-sql-server-acct-as-data-source.html">SQL Server source</a></li><li><a href="../autosync/config-sql-server-acct-as-data-destination.html">SQL Server target</a></li><li><a href="../autosync/sql-server-target-bulk.html">SQL Server Bulk Load target</a></li><li><a href="../autosync/config-zendesk-acct-as-data-source.html">Zendesk source</a></li></ul></li><li><a href="../autosync/custom-endpoints.html">Create custom endpoints</a><ul><li><a href="../autosync/endpoint-components.html">Endpoint components</a></li><li><a href="../autosync/maven-archetype.html">Maven archetype</a></li><li><a href="../autosync/folder-structure.html">Project folder structure</a></li><li><a href="../autosync/endpoint-schema.html">Endpoint schema</a></li><li><a href="../autosync/common-model.html">Common data model</a></li><li><a href="../autosync/endpoint-mapping-examples.html">CDM mapping examples</a></li><li><a href="../autosync/maven-package.html">Package and deploy</a></li></ul></li><li><a href="../autosync/administration-overview.html">Administration</a><ul><li><a href="../autosync/management-overview.html">Manage AutoSync users</a></li><li><a href="../autosync/account-groups.html">Manage user groups</a></li><li><a href="../autosync/enhanced-account-encryption.html">Interaction with Enhanced Account Encryption</a></li><li><a href="../autosync/monitor-autosync.html">Monitor data pipelines</a></li><li><a href="../autosync/troubleshoot-data-pipelines.html">Troubleshoot data pipelines</a></li></ul></li></ul></li><li><a href="../designer/designer-home.html">Designer</a><ul><li><a href="../designer/designer-about.html">Introduction</a></li><li><a href="../designer/designer-toolbar.html">Designer Toolbar</a></li><li><a href="../designer/keyboard-commands.html">Keyboard Commands</a></li><li><a href="../designer/print-pipeline.html">Print Pipeline</a></li><li><a href="../designer/using-pipeline-notes-in-designer.html">Using Pipeline Notes in SnapLogic Designer</a></li></ul></li><li><a href="../snapgpt/snapgpt-about.html">Introduction</a><ul><li><a href="../snapgpt/snapgpt-use.html">Interact with SnapGPT</a><ul><li><a href="../snapgpt/snapgpt-pipe-gen-rag.html">Generate pipeline</a></li><li><a href="../snapgpt/snapgpt-analyze-pipelines.html">Analyze pipeline</a></li><li><a href="../snapgpt/generate-queries.html">Generate queries</a></li><li><a href="../snapgpt/snapgpt-copilot.html">Configure Snaps with Snap copilot</a><ul><li><a href="../snapgpt/snapgpt-copilot-snap-banner.html">Launch SnapGPT from Snap settings </a></li></ul></li><li><a href="../snapgpt/snapgpt-preview-data-insights.html">Get insights on the Snaps preview data</a></li><li><a href="../snapgpt/snapgpt-refine-pipelines.html">Refine pipelines</a></li><li><a href="../snapgpt/snapgpt-pipe-gen-image.html">Generate a pipeline from an image</a></li><li><a href="../snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate expressions</a><ul><li><a href="../snapgpt/mapper-expr-example1.html">Map to target</a></li><li><a href="../snapgpt/mapper-expr-example2.html">Extract pipeline parameters</a></li></ul></li></ul></li><li><a href="../snapgpt/snapgpt-settings.html">Configure SnapGPT</a></li><li><a href="../snapgpt/snapgpt-best-practices.html">Prompt tips</a></li><li><a href="../snapgpt/snapgpt-thinking-modes.html">Thinking modes</a></li><li><a href="../snapgpt/snapgpt-question-and-answer.html">SnapGPT FAQ</a></li></ul></li></ul></li><li><span>Administration</span><ul><li><a href="../admin-manager/admin-manager-home.html">Admin Manager</a><ul><li><a href="../admin-manager/admin-manager-about.html">Introduction</a></li><li><a href="../admin-manager/administration-get-started.html">Get Started</a></li><li><a href="../admin-manager/designer-settings.html">Designer settings</a></li><li><a href="../admin-manager/snapgpt-settings.html">SnapGPT settings</a></li><li><a href="../admin-manager/apim.html">API Management 3.0 settings</a></li><li><a href="../admin-manager/asset-catalog.html">Asset catalog settings</a></li><li><a href="../admin-manager/autosync-settings.html">AutoSync settings</a></li><li><a href="../admin-manager/users-groups-roles.html">User management</a><ul><li><a href="../admin-manager/admin-manager-users.html">Manage user accounts</a><ul><li><a href="../admin-manager/create-user-account.html">Create user account</a></li><li><a href="../admin-manager/create-team-account.html">Create team account</a></li><li><a href="../admin-manager/create-service-account.html">Create service account</a></li><li><a href="../admin-manager/approve-portal-user.html">Approve or reject Portal users</a></li><li><a href="../admin-manager/delete-account.html">Delete accounts</a></li><li><a href="../admin-manager/edit-user-account.html">Edit accounts</a></li></ul></li><li><a href="../admin-manager/admin-manager-groups.html">Manage groups</a></li><li><a href="../admin-manager/admin-manager-roles.html">Manage roles</a></li></ul></li><li><a href="../admin-manager/general-settings.html">Environment settings</a></li><li><a href="../admin-manager/snaplexes.html">Snaplexes</a><ul><li><a href="../admin-manager/admin-manager-create-snaplex.html">Add a Groundplex</a></li><li><a href="../admin-manager/admin-manager-update-snaplex.html">Update a Snaplex</a></li></ul></li><li><a href="../admin-manager/git-integration.html">Git Integration</a></li><li><a href="../admin-manager/slack.html">Slack setup</a></li><li><a href="../admin-manager/custom-privacy-notice.html">Custom privacy notice</a></li><li><a href="../admin-manager/snap-packs.html">Snap Packs</a><ul><li><a href="../admin-manager/restrict-snap-visibility.html">Restrict Snap visibility</a></li></ul></li><li><a href="../admin-manager/password-expiration.html">Password expiry</a></li><li><a href="../admin-manager/admin-manager-sessions.html">Session timeouts</a></li><li><a href="../admin-manager/authentication.html">Authentication</a><ul><li><a href="../admin-manager/sso.html">SSO authentication</a><ul><li><a href="../admin-manager/create-idp-integration.html">Create IdP application</a></li><li><a href="../admin-manager/configure-sso.html">Configure SSO</a></li></ul></li><li><a href="../admin-manager/jwt.html">JWT authentication</a><ul><li><a href="../admin-manager/jwt-config.html">JWT configuration</a></li></ul></li></ul></li><li><a href="../admin-manager/email-encryption.html">Email encryption</a></li><li><a href="../admin-manager/allowlist.html">Allowlists</a><ul><li><a href="../admin-manager/cloud-triggered-allowlist.html">Cloud-triggered allowlist</a></li><li><a href="../admin-manager/cors-allowlist.html">CORS allowlist</a></li><li><a href="../admin-manager/groundplex-allowlist.html">Groundplex allowlist</a></li><li><a href="../admin-manager/email-allowlist.html">Email domain allowlist</a></li></ul></li><li><a href="../admin-manager/account-encryption.html">Account encryption</a><ul><li><a href="../admin-manager/enhanced-encryption.html">Enable Enhanced Account Encryption (EAE)</a></li><li><a href="../admin-manager/trusted-environment.html">Trusted environments</a></li></ul></li></ul></li></ul></li><li><span><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="8" cy="8" r="6"/></svg> Observability</span><ul><li><a href="../monitor/monitor-about.html">Introduction</a><ul><li><a href="../monitor/faq.html">FAQs</a></li><li><a href="../monitor/monitor-quick-reference.html">Monitor quick reference</a></li><li><a href="../monitor/monitor-analyze.html">Analyze pipelines and infrastructure</a></li><li><a href="../monitor/insights.html">Insights</a></li><li><a href="../monitor/catalog.html">Asset catalog</a><ul><li><a href="../monitor/view-metadata.html">View metadata and relationships</a><ul><li><a href="../monitor/catalog-task-details.html">View task details</a></li><li><a href="../monitor/catalog-pipeline-details.html">View pipeline details</a></li><li><a href="../monitor/catalog-account-details.html">View account details</a></li></ul></li><li><a href="../monitor/asset-table-config.html">Configure asset table</a></li><li><a href="../monitor/custom-metadata.html">Manage custom metadata</a><ul><li><a href="../monitor/download-upload-metadata.html">Download and upload</a></li><li><a href="../monitor/add-supplemental-metadata.html">Add custom metadata</a></li><li><a href="../monitor/edit-task-metadata.html">Edit task metadata</a></li><li><a href="../monitor/ic-reserved-names.html">Reserved names</a></li></ul></li><li><a href="../monitor/catalog-faq.html">FAQs</a></li></ul></li><li><a href="../monitor/analyze-execution.html">Pipeline executions</a><ul><li><a href="../monitor/find-executions.html">Find executions</a></li><li><a href="../monitor/stop-executions.html">Stop executions</a></li><li><a href="../monitor/execution-table.html">Configure the executions table</a></li><li><a href="../monitor/download-executions.html">Download execution records</a></li><li><a href="../monitor/pipeline-details-panel.html">View pipeline details</a><ul><li><a href="../monitor/snap-statistics-tab.html">Snap Statistics tab</a></li><li><a href="../monitor/pipeline-logs-tab.html">Pipeline Logs tab</a></li><li><a href="../monitor/pipeline-parameters-tab.html">Pipeline Parameters tab</a></li><li><a href="../monitor/state-transition-tab.html">State Transition tab</a></li></ul></li></ul></li><li><a href="../monitor/monitor-snaplex.html">Infrastructure</a><ul><li><a href="../monitor/sys-overview-graph-view.html">System overview graph view</a></li><li><a href="../monitor/sys-overview-list-view.html">System overview table view</a></li><li><a href="../monitor/analyze-infrastructure.html">Analyze and manage Snaplexes</a></li><li><a href="../monitor/snaplex-details-panel.html">Snaplex details panel</a></li><li><a href="../monitor/node-details-panel.html">Node details panel</a></li></ul></li><li><a href="../monitor/metrics-about.html">Metrics</a><ul><li><a href="../monitor/analyze-metrics.html">Graph descriptions</a></li><li><a href="../monitor/use-metric-charts.html">Work with Metrics graphs</a></li></ul></li><li><a href="../monitor/observe-api-metrics.html">API metrics</a><ul><li><a href="../monitor/troubleshooting-api-metrics.html">Troubleshoot APIM requests and Ultra Tasks</a></li></ul></li><li><a href="../monitor/mcp-metrics.html">MCP metrics</a></li><li><a href="../monitor/api-usage.html">API usage</a></li><li><a href="../monitor/notification-center.html">Notification center</a><ul><li><a href="../monitor/alerts-tab.html">Alerts tab</a></li><li><a href="../monitor/activity-tab.html">Activity tab</a></li><li><a href="../monitor/notices-tab.html">Notices tab</a></li><li><a href="../monitor/notification-settings-tab.html">Notification settings tab</a></li><li><a href="../monitor/new-notification.html">Create a notification</a></li><li><a href="../monitor/new-broadcast.html">Create a broadcast notice</a></li><li><a href="../monitor/snaplex-node-notification.html">Create a Snaplex node notification</a></li><li><a href="../monitor/task-notification.html">Create a task notification</a></li><li><a href="../monitor/configure-slack.html">Manage the Slack integration</a></li><li><a href="../monitor/node-init-alerts.html">Node initialization alerts</a></li></ul></li><li><a href="../monitor/review-alert-history.html">Alert history</a></li><li><a href="../monitor/review-activity-log.html">Activity logs</a></li><li><a href="../monitor/troubleshooting.html">Troubleshooting</a></li></ul></li></ul></li></ul></nav><main role="main"><article role="article" aria-labelledby="ariaid-title1"><div class="breadcrumb-header"><span class="breadcrumb-item breadcrumb-view-indicator">Feature:</span><span class="breadcrumb-item"><span class="breadcrumb-label">Observability</span></span><span class="breadcrumb-item"><a href="../monitor/monitor-about.html" class="breadcrumb-link">Introduction</a></span><span class="breadcrumb-item"><a href="../monitor/analyze-execution.html" class="breadcrumb-link">Pipeline executions</a></span></div>
   <h1 class="title topictitle1" id="ariaid-title1">Pipeline executions</h1>
   
   <div class="body conbody">
     <section class="section" id="analyze-execution__section_vpg_db3_zfc">
-      <p class="p">The <span class="ph uicontrol">Pipeline executions</span> page shows integration executions and captures errors
-        and warnings for troubleshooting.</p>
+      <p class="p">The <span class="ph uicontrol">Pipeline executions</span> page shows integration executions and
+        captures errors and warnings for troubleshooting. This page includes historical data up to
+        45 days old, or 15 days for Ultra Tasks. The Project Manager <a class="xref" href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1439336/Runtime+Archive" target="_blank" rel="external noopener">Runtime Archive</a> provides links to individual JSON
+        logs for executions that ran in the last three months.</p>
+      <div class="p">
+        <br><div class="imageleft"><img class="image imageleft" id="analyze-execution__image_wpg_db3_zfc" src="../img/monitor/execution-overview.png" alt="Pipeline executions page"></div><br>
+      </div>
       
-      <p class="p sectiondivtitle">How to view pipeline executions</p>
-      <p class="p">The following image shows the <span class="ph uicontrol">Pipeline executions</span> page. Executions are divided
-        between the <span class="ph uicontrol">Running pipelines</span> and <span class="ph uicontrol">Not-running pipelines</span>
-        tables:</p><br><div class="imageleft"><img class="image imageleft" id="analyze-execution__image_wpg_db3_zfc" src="../img/monitor/execution-overview.png" alt="Pipeline executions table"></div><br>
-      <p class="p">Use the controls above the tables to switch between showing child executions flattened at the same
-        level as the parent or nested under their parent.</p><p class="p">From the table controls:</p><ul class="ul">
-        <li class="li">View the number of executions in the table.</li>
-        <li class="li">View the number of column filters that are currently set or clear them.</li>
-        <li class="li">In the <span class="ph uicontrol">Not-running pipelines</span> table, click <span class="ph uicontrol">Filter
-            presets</span> to narrow the results. </li>
-        <li class="li">Stop pipelines in the <span class="ph uicontrol">Running pipelines</span> table by selecting them and
-          clicking the <span class="ph uicontrol">Stop</span> link next to the <span class="ph uicontrol">Clear all filters</span>
-          option. </li>
-        <li class="li">Click <img class="image noborder" src="../img/icons/app/download.png" width="12"> to download executions to a <span class="ph filepath">.csv</span> file.</li>
-        <li class="li">In the <span class="ph uicontrol">Not-running pipelines</span> table, change the time period. </li>
-        <li class="li">Search for executions.</li>
-        <li class="li">Click <img class="image noborder" src="../img/monitor/refresh.svg" width="12"> to refresh the table.</li>
-        <li class="li">Click <img class="image noborder" src="../img/icons/prod/icon/table-config.svg" width="12" alt="Table configuration and filters"> to configure table row height, child execution nesting, set filters, reorder columns, and
-          show or hide columns.</li>
-        <li class="li">Filter a column by clicking the filter icon, <img class="image noborder" src="../img/icons/app/table-filter-inactive.svg" width="12">, entering a search string or selecting values, and pressing
-            <kbd class="ph userinput">Enter</kbd>. A dark filter icon, <img class="image noborder" src="../img/icons/app/table-filter-active.svg" width="12">, indicates that the column has a filter applied. </li>
-        <li class="li">Sort a text column alphabetically by clicking the arrow next to the name, <img class="image noborder" src="../img/icons/app/table-col-sort-up.svg" width="12">.</li>
-      </ul><p class="p sectiondivtitle">Scope and visibility</p><p class="p">The <span class="ph uicontrol">Pipeline
-          executions</span> page includes historical data up to 45 days old, or 15 days for Ultra Tasks.
-        The Project Manager <a class="xref" href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1439336/Runtime+Archive" target="_blank" rel="external noopener">Runtime Archive</a> provides links to individual JSON logs for
-        executions that ran in the last three months.</p><p class="p">Environment admins can view all executions in the
-        environment. Non-admins can view executions for pipelines they own or in projects for which they have
-        at least read permission. For pipelines created in Designer, non-admin owners of child pipelines can
-        view details for the parent pipeline if one or more of the following is true: </p><ul class="ul" id="analyze-execution__ul_ozp_khl_kbc">
-        <li class="li">They own the parent pipeline.</li>
-        <li class="li">They have read permission for the project that contains the parent pipeline.</li>
-      </ul><p class="p sectiondivtitle" id="analyze-execution__filter-presets">Filter presets</p><p class="p"><span class="ph uicontrol">Filter
-          presets</span> in the in the <span class="ph uicontrol">Not-running pipelines</span> table provide a quick
-        way to narrow down the execution list. The first time you open the <span class="ph uicontrol">Pipeline
-          executions</span> page, the <span class="ph uicontrol">Not-running pipelines</span> table displays
-          <span class="ph uicontrol">Completed</span> executions. You can combine a time period with all quick filters to
-        narrow the list of the executions you need to review.</p><p class="p"><span class="ph uicontrol">Filter presets</span>
-        include:</p><ul class="ul" id="analyze-execution__ul_xpg_db3_zfc">
-        <li class="li"><span class="ph uicontrol">Errors</span>: Selects pipelines that failed or completed with errors. The new
-          state Completed with errors is displayed if any data routes to the error view. This arises when the
-          Snap in the error pipeline has Format each document unchecked and Ignore empty stream unchecked,
-          causing an empty output document. </li>
-        <li class="li"><span class="ph uicontrol">Stopped</span>: Selects pipelines that were stopped by intervention.</li>
-        <li class="li"><span class="ph uicontrol">Completed</span>: Selects pipelines that completed or completed with
-          warnings.</li>
-        <li class="li"><span class="ph uicontrol">Ultra pipelines</span>: Only present in environments with Ultra pipelines.</li>
-      </ul><div class="note tip note_tip" id="analyze-execution__filter-persistence"><span class="note_tip_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/TIP.svg" class="noborder" alt="icon"></span><span class="note__title">Tip:</span> Monitor persists both preset and column filter selections
-        for the current session. Bookmark the page, which includes filters in the URL, to use them in future
-        sessions.</div>Click an active preset filter to clear it. To clear multiple preset and column
-      filters, open the <span class="ph uicontrol">Table configuration and filters</span> dialog, click <strong class="ph b">Clear all
-        filters</strong>, and click <strong class="ph b">Apply</strong> or click <span class="ph uicontrol">Clear all filters</span> next to the
-      download option. The number of filters selected displays next to the clear option. <p class="p sectiondivtitle" id="analyze-execution__pipeline-grouping">Parent and child pipeline grouping and searching
-        </p><p class="p">The <span class="ph uicontrol">Nested | Flattened</span> toggle determines how parent and child executions
-        display: </p><ul class="ul">
-        <li class="li"><span class="ph uicontrol">Nested</span>: Child executions nest under their parent:<br><div class="imageleft"><img class="image imageleft img25pc" src="../img/monitor/child-pipeline-nesting.png" alt="Nested child pipelines"></div><br></li>
-        <li class="li"><span class="ph uicontrol">Flattened</span>: Parent and child executions show at the same level.</li>
-      </ul><p class="p">With the <span class="ph uicontrol">Nested</span> option selected, the table includes the first 100 most
-        recent pipeline runs of the parent pipeline. With the <span class="ph uicontrol">Flattened</span> option
-        selected, the table displays data for up to 500 of the most recent child pipeline runs, even if the
-        parent has more than 500 children. Because the Monitor also limits the historical view to 45 days, the
-        number of viewable pipelines might not reach 500.</p><p class="p">The <span class="ph uicontrol">Table configuration and
-          filters</span> dialog also includes the <span class="ph uicontrol">Nested</span> and
-          <span class="ph uicontrol">Flattened</span> row grouping option.</p><p class="p">In the nested display of both tables,
-        the <span class="ph uicontrol">Show all children</span> checkbox determines whether a search that returns a
-        parent also returns child executions regardless of whether their names match the search term. When not
-        checked, only child executions with names that match the search term are returned. Refer to <a class="xref" href="https://docs.snaplogic.com/monitor/find-executions.html#find-executions__parent-child" target="_blank" rel="external noopener">Search for parent and child pipeline executions</a> for an
-        example.</p><p class="p sectiondivtitle">Table rows</p><p class="p">The rows of executions that failed are
-        highlighted in red and yellow indicates executions that were manually stopped.</p>Each execution row
-      contains the following links:<ul class="ul" id="analyze-execution__ul_dfr_sqv_4gc">
-        <li class="li"><strong class="ph b">Pipeline name</strong>: Opens the <span class="ph uicontrol">Pipeline Execution Statistics</span> in Designer,
-          where you can view Snap statistics, pipeline parameters, and other details for this execution.</li>
-        <li class="li"><strong class="ph b">Type</strong>: Opens the <span class="ph uicontrol">Task Details</span> in Project Manager.</li>
-        <li class="li"><strong class="ph b">Task name</strong>: Opens the <span class="ph uicontrol">Task Details</span> in Project Manager.</li>
-        <li class="li"><strong class="ph b">Project</strong>: Opens the project that contains the pipeline and task in Project Manager.</li>
-      </ul>In the <span class="ph uicontrol">Running pipelines</span> table, click the three-dot menu in a row to select
-      any of the following:<ul class="ul" id="analyze-execution__ul_ujd_gn2_ngc">
-        <li class="li"><strong class="ph b">Open in Designer</strong>: Opens the pipeline in Designer in a new tab.</li>
-        <li class="li"><strong class="ph b">Copy pipeline name</strong>: Copies the name of the pipeline.</li>
-        <li class="li"><strong class="ph b">Open this task in manager</strong>: Opens the task details in Manager in a new tab. </li>
-        <li class="li"><strong class="ph b">Stop pipeline</strong>: Stops execution. </li>
-        <li class="li"><strong class="ph b">View logs</strong>: Opens the execution details pane <span class="ph uicontrol">Pipeline logs</span> tab.</li>
-        <li class="li"><strong class="ph b">View execution details</strong>: Opens the execution details pane <span class="ph uicontrol">Snap
-            statistics</span> tab.</li>
-      </ul><div class="p">In the <span class="ph uicontrol">Not-running pipelines</span> table, click the three-dot menu in a row to
-        select any of the following:<ul class="ul">
-          <li class="li"><strong class="ph b">Open in Designer</strong>: Opens the pipeline in Designer in a new tab.</li>
-          <li class="li"><strong class="ph b">Copy pipeline name</strong>: Copies the name of the pipeline.</li>
-          <li class="li"><strong class="ph b">Open this task in manager</strong>: Opens the task details in Manager in a new tab. </li>
-          <li class="li"><strong class="ph b">Resume pipeline</strong>: Only available for stopped executions, resumes execution. </li>
-          <li class="li"><strong class="ph b">View logs</strong>: Opens the execution details pane <span class="ph uicontrol">Pipeline logs</span>
-            tab.</li>
-          <li class="li"><strong class="ph b">View execution details</strong>: Opens the execution details pane <span class="ph uicontrol">Snap
-              statistics</span> tab.</li>
-        </ul></div>
-      <p class="p">Learn how to:</p><ul class="ul">
-        <li class="li"><a class="xref" href="find-executions.html">Find executions</a></li>
-        <li class="li"><a class="xref" href="stop-executions.html">Stop executions</a></li>
-        <li class="li">View:<ul class="ul" id="analyze-execution__ul_cqg_db3_zfc">
-            <li class="li"><a class="xref" href="pipeline-details-panel.html">Pipeline details</a></li>
-            <li class="li"><a class="xref" href="pipeline-logs-tab.html">Pipeline logs</a></li>
-            <li class="li"><a class="xref" href="snap-statistics-tab.html">Snap details</a></li>
-          </ul></li>
-        <li class="li"><a class="xref" href="download-executions.html">Download execution records</a></li>
-        <li class="li"><a class="xref" href="execution-table.html" title="In the Pipeline executions table, hide, display, rearrange or filter columns.">Configure the executions table</a></li>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Pipeline executions table <span class="permalinkmaintag" style="display:none;"><a class="permalink" href="monitor/analyze-execution.html#pipeline-executions-table"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <div class="p">The Pipeleine executions are categorized into two tables: <span class="ph uicontrol">Running
+          pipelines</span> and <span class="ph uicontrol">Execution history</span>.<table class="table frame-all"><caption></caption><colgroup><col><col></colgroup><thead class="thead">
+              <tr class="row">
+                <th class="entry" id="analyze-execution__entry__1">Table</th>
+                <th class="entry" id="analyze-execution__entry__2">What you can do</th>
+              </tr>
+            </thead><tbody class="tbody">
+              <tr class="row">
+                <td class="entry" headers="analyze-execution__entry__1"><span class="ph uicontrol">Running pipelines</span></td>
+                <td class="entry" headers="analyze-execution__entry__2">
+                  <p class="p">In the Running pipelines table, you can:</p>
+                  <ul class="ul">
+                    <li class="li">
+                      <p class="p">View the number of executions.</p>
+                    </li>
+                    <li class="li">
+                      <p class="p">Search for currently running pipelines.</p>
+                    </li>
+                    <li class="li">
+                      <p class="p">View the number of column filters currently set, or clear them. </p>
+                    </li>
+                    <li class="li">
+                      <p class="p">Stop pipelines by selecting them and clicking the
+                          <span class="ph uicontrol">Stop</span> button next to the <strong class="ph b">Clear all filters</strong>
+                        option.</p>
+                    </li>
+                  </ul>
+                  <div class="p">In the <span class="ph uicontrol">Running pipelines</span> table, click the three-dot menu
+                    in a row to select any of the following:<ul class="ul" id="analyze-execution__ul_ujd_gn2_ngc">
+                      <li class="li"><strong class="ph b">Open in Designer</strong>: Opens the pipeline in Designer in a new tab.</li>
+                      <li class="li"><strong class="ph b">Copy pipeline name</strong>: Copies the name of the pipeline.</li>
+                      <li class="li"><strong class="ph b">Open this task in manager</strong>: Opens the task details in Manager in a
+                        new tab. </li>
+                      <li class="li"><strong class="ph b">Stop pipeline</strong>: Stops execution. </li>
+                      <li class="li"><strong class="ph b">View logs</strong>: Opens the execution details pane <span class="ph uicontrol">Pipeline
+                          logs</span> tab.</li>
+                      <li class="li"><strong class="ph b">View execution details</strong>: Opens the execution details pane
+                          <span class="ph uicontrol">Snap statistics</span> tab.</li>
+                    </ul></div>
+                  <p class="p">You can click the <strong class="ph b">Jump to Running</strong> link on the top-right to quickly
+                    navigate to the Running pipelines table.</p>
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="analyze-execution__entry__1"><span class="ph uicontrol">Execution history</span></td>
+                <td class="entry" headers="analyze-execution__entry__2">
+                  <p class="p">In the Execution history table, you can:</p>
+                  <ul class="ul">
+                    <li class="li">
+                      <p class="p">Narrow the results using <strong class="ph b">Filter presets</strong>.</p>
+                    </li>
+                    <li class="li">
+                      <p class="p">Select the pipeline execution time period or choose a specific duration
+                        from the calendar.</p>
+                    </li>
+                    <li class="li">
+                      <p class="p">Search for pipeline executions.</p>
+                    </li>
+                  </ul>
+                  <div class="p">In the <span class="ph uicontrol">Execution history</span> table, click the three-dot menu
+                    in a row to select any of the following:<ul class="ul">
+                      <li class="li"><strong class="ph b">Open in Designer</strong>: Opens the pipeline in Designer in a new tab.</li>
+                      <li class="li"><strong class="ph b">Copy pipeline name</strong>: Copies the name of the pipeline.</li>
+                      <li class="li"><strong class="ph b">Open this task in manager</strong>: Opens the task details in Manager in a
+                        new tab. </li>
+                      <li class="li"><strong class="ph b">Resume pipeline</strong>: Only available for stopped executions, resumes
+                        execution. </li>
+                      <li class="li"><strong class="ph b">View logs</strong>: Opens the execution details pane <span class="ph uicontrol">Pipeline
+                          logs</span> tab.</li>
+                      <li class="li"><strong class="ph b">View execution details</strong>: Opens the execution details pane
+                          <span class="ph uicontrol">Snap statistics</span> tab.</li>
+                    </ul></div>
+                  <p class="p">You can click the <strong class="ph b">Jump to Execution history</strong>link on the top-right to
+                    quickly navigate to the Execution history pipelines table.</p>
+                  <p class="p"><span class="ph uicontrol">Filter presets</span> in the <span class="ph uicontrol">Execution
+                      history</span> table provides a quick way to narrow down the execution
+                    list. The first time you open the <span class="ph uicontrol">Pipeline executions</span>
+                    page, the <span class="ph uicontrol">Execution history</span> table displays
+                      <span class="ph uicontrol">Completed</span> executions. You can combine a time period
+                    with all quick filters to narrow the list of the executions you need to
+                    review.</p>
+                </td>
+              </tr>
+            </tbody></table></div>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Table controls<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="monitor/analyze-execution.html#table-controls"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <div class="p">
+        <table class="table frame-all"><caption></caption><colgroup><col><col></colgroup><thead class="thead">
+              <tr class="row">
+                <th class="entry" id="analyze-execution__entry__7"></th>
+                <th class="entry" id="analyze-execution__entry__8"></th>
+              </tr>
+            </thead><tbody class="tbody">
+              <tr class="row">
+                <td class="entry" headers="analyze-execution__entry__7"><img class="image noborder" src="../img/icons/monitor/download.png"></td>
+                <td class="entry" headers="analyze-execution__entry__8">Download pipeline execution data to a CSV file. The execution of the pipeline
+                  duration is displayed in milliseconds.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="analyze-execution__entry__7"><img class="image noborder" src="../img/icons/monitor/refresh.png"></td>
+                <td class="entry" headers="analyze-execution__entry__8">Refresh the table.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="analyze-execution__entry__7"><img class="image noborder" src="../img/icons/monitor/jelly-roll.png"></td>
+                <td class="entry" headers="analyze-execution__entry__8">Configure table row height, child execution nesting, set filters, reorder
+                  columns, and show or hide columns. <a class="xref" href="execution-table.html" title="In the Pipeline executions table, hide, display, rearrange or filter columns.">Learn
+                    more</a>.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="analyze-execution__entry__7"><img class="image noborder" src="../img/icons/monitor/filter.png"></td>
+                <td class="entry" headers="analyze-execution__entry__8">Filter pipeline executions by entering a search string or selecting values,
+                  and pressing Enter. <a class="xref" href="find-executions.html">Learn more</a>. </td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="analyze-execution__entry__7"><img class="image noborder" src="../img/icons/monitor/preset-filter.png"></td>
+                <td class="entry" headers="analyze-execution__entry__8">A dark filter icon indicates that a filter is applied to the column.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="analyze-execution__entry__7"><img class="image noborder" src="../img/icons/monitor/up-arrow.png"></td>
+                <td class="entry" headers="analyze-execution__entry__8">Sort a text column alphabetically.</td>
+              </tr>
+            </tbody></table>
+      </div>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Nested and Flattened grouping<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="monitor/analyze-execution.html#nested-and-flattened-grouping"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <p class="p">Use the <img class="image noborder" src="../img/monitor/nested-flattened.png" alt="nested-flattened controls for pipeline grouping"> toggle to switch the pipelines between showing children executions nested under
+        their parent or flattened. The <strong class="ph b">Table configuration and filters</strong> dialog also includes
+        the <strong class="ph b">Nested</strong> and <strong class="ph b">Flattened</strong> row grouping option.</p>
+      <ul class="ul">
+        <li class="li"><span class="ph uicontrol">Nested</span>: Child executions nest under their parent. With this
+          option selected, the table includes the first 100 most recent pipeline runs of the parent
+          pipeline. In the nested display of the <strong class="ph b">Running pipelines</strong> table, the <strong class="ph b">Show all
+            children</strong> checkbox determines whether a search that returns a parent also returns
+          child executions, regardless of whether their names match the search term. When not
+          checked, only child executions with names that match the search term are returned. <br><div class="imageleft"><img class="image imageleft img25pc" src="../img/monitor/child-pipeline-nesting.png" alt="Nested child pipelines"></div><br></li>
+        <li class="li"><span class="ph uicontrol">Flattened</span>: Parent and child executions show at the same level.
+          With this option selected, the table displays data for up to 500 of the most recent child
+          pipeline runs, even if the parent has more than 500 children. Because the Monitor limits
+          the historical view to 45 days, the number of viewable pipelines might not reach 500.</li>
       </ul>
+      <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+        <p class="p">In the nested display of the <span class="ph uicontrol">Running pipelines</span> table, the
+            <span class="ph uicontrol">Show all children</span> checkbox determines whether a search that
+          returns a parent also returns child executions regardless of whether their names match the
+          search term. When not checked, only child executions with names that match the search term
+          are returned. Refer to <a class="xref" href="https://docs.snaplogic.com/monitor/find-executions.html#find-executions__parent-child" target="_blank" rel="external noopener">Search for parent and child pipeline executions</a>
+          for an example.</p>
+      </div>
+    </section>
+    <section class="section" id="analyze-execution__filter-presets"><h2 class="title sectiontitle">Filter presets<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="monitor/analyze-execution.html#filter-presets"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <div class="p">The filter presets in the <span class="ph uicontrol">Execution history</span> table includes the
+        following filters:<br><img class="image" src="../img/monitor/filter-presets.png"><br></div>
+      <div class="p">
+        <ul class="ul" id="analyze-execution__ul_xpg_db3_zfc">
+          <li class="li"><span class="ph uicontrol">Errors</span>: Selects pipelines that failed or completed with errors.
+            The new state Completed with errors is displayed if any data routes to the error view.
+            This arises when the Snap in the error pipeline has Format each document unchecked and
+            Ignore empty stream unchecked, causing an empty output document. </li>
+          <li class="li"><span class="ph uicontrol">Stopped</span>: Selects pipelines that were stopped by
+            intervention.</li>
+          <li class="li"><span class="ph uicontrol">Completed</span>: Selects pipelines that completed or completed with
+            warnings.</li>
+          <li class="li"><span class="ph uicontrol">Ultra pipelines</span>: Only present in environments with Ultra
+            pipelines.</li>
+        </ul>
+        <div class="note tip note_tip" id="analyze-execution__filter-persistence"><span class="note_tip_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/TIP.svg" class="noborder" alt="icon"></span><span class="note__title">Tip:</span> Monitor persists both preset and column filter
+          selections for the current session. Bookmark the page, which includes filters in the URL,
+          to use them in future sessions.</div>
+      </div>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Table rows<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="monitor/analyze-execution.html#table-rows"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <div class="p">The rows of executions that failed are highlighted in red and yellow indicates executions
+        that were manually stopped. Each execution row contains the following links:<ul class="ul" id="analyze-execution__ul_dfr_sqv_4gc">
+          <li class="li"><strong class="ph b">Pipeline name</strong>: Opens the <span class="ph uicontrol">Pipeline Execution Statistics</span>
+            in Designer, where you can view Snap statistics, pipeline parameters, and other details
+            for this execution.</li>
+          <li class="li"><strong class="ph b">Type</strong>: Opens the <span class="ph uicontrol">Task Details</span> in Project Manager.</li>
+          <li class="li"><strong class="ph b">Task name</strong>: Opens the <span class="ph uicontrol">Task Details</span> in Project
+            Manager.</li>
+          <li class="li"><strong class="ph b">Project</strong>: Opens the project that contains the pipeline and task in Project
+            Manager.</li>
+        </ul></div>
+    </section>
+    <section class="section">
+      <div class="sectiondiv"><strong class="ph b">Column filters</strong><p class="p">Click the Filter icon next to the column headers to filter
+          the pipelines. The following filters are available for pipeline executions:</p><ul class="ul">
+          <li class="li"><strong class="ph b">Type</strong>: Filters the executions based on the pipeline type.</li>
+          <li class="li"><strong class="ph b">Status</strong>: Filters the executions based on the pipeline status.</li>
+          <li class="li"><strong class="ph b">Project</strong>: Filters the executions based on the following:<ul class="ul">
+              <li class="li"><span class="ph uicontrol">My Executions</span>: Filters the execution list to show only the
+                pipelines that you have executed. This filter is selected by default for the
+                non-admin users. You can combine this filter with individual project selections to
+                view your own executions and those from the selected projects.</li>
+              <li class="li"><span class="ph uicontrol">All projects</span>: Displays executions across all the projects
+                you have access to, without needing to select them individually. This filter is
+                selected by default for the admin users. When selected, individual project
+                checkboxes are disabled. This filter displays all executions as per your
+                permissions, regardless of which projects they belong to. </li>
+            </ul></li>
+          <li class="li">
+            <p class="p"><strong class="ph b">Snaplex/Node</strong>: The Snaplex filter for this column lists only active Snaplexes.
+              When you select a Snaplex from the list, the tables display the pipeline runs
+              executing on that Snaplex. For example, when viewing Ultra Pipelines, the Snaplex
+              filter displays the active Snaplexes on which those Ultra Pipelines are running. This
+              column displays:</p>
+            <ul class="ul">
+              <li class="li">
+                <p class="p">The Snaplex environment in which the pipeline ran (such as Cloudplex or
+                  Groundplex).</p>
+              </li>
+              <li class="li">
+                <p class="p">The specific node name or IP address that processed the execution. For example,
+                    <code class="ph codeph">GroundPlex/ip-172-27-186-109</code></p>
+              </li>
+            </ul>
+            <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+              <p class="p"> Except for the <strong class="ph b">Pipeline name</strong> column, you can add or remove the other
+                columns in the Table configuration and filters dialog. <a class="xref" href="https://docs.snaplogic.com/monitor/execution-table.html" target="_blank" rel="external noopener">Learn more</a>.</p>
+            </div>
+          </li>
+        </ul></div>
+      <div class="sectiondiv">Following are the non-filterable fields:<ul class="ul">
+          <li class="li"><strong class="ph b">Owner</strong>: Displays the email ID of the user who executed the pipeline.</li>
+          <li class="li">
+            <p class="p"><strong class="ph b">Invoker</strong>: This column indicates who initiated the pipeline execution. It
+              typically shows the user ID of the person who manually started the pipeline or the
+              system information for triggered tasks. </p>
+          </li>
+          <li class="li">
+            <p class="p"><strong class="ph b">RUUID</strong>: A unique identifier assigned to each pipeline execution instance. The
+              RUUID is crucial for tracking and troubleshooting as it allows you to reference the
+              exact execution in logs, reports, and when communicating with support. </p>
+          </li>
+          <li class="li">
+            <p class="p"><strong class="ph b">Duration</strong>: The total time the pipeline takes to complete execution, typically
+              displayed in seconds or milliseconds. It's calculated as the difference between the
+              start and end times. </p>
+          </li>
+          <li class="li">
+            <p class="p"><strong class="ph b">Documents</strong>: This column shows the number of data documents processed during
+              execution. This metric provides insight into the throughput and volume your pipeline
+              handles, which is useful for performance analysis.</p>
+          </li>
+        </ul></div>
+      <div class="sectiondiv"> </div>
+    </section>
+      <section class="section">Scope and visibility <div class="p">Environment admins can view all executions in the
+        environment. Non-admins can view executions for pipelines they own or in projects for which
+        they have at least read permission. For pipelines created in Designer, non-admin owners of
+        child pipelines can view details for the parent pipeline if one or more of the following is
+          true:<ul class="ul" id="analyze-execution__ul_ozp_khl_kbc">
+          <li class="li">They own the parent pipeline.</li>
+          <li class="li">They have read permission for the project that contains the parent pipeline.</li>
+        </ul></div>
     </section>
   </div>
+  <nav role="navigation" class="related-links"><div class="linklist relconcepts"><strong>Related concepts</strong><br><ul class="linklist"><li class="linklist"><a class="link" href="find-executions.html">Find executions</a></li><li class="linklist"><a class="link" href="stop-executions.html">Stop executions</a></li></ul></div><div class="linklist relref"><strong>Related reference</strong><br><ul class="linklist"><li class="linklist"><a class="link" href="pipeline-details-panel.html">Pipeline details</a></li><li class="linklist"><a class="link" href="pipeline-logs-tab.html">Pipeline logs</a></li><li class="linklist"><a class="link" href="snap-statistics-tab.html">Snap details</a></li><li class="linklist"><a class="link" href="download-executions.html">Download execution records</a></li><li class="linklist"><a class="link" href="execution-table.html" title="In the Pipeline executions table, hide, display, rearrange or filter columns.">Configure the executions table</a></li></ul></div></nav>
   
 </article></main><footer role="contentinfo"><div class="footer">
   <div>

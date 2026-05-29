@@ -861,12 +861,10 @@ article ul,article ol {
   padding-left: 0px;
  }
  .breadcrumb-header :last-child>a{
-  font-weight: 850;
-  font-family: var(--font-bold);
+  font-weight: 700;
  }
 .breadcrumb-item > a:hover{
-  font-weight: 850;
-  font-family: var(--font-bold);
+  font-weight: 700;
 }
 .breadcrumb-header .breadcrumb-item:not(:last-child) .breadcrumb-link:after,
 .breadcrumb-header .breadcrumb-item:not(:last-child) .breadcrumb-label:after {

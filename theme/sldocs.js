@@ -2792,10 +2792,23 @@ $(window).on("resize", function () {
   // Highlight active navigation based on current page
   const currentPath = window.location.pathname;
 
-  // URL param support: read ?view=&category=&product= as fallback for sessionStorage
-  // This makes nav state shareable via URLs (new tabs, bookmarks, pasted links)
+  // Clear stale nav state on fresh navigation (bookmark, typed URL, new tab)
+  // SessionStorage persists within a tab but can become stale if the user
+  // navigates directly to a page without going through the normal flow.
   var urlParams = new URLSearchParams(window.location.search);
+  var hasNavParams = urlParams.has('view') || urlParams.has('category') || urlParams.has('product');
+  var isSameOriginNav = document.referrer && document.referrer.indexOf(window.location.origin) === 0;
 
+  if (!hasNavParams && !isSameOriginNav) {
+    sessionStorage.removeItem('activeNav');
+    sessionStorage.removeItem('showFullTree');
+    sessionStorage.removeItem('showFullTaskTree');
+    sessionStorage.removeItem('filteredProduct');
+    sessionStorage.removeItem('filteredTaskSection');
+    sessionStorage.removeItem('filteredTaskCategory');
+  }
+
+  // URL param support: read ?view=&category=&product= for shareable nav state
   function seedFromUrlParams() {
     var pView = urlParams.get('view');
     var pCategory = urlParams.get('category');
@@ -3171,28 +3184,18 @@ $(window).on("resize", function () {
       var filteredTaskSection = sessionStorage.getItem('filteredTaskSection');
       var showFullTaskTree = sessionStorage.getItem('showFullTaskTree');
 
-      // Known category names (top-level groupings in the task view)
-      var TASK_CATEGORIES = [
-        'Learn about the SnapLogic Platform',
-        'Get Started',
-        'Administer the SnapLogic environment',
-        'Develop Agents',
-        'Develop and Deploy Integrations',
-        'Manage APIs',
-        'Monitor the runtime',
-        'Observability',
-        'Troubleshoot'
-      ];
 
       // Auto-filter task nav to show only the category containing the current page,
       // unless user explicitly clicked "All Tasks" AND we're on a landing page
       var activeNavCheck = sessionStorage.getItem('activeNav');
       var isOnTaskLandingPage = currentPath.match(/-about\.html/);
+      var domFilterHandled = false;
 
       var isOnAllTasksPage = currentPath.match(/\/tasks-about\.html/) || currentPath.match(/\/tasks\/index\.html/);
       if (activeNavCheck === 'tasks' && isOnAllTasksPage) {
         // Keep all categories visible (user is browsing All Goals overview)
         $('nav.toc > ul > li:not(.nav-view-switcher-li)').show();
+        domFilterHandled = true;
       } else {
         // Filter to show only the category containing the active item
         var $activeItem = $('nav.toc li.active');
@@ -3206,6 +3209,7 @@ $(window).on("resize", function () {
                 $(this).hide();
               }
             });
+            domFilterHandled = true;
           }
         } else if (isOnTaskLandingPage) {
           // Landing page with toc="no" — no active item in nav.
@@ -3240,10 +3244,12 @@ $(window).on("resize", function () {
           if (!matched) {
             $categoryItems.show();
           }
+          domFilterHandled = true;
         }
       }
 
-      if (filteredTaskSection && showFullTaskTree !== 'true') {
+      // Only apply sessionStorage-based filtering if DOM-based detection didn't handle it
+      if (!domFilterHandled && filteredTaskSection && showFullTaskTree !== 'true') {
         // Categories are top-level <li> items; headings are nested inside <ul> children
         var $categoryItems = $('nav.toc > ul > li:not(.nav-view-switcher-li)');
         var matched = false;
@@ -3317,6 +3323,7 @@ $(window).on("resize", function () {
         'admin manager': NAV_ICONS['admin-manager'],
         'monitor': NAV_ICONS['monitor'],
         'agent creator': NAV_ICONS['agent'],
+        'agentcreator': NAV_ICONS['agent'],
         'integration platform': CATEGORY_ICONS['integration platform'],
         'administration': CATEGORY_ICONS['administration'],
         'observability': CATEGORY_ICONS['observability']
