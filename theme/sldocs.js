@@ -1717,7 +1717,20 @@ $(document).ready(function() {
   // Helper function to detect if we're in product view (not task view)
   function isProductView() {
     const path = window.location.pathname;
-    return (path.includes('/autosync/') || path.includes('/admin-manager/') || path.includes('/designer/') || path.includes('/snapgpt/') || path.includes('/monitor/')) && !path.includes('/tasks/');
+    if (path.includes('/tasks/')) return false;
+    if (typeof productSlugs !== 'undefined' && productSlugs.length > 0) {
+      for (var i = 0; i < productSlugs.length; i++) {
+        if (path.includes('/' + productSlugs[i] + '/')) return true;
+      }
+      return false;
+    }
+    var found = false;
+    $('nav.toc > ul > li:not(.nav-view-switcher-li) > ul > li > a').each(function() {
+      var href = $(this).attr('href') || '';
+      var m = href.match(/\.\.\/([^/]+)\//);
+      if (m && path.includes('/' + m[1] + '/')) { found = true; return false; }
+    });
+    return found;
   }
 
   // Check if we should skip full tree expansion
@@ -2805,17 +2818,6 @@ $(window).on("resize", function () {
   }
   seedFromUrlParams();
 
-  // Homepage: add nav-state params to goal card links
-  if (document.getElementById('index')) {
-    $('.hp-goal-card .hp-card-title a, .hp-goal-card ul a, .hp-goal-card .hp-card-more a').each(function() {
-      var href = $(this).attr('href');
-      if (href && href.indexOf('goals/') !== -1) {
-        var cardTitle = $(this).closest('.hp-goal-card').find('.hp-card-title a').first().text().trim();
-        var separator = href.indexOf('?') === -1 ? '?' : '&';
-        $(this).attr('href', href + separator + 'view=tasks&category=' + encodeURIComponent(cardTitle));
-      }
-    });
-  }
 
   function updateUrlState() {
     var params = new URLSearchParams();
@@ -2844,91 +2846,51 @@ $(window).on("resize", function () {
   }
   updateUrlState();
 
-  // Helper to detect product view (not task view)
-  const isInProductView = (currentPath.includes('/autosync/') || currentPath.includes('/admin-manager/') || currentPath.includes('/designer/') || currentPath.includes('/snapgpt/') || currentPath.includes('/monitor/')) && !currentPath.includes('/tasks/');
-
   // Highlight the category dropdown when viewing a product page
-  if (isInProductView) {
-    // Check if we're on an AutoSync page
-    if (currentPath.includes('/autosync/')) {
-      $('.product-menu-header .dropdown').each(function() {
-        const $dropdown = $(this);
-        const $toggle = $dropdown.find('.dropdown-toggle');
-
-        if ($toggle.text().includes('Integration Platform')) {
+  // Derives active state from dropdown menu hrefs — no hard-coded slug list
+  if (!currentPath.includes('/tasks/')) {
+    $('.product-menu-header .dropdown').each(function() {
+      var $dropdown = $(this);
+      $dropdown.find('.dropdown-menu a').each(function() {
+        var menuHref = $(this).attr('href') || '';
+        var menuSlug = menuHref.match(/\/([^/]+)\//);
+        if (menuSlug && currentPath.includes('/' + menuSlug[1] + '/')) {
           $dropdown.addClass('active');
-          $dropdown.find('.dropdown-menu a').each(function() {
-            if ($(this).text().includes('AutoSync')) {
-              $(this).addClass('active');
-            }
-          });
+          $(this).addClass('active');
         }
       });
-    }
-
-    // Check if we're on an Admin Manager page
-    if (currentPath.includes('/admin-manager/')) {
-      $('.product-menu-header .dropdown').each(function() {
-        const $dropdown = $(this);
-        const $toggle = $dropdown.find('.dropdown-toggle');
-
-        if ($toggle.text().includes('Administration')) {
-          $dropdown.addClass('active');
-          $dropdown.find('.dropdown-menu a').each(function() {
-            if ($(this).text().includes('Admin Manager')) {
-              $(this).addClass('active');
-            }
-          });
-        }
-      });
-    }
-
-    // Check if we're on a Designer page
-    if (currentPath.includes('/designer/')) {
-      $('.product-menu-header .dropdown').each(function() {
-        const $dropdown = $(this);
-        const $toggle = $dropdown.find('.dropdown-toggle');
-
-        if ($toggle.text().includes('Integration Platform')) {
-          $dropdown.addClass('active');
-          $dropdown.find('.dropdown-menu a').each(function() {
-            if ($(this).text().includes('Designer')) {
-              $(this).addClass('active');
-            }
-          });
-        }
-      });
-    }
-
-    // Check if we're on a SnapGPT page
-    if (currentPath.includes('/snapgpt/')) {
-      $('.product-menu-header .dropdown').each(function() {
-        const $dropdown = $(this);
-        const $toggle = $dropdown.find('.dropdown-toggle');
-
-        if ($toggle.text().includes('Integration Platform')) {
-          $dropdown.addClass('active');
-          $dropdown.find('.dropdown-menu a').each(function() {
-            if ($(this).text().includes('SnapGPT')) {
-              $(this).addClass('active');
-            }
-          });
-        }
-      });
-    }
+    });
   }
 
   // POC: Add View Switcher to Left Nav
   const $toc = $('nav.toc');
+
+  // Derive product slugs from the nav HTML (used by switcher and filtering)
+  var productSlugs = [];
+  $('nav.toc > ul > li:not(.nav-view-switcher-li) > ul > li > a').each(function() {
+    var href = $(this).attr('href') || '';
+    var match = href.match(/\.\.\/([^/]+)\//);
+    if (match && productSlugs.indexOf(match[1]) === -1) {
+      productSlugs.push(match[1]);
+    }
+  });
+
+  function getProductSlugFromPath(path) {
+    for (var pi = 0; pi < productSlugs.length; pi++) {
+      if (path.includes('/' + productSlugs[pi] + '/')) return productSlugs[pi];
+    }
+    return null;
+  }
+
   if ($toc.length > 0) {
     // Determine current view
     const isTaskView = currentPath.includes('/tasks/');
-    const isProductView = (currentPath.includes('/autosync/') || currentPath.includes('/admin-manager/') || currentPath.includes('/designer/') || currentPath.includes('/snapgpt/') || currentPath.includes('/monitor/')) && !currentPath.includes('/tasks/');
+    const isProductViewForSwitcher = !isTaskView && getProductSlugFromPath(currentPath) !== null;
 
     // Add class to nav for CSS styling
     if (isTaskView) {
       $toc.addClass('task-view');
-    } else if (isProductView) {
+    } else if (isProductViewForSwitcher) {
       $toc.addClass('product-view');
     }
 
@@ -2940,28 +2902,19 @@ $(window).on("resize", function () {
     const isShowingAllProducts = isOnProductsLanding && activeNav === 'products';
     const isShowingAllTasks = isOnAllTasksLanding && activeNav === 'tasks';
 
-    // Get appropriate URL based on current location
-    let productUrl = '/autosync/autosync-home.html';
-    let taskUrl = '/tasks/admin-manager/create-user-account.html'; // Default task entry point
+    // Derive product landing URL from nav (first link under current product's <li>)
+    var currentSlug = getProductSlugFromPath(currentPath);
+    var productUrl = '../index.html';
+    var taskUrl = '../tasks/goals/get-started-about.html';
 
-    if (currentPath.includes('/autosync/')) {
-      productUrl = '/autosync/autosync-home.html';
-      taskUrl = '/tasks/autosync/create-data-pipeline.html';
-    } else if (currentPath.includes('/admin-manager/')) {
-      productUrl = '/admin-manager/admin-manager-home.html';
-      taskUrl = '/tasks/admin-manager/create-user-account.html';
-    } else if (currentPath.includes('/monitor/')) {
-      productUrl = '/monitor/monitor-home.html';
-      taskUrl = '/tasks/admin-manager/create-user-account.html';
-    } else if (currentPath.includes('/designer/')) {
-      productUrl = '/designer/designer-home.html';
-      taskUrl = '/tasks/admin-manager/create-user-account.html';
-    } else if (currentPath.includes('/snapgpt/')) {
-      productUrl = '/snapgpt/snapgpt-home.html';
-      taskUrl = '/tasks/snapgpt/snapgpt-pipe-gen-rag.html';
-    } else if (currentPath.includes('/introduction/')) {
-      productUrl = '/introduction/introduction-about.html';
-      taskUrl = '/tasks/goals/learn-platform-about.html';
+    if (currentSlug) {
+      $('nav.toc > ul > li:not(.nav-view-switcher-li) > ul > li > a').each(function() {
+        var href = $(this).attr('href') || '';
+        if (href.includes(currentSlug + '/')) {
+          productUrl = href;
+          return false;
+        }
+      });
     }
 
     // Create view switcher HTML — simple uppercase text labels
@@ -3124,17 +3077,15 @@ $(window).on("resize", function () {
   const filteredProduct = sessionStorage.getItem('filteredProduct');
   const showFullTree = sessionStorage.getItem('showFullTree');
 
-  // Check if we're in product view (autosync or admin-manager or snapgpt or monitor, but not tasks)
-  const isInProductViewForNav = (currentPath.includes('/autosync/') || currentPath.includes('/admin-manager/') || currentPath.includes('/designer/') || currentPath.includes('/snapgpt/') || currentPath.includes('/monitor/')) && !currentPath.includes('/tasks/');
-
-  // Helper: detect product slug from URL path
-  function getProductSlugFromPath(path) {
-    if (path.includes('/autosync/')) return 'autosync';
-    if (path.includes('/admin-manager/')) return 'admin-manager';
-    if (path.includes('/designer/')) return 'designer';
-    if (path.includes('/snapgpt/')) return 'snapgpt';
-    if (path.includes('/monitor/')) return 'monitor';
-    return null;
+  // Check if we're in product view (URL matches a known product slug, not in tasks/)
+  var isInProductViewForNav = false;
+  if (!currentPath.includes('/tasks/')) {
+    for (var si = 0; si < productSlugs.length; si++) {
+      if (currentPath.includes('/' + productSlugs[si] + '/')) {
+        isInProductViewForNav = true;
+        break;
+      }
+    }
   }
 
   // Helper: find the product <li> by slug within the category structure
@@ -3205,22 +3156,6 @@ $(window).on("resize", function () {
       showFullProductTree();
     }
 
-    // Check if we're on a Monitor page
-    if (currentPath.includes('/monitor/')) {
-      $('.product-menu-header .dropdown').each(function() {
-        const $dropdown = $(this);
-        const $toggle = $dropdown.find('.dropdown-toggle');
-
-        if ($toggle.text().includes('Observability')) {
-          $dropdown.addClass('active');
-          $dropdown.find('.dropdown-menu a').each(function() {
-            if ($(this).text().includes('Monitor')) {
-              $(this).addClass('active');
-            }
-          });
-        }
-      });
-    }
 
     } // end if (isInProductViewForNav)
 
@@ -3274,34 +3209,36 @@ $(window).on("resize", function () {
           }
         } else if (isOnTaskLandingPage) {
           // Landing page with toc="no" — no active item in nav.
-          // Match category from URL slug (e.g., troubleshoot-about.html → "Troubleshoot")
-          var SLUG_TO_CATEGORY = {
-            'learn-platform': 'Learn about the SnapLogic Platform',
-            'get-started': 'Get Started',
-            'administer': 'Administer the SnapLogic environment',
-            'develop-agents': 'Develop Agents',
-            'develop-integrations': 'Develop and Deploy Integrations',
-            'manage-apis': 'Manage APIs',
-            'monitoring': 'Monitor the runtime',
-            'observe': 'Observability',
-            'troubleshoot': 'Troubleshoot',
-            'cdw': 'Develop and Deploy Integrations',
-            'apps-databases': 'Develop and Deploy Integrations'
-          };
-          var slugMatch = currentPath.match(/\/([^/]+)-about\.html/);
-          if (slugMatch && slugMatch[1] !== 'tasks') {
-            var categoryName = SLUG_TO_CATEGORY[slugMatch[1]];
-            if (categoryName) {
-              var $categoryItems = $('nav.toc > ul > li:not(.nav-view-switcher-li)');
-              $categoryItems.each(function() {
-                var catText = $(this).children('span:not(.nav-toggle), a').first().text().trim();
-                if (catText === categoryName) {
-                  $(this).show().addClass('navexpand');
-                } else {
-                  $(this).hide();
+          // Find which category contains a link matching the current page filename
+          var currentFile = currentPath.split('/').pop();
+          var $categoryItems = $('nav.toc > ul > li:not(.nav-view-switcher-li)');
+          var matched = false;
+          $categoryItems.each(function() {
+            var $cat = $(this);
+            // Check if this category's landing link matches
+            var catHref = $cat.children('a').first().attr('href') || '';
+            if (catHref.indexOf(currentFile) !== -1) {
+              $cat.show().addClass('navexpand');
+              matched = true;
+            } else {
+              // Check child links
+              var found = false;
+              $cat.find('a').each(function() {
+                if (($(this).attr('href') || '').indexOf(currentFile) !== -1) {
+                  found = true;
+                  return false;
                 }
               });
+              if (found) {
+                $cat.show().addClass('navexpand');
+                matched = true;
+              } else {
+                $cat.hide();
+              }
             }
+          });
+          if (!matched) {
+            $categoryItems.show();
           }
         }
       }
