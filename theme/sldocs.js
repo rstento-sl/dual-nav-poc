@@ -3102,17 +3102,22 @@ $(window).on("resize", function () {
     }
   }
 
-  // Helper: find the product <li> by slug within the category structure
+  // Helper: find the product <li> by slug within the category structure.
+  // When a product appears in multiple categories, prefer the one containing the active page.
   function findProductLi(slug) {
-    var $found = null;
+    var $candidates = $();
     $('nav.toc > ul > li:not(.nav-view-switcher-li) > ul > li').each(function() {
       var href = $(this).children('a').first().attr('href') || '';
       if (href.indexOf(slug + '/') !== -1) {
-        $found = $(this);
-        return false;
+        $candidates = $candidates.add($(this));
       }
     });
-    return $found;
+    if ($candidates.length === 0) return null;
+    if ($candidates.length === 1) return $candidates.first();
+    var $withActive = $candidates.filter(function() {
+      return $(this).find('li.active').length > 0 || $(this).hasClass('active');
+    });
+    return $withActive.length ? $withActive.first() : $candidates.first();
   }
 
   // Helper: show only one product, hiding categories and siblings
