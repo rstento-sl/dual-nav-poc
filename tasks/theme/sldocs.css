@@ -6986,13 +6986,28 @@ p.hp-hero-subtitle {
   margin: 0;
 }
 
+.hp-goals {
+  position: relative;
+}
+
 .hp-goal-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  gap: 8px;
   list-style: none;
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
+  max-height: 280px;
+  scrollbar-width: none;
+}
+
+.hp-goal-cards::-webkit-scrollbar {
+  display: none;
 }
 
 .hp-goal-card {
@@ -7003,6 +7018,11 @@ p.hp-hero-subtitle {
   position: relative;
   padding-left: 20px;
   transition: border-color 0.2s, box-shadow 0.2s;
+  width: calc(33.33% - 8px);
+  min-width: calc(33.33% - 8px);
+  max-width: calc(33.33% - 8px);
+  flex-shrink: 0;
+  scroll-snap-align: start;
 }
 
 .hp-goal-card::before {
@@ -7066,6 +7086,29 @@ p.hp-hero-subtitle {
 
 .hp-goal-card ul li:nth-child(n+3) {
   display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .hp-goal-card {
+    width: calc(50% - 6px);
+    min-width: calc(50% - 6px);
+    max-width: calc(50% - 6px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hp-goal-cards {
+    max-height: none;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .hp-goal-card {
+    width: 85%;
+    min-width: 85%;
+    max-width: 85%;
+  }
 }
 
 .hp-card-more {

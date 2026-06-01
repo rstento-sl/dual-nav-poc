@@ -3368,12 +3368,11 @@ $(window).on("resize", function () {
 
   // prettifyCodeBlocks() - moved to build time (postprocess.py)
 
-  // Feature cards carousel
-  (function() {
-    var $container = $('.hp-feature-cards');
+  // Homepage carousels (goals + features)
+  function initCarousel($container, autoScrollInterval) {
     if (!$container.length) return;
 
-    var $section = $container.closest('.hp-features');
+    var $section = $container.closest('section');
     var prevSvg = '<svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>';
     var nextSvg = '<svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>';
     var $prev = $('<button class="hp-carousel-btn hp-carousel-prev" aria-label="Previous">' + prevSvg + '</button>');
@@ -3394,7 +3393,7 @@ $(window).on("resize", function () {
     }
 
     function scrollByCards(direction) {
-      var cardWidth = $container.find('.hp-feature-card').first().outerWidth(true);
+      var cardWidth = $container.children().first().outerWidth(true);
       $container.animate({
         scrollLeft: $container.scrollLeft() + (direction * cardWidth * getVisibleCount())
       }, 300, updateButtons);
@@ -3417,10 +3416,13 @@ $(window).on("resize", function () {
     }
     function resetAutoScroll() {
       clearInterval(autoScrollTimer);
-      autoScrollTimer = setInterval(autoScroll, 15000);
+      autoScrollTimer = setInterval(autoScroll, autoScrollInterval);
     }
-    autoScrollTimer = setInterval(autoScroll, 15000);
-  })();
+    autoScrollTimer = setInterval(autoScroll, autoScrollInterval);
+  }
+
+  initCarousel($('.hp-goal-cards'), 15000);
+  initCarousel($('.hp-feature-cards'), 15000);
 
   // Hero search box — click triggers the header search
   var heroSearch = document.querySelector('.hp-hero-search');
