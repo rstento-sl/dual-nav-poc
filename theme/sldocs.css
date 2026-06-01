@@ -5772,7 +5772,7 @@ header .topmenu {
   transition: all 0.2s ease;
   border-left: 3px solid transparent;
   font-size: 11px;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 0.3px;
   font-weight: 600;
 }
@@ -7104,13 +7104,16 @@ p.hp-hero-subtitle {
 
 .hp-feature-cards {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   overflow-x: hidden;
   scroll-snap-type: x mandatory;
-  gap: 12px;
+  gap: 8px;
   list-style: none;
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
+  max-height: 220px;
 }
 
 .hp-features {
@@ -7173,7 +7176,9 @@ p.hp-hero-subtitle {
   grid-template-rows: auto 1fr auto;
   column-gap: 8px;
   transition: border-color 0.2s, box-shadow 0.2s;
+  width: calc(33.33% - 8px);
   min-width: calc(33.33% - 8px);
+  max-width: calc(33.33% - 8px);
   flex-shrink: 0;
   scroll-snap-align: start;
 }
@@ -7260,21 +7265,31 @@ p.hp-hero-subtitle {
 }
 
 @media screen and (max-width: 1024px) {
+  .hp-feature-cards {
+    max-height: 440px;
+  }
   .hp-feature-card {
+    width: calc(50% - 6px);
     min-width: calc(50% - 6px);
+    max-width: calc(50% - 6px);
   }
 }
 
 @media screen and (max-width: 600px) {
+  .hp-feature-cards {
+    max-height: none;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
   .hp-feature-card {
-    min-width: 100%;
+    width: 85%;
+    min-width: 85%;
+    max-width: 85%;
   }
   .hp-carousel-btn {
     display: none;
-  }
-  .hp-feature-cards {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
   }
 }
 

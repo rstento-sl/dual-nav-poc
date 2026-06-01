@@ -3386,17 +3386,31 @@ $(window).on("resize", function () {
 
     function scrollByCards(direction) {
       var cardWidth = $container.find('.hp-feature-card').first().outerWidth(true);
-      var count = getVisibleCount();
       $container.animate({
-        scrollLeft: $container.scrollLeft() + (direction * cardWidth * count)
+        scrollLeft: $container.scrollLeft() + (direction * cardWidth * getVisibleCount())
       }, 300, updateButtons);
     }
 
-    $prev.on('click', function() { scrollByCards(-1); });
-    $next.on('click', function() { scrollByCards(1); });
+    $prev.on('click', function() { scrollByCards(-1); resetAutoScroll(); });
+    $next.on('click', function() { scrollByCards(1); resetAutoScroll(); });
     $container.on('scroll', updateButtons);
     $(window).on('resize', updateButtons);
     updateButtons();
+
+    var autoScrollTimer;
+    function autoScroll() {
+      var maxScroll = $container[0].scrollWidth - $container[0].clientWidth;
+      if ($container.scrollLeft() >= maxScroll - 1) {
+        $container.animate({ scrollLeft: 0 }, 300, updateButtons);
+      } else {
+        scrollByCards(1);
+      }
+    }
+    function resetAutoScroll() {
+      clearInterval(autoScrollTimer);
+      autoScrollTimer = setInterval(autoScroll, 15000);
+    }
+    autoScrollTimer = setInterval(autoScroll, 15000);
   })();
 
   // Hero search box — click triggers the header search
