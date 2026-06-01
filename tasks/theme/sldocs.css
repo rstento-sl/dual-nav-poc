@@ -6373,8 +6373,8 @@ a.xref.landing-card:hover {
 
 .task-home-card-header {
   display: flex;
-  align-items: flex-start;
-  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
   gap: 8px;
   margin-bottom: 8px;
 }
@@ -6490,8 +6490,8 @@ a.xref.landing-card:hover {
 
 .product-landing-card-header {
   display: flex;
-  align-items: flex-start;
-  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
   gap: 8px;
   margin-bottom: 8px;
 }
