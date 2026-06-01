@@ -6394,6 +6394,7 @@ a.xref.landing-card:hover {
   font-weight: 700;
   color: var(--c2-grey1);
   margin: 0;
+  line-height: 1;
 }
 
 .task-home-card p {
@@ -6511,6 +6512,7 @@ a.xref.landing-card:hover {
   font-weight: 700;
   color: var(--c2-grey1);
   margin: 0;
+  line-height: 1;
 }
 
 .product-landing-card p {
