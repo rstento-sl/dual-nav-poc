@@ -1680,6 +1680,7 @@ $(document).ready(function() {
     'Troubleshoot': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="4.5"/><path d="M8 8v1"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/><path d="M6.5 12h3l0.5 2h-4z"/></svg>',
     // Product view products
     'Introduction': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h5l1 1v9l-1-1H2V3z"/><path d="M14 3H9l-1 1v9l1-1h5V3z"/></svg>',
+    'AI Ecosystem': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="4" cy="4" r="2"/><circle cx="12" cy="4" r="2"/><circle cx="4" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><path d="M6 4h4"/><path d="M4 6v4"/><path d="M12 6v4"/><path d="M6 12h4"/></svg>',
     'Admin Manager': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 7h6M5 10h4"/></svg>',
     'AutoSync': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a5 5 0 019-2"/><path d="M12 6l1-3 3 1"/><path d="M13 8a5 5 0 01-9 2"/><path d="M4 10l-1 3-3-1"/></svg>',
     'Designer': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11l7-7 3 3-7 7H2v-3z"/></svg>',
@@ -3304,10 +3305,12 @@ $(window).on("resize", function () {
       'snapgpt': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231E5BD6' stroke='none'%3E%3Ccircle cx='12' cy='12' r='2.2'/%3E%3Ccircle cx='8.5' cy='9' r='1.8'/%3E%3Ccircle cx='15.5' cy='9' r='1.8'/%3E%3Ccircle cx='8.5' cy='15' r='1.8'/%3E%3Ccircle cx='15.5' cy='15' r='1.8'/%3E%3Ccircle cx='6' cy='12' r='1.5'/%3E%3Ccircle cx='18' cy='12' r='1.5'/%3E%3Ccircle cx='12' cy='6.5' r='1.5'/%3E%3Ccircle cx='12' cy='17.5' r='1.5'/%3E%3C/svg%3E",
       'admin-manager': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 005 15.9a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 5a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019 9.1a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z'/%3E%3C/svg%3E",
       'monitor': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='3' width='20' height='14' rx='2'/%3E%3Cpath d='M8 21h8'/%3E%3Cpath d='M12 17v4'/%3E%3Cpath d='M7 10l3-3 2 2 5-5'/%3E%3C/svg%3E",
-      'agent': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4h12a2 2 0 012 2v12a2 2 0 01-2 2H4V4z'/%3E%3Cpath d='M8 8h6'/%3E%3Cpath d='M8 12h4'/%3E%3Cpath d='M8 16h2'/%3E%3Cpath d='M18 8l3-3 1 1-3 3'/%3E%3Cpath d='M19 9l-4 4v2h2l4-4'/%3E%3C/svg%3E"
+      'agent': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4h12a2 2 0 012 2v12a2 2 0 01-2 2H4V4z'/%3E%3Cpath d='M8 8h6'/%3E%3Cpath d='M8 12h4'/%3E%3Cpath d='M8 16h2'/%3E%3Cpath d='M18 8l3-3 1 1-3 3'/%3E%3Cpath d='M19 9l-4 4v2h2l4-4'/%3E%3C/svg%3E",
+      'mcp': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='6' cy='6' r='3'/%3E%3Ccircle cx='18' cy='6' r='3'/%3E%3Ccircle cx='6' cy='18' r='3'/%3E%3Ccircle cx='18' cy='18' r='3'/%3E%3Cpath d='M9 6h6'/%3E%3Cpath d='M6 9v6'/%3E%3Cpath d='M18 9v6'/%3E%3Cpath d='M9 18h6'/%3E%3C/svg%3E"
     };
     // Category-level icons (for "All Products" view)
     var CATEGORY_ICONS = {
+      'ai ecosystem': NAV_ICONS['mcp'],
       'integration platform': NAV_ICONS['designer'],
       'administration': NAV_ICONS['admin-manager'],
       'observability': NAV_ICONS['monitor']
@@ -3324,6 +3327,9 @@ $(window).on("resize", function () {
         'monitor': NAV_ICONS['monitor'],
         'agent creator': NAV_ICONS['agent'],
         'agentcreator': NAV_ICONS['agent'],
+        'mcp': NAV_ICONS['mcp'],
+        'model context protocol (mcp)': NAV_ICONS['mcp'],
+        'ai ecosystem': CATEGORY_ICONS['ai ecosystem'],
         'integration platform': CATEGORY_ICONS['integration platform'],
         'administration': CATEGORY_ICONS['administration'],
         'observability': CATEGORY_ICONS['observability']
@@ -3352,6 +3358,46 @@ $(window).on("resize", function () {
   } // end if ($toc.length > 0)
 
   // prettifyCodeBlocks() - moved to build time (postprocess.py)
+
+  // Feature cards carousel
+  (function() {
+    var $container = $('.hp-feature-cards');
+    if (!$container.length) return;
+
+    var $section = $container.closest('.hp-features');
+    var prevSvg = '<svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>';
+    var nextSvg = '<svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>';
+    var $prev = $('<button class="hp-carousel-btn hp-carousel-prev" aria-label="Previous">' + prevSvg + '</button>');
+    var $next = $('<button class="hp-carousel-btn hp-carousel-next" aria-label="Next">' + nextSvg + '</button>');
+    $section.append($prev).append($next);
+
+    function getVisibleCount() {
+      if (window.innerWidth <= 600) return 1;
+      if (window.innerWidth <= 1024) return 2;
+      return 3;
+    }
+
+    function updateButtons() {
+      var scrollLeft = $container.scrollLeft();
+      var maxScroll = $container[0].scrollWidth - $container[0].clientWidth;
+      $prev.prop('disabled', scrollLeft <= 0);
+      $next.prop('disabled', scrollLeft >= maxScroll - 1);
+    }
+
+    function scrollByCards(direction) {
+      var cardWidth = $container.find('.hp-feature-card').first().outerWidth(true);
+      var count = getVisibleCount();
+      $container.animate({
+        scrollLeft: $container.scrollLeft() + (direction * cardWidth * count)
+      }, 300, updateButtons);
+    }
+
+    $prev.on('click', function() { scrollByCards(-1); });
+    $next.on('click', function() { scrollByCards(1); });
+    $container.on('scroll', updateButtons);
+    $(window).on('resize', updateButtons);
+    updateButtons();
+  })();
 
   // Hero search box — click triggers the header search
   var heroSearch = document.querySelector('.hp-hero-search');
