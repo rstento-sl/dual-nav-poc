@@ -3373,7 +3373,7 @@ $(window).on("resize", function () {
   // prettifyCodeBlocks() - moved to build time (postprocess.py)
 
   // Homepage carousels (goals + features)
-  function initCarousel($container, autoScrollInterval) {
+  function initCarousel($container, autoScrollInterval, initialDelay) {
     if (!$container.length) return;
 
     var $section = $container.closest('section');
@@ -3422,11 +3422,13 @@ $(window).on("resize", function () {
       clearInterval(autoScrollTimer);
       autoScrollTimer = setInterval(autoScroll, autoScrollInterval);
     }
-    autoScrollTimer = setInterval(autoScroll, autoScrollInterval);
+    setTimeout(function() {
+      autoScrollTimer = setInterval(autoScroll, autoScrollInterval);
+    }, initialDelay || 0);
   }
 
-  initCarousel($('.hp-goal-cards'), 15000);
-  initCarousel($('.hp-feature-cards'), 15000);
+  initCarousel($('.hp-goal-cards'), 7000, 0);
+  initCarousel($('.hp-feature-cards'), 7000, 3500);
 
   // Hero search box — click triggers the header search
   var heroSearch = document.querySelector('.hp-hero-search');

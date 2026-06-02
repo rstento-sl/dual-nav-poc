@@ -6991,7 +6991,7 @@ p.hp-hero-subtitle {
 
 .hp-goal-cards {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto;
   grid-auto-flow: column;
   grid-auto-columns: calc(33.33% - 8px);
   gap: 8px;
@@ -7133,7 +7133,7 @@ p.hp-hero-subtitle {
 
 .hp-feature-cards {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto;
   grid-auto-flow: column;
   grid-auto-columns: calc(33.33% - 8px);
   gap: 8px;
@@ -7324,7 +7324,7 @@ p.hp-hero-subtitle {
 
 /* Trending Topics */
 .hp-trending {
-  background: #F0F4FA;
+  background: #ffffff;
   padding: 16px 0 20px;
   margin: 0 -24px;
   padding-left: 24px;
