@@ -3432,7 +3432,7 @@ $(window).on("resize", function () {
   }
 
   initCarousel($('.hp-goal-cards'), 7000, 0);
-  initCarousel($('.hp-feature-cards'), 7000, 3500);
+  initCarousel($('.hp-feature-cards'), 10000, 4000);
 
   // Hero search box — click triggers the header search
   var heroSearch = document.querySelector('.hp-hero-search');
