@@ -1,0 +1,5 @@
+{
+  "description": "Example pipeline demonstrating how to list datasets in a Google BigQuery project",
+  "snap-version": "1",
+  "snap-pack": "google-bigquery"
+}

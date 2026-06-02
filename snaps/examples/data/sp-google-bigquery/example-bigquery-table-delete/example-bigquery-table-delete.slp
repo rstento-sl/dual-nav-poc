@@ -1,0 +1,5 @@
+{
+  "description": "Example pipeline demonstrating how to delete a table from Google BigQuery",
+  "snap-version": "1",
+  "snap-pack": "google-bigquery"
+}

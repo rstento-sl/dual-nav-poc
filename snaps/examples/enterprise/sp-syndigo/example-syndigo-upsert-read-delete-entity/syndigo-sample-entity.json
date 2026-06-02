@@ -1,0 +1,99 @@
+[
+{"entities":
+  {
+    "id": "PRS_2008",
+    "type": "product",
+    "name": "P - FUR_000011",
+    "attributes": {
+      "availableunits": "1",
+      "grouptwoattributethree": "",
+      "color": {
+        "en-US": [
+          "1999"
+        ]
+      },
+      "productid": "PR20008",
+      "dropshipindicator": "new",
+      "outputattributethree": "",
+      "featurespecs": {
+        "en-US": [
+          "Foldable",
+          "Mango Wood",
+          "Light Brown"
+        ],
+        "en-IN": [
+          "Foldable",
+          "Mango Wood",
+          "Light Brown",
+          "English India"
+        ]
+      },
+      "discount": 5.00,
+      "subhead": {
+        "en-US": "Table for Living Room (15 INCHES)"
+      },
+      "description": {
+        "en-US": "Mango wood coffee table for living room with foldable design\nLight brown color complements any living room décor\nVersatile and functional - can be used as a center table, side table or coffee table\nCompact and space-saving design with dimensions of 15 x 15 x 15 inches\nSturdy and durable wooden construction ensures long-lasting use\nAdds a touch of elegance to your living space\nEasy to store and transport"
+      },
+      "createdate": "2025-06-17T09:38:32.590-0500",
+      "sourceattributeone": "",
+      "startdate": "2025-06-01",
+      "hypearticle": false,
+      "backordereligible": true,
+      "teststringattribute": "101",
+      "dataenrichmentworkflow_invokedby": "spartans.snap@syndigo.com_user",
+      "grouptwoattributeone": "",
+      "currency": "Dollar",
+      "brand": "IKEEA",
+      "headline": {
+        "en-US": "AMAZE SHOPPEE Wooden Foldable Coffee Table - Mango Wood, Light Brown -"
+      },
+      "wtassigneduser": "_UNASSIGNED",
+      "mdmname": "P - FUR_000011",
+      "cost": 5000.99,
+      "dollarmargin": 10.00,
+      "daystoreturn": 12,
+      "enddate": "2025-06-01",
+      "size": {
+        "en-US": [
+          "0a"
+        ],
+        "de-DE": [
+          "30"
+        ],
+        "fr-FR": [
+          "32"
+        ]
+      },
+      "buytodemand": true,
+      "thumbnailid": "5394fa24-a1a3-45b5-887b-a480ddae6928.png",
+      "wtassigneddate": "2025-06-19",
+      "assemblyrequired": true,
+      "mdmid": "FUR_000011",
+      "status": [
+        "New"
+      ]
+    },
+    "relationships": {
+      "hasimages": [
+        {
+          "id": "49e388df-2e13-400c-8573-e60705e59fc8",
+          "type": "image"
+        },
+        {
+          "id": "7857ed64-1200-4918-b490-370b09498354",
+          "type": "image"
+        },
+        {
+          "id": "de65f627-5ab7-4536-bba9-f9f48daae5f7",
+          "type": "image"
+        },
+        {
+          "id": "b74e99f3-02cf-41f3-b06f-ef483e41ab9b",
+          "type": "image"
+        }
+      ]
+    }
+  }
+}
+]

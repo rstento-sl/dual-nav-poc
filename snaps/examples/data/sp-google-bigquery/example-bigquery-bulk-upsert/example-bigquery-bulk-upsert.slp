@@ -1,0 +1,5 @@
+{
+  "description": "Example pipeline demonstrating how to upsert customer data from Salesforce to a Google BigQuery table",
+  "snap-version": "1",
+  "snap-pack": "google-bigquery"
+}

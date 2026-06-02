@@ -1,0 +1,413 @@
+{
+    "class_fqid": "com-snaplogic-pipeline_9",
+    "snode_id": "5daf7bd4a3a8dd23f1e4fdda",
+    "instance_id": "c55ab82d-ad85-4a26-8d99-bcf3ca8119ef",
+    "instance_version": 11,
+    "link_map": {
+        "link100": {
+            "src_view_id": "output0",
+            "dst_view_id": "input0",
+            "src_id": "cdd020fb-1e79-4441-8352-b1708bd6627d",
+            "dst_id": "14386fb5-292b-4b9c-86d1-1bd2056a8856",
+            "isGoto": false
+        },
+        "link101": {
+            "src_view_id": "output0",
+            "dst_view_id": "input0",
+            "src_id": "14386fb5-292b-4b9c-86d1-1bd2056a8856",
+            "dst_id": "4bb6d2d7-b5e0-4615-aa4b-f77df8f388ed",
+            "isGoto": false
+        }
+    },
+    "link_serial": 102,
+    "property_map": {
+        "info": {
+            "notes": {
+                "value": null
+            },
+            "label": {
+                "value": "ExcelParserSkipColumns"
+            },
+            "purpose": {
+                "value": null
+            },
+            "pipeline_doc_uri": {
+                "value": null
+            },
+            "author": {
+                "value": "admin@snaplogic.com"
+            }
+        },
+        "input": {},
+        "settings": {
+            "imports": {
+                "value": []
+            },
+            "error_param_table": {
+                "value": []
+            },
+            "param_table": {
+                "value": []
+            },
+            "error_pipeline": {
+                "expression": false,
+                "value": null
+            }
+        },
+        "error": {
+            "error_behavior": {
+                "value": "none"
+            }
+        },
+        "output": {
+            "4bb6d2d7-b5e0-4615-aa4b-f77df8f388ed_output0": {
+                "view_type": {
+                    "value": "document"
+                },
+                "label": {
+                    "value": "Mapper - output0"
+                }
+            }
+        }
+    },
+    "render_map": {
+        "pan_x_num": 0,
+        "default_snaplex": "5b4e3c83a3a8dd3e034aecff",
+        "scale_ratio": 1,
+        "detail_map": {
+            "14386fb5-292b-4b9c-86d1-1bd2056a8856": {
+                "grid_x_int": 3,
+                "index": null,
+                "recommendation_id": null,
+                "source": "snap catagory",
+                "grid_y_int": 1,
+                "rot_tail_int": 0,
+                "rot_int": 0
+            },
+            "cdd020fb-1e79-4441-8352-b1708bd6627d": {
+                "grid_x_int": 2,
+                "index": null,
+                "recommendation_id": null,
+                "source": "snap catagory",
+                "grid_y_int": 1,
+                "rot_tail_int": 0,
+                "rot_int": 0
+            },
+            "4bb6d2d7-b5e0-4615-aa4b-f77df8f388ed": {
+                "grid_x_int": 4,
+                "index": null,
+                "recommendation_id": null,
+                "source": "snap catagory",
+                "grid_y_int": 1,
+                "rot_tail_int": 0,
+                "rot_int": 0
+            }
+        },
+        "pan_y_num": 0
+    },
+    "snap_map": {
+        "4bb6d2d7-b5e0-4615-aa4b-f77df8f388ed": {
+            "class_fqid": "com-snaplogic-snaps-transform-datatransform_4-1571693715",
+            "class_id": "com-snaplogic-snaps-transform-datatransform",
+            "class_version": 4,
+            "instance_fqid": "4bb6d2d7-b5e0-4615-aa4b-f77df8f388ed_6",
+            "instance_id": "4bb6d2d7-b5e0-4615-aa4b-f77df8f388ed",
+            "instance_version": 6,
+            "property_map": {
+                "info": {
+                    "notes": {
+                        "value": null
+                    },
+                    "label": {
+                        "value": "Mapper"
+                    }
+                },
+                "view_serial": 100,
+                "input": {
+                    "input0": {
+                        "view_type": {
+                            "value": "document"
+                        },
+                        "label": {
+                            "value": "input0"
+                        }
+                    }
+                },
+                "settings": {
+                    "nullSafeAccess": {
+                        "value": false
+                    },
+                    "passThrough": {
+                        "value": false
+                    },
+                    "execution_mode": {
+                        "value": "Validate & Execute"
+                    },
+                    "transformations": {
+                        "value": {
+                            "mappingTable": {
+                                "value": [
+                                    {
+                                        "expression": {
+                                            "expression": true,
+                                            "value": "$.filter((value, key) => !key.match(\"Discounts|Month Number\"))"
+                                        },
+                                        "targetPath": {
+                                            "value": "$"
+                                        }
+                                    }
+                                ]
+                            },
+                            "mappingRoot": {
+                                "value": "$"
+                            }
+                        }
+                    }
+                },
+                "error": {
+                    "error0": {
+                        "view_type": {
+                            "value": "document"
+                        },
+                        "label": {
+                            "value": "error0"
+                        }
+                    },
+                    "error_behavior": {
+                        "value": "fail"
+                    }
+                },
+                "output": {
+                    "output0": {
+                        "view_type": {
+                            "value": "document"
+                        },
+                        "label": {
+                            "value": "output0"
+                        }
+                    }
+                }
+            },
+            "class_build_tag": "1571693715"
+        },
+        "cdd020fb-1e79-4441-8352-b1708bd6627d": {
+            "class_fqid": "com-snaplogic-snaps-binary-simpleread_1-SNAPSHOT",
+            "class_id": "com-snaplogic-snaps-binary-simpleread",
+            "class_version": 1,
+            "instance_fqid": "cdd020fb-1e79-4441-8352-b1708bd6627d_3",
+            "instance_id": "cdd020fb-1e79-4441-8352-b1708bd6627d",
+            "instance_version": 3,
+            "property_map": {
+                "info": {
+                    "notes": {
+                        "value": null
+                    },
+                    "label": {
+                        "value": "File Reader"
+                    }
+                },
+                "view_serial": 100,
+                "account": {
+                    "account_ref": {
+                        "expression": false,
+                        "value": {}
+                    }
+                },
+                "settings": {
+                    "retryInterval": {
+                        "expression": false,
+                        "value": 1
+                    },
+                    "retries": {
+                        "expression": false,
+                        "value": 0
+                    },
+                    "execution_mode": {
+                        "value": "Validate & Execute"
+                    },
+                    "filePath": {
+                        "expression": false,
+                        "value": "../shared/Financial Sample.xlsx"
+                    },
+                    "enableStaging": {
+                        "value": false
+                    },
+                    "executeDuringPreview": {
+                        "value": true
+                    },
+                    "advancedProperties": {
+                        "value": []
+                    },
+                    "preventURLEncoding": {
+                        "value": false
+                    }
+                },
+                "error": {
+                    "error0": {
+                        "label": {
+                            "value": "error0"
+                        },
+                        "view_type": {
+                            "value": "document"
+                        }
+                    },
+                    "error_behavior": {
+                        "value": "fail"
+                    }
+                },
+                "output": {
+                    "output0": {
+                        "label": {
+                            "value": "output0"
+                        },
+                        "view_type": {
+                            "value": "binary"
+                        }
+                    }
+                }
+            },
+            "class_build_tag": "SNAPSHOT"
+        },
+        "14386fb5-292b-4b9c-86d1-1bd2056a8856": {
+            "class_fqid": "com-snaplogic-snaps-transform-excelparser_4-1571693715",
+            "class_id": "com-snaplogic-snaps-transform-excelparser",
+            "class_version": 4,
+            "instance_fqid": "14386fb5-292b-4b9c-86d1-1bd2056a8856_2",
+            "instance_id": "14386fb5-292b-4b9c-86d1-1bd2056a8856",
+            "instance_version": 2,
+            "property_map": {
+                "info": {
+                    "notes": {
+                        "value": null
+                    },
+                    "label": {
+                        "value": "Excel Parser"
+                    }
+                },
+                "view_serial": 100,
+                "input": {
+                    "input0": {
+                        "label": {
+                            "value": "input0"
+                        },
+                        "view_type": {
+                            "value": "binary"
+                        }
+                    }
+                },
+                "settings": {
+                    "execution_mode": {
+                        "value": "Validate & Execute"
+                    },
+                    "lastBlankHeaders": {
+                        "expression": false,
+                        "value": 0
+                    },
+                    "nullEmptyColumns": {
+                        "value": false
+                    },
+                    "endRowProp": {
+                        "expression": false,
+                        "value": null
+                    },
+                    "columnNamesProp": {
+                        "value": []
+                    },
+                    "EvaluateFormulasProp": {
+                        "value": false
+                    },
+                    "sheetNameProp": {
+                        "expression": false,
+                        "value": null
+                    },
+                    "containsHeaderProp": {
+                        "value": true
+                    },
+                    "startRowProp": {
+                        "expression": false,
+                        "value": null
+                    },
+                    "cellFormatting": {
+                        "value": "Formatted"
+                    },
+                    "roundDateToSeconds": {
+                        "value": false
+                    },
+                    "sheetIndexOrNameProp": {
+                        "expression": false,
+                        "value": "0"
+                    },
+                    "headerRowProp": {
+                        "expression": false,
+                        "value": 1
+                    }
+                },
+                "error": {
+                    "error0": {
+                        "label": {
+                            "value": "error0"
+                        },
+                        "view_type": {
+                            "value": "document"
+                        }
+                    },
+                    "error_behavior": {
+                        "value": "fail"
+                    }
+                },
+                "output": {
+                    "output0": {
+                        "label": {
+                            "value": "output0"
+                        },
+                        "view_type": {
+                            "value": "document"
+                        }
+                    }
+                }
+            },
+            "class_build_tag": "1571693715"
+        }
+    },
+    "path_id": "/snaplogic/projects/shared",
+    "path_snode": "5b4e3c79a3a8dd3d40c71181",
+    "target_runtime": "standard",
+    "snap_history": {
+        "x266": {
+            "index": null,
+            "added_ts": 1571781840545,
+            "is_deleted": false,
+            "class_id": "com-snaplogic-snaps-rest-get",
+            "recommendation_id": null,
+            "source": "snap catagory",
+            "deleted_ts": null
+        },
+        "14386fb5-292b-4b9c-86d1-1bd2056a8856": {
+            "index": null,
+            "added_ts": 1571781993126,
+            "is_deleted": false,
+            "class_id": "com-snaplogic-snaps-transform-excelparser",
+            "recommendation_id": null,
+            "source": "snap catagory",
+            "deleted_ts": null
+        },
+        "cdd020fb-1e79-4441-8352-b1708bd6627d": {
+            "index": null,
+            "added_ts": 1571781596642,
+            "is_deleted": false,
+            "class_id": "com-snaplogic-snaps-binary-simpleread",
+            "recommendation_id": null,
+            "source": "snap catagory",
+            "deleted_ts": null
+        },
+        "4bb6d2d7-b5e0-4615-aa4b-f77df8f388ed": {
+            "index": null,
+            "added_ts": 1571782004498,
+            "is_deleted": false,
+            "class_id": "com-snaplogic-snaps-transform-datatransform",
+            "recommendation_id": null,
+            "source": "snap catagory",
+            "deleted_ts": null
+        }
+    }
+}

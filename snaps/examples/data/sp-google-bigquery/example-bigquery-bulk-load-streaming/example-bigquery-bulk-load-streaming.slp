@@ -1,0 +1,5 @@
+{
+  "description": "Example pipeline demonstrating how to bulk load records from PostgreSQL to Google BigQuery using streaming",
+  "snap-version": "1",
+  "snap-pack": "google-bigquery"
+}

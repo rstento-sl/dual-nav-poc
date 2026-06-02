@@ -1,0 +1,5 @@
+{
+  "description": "Example pipeline demonstrating how to create a table in Google BigQuery",
+  "snap-version": "1",
+  "snap-pack": "google-bigquery"
+}
