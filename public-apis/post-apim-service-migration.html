@@ -398,62 +398,62 @@
         <p class="p sectiondivtitle">migrate_assets fields</p>
         <p class="p">Each object in the <code class="ph codeph">migrate_assets</code> array contains:</p>
         <table class="table"><caption></caption><colgroup><col style="width:25%"><col style="width:15%"><col style="width:60%"></colgroup><thead class="thead">
-            <tr class="row" id="post-apim-service-migration__d1005e383">
-              <th class="entry valign-top" id="post-apim-service-migration__d1005e383__entry__1">Key</th>
-              <th class="entry valign-top" id="post-apim-service-migration__d1005e383__entry__2">Type</th>
-              <th class="entry valign-top" id="post-apim-service-migration__d1005e383__entry__3">Description</th>
+            <tr class="row" id="post-apim-service-migration__d883e383">
+              <th class="entry valign-top" id="post-apim-service-migration__d883e383__entry__1">Key</th>
+              <th class="entry valign-top" id="post-apim-service-migration__d883e383__entry__2">Type</th>
+              <th class="entry valign-top" id="post-apim-service-migration__d883e383__entry__3">Description</th>
             </tr>
           </thead><tbody class="tbody">
               <tr class="row">
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__1"><code class="ph codeph">asset_path</code></td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__2">string</td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__3">Required. The path of the Classic APIM asset to migrate. If the path doesn't start with
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__1"><code class="ph codeph">asset_path</code></td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__2">string</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__3">Required. The path of the Classic APIM asset to migrate. If the path doesn't start with
                     <code class="ph codeph">/</code>, the API adds it automatically. The asset must be an API, API Version, or
                   Proxy.</td>
               </tr>
               <tr class="row">
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__1"><code class="ph codeph">service_config</code></td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__2">object</td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__3">Required. The Service configuration for the migration target.</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__1"><code class="ph codeph">service_config</code></td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__2">object</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__3">Required. The Service configuration for the migration target.</td>
               </tr>
               <tr class="row">
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__1"><code class="ph codeph">policy_config</code></td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__2">object</td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__3">Optional. Policy migration configuration. If omitted, policies aren't migrated.</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__1"><code class="ph codeph">policy_config</code></td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__2">object</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__3">Optional. Policy migration configuration. If omitted, policies aren't migrated.</td>
               </tr>
             </tbody></table>
 
         <p class="p sectiondivtitle">service_config fields</p>
         <p class="p">The <code class="ph codeph">service_config</code> object contains:</p>
         <table class="table"><caption></caption><colgroup><col style="width:25%"><col style="width:15%"><col style="width:60%"></colgroup><thead class="thead">
-            <tr class="row" id="post-apim-service-migration__d1005e383">
-              <th class="entry valign-top" id="post-apim-service-migration__d1005e383__entry__1">Key</th>
-              <th class="entry valign-top" id="post-apim-service-migration__d1005e383__entry__2">Type</th>
-              <th class="entry valign-top" id="post-apim-service-migration__d1005e383__entry__3">Description</th>
+            <tr class="row" id="post-apim-service-migration__d883e383">
+              <th class="entry valign-top" id="post-apim-service-migration__d883e383__entry__1">Key</th>
+              <th class="entry valign-top" id="post-apim-service-migration__d883e383__entry__2">Type</th>
+              <th class="entry valign-top" id="post-apim-service-migration__d883e383__entry__3">Description</th>
             </tr>
           </thead><tbody class="tbody">
               <tr class="row">
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__1"><code class="ph codeph">target_path</code></td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__2">string</td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__3">Required. The destination project path for the migrated Service. The project
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__1"><code class="ph codeph">target_path</code></td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__2">string</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__3">Required. The destination project path for the migrated Service. The project
                   must exist. If the path doesn't start with <code class="ph codeph">/</code>, the API adds it
                   automatically.</td>
               </tr>
               <tr class="row">
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__1"><code class="ph codeph">name</code></td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__2">string</td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__3">Optional. The name for the new Service. Default: the source asset name.</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__1"><code class="ph codeph">name</code></td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__2">string</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__3">Optional. The name for the new Service. Default: the source asset name.</td>
               </tr>
               <tr class="row">
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__1"><code class="ph codeph">slug</code></td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__2">string</td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__3">Optional. The slug for the new Service. Default: the name with spaces replaced
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__1"><code class="ph codeph">slug</code></td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__2">string</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__3">Optional. The slug for the new Service. Default: the name with spaces replaced
                   by underscores. The API auto-increments duplicate slugs.</td>
               </tr>
               <tr class="row">
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__1"><code class="ph codeph">version</code></td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__2">string</td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__3">Optional. The version name for the migrated Service version. Default: the
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__1"><code class="ph codeph">version</code></td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__2">string</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__3">Optional. The version name for the migrated Service version. Default: the
                   source version name or <code class="ph codeph">1.0</code>.</td>
               </tr>
             </tbody></table>
@@ -461,23 +461,23 @@
         <p class="p sectiondivtitle">policy_config fields</p>
         <p class="p">The <code class="ph codeph">policy_config</code> object contains:</p>
         <table class="table"><caption></caption><colgroup><col style="width:25%"><col style="width:15%"><col style="width:60%"></colgroup><thead class="thead">
-            <tr class="row" id="post-apim-service-migration__d1005e383">
-              <th class="entry valign-top" id="post-apim-service-migration__d1005e383__entry__1">Key</th>
-              <th class="entry valign-top" id="post-apim-service-migration__d1005e383__entry__2">Type</th>
-              <th class="entry valign-top" id="post-apim-service-migration__d1005e383__entry__3">Description</th>
+            <tr class="row" id="post-apim-service-migration__d883e383">
+              <th class="entry valign-top" id="post-apim-service-migration__d883e383__entry__1">Key</th>
+              <th class="entry valign-top" id="post-apim-service-migration__d883e383__entry__2">Type</th>
+              <th class="entry valign-top" id="post-apim-service-migration__d883e383__entry__3">Description</th>
             </tr>
           </thead><tbody class="tbody">
               <tr class="row">
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__1"><code class="ph codeph">migrate_policies</code></td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__2">boolean</td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__3">Optional. If <code class="ph codeph">true</code>, migrate policies from the source asset
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__1"><code class="ph codeph">migrate_policies</code></td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__2">boolean</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__3">Optional. If <code class="ph codeph">true</code>, migrate policies from the source asset
                   and apply them to the destination Service. Default:
                   <code class="ph codeph">false</code>.</td>
               </tr>
               <tr class="row">
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__1"><code class="ph codeph">policy_path</code></td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__2">string</td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__3">Required when <code class="ph codeph">migrate_policies</code> is
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__1"><code class="ph codeph">policy_path</code></td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__2">string</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__3">Required when <code class="ph codeph">migrate_policies</code> is
                   <code class="ph codeph">true</code>. The destination path for migrated policies. If the path
                   doesn't start with <code class="ph codeph">/</code>, the API adds it automatically.</td>
               </tr>
@@ -499,21 +499,21 @@
   &quot;http_status_code&quot;: 200
 }</code></pre>
         <table class="table"><caption></caption><colgroup><col style="width:25%"><col style="width:15%"><col style="width:60%"></colgroup><thead class="thead">
-            <tr class="row" id="post-apim-service-migration__d1005e383">
-              <th class="entry valign-top" id="post-apim-service-migration__d1005e383__entry__1">Key</th>
-              <th class="entry valign-top" id="post-apim-service-migration__d1005e383__entry__2">Type</th>
-              <th class="entry valign-top" id="post-apim-service-migration__d1005e383__entry__3">Description</th>
+            <tr class="row" id="post-apim-service-migration__d883e383">
+              <th class="entry valign-top" id="post-apim-service-migration__d883e383__entry__1">Key</th>
+              <th class="entry valign-top" id="post-apim-service-migration__d883e383__entry__2">Type</th>
+              <th class="entry valign-top" id="post-apim-service-migration__d883e383__entry__3">Description</th>
             </tr>
           </thead><tbody class="tbody">
               <tr class="row">
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__1"><code class="ph codeph">&lt;asset_snode_id&gt;</code></td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__2">object</td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__3">Contains one entry per migrated asset, keyed by the asset snode ID.</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__1"><code class="ph codeph">&lt;asset_snode_id&gt;</code></td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__2">object</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__3">Contains one entry per migrated asset, keyed by the asset snode ID.</td>
               </tr>
               <tr class="row">
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__1"><code class="ph codeph">status_token</code></td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__2">string</td>
-                <td class="entry" headers="post-apim-service-migration__d1005e383__entry__3">A UUID token for polling migration progress.</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__1"><code class="ph codeph">status_token</code></td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__2">string</td>
+                <td class="entry" headers="post-apim-service-migration__d883e383__entry__3">A UUID token for polling migration progress.</td>
               </tr>
             </tbody></table>
       </div>

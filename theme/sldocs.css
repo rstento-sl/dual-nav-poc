@@ -6981,6 +6981,7 @@ p.hp-hero-subtitle {
 .hp-goals {
   background: #ffffff;
   padding: 8px 0 10px;
+  position: relative;
 }
 
 .hp-goals .p,
@@ -6988,23 +6989,18 @@ p.hp-hero-subtitle {
   margin: 0;
 }
 
-.hp-goals {
-  position: relative;
-}
-
 .hp-goal-cards {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(33.33% - 8px);
   gap: 8px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
   list-style: none;
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
-  height: 280px;
   scrollbar-width: none;
 }
 
@@ -7020,11 +7016,6 @@ p.hp-hero-subtitle {
   position: relative;
   padding-left: 20px;
   transition: border-color 0.2s, box-shadow 0.2s;
-  width: calc(33.33% - 8px);
-  min-width: calc(33.33% - 8px);
-  max-width: calc(33.33% - 8px);
-  height: calc(50% - 4px);
-  flex-shrink: 0;
   scroll-snap-align: start;
   overflow: hidden;
 }
@@ -7093,25 +7084,16 @@ p.hp-hero-subtitle {
 }
 
 @media screen and (max-width: 1024px) {
-  .hp-goal-card {
-    width: calc(50% - 6px);
-    min-width: calc(50% - 6px);
-    max-width: calc(50% - 6px);
+  .hp-goal-cards {
+    grid-auto-columns: calc(50% - 4px);
   }
 }
 
 @media screen and (max-width: 600px) {
   .hp-goal-cards {
-    max-height: none;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    grid-template-rows: 1fr;
+    grid-auto-columns: 85%;
     -webkit-overflow-scrolling: touch;
-  }
-  .hp-goal-card {
-    width: 85%;
-    min-width: 85%;
-    max-width: 85%;
   }
 }
 
@@ -7150,18 +7132,17 @@ p.hp-hero-subtitle {
 }
 
 .hp-feature-cards {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(33.33% - 8px);
   gap: 8px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
   list-style: none;
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
-  height: 240px;
   scrollbar-width: none;
 }
 
@@ -7229,11 +7210,6 @@ p.hp-hero-subtitle {
   grid-template-rows: auto 1fr auto;
   column-gap: 8px;
   transition: border-color 0.2s, box-shadow 0.2s;
-  width: calc(33.33% - 8px);
-  min-width: calc(33.33% - 8px);
-  max-width: calc(33.33% - 8px);
-  height: calc(50% - 4px);
-  flex-shrink: 0;
   scroll-snap-align: start;
   overflow: hidden;
 }
@@ -7331,27 +7307,15 @@ p.hp-hero-subtitle {
 
 @media screen and (max-width: 1024px) {
   .hp-feature-cards {
-    max-height: 440px;
-  }
-  .hp-feature-card {
-    width: calc(50% - 6px);
-    min-width: calc(50% - 6px);
-    max-width: calc(50% - 6px);
+    grid-auto-columns: calc(50% - 4px);
   }
 }
 
 @media screen and (max-width: 600px) {
   .hp-feature-cards {
-    max-height: none;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    grid-template-rows: 1fr;
+    grid-auto-columns: 85%;
     -webkit-overflow-scrolling: touch;
-  }
-  .hp-feature-card {
-    width: 85%;
-    min-width: 85%;
-    max-width: 85%;
   }
   .hp-carousel-btn {
     display: none;
