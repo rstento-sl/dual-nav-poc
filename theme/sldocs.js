@@ -3170,15 +3170,16 @@ $(window).on("resize", function () {
     // Determine which product to show — URL is primary source of truth
     var urlProductSlug = getProductSlugFromPath(currentPath);
 
-    if (filteredProduct) {
-      // User selected a product from dropdown
+    if (urlProductSlug) {
+      // URL path determines product — always wins over sessionStorage
+      filterToProduct(urlProductSlug);
+      sessionStorage.removeItem('filteredProduct');
+    } else if (filteredProduct) {
+      // User selected a product from dropdown (no URL match)
       filterToProduct(filteredProduct.toLowerCase().replace(/ /g, '-'));
     } else if (showFullTree === 'true') {
       // User clicked "Products & Features" - show full tree
       showFullProductTree();
-    } else if (urlProductSlug) {
-      // Default: auto-filter based on current URL (primary source of truth)
-      filterToProduct(urlProductSlug);
     } else {
       // Fallback: show full tree
       showFullProductTree();
