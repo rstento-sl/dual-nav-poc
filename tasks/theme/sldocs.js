@@ -1681,6 +1681,7 @@ $(document).ready(function() {
     'Public APIs': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h12M2 8h12M2 12h7"/><circle cx="12" cy="12" r="1.5"/></svg>',
     'Snaps': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>',
     'API Management': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1L1 5l7 3.5L15 5 8 1z"/><path d="M1 11l7 3.5L15 11"/><path d="M1 8l7 3.5L15 8"/></svg>',
+    'Classic API Management': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1L1 5l7 3.5L15 5 8 1z"/><path d="M1 11l7 3.5L15 11"/><path d="M1 8l7 3.5L15 8"/></svg>',
     'Snaplexes': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="14" height="6" rx="1"/><rect x="1" y="9" width="14" height="6" rx="1"/><circle cx="4" cy="4" r="1" fill="currentColor"/><circle cx="4" cy="12" r="1" fill="currentColor"/></svg>',
     'Git Integration': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="2"/><circle cx="4" cy="4" r="2"/><circle cx="12" cy="4" r="2"/><path d="M8 10V6"/><path d="M6 5l2 1 2-1"/></svg>',
     'Troubleshoot': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="4.5"/><path d="M8 8v1"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/><path d="M6.5 12h3l0.5 2h-4z"/></svg>',
@@ -2886,12 +2887,14 @@ $(window).on("resize", function () {
   const $toc = $('nav.toc');
 
   // Derive product slugs from the nav HTML (used by switcher and filtering)
+  // Strips ../ prefixes to get the real directory path (e.g., "cicd/git-integration")
   var productSlugs = [];
   $('nav.toc > ul > li:not(.nav-view-switcher-li) > ul > li > a').each(function() {
     var href = $(this).attr('href') || '';
-    var match = href.match(/\.\.\/([^/]+)\//);
-    if (match && productSlugs.indexOf(match[1]) === -1) {
-      productSlugs.push(match[1]);
+    var cleaned = href.replace(/^(\.\.\/)+/, '');
+    var firstDir = cleaned.split('/')[0];
+    if (firstDir && firstDir !== '.' && firstDir.indexOf('.') === -1 && productSlugs.indexOf(firstDir) === -1) {
+      productSlugs.push(firstDir);
     }
   });
 
@@ -3354,6 +3357,8 @@ $(window).on("resize", function () {
         'snaps reference': NAV_ICONS['snaps'],
         'api management': NAV_ICONS['apim'],
         'api management 3.0': NAV_ICONS['apim'],
+        'classic api management': NAV_ICONS['apim'],
+        'apim-classic': NAV_ICONS['apim'],
         'snaplexes': NAV_ICONS['snaplexes'],
         'git integration': NAV_ICONS['git-integration'],
         'ai ecosystem': CATEGORY_ICONS['ai ecosystem'],
