@@ -1684,6 +1684,8 @@ $(document).ready(function() {
     'Classic API Management': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1L1 5l7 3.5L15 5 8 1z"/><path d="M1 11l7 3.5L15 11"/><path d="M1 8l7 3.5L15 8"/></svg>',
     'Snaplexes': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="14" height="6" rx="1"/><rect x="1" y="9" width="14" height="6" rx="1"/><circle cx="4" cy="4" r="1" fill="currentColor"/><circle cx="4" cy="12" r="1" fill="currentColor"/></svg>',
     'Migrate environments': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10"/><path d="M10 5l3 3-3 3"/><path d="M13 12H3"/><path d="M6 15l-3-3 3-3"/></svg>',
+    'Project Manager': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="12" height="12" rx="1"/><path d="M2 6h12"/><path d="M6 6v8"/></svg>',
+    'Public pattern library': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11l7-7 3 3-7 7H2v-3z"/></svg>',
     'Git Integration': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="2"/><circle cx="4" cy="4" r="2"/><circle cx="12" cy="4" r="2"/><path d="M8 10V6"/><path d="M6 5l2 1 2-1"/></svg>',
     'Troubleshoot': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="4.5"/><path d="M8 8v1"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/><path d="M6.5 12h3l0.5 2h-4z"/></svg>',
     // Product view products
@@ -3363,6 +3365,9 @@ $(window).on("resize", function () {
         'apim-classic': NAV_ICONS['apim'],
         'snaplexes': NAV_ICONS['snaplexes'],
         'migrate environments': NAV_ICONS['snaplexes'],
+        'project manager': NAV_ICONS['admin-manager'],
+        'public pattern library': NAV_ICONS['designer'],
+        'pattern library': NAV_ICONS['designer'],
         'git integration': NAV_ICONS['git-integration'],
         'ai ecosystem': CATEGORY_ICONS['ai ecosystem'],
         'integration platform': CATEGORY_ICONS['integration platform'],
