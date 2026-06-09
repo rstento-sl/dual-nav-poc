@@ -110,7 +110,7 @@
       </button>
       <div class="dropdown-menu">
         <a href="../../agentcreator/agentcreator-home.html">AgentCreator</a>
-        <a href="../../mcp/mcp-about.html">MCP</a>
+        <a href="../../mcp/mcp-home.html">MCP</a>
         <a href="../../snaplabs/snaplabs-about.html">SnapLabs</a>
         <a href="../../snapgpt/snapgpt-home.html">SnapGPT</a>
       </div>
@@ -125,11 +125,11 @@
         <a href="../../api-m/apim-home.html">API Management</a>
         <a href="../../autosync/autosync-home.html">AutoSync</a>
         <a href="../../designer/designer-home.html">Designer</a>
-        <a href="../../cicd/git-integration/git-integration-home.html">Git Integration</a>
+        <a href="../../git-integration/git-integration-home.html">Git Integration</a>
         <a href="../../manager/manager-home.html">Project Manager</a>
         <a href="../../pattern-library/pattern-library-about.html">Pattern Library</a>
         <a href="../../public-apis/public-apis-home.html">Public APIs</a>
-        <a href="../../security/security-about.html">Security</a>
+        <a href="../../security/security-home.html">Security</a>
         <a href="../../snaps/snaps-home.html">Snaps</a>
         <a href="../../snapgpt/snapgpt-home.html">SnapGPT</a>
       </div>
@@ -144,7 +144,7 @@
         <a href="../../admin-manager/admin-manager-home.html">Admin Manager</a>
         <a href="../../admin-manager/cloudplex-secure-connectivity.html">Cloud Connectivity</a>
         <a href="../../manager/migrate-about.html">Migrate Environments</a>
-        <a href="../../cicd/secrets-mgmt/secrets-mgmt-about.html">Secrets Management</a>
+        <a href="../../secrets-mgmt/secrets-mgmt-about.html">Secrets Management</a>
         <a href="../../snaplexes/snaplexes-home.html">Snaplexes</a>
       </div>
     </div>
@@ -286,14 +286,14 @@
     
       <p class="p"><span class="keyword"></span> features that support CI/CD processes include:</p>  
       <ul class="ul">
-        <li class="li"><span class="ph"><a class="xref" href="../common/../cicd/git-integration/git-integration-about.html" title="The SnapLogic Git Integration supports tracking and updating SnapLogic assets in a Git repository.">SnapLogic - Git Integration</a></span>. Use your Git provider to track
+        <li class="li"><span class="ph"><a class="xref" href="../common/../cicd/git-integration/git-integration-about.html">SnapLogic - Git Integration</a></span>. Use your Git provider to track
           SnapLogic project assets in Git repositories for concurrent development and version control. The Git
           Integration supports Azure Repos, GitHub.com, GitHub Enterprise Server, and GitLab. You can start
           with freely available Git workflow examples, Dev Ops pipeline examples, and GitHub Action examples
           and customize them to automate your CI/CD processes. The Git Integration for on-premises Git
-          providers requires use of the <a class="xref" href="git-integration/app-gateway.html" title="Use of the SnapLogic app gateway with a Groundplex enables secure communication between the control plane and an on-premises Git provider. You enable the app gateway by adding a Global property to the Groundplex with a custom URL value.">app gateway</a> and
+          providers requires use of the <a class="xref" href="git-integration/app-gateway.html">app gateway</a> and
           Groundplexes.</li>
-        <li class="li"><span class="ph"><a class="xref" href="../common/../cicd/secrets-mgmt/secrets-mgmt-about.html" title="SnapLogic Secrets Management enables organizations to use a third-party secrets manager to store endpoint credentials.">Secrets Management</a></span>. Store the information to access integration
+        <li class="li"><span class="ph"><a class="xref" href="../common/../cicd/secrets-mgmt/secrets-mgmt-about.html">Secrets Management</a></span>. Store the information to access integration
           endpoints in a secrets manager. Secrets Management supports AWS Secrets Manager, Azure Key Vault,
           CyberArk Conjur, and HashiCorp Vault. Define your endpoint credentials once and reference them from
           different environments. SnapLogic Secrets Management requires use of Groundplexes. </li>
@@ -325,7 +325,7 @@
         <br><div class="imageleft"><img class="image imageleft img100pc" src="../img/cicd/git-workflow.png" alt="Git workflow"></div><br>
         <p class="p">Store endpoint credentials in your secrets manager. Organizations typically have different endpoint
           accounts for development and production. Use the secrets manager capabilities to organize two sets
-          of accounts. For example, keys can include the target environment name. <a class="xref" href="secrets-mgmt/secrets-mgmt-config-accounts.html" title="Configure endpoint accounts to use secrets.">Configure your SnapLogic Accounts</a> to
+          of accounts. For example, keys can include the target environment name. <a class="xref" href="secrets-mgmt/secrets-mgmt-config-accounts.html">Configure your SnapLogic Accounts</a> to
           use an expression in the <code class="ph codeph">secrets.read</code> method that inserts the environment name. </p>
         <p class="p">While use of a secrets manager is optional and separate from use of a Git provider, they provide
         more benefits when used together. You don't need to edit the Accounts in each environment to use the
@@ -347,7 +347,7 @@
           <li class="li">Requires Git skills.</li>
           <li class="li">You must handle diffs and merges in your Git provider outside of the SnapLogic UI.</li>
         </ul>
-        <p class="p"><a class="xref" href="git-integration/repo-track.html" title="How to track SnapLogic assets with a Git repository.">Track with a repository</a> outlines the steps for tracking assets in repositories and concurrent development.
+        <p class="p"><a class="xref" href="git-integration/repo-track.html">Track with a repository</a> outlines the steps for tracking assets in repositories and concurrent development.
         </p>
         
         
