@@ -6073,6 +6073,7 @@ nav.toc .nav-view-text {
   font-weight: 700;
   color: var(--c2-grey1);
   margin: 0;
+  line-height: 1;
 }
 
 .product-home-card > p {
@@ -6404,6 +6405,14 @@ a.xref.landing-card:hover {
   line-height: 1.5;
 }
 
+.task-home-card-header p {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--c2-grey1);
+  margin: 0;
+  line-height: 1;
+}
+
 .task-home-card ul {
   list-style: none;
   padding: 0;
@@ -6520,6 +6529,14 @@ a.xref.landing-card:hover {
   color: var(--c2-grey3);
   margin: 0 0 10px 0;
   line-height: 1.5;
+}
+
+.product-landing-card-header p {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--c2-grey1);
+  margin: 0;
+  line-height: 1;
 }
 
 .product-landing-card ul {
