@@ -7368,21 +7368,42 @@ p.hp-hero-subtitle {
   padding-right: 24px;
 }
 
+/* Chevron at the right edge of the Trending header */
+.hp-trending .hp-section-header::after {
+  content: "\203A";
+  color: #11378B;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .hp-topic-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  grid-template-columns: 1fr;
+  gap: 12px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .hp-topic-card {
+  position: relative;
   background: #ffffff;
   border: 1px solid #E6E9EF;
   border-radius: 8px;
-  padding: 12px 16px;
+  padding: 16px 20px;
   transition: border-color 0.2s;
+}
+
+/* Short orange accent line at the top of each card */
+.hp-topic-card::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #E8662A;
+  border-radius: 2px;
+  margin-bottom: 12px;
 }
 
 .hp-topic-card:hover {
@@ -7390,12 +7411,12 @@ p.hp-hero-subtitle {
 }
 
 .hp-topic-card > a {
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 700;
   color: #11378B;
   text-decoration: none;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .hp-topic-card > a:hover {
@@ -7403,18 +7424,37 @@ p.hp-hero-subtitle {
 }
 
 .hp-topic-card > p {
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   color: #4B5563;
-  margin: 0 0 8px;
-  line-height: 1.4;
+  margin: 0;
+  line-height: 1.5;
 }
 
-.hp-topic-cat {
+/* "New" badge, top-right of the card */
+.hp-topic-badge {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: #0F766E;
+  padding: 3px 9px;
+  border-radius: 5px;
+  line-height: 1.2;
+}
+
+.hp-topic-badge::before {
+  content: "\2756";
   font-size: 0.6rem;
-  color: #4B5563;
-  background: #F3F4F6;
-  padding: 2px 8px;
-  border-radius: 4px;
+}
+
+/* Category pill hidden in the trending list view */
+.hp-topic-cat {
+  display: none;
 }
 
 /* ============================== END ============================== */
