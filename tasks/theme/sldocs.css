@@ -6942,7 +6942,9 @@ a.hp-banner-cta,
 }
 
 /* Hero */
-#index .search-container-compact {
+/* Homepage search lives in the header (top right), like every other page —
+   the hero no longer carries its own search box. */
+#index .hp-hero-search {
   display: none;
 }
 
