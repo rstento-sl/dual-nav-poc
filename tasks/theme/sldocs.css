@@ -7467,4 +7467,110 @@ p.hp-hero-subtitle {
   display: none;
 }
 
+/* ==============================
+   Floating action buttons (Back to Top + AI assistant)
+   ============================== */
+.sl-fab-stack {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: none;
+}
+.sl-fab-stack > button {
+  pointer-events: auto;
+}
+
+.sl-back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid #D6DCEA;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #11378B;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(17, 55, 139, 0.12);
+  /* Hidden until the user scrolls */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+.sl-back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.sl-back-to-top:hover {
+  border-color: #11378B;
+  background: #F5F8FF;
+}
+
+.sl-ai-assistant {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: #0E9384;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(14, 147, 132, 0.35);
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.sl-ai-assistant:hover {
+  background: #0B7D70;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(14, 147, 132, 0.45);
+}
+.sl-ai-assistant:active {
+  transform: translateY(0);
+}
+
+/* ==============================
+   Snap Examples — gray box with document icons (.snap-examples added in postprocess)
+   ============================== */
+.snap-examples > ol,
+.snap-examples > ul {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 8px 20px;
+  background: var(--SL-grey01);
+  border: 1px solid #E6E9EF;
+  border-radius: 8px;
+}
+.snap-examples > ol > li,
+.snap-examples > ul > li {
+  position: relative;
+  list-style: none;
+  padding: 8px 0 8px 28px;
+  line-height: 1.5;
+}
+.snap-examples > ol > li + li,
+.snap-examples > ul > li + li {
+  border-top: 1px solid #E6E9EF;
+}
+.snap-examples > ol > li::before,
+.snap-examples > ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 16px;
+  height: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
 /* ============================== END ============================== */

@@ -3477,3 +3477,100 @@ $(window).on("resize", function () {
     });
   }
 });
+
+
+/* ============================================================
+   Floating action buttons: Back to Top + AI assistant
+   - Back to Top: hidden until the user scrolls. The layout scrolls
+     <main> (body is a fixed-height grid), so we detect the real scroll
+     container at runtime instead of assuming the window scrolls.
+   - AI assistant: persistent button, not yet wired to an action.
+   Vanilla JS (no jQuery dependency) so it runs on every page.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  // Pick the element that actually scrolls (largest scrollable delta).
+  function pickScroller() {
+    var candidates = [
+      document.querySelector('main'),
+      document.scrollingElement,
+      document.documentElement,
+      document.body
+    ];
+    var best = null, bestDelta = 40;
+    for (var i = 0; i < candidates.length; i++) {
+      var el = candidates[i];
+      if (!el) continue;
+      var delta = el.scrollHeight - el.clientHeight;
+      if (delta > bestDelta) { best = el; bestDelta = delta; }
+    }
+    return best || document.scrollingElement || document.documentElement;
+  }
+
+  function initFloatingButtons() {
+    if (!document.body || document.getElementById('sl-fab-stack')) return; // no duplicates
+
+    var stack = document.createElement('div');
+    stack.id = 'sl-fab-stack';
+    stack.className = 'sl-fab-stack';
+
+    var toTop = document.createElement('button');
+    toTop.type = 'button';
+    toTop.id = 'sl-back-to-top';
+    toTop.className = 'sl-back-to-top';
+    toTop.setAttribute('aria-label', 'Back to top');
+    toTop.innerHTML =
+      '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false">' +
+      '<path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" ' +
+      'stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+      '<span>Back to Top</span>';
+
+    var ai = document.createElement('button');
+    ai.type = 'button';
+    ai.id = 'sl-ai-assistant';
+    ai.className = 'sl-ai-assistant';
+    ai.setAttribute('aria-label', 'Ask the AI assistant');
+    ai.innerHTML =
+      '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">' +
+      '<path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3z" fill="currentColor"/>' +
+      '<path d="M18.5 13l.7 1.9 1.9.7-1.9.7-.7 1.9-.7-1.9-1.9-.7 1.9-.7.7-1.9z" fill="currentColor"/></svg>';
+
+    stack.appendChild(toTop);
+    stack.appendChild(ai);
+    document.body.appendChild(stack);
+
+    var scroller = pickScroller();
+    var SHOW_AT = 250;
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var top = (scroller && scroller.scrollTop) || window.pageYOffset || 0;
+      if (top > SHOW_AT) toTop.classList.add('is-visible');
+      else toTop.classList.remove('is-visible');
+    }
+    function onScroll() {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+    }
+
+    if (scroller) scroller.addEventListener('scroll', onScroll, { passive: true });
+    // Capture phase catches scroll on any element (scroll events don't bubble).
+    window.addEventListener('scroll', onScroll, { passive: true, capture: true });
+    window.addEventListener('resize', function () { scroller = pickScroller(); update(); }, { passive: true });
+
+    toTop.addEventListener('click', function () {
+      var target = scroller || document.scrollingElement || document.documentElement;
+      try { target.scrollTo({ top: 0, behavior: 'smooth' }); }
+      catch (e) { target.scrollTop = 0; }
+    });
+
+    update();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFloatingButtons);
+  } else {
+    initFloatingButtons();
+  }
+})();
