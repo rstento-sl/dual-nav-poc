@@ -3574,3 +3574,72 @@ $(window).on("resize", function () {
     initFloatingButtons();
   }
 })();
+
+
+/* ============================================================
+   Product/feature left nav: collapsed-catalog default.
+   Show every category heading expanded to its products, with each
+   product collapsed (its pages hidden) until clicked. This overrides
+   the per-product filtering (which otherwise hides all but the current
+   product) so the full product list stays short and scannable.
+   Product view only — the task view is left untouched.
+   Runs on window 'load' so it is the final word after the nav's own
+   setup/filtering has run.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  function directChild(el, tag) {
+    for (var i = 0; i < el.children.length; i++) {
+      if (el.children[i].tagName === tag) return el.children[i];
+    }
+    return null;
+  }
+
+  function collapseProductNav() {
+    if (window.location.pathname.indexOf('/tasks/') !== -1) return; // product view only
+    var nav = document.querySelector('nav.toc');
+    if (!nav) return;
+    var rootUl = nav.querySelector('ul');
+    if (!rootUl) return;
+
+    var cats = Array.prototype.filter.call(rootUl.children, function (li) {
+      return li.tagName === 'LI'
+        && li.classList.contains('navparent')
+        && !li.classList.contains('nav-view-switcher-li');
+    });
+    if (!cats.length) return;
+
+    cats.forEach(function (catLi) {
+      // Show + expand the category (the current category's header is hidden inline by the filter)
+      catLi.style.display = '';
+      catLi.classList.add('navexpand');
+      var head = directChild(catLi, 'A') || directChild(catLi, 'SPAN');
+      if (head) head.style.display = '';
+
+      // Show every product. Collapse all of them EXCEPT the current one, which
+      // stays expanded so its pages remain navigable (otherwise clicking a
+      // product would re-collapse on arrival and you could never drill in).
+      var ul = directChild(catLi, 'UL');
+      if (!ul) return;
+      Array.prototype.forEach.call(ul.children, function (prodLi) {
+        if (prodLi.tagName !== 'LI') return;
+        prodLi.style.display = '';
+        if (!prodLi.classList.contains('navparent')) return;
+        // "Current" = the product you're in (it is, or contains, the active page).
+        var isCurrent = prodLi.classList.contains('active') || !!prodLi.querySelector('.active');
+        if (isCurrent) {
+          // Keep it expanded; leave its active path (set by MarkActiveTree) intact.
+          prodLi.classList.add('navexpand');
+          prodLi.classList.remove('navcollapsed');
+        } else {
+          prodLi.classList.remove('navexpand');
+          prodLi.classList.add('navcollapsed');
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'complete') collapseProductNav();
+  else window.addEventListener('load', collapseProductNav);
+})();
