@@ -1694,6 +1694,9 @@ $(document).ready(function() {
     // Product view products
     'Introduction': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h5l1 1v9l-1-1H2V3z"/><path d="M14 3H9l-1 1v9l1-1h5V3z"/></svg>',
     'AI Ecosystem': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="4" cy="4" r="2"/><circle cx="12" cy="4" r="2"/><circle cx="4" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><path d="M6 4h4"/><path d="M4 6v4"/><path d="M12 6v4"/><path d="M6 12h4"/></svg>',
+    'Integration Platform': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2.5" width="5" height="5" rx="1"/><rect x="9" y="8.5" width="5" height="5" rx="1"/><path d="M7 5h2.5a1.5 1.5 0 011.5 1.5V8.5"/></svg>',
+    'Administration': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 7h6M5 10h4"/></svg>',
+    'Glossary': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4.5v9"/><path d="M8 4.5C6.3 3.4 4 3.4 2.5 3.8v8.4c1.5-.4 3.8-.4 5.5.7 1.7-1.1 4-1.1 5.5-.7V3.8C12 3.4 9.7 3.4 8 4.5z"/></svg>',
     'Admin Manager': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 7h6M5 10h4"/></svg>',
     'AutoSync': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a5 5 0 019-2"/><path d="M12 6l1-3 3 1"/><path d="M13 8a5 5 0 01-9 2"/><path d="M4 10l-1 3-3-1"/></svg>',
     'Designer': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11l7-7 3 3-7 7H2v-3z"/></svg>',
@@ -3598,6 +3601,11 @@ $(window).on("resize", function () {
 
   function collapseProductNav() {
     if (window.location.pathname.indexOf('/tasks/') !== -1) return; // product view only
+    // Only the "Browse by feature" / All-Products overview shows the full
+    // collapsed catalog. On an individual product page the nav must stay
+    // filtered to the selected product (the existing per-product filtering),
+    // so this override does NOT run there.
+    if (window.location.pathname.indexOf('products-about') === -1) return;
     var nav = document.querySelector('nav.toc');
     if (!nav) return;
     var rootUl = nav.querySelector('ul');
