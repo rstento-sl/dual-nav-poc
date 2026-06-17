@@ -4815,8 +4815,12 @@ nav.toc > ul {
   margin: 0;
   padding-top: 0 !important;
   width: calc(100% - 2px);
-  padding-bottom: 2.5em !important;
+  padding-bottom: 1em !important;
   font-size: 14px;
+  /* This is the actual scroll container (nav.toc reserves the footer strip). */
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
 }
 html{
   scrollbar-width: none;
@@ -4898,7 +4902,13 @@ nav.toc {
   width: 100%;
   z-index: 2;
   transition-timing-function: linear;
-  overflow-y: auto;
+  /* Scroll moved to nav.toc > ul; reserve space at the bottom so the floating
+     collapse controls sit in their own strip instead of covering the last rows. */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-bottom: 48px;
   height: calc(100vh - var(--hdr-height));
   scrollbar-width: thin;
   scrollbar-color: var(--SL-grey03) var(--SL-grey01);
