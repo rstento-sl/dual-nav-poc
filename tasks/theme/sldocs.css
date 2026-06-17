@@ -6966,12 +6966,13 @@ a.hp-banner-cta,
 
 /* User Assistance Videos promo card */
 .hp-video-card {
-  flex: 0 0 380px;
+  flex: 0 0 300px;
   position: relative;
   overflow: hidden;
-  min-height: 184px;
-  border-radius: 12px;
-  padding: 20px;
+  min-height: 132px;
+  /* Two square corners (top-left, bottom-right); the other two rounded */
+  border-radius: 0 14px 0 14px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6982,23 +6983,23 @@ a.hp-banner-cta,
 .hp-video-card::before {
   content: '';
   position: absolute;
-  right: -40px;
-  top: -30px;
-  width: 160px;
-  height: 160px;
+  right: -34px;
+  top: -26px;
+  width: 116px;
+  height: 116px;
   border-radius: 50%;
-  border: 24px solid rgba(255, 255, 255, 0.06);
+  border: 18px solid rgba(255, 255, 255, 0.06);
 }
 .hp-video-card-brand {
   position: absolute;
-  top: 16px;
-  left: 18px;
+  top: 12px;
+  left: 14px;
   margin: 0;
   line-height: 0;
 }
 .hp-video-logo {
-  height: 20px;
-  width: 63px;
+  height: 16px;
+  width: 50px;
   display: block;
   border: none;
   cursor: default;
@@ -7007,26 +7008,26 @@ a.hp-banner-cta,
 .hp-video-card p.hp-video-card-title {
   margin: 0;
   color: #ffffff;
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 600;
   text-align: center;
 }
 .hp-video-card-cta {
   position: absolute;
-  bottom: 16px;
-  right: 18px;
+  bottom: 12px;
+  right: 14px;
   margin: 0;
 }
 .hp-video-card-cta a {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   background: #1E6FE0;
   color: #ffffff;
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 600;
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 6px 13px;
   border-radius: 999px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
   transition: background 0.15s ease;
