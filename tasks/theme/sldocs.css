@@ -359,6 +359,8 @@ main {
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 240px;
+  /* Subtle blue wash behind the breadcrumb/title area, fading to white */
+  background: linear-gradient(180deg, #EDF2FB 0%, #ffffff 280px);
 }
 @media  screen and (max-width:1200px){
 main{
@@ -2847,31 +2849,51 @@ ol.ol-callout-list > li::before {
 
 .ul-snaps-glance {
   list-style: none;
-  background-color: var(--SL-grey01);
+  background-color: var(--note-note-bgcolor);
+  border-left: 4px solid var(--note-note-color);
+  border-radius: 4px;
   width: 100%;
   min-height: 50px;
   max-height: fit-content;
   margin:0px;
-  padding: 11px 16px;
-  /* font-weight: 850; */
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+/* "Note" eyebrow label, matching the site's note admonition */
+.ul-snaps-glance::before {
+  content: "Note";
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--note-note-color);
+  margin-bottom: 6px;
+  padding-left: 22px;
+  background: url('https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg') left center / 16px 16px no-repeat;
 }
 .ul-snaps-glance >li{
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 5px 0px;
+  padding: 0;
   width: 100%;
   height: fit-content;
   color: var(--SL-grey09);
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 22px;
   text-wrap: wrap;
 }
 .ul-snaps-glance >li img{
   width: 30px;
   height: 30px;
+}
+.ul-snaps-glance >li a{
+  color: #1E5BD6;
+  text-decoration: underline;
+  margin-left: 4px;
 }
 .ul-snaps-glance > li:first-child .ph{
   padding-left: 20px;
@@ -5441,25 +5463,35 @@ nav.toc > ul > li > ul > li.active > a {
     margin-right: 10px;
    }
    .sidebar-related-links strong{
-    color: #3967C3; 
-    font-weight: 800;
-    font-size: var(--body-font-size);
-    font-family: var(--font-body);
+    display: block;
+    color: var(--SL-blue06);
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: var(--font-header);
+    margin-bottom: 10px;
    }
    .sidebar-related-links ul{
     padding: 0;
     list-style-type: none;
    }
    .sidebar-related-links ul >li{
-     padding: 8px 0px;
+     padding: 4px 0px;
      cursor: pointer;
    }
    .sidebar-related-links ul >li a{
-    color: #006EF5;
-    font-weight: 700;
-    font-size: var(--body-font-size);
+    color: var(--SL-blue06);
+    font-weight: 500;
+    font-size: 12px;
     line-height: 18px;
     font-family: var(--font-body);
+    text-decoration: underline;
+   }
+   .sidebar-related-links ul >li a::after{
+    content: ' \2197';
+    font-size: 10px;
+    opacity: 0.6;
     text-decoration: none;
    }
    /* .progress-container ul li:hover{
@@ -7428,28 +7460,6 @@ p.hp-hero-subtitle {
   color: #4B5563;
   margin: 0;
   line-height: 1.5;
-}
-
-/* "New" badge, top-right of the card */
-.hp-topic-badge {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: #ffffff;
-  background: #0F766E;
-  padding: 3px 9px;
-  border-radius: 5px;
-  line-height: 1.2;
-}
-
-.hp-topic-badge::before {
-  content: "\2756";
-  font-size: 0.6rem;
 }
 
 /* Category pill hidden in the trending list view */
