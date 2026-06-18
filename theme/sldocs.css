@@ -5280,9 +5280,10 @@ nav.toc span {
   transition: 0.3s;
   width: 100%;
   display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  /* Wrap long nav labels to full text instead of truncating with an ellipsis */
+  overflow: visible;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 nav.toc > ul > li.active > a,
 nav.toc > ul > li > ul > li.active > a {
@@ -5409,9 +5410,9 @@ nav.toc > ul > li > ul > li.active > a {
   transition: 0.3s;
   width: 100%;
   display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  overflow: visible;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 .sidenav_element li:not(.navparent):not(.navexpand) > a:before,
 .sidenav_element li:not(.navparent):not(.navexpand) > span:before {
