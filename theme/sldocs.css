@@ -621,9 +621,13 @@ h5 { font-size: 1.125em; }
 h6 { font-size: 1em; }
 
 .condition,
-.detsummtitle, .detsummdivtitle,
-.sectiondivtitle {
+.detsummtitle, .detsummdivtitle {
   color: var(--c2-grey2);
+}
+/* Section div-titles (e.g. Supported Accounts, Prerequisites, Limitations) use
+   the same SnapLogic blue as the h2 section titles, per the new design. */
+.sectiondivtitle {
+  color: #11378B;
 }
 
 .titlewithbg {
