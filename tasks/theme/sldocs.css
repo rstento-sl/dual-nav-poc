@@ -373,8 +373,8 @@ article {
   padding: 0 1em 1em 2em;
   width: 100%;
   letter-spacing: 0.03em;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 26px;
   /* overflow-x: hidden; */
   scrollbar-width: none;
 }
@@ -391,9 +391,9 @@ article .xref:hover{
 #index article .xref:hover{
   text-decoration: none;
 }
-.p { 
-  font-size: 14px;
-  line-height: 22px;
+.p {
+  font-size: 16px;
+  line-height: 26px;
   font-family: var(--font-body);
   color: var(--SL-grey09);
   font-weight: 400;
@@ -405,7 +405,7 @@ article .xref:hover{
    ============================== */
    @media screen and (max-width: 1100px){
     .p {
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 /* ==============================
@@ -581,7 +581,7 @@ main a[rel*="external"]::after {
 
 .topictitle1 {
   font-family: var(--font-body);
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 700;
   padding: 0;
   margin-bottom: 16px;
@@ -2763,9 +2763,9 @@ section img,
 .substep,
 .substepexpand,
 .li {
-  line-height: 22px;
+  line-height: 26px;
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 ol.ol-callout-list {
@@ -2993,8 +2993,8 @@ ol.ol-callout-list > li::before {
   text-decoration: underline;
 }
 .section >.ul >.li{
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 26px;
   font-weight: 400;
   color:var(--SL-grey09);
   letter-spacing: 0.03em;
@@ -3019,10 +3019,10 @@ ol.ol-callout-list > li::before {
    ============================== */
   @media screen and (max-width: 1100px){
     .section >.ul >.li{
-      font-size: 12px;
+      font-size: 14px;
     }
     .li{
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 
