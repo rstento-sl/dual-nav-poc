@@ -6892,6 +6892,20 @@ a.xref.landing-card:hover {
   margin-bottom: 12px;
 }
 
+/* Homepage: latest-release banner is full-bleed and flush under the header,
+   matching the design. Breaks out of the inset content container. */
+#index .hp-banner {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: -55px;
+  border-radius: 0;
+  /* Align inner content with the page's 1052px content column (left edge 114px
+     at 1280) while the gradient spans full width. */
+  padding-left: max(28px, calc(50vw - 526px));
+  padding-right: max(28px, calc(50vw - 526px));
+}
+
 .hp-banner-release {
   display: flex;
   flex-direction: column;
@@ -7404,7 +7418,9 @@ p.hp-hero-subtitle {
 
 .hp-carousel-btn {
   position: absolute;
-  top: 50%;
+  /* Center on the card row, not the whole section — the section header
+     above the cards offsets a plain 50% by half its height (~12px). */
+  top: calc(50% + 12px);
   transform: translateY(-50%);
   width: 32px;
   height: 32px;
@@ -7778,6 +7794,149 @@ p.hp-hero-subtitle {
   width: 16px;
   height: 16px;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234B5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* ==============================
+   USER ASSISTANCE VIDEOS LANDING PAGE
+   ============================== */
+.video-section {
+  margin: 0 0 36px;
+}
+
+.video-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--c2-grey1, #26282C);
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #E6E9EF;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+/* Thumbnail with a play-button overlay */
+.video-thumb-link {
+  position: relative;
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #E6E9EF;
+  background: #0E1530;
+  aspect-ratio: 16 / 9;
+}
+
+.video-thumb-link img.video-thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.video-thumb-link:hover img.video-thumb {
+  transform: scale(1.04);
+}
+
+.video-thumb-link::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 52px;
+  height: 52px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(14, 21, 48, 0.78) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center / 22px no-repeat;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.video-thumb-link:hover::after {
+  background-color: #E8590C;
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.video-card-title {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--c2-grey1, #26282C) !important;
+  text-decoration: none;
+  line-height: 1.35;
+}
+
+.video-card-title:hover {
+  text-decoration: underline;
+}
+
+/* Suppress the theme external-link icon on video links */
+.video-thumb-link[rel*="external"]::before,
+.video-card-title[rel*="external"]::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+}
+
+@media (max-width: 1024px) {
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .video-grid { grid-template-columns: 1fr; }
+}
+
+/* ==============================
+   HOMEPAGE VIDEO CARD — ROTATING THUMBNAILS
+   ============================== */
+/* JS injects .hp-video-thumb layers behind the card content; the gradient
+   becomes a semi-transparent overlay so the logo/title/CTA stay legible. */
+.hp-video-card .hp-video-thumb {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 0;
+}
+
+.hp-video-card .hp-video-thumb.is-active {
+  opacity: 1;
+}
+
+/* Gradient overlay above thumbnails, below content — darker toward the
+   bottom-left (logo/title/CTA) and lighter at top-right so the thumbnail
+   stays visible while text remains legible. */
+.hp-video-card.has-thumbs::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(11,21,48,0.78) 0%, rgba(19,79,194,0.52) 50%, rgba(28,146,196,0.40) 100%);
+  z-index: 1;
+}
+
+/* Keep the logo + CTA above the thumbnail/overlay — they are already
+   absolutely positioned, so only z-index is needed (don't reset position). */
+.hp-video-card-brand,
+.hp-video-card-cta {
+  z-index: 2;
+}
+
+.hp-video-card.has-thumbs .hp-video-card-cta a {
+  box-shadow: 0 1px 6px rgba(0,0,0,0.25);
 }
 
 /* ============================== END ============================== */
