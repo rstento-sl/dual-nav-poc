@@ -5730,6 +5730,23 @@ header .mainbanner {
   height: 14px !important;
 }
 
+/* Homepage (#index): white search box on the navy header */
+#index .search-container-compact {
+  background-color: #ffffff;
+  border-color: #e5e8ef;
+}
+
+#index .search-container-compact input,
+#index .search-container-compact input::placeholder {
+  color: #5a6577;
+}
+
+/* Darken the white search icon so it reads on the white field */
+#index .search-icon-compact img {
+  filter: brightness(0);
+  opacity: 0.5;
+}
+
 /* Hide original topmenu search on desktop */
 header .topmenu {
   display: none !important;
@@ -6004,9 +6021,10 @@ nav.toc .nav-view-text {
 
 /* Product home page title + description */
 .product-home-page-title {
-  font-size: 1.6rem;
+  font-size: 2.75rem;
   font-weight: 700;
   color: #11378B;
+  line-height: 1.15;
   margin: 0 0 12px;
 }
 .product-home-page-shortdesc {
@@ -6030,7 +6048,7 @@ nav.toc .nav-view-text {
 .product-home-quickstart .sectiontitle,
 .product-home-quickstart .section-title,
 .product-home-quickstart h2 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--c2-grey1);
   margin: 32px 0 8px;
@@ -6083,7 +6101,7 @@ nav.toc .nav-view-text {
 .product-home-features .sectiontitle,
 .product-home-features .section-title,
 .product-home-features h2 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--c2-grey1);
   margin: 32px 0 8px;
@@ -6101,7 +6119,7 @@ nav.toc .nav-view-text {
   border: 1px solid var(--c2-grey7, #e5e7eb);
   overflow: hidden;
   transition: all 0.2s ease;
-  padding: 20px 24px;
+  padding: 24px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 .product-home-card:hover {
@@ -6127,16 +6145,25 @@ nav.toc .nav-view-text {
   background: var(--SL-teal06);
 }
 .product-home-card-title {
-  font-size: 0.95rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--c2-grey1);
   margin: 0;
-  line-height: 1;
+  line-height: 1.3;
+}
+
+.product-home-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-home-card-title a:hover {
+  text-decoration: underline;
 }
 
 .product-home-card > p {
   padding: 0;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--c2-grey3);
   line-height: 1.5;
   margin: 0 0 10px 0;
@@ -6371,9 +6398,10 @@ a.xref.landing-card:hover {
 
 /* Task landing page title + description */
 .task-home-page-title {
-  font-size: 1.6rem;
+  font-size: 2.75rem;
   font-weight: 700;
   color: #11378B;
+  line-height: 1.15;
   margin: 0 0 12px;
 }
 
@@ -6393,7 +6421,7 @@ a.xref.landing-card:hover {
 
 /* Section titles within the landing page */
 .task-home-section-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--c2-grey1);
   margin: 32px 0 8px;
@@ -6419,7 +6447,7 @@ a.xref.landing-card:hover {
   background: #ffffff;
   border: 1px solid var(--c2-grey7, #e5e7eb);
   border-radius: 12px;
-  padding: 20px 24px;
+  padding: 24px;
   transition: all 0.2s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
@@ -6449,26 +6477,35 @@ a.xref.landing-card:hover {
 }
 
 .task-home-card-title {
-  font-size: 0.95rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--c2-grey1);
   margin: 0;
-  line-height: 1;
+  line-height: 1.3;
+}
+
+.task-home-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.task-home-card-title a:hover {
+  text-decoration: underline;
 }
 
 .task-home-card p {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--c2-grey3);
   margin: 0 0 10px 0;
   line-height: 1.5;
 }
 
 .task-home-card-header p {
-  font-size: 0.95rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--c2-grey1);
   margin: 0;
-  line-height: 1;
+  line-height: 1.3;
 }
 
 .task-home-card ul {
@@ -6628,7 +6665,7 @@ a.xref.landing-card:hover {
 
 /* Section heading within task home */
 .task-home-section-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--c2-grey1);
   margin: 32px 0 8px;
@@ -6972,12 +7009,11 @@ a.hp-banner-cta,
 
 /* User Assistance Videos promo card */
 .hp-video-card {
-  flex: 0 0 300px;
+  flex: 0 0 360px;
   position: relative;
   overflow: hidden;
-  min-height: 132px;
-  /* Two square corners (top-left, bottom-right); the other two rounded */
-  border-radius: 0 14px 0 14px;
+  min-height: 168px;
+  border-radius: 18px;
   padding: 14px 16px;
   display: flex;
   flex-direction: column;
@@ -7396,19 +7432,6 @@ p.hp-hero-subtitle {
   overflow: hidden;
 }
 
-/* Short orange accent line at the top of the card (matches the goal cards).
-   The icon already uses ::before, so the line uses an absolutely-placed ::after. */
-.hp-feature-card::after {
-  content: '';
-  position: absolute;
-  top: 14px;
-  left: 18px;
-  width: 28px;
-  height: 3px;
-  border-radius: 2px;
-  background: #E8662A;
-}
-
 .hp-feature-card::before {
   content: '';
   grid-row: 1;
@@ -7557,8 +7580,8 @@ p.hp-hero-subtitle {
 
 .hp-topic-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -7608,9 +7631,16 @@ p.hp-hero-subtitle {
   line-height: 1.5;
 }
 
-/* Category pill hidden in the trending list view */
+/* Category pill shown beneath each trending card */
 .hp-topic-cat {
-  display: none;
+  display: inline-block;
+  margin-top: 12px;
+  padding: 3px 10px;
+  background-color: #E8EEFB;
+  color: #1E5BD6;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border-radius: 12px;
 }
 
 /* ==============================
