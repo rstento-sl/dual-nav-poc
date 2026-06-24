@@ -7011,6 +7011,12 @@ a.hp-banner-cta,
   margin-top: 2px;
 }
 
+/* Inline links within a what's-new description (e.g. linked Snap names) */
+.hp-item-desc a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
 /* Circular carousel-style next control (decorative) */
 .hp-banner-next {
   display: inline-flex;
