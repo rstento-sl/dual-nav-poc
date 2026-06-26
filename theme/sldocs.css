@@ -3449,7 +3449,8 @@ header .ellipsis_vertical{
 }
 #index main{
   padding: 0;
-} 
+  overflow: visible;
+}
 #index main article{
   padding: 0;
 }
