@@ -1230,8 +1230,13 @@ function MoveRelatedLinksToSidebar(){
     relatedLinksContent.removeClass();
     relatedLinksContent.find('*').removeClass();
 
-    // Wrap in a div container with sidebar-specific class
-    const relatedLinksContainer = $('<div class="sidebar-related-links"></div>').append(relatedLinksContent);
+    // Remove DITA subheadings ("Related concepts", "Related reference", etc.)
+    // and replace with a single "Related Information" heading
+    relatedLinksContent.find('strong').remove();
+
+    // Wrap in a div container with sidebar-specific class, adding unified heading
+    const heading = $('<h3 class="sidebar-heading">Related Information</h3>');
+    const relatedLinksContainer = $('<div class="sidebar-related-links"></div>').prepend(heading).append(relatedLinksContent);
 
     // Insert into right-sidebar before feedback section
     var $sidebar = $('aside.right-sidebar');
