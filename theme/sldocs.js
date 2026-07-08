@@ -1278,12 +1278,15 @@ function FeedBackPopup(){
   var overlay = $('<div class="feedback-overlay"></div>');
   var popupContainer = $('<div class="feedback-popup-container"></div>');
   var popupContent = `
-    <div id="error_message"></div>
-    <div class="close-icon">
-      <img class='noborder noexpand' src="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg"></img>
+    <div class="feedback-modal-header">
+      <span class="feedback-modal-title">Send Feedback to Snaplogic</span>
+      <div class="close-icon">
+        <img class='noborder noexpand' src="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg"></img>
+      </div>
     </div>
+    <div id="error_message"></div>
     <form id="myform" onsubmit="">
-      <div class="feedbackhdrmain"><h2 class="feedbackhdr" >Your email</h2>
+      <div class="feedbackhdrmain"><h2 class="feedbackhdr">Email</h2>
        <div id="email_err_message"></div>
       </div>
         <div class="input_field">
@@ -1292,27 +1295,22 @@ function FeedBackPopup(){
         <div class="feedbackhdrmain"><h2 class="feedbackhdr">Feedback type</h2>
         <div id="email_err_message2"></div>
         </div>
-        <div class="dropdown-container">
-        <div id="selected-feedback">
-        <div class="selected-feedback-wrapper">
-            <div class="selected-feedback-text"></div>
+        <div class="input_field">
+          <select id="feedbackType" class="feedback-select">
+            <option value="" disabled selected>Select feedback type</option>
+            <option value="Content accuracy">Content accuracy</option>
+            <option value="Missing information">Missing information</option>
+            <option value="Other suggestions">Other suggestions</option>
+          </select>
         </div>
-        <button type="button" class="dropdown-button"><img class='noborder noexpand' src="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-down-icon.svg"></img></button>
-      </div>
-      <ul class="dropdown-content">
-        <li><input type="checkbox" class="feedback-option" value="Content accuracy">Content accuracy</li>
-        <li><input type="checkbox" class="feedback-option" value="Missing information">Missing information</li>
-        <li><input type="checkbox" class="feedback-option" value="Other suggestions">Other suggestions</li>
-      </ul>
-      </div>
-      <div class="feedbackhdrmain"><h2 class="feedbackhdr" >Message</h2>
+      <div class="feedbackhdrmain"><h2 class="feedbackhdr">Describe your feedback</h2>
       <div id="email_err_message3"></div>
       </div>
       <div class="input_field">
           <textarea placeholder="Please share your suggestions..." id="yourfeedback"></textarea>
       </div>
       <div class="feedbackbtn">
-          Send feedback
+          Send Feedback
       </div>
     </form>
     `;
@@ -1362,21 +1360,18 @@ function FeedBackPopup(){
   })
   $('.feedbackbtn').click(function() {
     var email = $('#email').val().trim();
-    var feedbackType = [];
-    $('.feedback-option:checked').each(function () {
-        feedbackType.push($(this).val());
-    });
+    var feedbackType = $('#feedbackType').val() || '';
     var message = $('#yourfeedback').val().trim();
     var errorMessage = '';
 
     // Check for empty fields and set error message accordingly
-    if (email === '' && feedbackType.length === 0 && message === '') {
+    if (email === '' && feedbackType === '' && message === '') {
         errorMessage = 'Please fill out all fields.';
     } else if (email === '') {
         errorMessage = 'Please enter your email.';
     } else if (!validateEmail(email)) {
         errorMessage = 'Please enter a valid email.';
-    } else if (feedbackType.length === 0) {
+    } else if (feedbackType === '') {
         errorMessage = 'Please select feedback type.';
     } else if (message === '') {
         errorMessage = 'Please share your suggestions.';
@@ -1388,7 +1383,7 @@ function FeedBackPopup(){
         popupContainer.fadeOut();
         popupContainer2.fadeIn().delay(2000).fadeOut();
         overlay.delay(2000).fadeOut();
-        Sendfeedback(email, feedbackType.join(', '), message)
+        Sendfeedback(email, feedbackType, message)
         setTimeout(function() {
             ResetFeedbackForm();
         }, 1000);
@@ -1457,52 +1452,6 @@ function FeedBackPopup(){
     }
   });
 
-  // Toggle dropdown visibility
-  $('.dropdown-button').click(function() {
-    $('.dropdown-content').toggle();
-    $(this).toggleClass('rotate');
-  });
-  $(document).on('click', function(event) {
-    if (!$(event.target).closest('.dropdown-container').length) {
-      $('.dropdown-content').hide();
-      $('.dropdown-button').removeClass('rotate');
-    }
-  });
-
-  $('.dropdown-content li').on('click', function(event) {
-    // Prevent the click event from bubbling up if the checkbox itself is clicked
-    if (event.target.tagName !== 'INPUT') {
-      var checkbox = $(this).find('input[type="checkbox"]');
-      checkbox.prop('checked', !checkbox.prop('checked')).trigger('change');
-    }
-  });
-  // Handle checkbox selection
-  $('.feedback-option').change(function() {
-    var $checkbox = $(this);
-    var value = $checkbox.val();
-    var isChecked = $checkbox.is(':checked');
-    if (isChecked) {
-      // Create a new feedback item div
-      var feedbackItem = $('<div class="feedback-item"></div>').text(value);
-      // Create a remove button
-      var removeButton = $('<button type="button"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg"></img></button>');
-      feedbackItem.append(removeButton);
-      // Append the feedback item to the selected feedback text container
-      $('.selected-feedback-text').append(feedbackItem);
-      // Handle remove button click
-      removeButton.click(function() {
-        $checkbox.prop('checked', false);
-        feedbackItem.remove();
-      });
-    } else {
-      // Remove the feedback item if the checkbox is unchecked
-      $('.selected-feedback-text .feedback-item').each(function() {
-        if ($(this).text().trim() === value) {
-          $(this).remove();
-        }
-      });
-    }
-  });
 }
 
 function ResetFeedbackForm() {
