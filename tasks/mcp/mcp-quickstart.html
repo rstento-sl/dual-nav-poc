@@ -79,7 +79,7 @@
   <!-- <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=1tn2hl0shbd0tgl9ifyteq" async="true"></script> stage-main -->
   <!-- Include Bing Custom Search JavaScript SDK -->
   <!-- <script src="https://www.bing.com/api/customsearch/search/sdk"></script> -->
-<link rel="stylesheet" type="text/css" href="../theme/commonltr.css"><link rel="stylesheet" type="text/css" href="../theme/sldocs.css"></head><body id="mcp-quickstart"><header role="banner"><div class="header">
+<link rel="stylesheet" type="text/css" href="../../theme/commonltr.css"><link rel="stylesheet" type="text/css" href="../../theme/sldocs.css"></head><body id="mcp-quickstart"><header role="banner"><div class="header">
 <div class="headertopsection">
   <div class="mainbanner">
     <!-- Hamburger for mobile -->
@@ -364,7 +364,7 @@
         </li>
 
         <li class="li"><em class="ph i">Tagging the pipeline as a Tool</em>
-          <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The downloaded pipeline is already tagged as a Tool. This tells the MCP
+          <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The downloaded pipeline is already tagged as a Tool. This tells the MCP
             Server Pipeline that this pipeline is available as an AI tool. If you build your own
             tool pipeline from scratch, open the <strong class="ph b">Edit Pipeline</strong> dialog and enable the
             <span class="ph uicontrol">Tool</span> toggle.
@@ -373,7 +373,7 @@
         </li>
 
         <li class="li"><em class="ph i">Defining Parameters</em>
-          <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The downloaded pipeline already has its parameters defined. The
+          <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The downloaded pipeline already has its parameters defined. The
             <strong class="ph b">OpenAPI</strong> tab includes <code class="ph codeph">latitude</code> and <code class="ph codeph">longitude</code> as
             required number inputs, and the <strong class="ph b">Info</strong> tab contains the description the MCP Server
             exposes to the AI. When building your own tool pipeline, define parameters in the
@@ -404,7 +404,7 @@
         </li>
 
         <li class="li"><em class="ph i">Tagging as an MCP Server</em>
-          <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The downloaded pipeline is already tagged as an MCP server. SnapLogic
+          <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The downloaded pipeline is already tagged as an MCP server. SnapLogic
             automatically tags a pipeline as an MCP server when an MCP Server Router Snap is added
             to the canvas. No manual tagging is required.
             <p class="p"><img class="image" src="../img/mcp/mcp-server-pipe-properties.png"></p>
@@ -412,7 +412,7 @@
         </li>
 
         <li class="li"><em class="ph i">Step A: Configure the Multi Pipeline Function Generator Snap</em>
-          <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The downloaded pipeline already includes the Multi Pipeline Function
+          <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The downloaded pipeline already includes the Multi Pipeline Function
             Generator Snap (from the LLM Utilities Snap Pack). It reads the OpenAPI settings of
             your Tool Pipelines and exposes a formatted list of available tools. The
             <span class="ph uicontrol">Pipeline Path</span> field is already set to reference the tool
@@ -422,7 +422,7 @@
         </li>
 
         <li class="li"><em class="ph i">Step B: Connect the MCP Server Router</em>
-          <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The downloaded pipeline already has all components connected. The <a class="xref" href="../snaps/snaps-machine-learning/sp-mcp-server/mcp-server-router.html"><strong class="ph b">MCP
+          <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The downloaded pipeline already has all components connected. The <a class="xref" href="../snaps/snaps-machine-learning/sp-mcp-server/mcp-server-router.html"><strong class="ph b">MCP
                 Server Router</strong></a> Snap requires no additional configuration beyond its
             connections. It routes <code class="ph codeph">tools/list</code> requests by returning the tool list
             from the Function Generator, and routes <code class="ph codeph">tools/call</code> requests to a
@@ -472,7 +472,7 @@
         </li>
         <li class="li"><strong class="ph b">Authentication Policy:</strong> Select an existing policy from the dropdown, or click
             <strong class="ph b">Create New Policy</strong> to create one directly from this drawer.
-          <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The following steps create a basic policy using the Anonymous
+          <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The following steps create a basic policy using the Anonymous
             Authenticator, suitable for development and testing. For production, use OAuth2 or API
             Key authentication instead.</div>
           <ol class="ol" type="a">
@@ -654,6 +654,6 @@ mph N\nDetailedForecast: Sunny, with a high near 87. North wind 2 to 7 mph.&quot
   </div>
 
   <!-- <script src="https://d3132s9xzuu9s8.cloudfront.net/k/sldocs.js"/> -->
-  <script src="../theme/sldocs.js"></script>
+  <script src="../../theme/sldocs.js"></script>
 
 </div></footer></body></html>
