@@ -7947,3 +7947,11 @@ p.hp-hero-subtitle {
 }
 
 /* ============================== END ============================== */
+
+.goal-breadcrumb {
+  font-size: 0.72rem;
+  color: #6B7280;
+  margin: 0 0 6px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}

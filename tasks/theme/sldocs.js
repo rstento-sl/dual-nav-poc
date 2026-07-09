@@ -1230,8 +1230,13 @@ function MoveRelatedLinksToSidebar(){
     relatedLinksContent.removeClass();
     relatedLinksContent.find('*').removeClass();
 
-    // Wrap in a div container with sidebar-specific class
-    const relatedLinksContainer = $('<div class="sidebar-related-links"></div>').append(relatedLinksContent);
+    // Remove DITA subheadings ("Related concepts", "Related reference", etc.)
+    // and replace with a single "Related Information" heading
+    relatedLinksContent.find('strong').remove();
+
+    // Wrap in a div container with sidebar-specific class, adding unified heading
+    const heading = $('<h3 class="sidebar-heading">Related Information</h3>');
+    const relatedLinksContainer = $('<div class="sidebar-related-links"></div>').prepend(heading).append(relatedLinksContent);
 
     // Insert into right-sidebar before feedback section
     var $sidebar = $('aside.right-sidebar');
@@ -1273,12 +1278,15 @@ function FeedBackPopup(){
   var overlay = $('<div class="feedback-overlay"></div>');
   var popupContainer = $('<div class="feedback-popup-container"></div>');
   var popupContent = `
-    <div id="error_message"></div>
-    <div class="close-icon">
-      <img class='noborder noexpand' src="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg"></img>
+    <div class="feedback-modal-header">
+      <span class="feedback-modal-title">Send Feedback to Snaplogic</span>
+      <div class="close-icon">
+        <img class='noborder noexpand' src="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg"></img>
+      </div>
     </div>
+    <div id="error_message"></div>
     <form id="myform" onsubmit="">
-      <div class="feedbackhdrmain"><h2 class="feedbackhdr" >Your email</h2>
+      <div class="feedbackhdrmain"><h2 class="feedbackhdr">Email</h2>
        <div id="email_err_message"></div>
       </div>
         <div class="input_field">
@@ -1287,27 +1295,22 @@ function FeedBackPopup(){
         <div class="feedbackhdrmain"><h2 class="feedbackhdr">Feedback type</h2>
         <div id="email_err_message2"></div>
         </div>
-        <div class="dropdown-container">
-        <div id="selected-feedback">
-        <div class="selected-feedback-wrapper">
-            <div class="selected-feedback-text"></div>
+        <div class="input_field">
+          <select id="feedbackType" class="feedback-select">
+            <option value="" disabled selected>Select feedback type</option>
+            <option value="Content accuracy">Content accuracy</option>
+            <option value="Missing information">Missing information</option>
+            <option value="Other suggestions">Other suggestions</option>
+          </select>
         </div>
-        <button type="button" class="dropdown-button"><img class='noborder noexpand' src="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-down-icon.svg"></img></button>
-      </div>
-      <ul class="dropdown-content">
-        <li><input type="checkbox" class="feedback-option" value="Content accuracy">Content accuracy</li>
-        <li><input type="checkbox" class="feedback-option" value="Missing information">Missing information</li>
-        <li><input type="checkbox" class="feedback-option" value="Other suggestions">Other suggestions</li>
-      </ul>
-      </div>
-      <div class="feedbackhdrmain"><h2 class="feedbackhdr" >Message</h2>
+      <div class="feedbackhdrmain"><h2 class="feedbackhdr">Describe your feedback</h2>
       <div id="email_err_message3"></div>
       </div>
       <div class="input_field">
           <textarea placeholder="Please share your suggestions..." id="yourfeedback"></textarea>
       </div>
       <div class="feedbackbtn">
-          Send feedback
+          Send Feedback
       </div>
     </form>
     `;
@@ -1357,21 +1360,18 @@ function FeedBackPopup(){
   })
   $('.feedbackbtn').click(function() {
     var email = $('#email').val().trim();
-    var feedbackType = [];
-    $('.feedback-option:checked').each(function () {
-        feedbackType.push($(this).val());
-    });
+    var feedbackType = $('#feedbackType').val() || '';
     var message = $('#yourfeedback').val().trim();
     var errorMessage = '';
 
     // Check for empty fields and set error message accordingly
-    if (email === '' && feedbackType.length === 0 && message === '') {
+    if (email === '' && feedbackType === '' && message === '') {
         errorMessage = 'Please fill out all fields.';
     } else if (email === '') {
         errorMessage = 'Please enter your email.';
     } else if (!validateEmail(email)) {
         errorMessage = 'Please enter a valid email.';
-    } else if (feedbackType.length === 0) {
+    } else if (feedbackType === '') {
         errorMessage = 'Please select feedback type.';
     } else if (message === '') {
         errorMessage = 'Please share your suggestions.';
@@ -1383,7 +1383,7 @@ function FeedBackPopup(){
         popupContainer.fadeOut();
         popupContainer2.fadeIn().delay(2000).fadeOut();
         overlay.delay(2000).fadeOut();
-        Sendfeedback(email, feedbackType.join(', '), message)
+        Sendfeedback(email, feedbackType, message)
         setTimeout(function() {
             ResetFeedbackForm();
         }, 1000);
@@ -1452,52 +1452,6 @@ function FeedBackPopup(){
     }
   });
 
-  // Toggle dropdown visibility
-  $('.dropdown-button').click(function() {
-    $('.dropdown-content').toggle();
-    $(this).toggleClass('rotate');
-  });
-  $(document).on('click', function(event) {
-    if (!$(event.target).closest('.dropdown-container').length) {
-      $('.dropdown-content').hide();
-      $('.dropdown-button').removeClass('rotate');
-    }
-  });
-
-  $('.dropdown-content li').on('click', function(event) {
-    // Prevent the click event from bubbling up if the checkbox itself is clicked
-    if (event.target.tagName !== 'INPUT') {
-      var checkbox = $(this).find('input[type="checkbox"]');
-      checkbox.prop('checked', !checkbox.prop('checked')).trigger('change');
-    }
-  });
-  // Handle checkbox selection
-  $('.feedback-option').change(function() {
-    var $checkbox = $(this);
-    var value = $checkbox.val();
-    var isChecked = $checkbox.is(':checked');
-    if (isChecked) {
-      // Create a new feedback item div
-      var feedbackItem = $('<div class="feedback-item"></div>').text(value);
-      // Create a remove button
-      var removeButton = $('<button type="button"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg"></img></button>');
-      feedbackItem.append(removeButton);
-      // Append the feedback item to the selected feedback text container
-      $('.selected-feedback-text').append(feedbackItem);
-      // Handle remove button click
-      removeButton.click(function() {
-        $checkbox.prop('checked', false);
-        feedbackItem.remove();
-      });
-    } else {
-      // Remove the feedback item if the checkbox is unchecked
-      $('.selected-feedback-text .feedback-item').each(function() {
-        if ($(this).text().trim() === value) {
-          $(this).remove();
-        }
-      });
-    }
-  });
 }
 
 function ResetFeedbackForm() {
@@ -3610,11 +3564,11 @@ $(window).on("resize", function () {
 
 
 /* ============================================================
-   Product/feature left nav: collapsed-catalog default.
-   Show every category heading expanded to its products, with each
-   product collapsed (its pages hidden) until clicked. This overrides
-   the per-product filtering (which otherwise hides all but the current
-   product) so the full product list stays short and scannable.
+   Product/feature left nav: categories-only default.
+   On the All Products / Browse-by-feature landing page, show only
+   the category headings with all products collapsed inside them —
+   matching the Browse-by-goal nav which shows goal categories only.
+   Users click a category to expand it and see its products.
    Product view only — the task view is left untouched.
    Runs on window 'load' so it is the final word after the nav's own
    setup/filtering has run.
@@ -3622,19 +3576,8 @@ $(window).on("resize", function () {
 (function () {
   'use strict';
 
-  function directChild(el, tag) {
-    for (var i = 0; i < el.children.length; i++) {
-      if (el.children[i].tagName === tag) return el.children[i];
-    }
-    return null;
-  }
-
   function collapseProductNav() {
     if (window.location.pathname.indexOf('/tasks/') !== -1) return; // product view only
-    // Only the "Browse by feature" / All-Products overview shows the full
-    // collapsed catalog. On an individual product page the nav must stay
-    // filtered to the selected product (the existing per-product filtering),
-    // so this override does NOT run there.
     if (window.location.pathname.indexOf('products-about') === -1) return;
     var nav = document.querySelector('nav.toc');
     if (!nav) return;
@@ -3649,31 +3592,22 @@ $(window).on("resize", function () {
     if (!cats.length) return;
 
     cats.forEach(function (catLi) {
-      // Show + expand the category (the current category's header is hidden inline by the filter)
+      // Ensure the category heading is visible but NOT expanded —
+      // products inside remain hidden by CSS until the user clicks.
       catLi.style.display = '';
-      catLi.classList.add('navexpand');
-      var head = directChild(catLi, 'A') || directChild(catLi, 'SPAN');
+      catLi.classList.remove('navexpand');
+      catLi.classList.remove('navcollapsed');
+      var head = catLi.querySelector(':scope > a, :scope > span');
       if (head) head.style.display = '';
 
-      // Show every product. Collapse all of them EXCEPT the current one, which
-      // stays expanded so its pages remain navigable (otherwise clicking a
-      // product would re-collapse on arrival and you could never drill in).
-      var ul = directChild(catLi, 'UL');
+      // Explicitly hide all product children so the nav shows categories only,
+      // regardless of any navexpand state set earlier in the init sequence.
+      var ul = catLi.querySelector(':scope > ul');
       if (!ul) return;
       Array.prototype.forEach.call(ul.children, function (prodLi) {
         if (prodLi.tagName !== 'LI') return;
-        prodLi.style.display = '';
-        if (!prodLi.classList.contains('navparent')) return;
-        // "Current" = the product you're in (it is, or contains, the active page).
-        var isCurrent = prodLi.classList.contains('active') || !!prodLi.querySelector('.active');
-        if (isCurrent) {
-          // Keep it expanded; leave its active path (set by MarkActiveTree) intact.
-          prodLi.classList.add('navexpand');
-          prodLi.classList.remove('navcollapsed');
-        } else {
-          prodLi.classList.remove('navexpand');
-          prodLi.classList.add('navcollapsed');
-        }
+        prodLi.classList.remove('navexpand');
+        prodLi.classList.add('navcollapsed');
       });
     });
   }
