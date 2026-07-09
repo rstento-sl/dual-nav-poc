@@ -1254,6 +1254,112 @@ function MoveRelatedLinksToSidebar(){
   }
 }
 
+// Glossary page enhancements: A-Z jump bar, letter-grouped cards, Export PDF.
+// Scoped to the glossary by detecting .glossentry; no-op on every other page.
+function EnhanceGlossary() {
+  var entries = document.querySelectorAll('.glossentry');
+  if (!entries.length) return;
+
+  var container = entries[0].parentNode;
+  var currentLetter = null;
+  var currentCard = null;
+  var letters = [];
+
+  // Reorganize the flat list of <article class="glossentry"> into per-letter
+  // cards, inserting a letter heading before each new letter's first term.
+  Array.prototype.forEach.call(entries, function (entry) {
+    var termEl = entry.querySelector('.glossterm');
+    var term = (termEl ? termEl.textContent : '').trim();
+    var letter = term.charAt(0).toUpperCase();
+    if (!/[A-Z]/.test(letter)) letter = '#';
+
+    if (letter !== currentLetter) {
+      currentLetter = letter;
+      letters.push(letter);
+
+      var heading = document.createElement('h2');
+      heading.className = 'glossary-letter';
+      heading.id = 'gloss-' + letter;
+      heading.textContent = letter;
+      container.insertBefore(heading, entry);
+
+      currentCard = document.createElement('div');
+      currentCard.className = 'glossary-card';
+      container.insertBefore(currentCard, entry);
+    }
+    currentCard.appendChild(entry); // move the term into its letter card
+  });
+
+  // Build the A-Z jump bar (letters with no terms are shown disabled).
+  var bar = document.createElement('nav');
+  bar.className = 'glossary-az';
+  bar.setAttribute('aria-label', 'Jump to letter');
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(function (L) {
+    var has = letters.indexOf(L) !== -1;
+    var el = document.createElement(has ? 'a' : 'span');
+    el.className = 'glossary-az-letter' + (has ? '' : ' disabled');
+    el.textContent = L;
+    if (has) {
+      el.href = '#gloss-' + L;
+      el.setAttribute('data-letter', L);
+    }
+    bar.appendChild(el);
+  });
+
+  // Header actions (Export PDF) + the bar, inserted after the Glossary <h1>.
+  var h1 = container.querySelector('h1.topictitle1') || container.querySelector('h1');
+  var actions = document.createElement('div');
+  actions.className = 'glossary-header-actions';
+  var pdfBtn = document.createElement('button');
+  pdfBtn.type = 'button';
+  pdfBtn.className = 'glossary-export-pdf';
+  pdfBtn.innerHTML = '<span class="glossary-export-icon">⤓</span> Export PDF';
+  pdfBtn.addEventListener('click', function () { window.print(); });
+  actions.appendChild(pdfBtn);
+
+  if (h1 && h1.parentNode) {
+    h1.parentNode.insertBefore(actions, h1.nextSibling);
+    h1.parentNode.insertBefore(bar, actions.nextSibling);
+  } else {
+    container.insertBefore(actions, container.firstChild);
+    container.insertBefore(bar, actions.nextSibling);
+  }
+
+  // The A-Z bar replaces the "On this page" term list in the right rail.
+  $('aside.right-sidebar .otp-section').remove();
+
+  // Smooth-scroll on letter click ('main' is the scroll container, not window).
+  var $scroller = $('main');
+  $('.glossary-az-letter[data-letter]').on('click', function (e) {
+    e.preventDefault();
+    var target = document.getElementById('gloss-' + $(this).data('letter'));
+    if (!target) return;
+    var top = $(target).offset().top - $scroller.offset().top + $scroller.scrollTop() - 16;
+    $scroller.animate({ scrollTop: top }, 400);
+    $('.glossary-az-letter').removeClass('active');
+    $(this).addClass('active');
+  });
+
+  // Scroll-spy: highlight the letter of the section currently in view.
+  var headings = Array.prototype.slice.call(container.querySelectorAll('.glossary-letter'));
+  $scroller.on('scroll.glossary', function () {
+    var scrollTop = $scroller.scrollTop();
+    var marker = $scroller.offset().top + 80;
+    var activeLetter = null;
+    headings.forEach(function (h) {
+      if (h.getBoundingClientRect().top <= marker) activeLetter = h.id.replace('gloss-', '');
+    });
+    if (activeLetter) {
+      $('.glossary-az-letter').removeClass('active');
+      $('.glossary-az-letter[data-letter="' + activeLetter + '"]').addClass('active');
+    }
+  });
+  // Prime the initial active letter.
+  if (letters.length) {
+    $('.glossary-az-letter[data-letter="' + letters[0] + '"]').addClass('active');
+  }
+}
+
 //FeedBack
 function FeedBackPopup(){
   var feedbacktext= $("<div class='feedbacktext'>Was this helpful?</div>");
@@ -2640,6 +2746,9 @@ updateAllCheckbox();
 
   // Move Related Links to Sidebar
   MoveRelatedLinksToSidebar();
+
+  // Glossary page: A-Z bar, letter-grouped cards, Export PDF (no-op elsewhere)
+  EnhanceGlossary();
 
   $('.feedback-popup-container .input_field input[type="text"], .feedback-popup-container textarea').on('input', function() {
     if ($(this).val().trim() !== '') {

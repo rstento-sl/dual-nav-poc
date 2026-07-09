@@ -5577,6 +5577,139 @@ nav.toc > ul > li > ul > li.active > a {
   padding-left: 20px;
 }
 
+/* ==============================
+   Glossary page (A-Z bar, cards)
+   ============================== */
+
+/* Header actions: Export PDF button aligned to the right of the title */
+.glossary-header-actions {
+  float: right;
+  margin-top: -48px;
+}
+.glossary-export-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #d5d9e2;
+  border-radius: 8px;
+  background: #fff;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: #26282C;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.glossary-export-pdf:hover {
+  background: #f5f7fb;
+  border-color: #b9c0cd;
+}
+.glossary-export-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* A-Z jump bar */
+.glossary-az {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  align-items: center;
+  border: 1px solid #e5e8ef;
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin: 12px 0 28px;
+  background: #fff;
+  clear: both;
+}
+.glossary-az-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 30px;
+  padding: 0 4px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--SL-blue06);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.15s, color 0.15s;
+}
+.glossary-az-letter:hover {
+  background: #eef3ff;
+}
+.glossary-az-letter.active {
+  background: var(--SL-blue06);
+  color: #fff;
+}
+.glossary-az-letter.disabled {
+  color: #c2c8d4;
+  pointer-events: none;
+}
+
+/* Letter section heading */
+.glossary-letter {
+  font-size: 20px;
+  font-weight: 700;
+  color: #26282C;
+  font-family: var(--font-header);
+  margin: 28px 0 12px;
+  scroll-margin-top: 90px;
+}
+
+/* Card wrapping all terms under one letter */
+.glossary-card {
+  border: 1px solid #e5e8ef;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  background: #fff;
+}
+
+/* Each term becomes a two-column row: term (left) / definition (right) */
+.glossary-card .glossentry {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 28px;
+  padding: 16px 24px;
+  margin: 0;
+  border-bottom: 1px solid #eef0f4;
+}
+.glossary-card .glossentry:last-child {
+  border-bottom: none;
+}
+.glossary-card .glossterm {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #26282C;
+  font-family: var(--font-body);
+  border: none;
+}
+.glossary-card .glossdef {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #4a5261;
+}
+
+@media screen and (max-width: 700px) {
+  .glossary-card .glossentry {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .glossary-header-actions {
+    float: none;
+    margin-top: 8px;
+  }
+}
+
 
 /* ==============================
    Misc
