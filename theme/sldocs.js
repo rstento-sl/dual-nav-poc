@@ -3473,8 +3473,10 @@ $(window).on("resize", function () {
 
   // prettifyCodeBlocks() - moved to build time (postprocess.py)
 
-  // Homepage carousels (goals + features)
-  function initCarousel($container, autoScrollInterval, initialDelay) {
+  // Homepage carousels (goals + features): 2-row grid that pages horizontally
+  // via < > arrows (no auto-scroll). Cards are placed row-major within each page
+  // so they read left-to-right, top-to-bottom like the figma.
+  function initCarousel($container) {
     if (!$container.length) return;
 
     var $section = $container.closest('section');
@@ -3484,10 +3486,28 @@ $(window).on("resize", function () {
     var $next = $('<button class="hp-carousel-btn hp-carousel-next" aria-label="Next">' + nextSvg + '</button>');
     $section.append($prev).append($next);
 
-    function getVisibleCount() {
+    var ROWS = 2;
+    var $cards = $container.children();
+
+    function colsPerPage() {
       if (window.innerWidth <= 600) return 1;
       if (window.innerWidth <= 1024) return 2;
       return 3;
+    }
+
+    // Assign each card an explicit grid row/column so a 2-row grid fills
+    // row-major within a page, and pages sit side-by-side for scrolling.
+    function layoutCards() {
+      var cols = colsPerPage();
+      var perPage = cols * ROWS;
+      $cards.each(function(i) {
+        var pos = i % perPage;
+        var page = Math.floor(i / perPage);
+        this.style.gridRow = (Math.floor(pos / cols) + 1);
+        this.style.gridColumn = (page * cols + (pos % cols) + 1);
+        // Snap to the start of each page (leftmost column of the page).
+        this.style.scrollSnapAlign = (pos % cols === 0) ? 'start' : '';
+      });
     }
 
     function updateButtons() {
@@ -3497,18 +3517,18 @@ $(window).on("resize", function () {
       $next.prop('disabled', scrollLeft >= maxScroll - 1);
     }
 
-    function scrollByCards(direction) {
-      var cardWidth = $container.children().first().outerWidth(true);
+    function scrollByPage(direction) {
       $container.animate({
-        scrollLeft: $container.scrollLeft() + (direction * cardWidth * getVisibleCount())
+        scrollLeft: $container.scrollLeft() + direction * $container[0].clientWidth
       }, 300, updateButtons);
     }
 
-    // Manual paging only — auto-scroll removed per design.
-    $prev.on('click', function() { scrollByCards(-1); });
-    $next.on('click', function() { scrollByCards(1); });
+    $prev.on('click', function() { scrollByPage(-1); });
+    $next.on('click', function() { scrollByPage(1); });
     $container.on('scroll', updateButtons);
-    $(window).on('resize', updateButtons);
+    $(window).on('resize', function() { layoutCards(); updateButtons(); });
+
+    layoutCards();
     updateButtons();
   }
 
