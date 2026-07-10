@@ -3504,32 +3504,16 @@ $(window).on("resize", function () {
       }, 300, updateButtons);
     }
 
-    $prev.on('click', function() { scrollByCards(-1); resetAutoScroll(); });
-    $next.on('click', function() { scrollByCards(1); resetAutoScroll(); });
+    // Manual paging only — auto-scroll removed per design.
+    $prev.on('click', function() { scrollByCards(-1); });
+    $next.on('click', function() { scrollByCards(1); });
     $container.on('scroll', updateButtons);
     $(window).on('resize', updateButtons);
     updateButtons();
-
-    var autoScrollTimer;
-    function autoScroll() {
-      var maxScroll = $container[0].scrollWidth - $container[0].clientWidth;
-      if ($container.scrollLeft() >= maxScroll - 1) {
-        $container.animate({ scrollLeft: 0 }, 300, updateButtons);
-      } else {
-        scrollByCards(1);
-      }
-    }
-    function resetAutoScroll() {
-      clearInterval(autoScrollTimer);
-      autoScrollTimer = setInterval(autoScroll, autoScrollInterval);
-    }
-    setTimeout(function() {
-      autoScrollTimer = setInterval(autoScroll, autoScrollInterval);
-    }, initialDelay || 0);
   }
 
-  initCarousel($('.hp-goal-cards'), 7000, 0);
-  initCarousel($('.hp-feature-cards'), 10000, 4000);
+  initCarousel($('.hp-goal-cards'));
+  initCarousel($('.hp-feature-cards'));
 
   // Homepage video card — cross-fade through user-assistance video thumbnails
   (function rotateVideoThumbs() {
