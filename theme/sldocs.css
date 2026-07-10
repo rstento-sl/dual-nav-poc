@@ -7823,12 +7823,12 @@ p.hp-hero-subtitle {
   padding-right: 24px;
 }
 
-/* Chevron at the right edge of the Trending header */
+/* "View more" link at the right edge of the Trending header (matches figma) */
 .hp-trending .hp-section-header::after {
-  content: "\203A";
-  color: #11378B;
-  font-size: 1.1rem;
-  font-weight: 700;
+  content: "View more \2192";
+  color: #1E5BD6;
+  font-size: 0.78rem;
+  font-weight: 500;
   line-height: 1;
 }
 

@@ -5128,6 +5128,41 @@ nav.toc:not(.task-view) > ul > li > span {
   pointer-events: none;
 }
 
+/* Product view: category headers are now links to landing pages —
+   match the goal view's blue, clickable styling. */
+nav.toc:not(.task-view) > ul > li > a {
+  color: var(--SL-blue05) !important;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-top: 14px;
+  padding-bottom: 6px;
+  white-space: normal;
+}
+
+/* Product view: right-aligned expand/collapse chevron on category headers,
+   signalling they open to reveal their products (rotates when expanded).
+   Scoped with :has() so childless items (e.g. Glossary) get no chevron. */
+nav.toc:not(.task-view) > ul > li.navparent:has(> ul > li) > a {
+  display: flex;
+  align-items: center;
+}
+nav.toc:not(.task-view) > ul > li.navparent:has(> ul > li) > a::after {
+  content: "";
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  background-image: url(https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-right-icon.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform 0.2s ease;
+}
+nav.toc:not(.task-view) > ul > li.navexpand:has(> ul > li) > a::after {
+  transform: rotate(90deg);
+}
+
 nav.toc:not(.task-view) > ul > li:first-of-type > span {
   padding-top: 8px;
 }
@@ -7788,12 +7823,12 @@ p.hp-hero-subtitle {
   padding-right: 24px;
 }
 
-/* Chevron at the right edge of the Trending header */
+/* "View more" link at the right edge of the Trending header (matches figma) */
 .hp-trending .hp-section-header::after {
-  content: "\203A";
-  color: #11378B;
-  font-size: 1.1rem;
-  font-weight: 700;
+  content: "View more \2192";
+  color: #1E5BD6;
+  font-size: 0.78rem;
+  font-weight: 500;
   line-height: 1;
 }
 
