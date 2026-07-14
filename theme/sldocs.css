@@ -1,4 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Acherus Grotesque — SnapLogic brand sans (JellyRoll Design System 2.0) */
+@font-face { font-family: "Acherus Grotesque"; font-style: normal; font-weight: 300; font-display: swap;
+  src: url("https://sl-design-team.github.io/jellyroll/fonts/acherus-grotesque-light.woff2") format("woff2"); }
+@font-face { font-family: "Acherus Grotesque"; font-style: italic; font-weight: 300; font-display: swap;
+  src: url("https://sl-design-team.github.io/jellyroll/fonts/acherus-grotesque-light-italic.woff2") format("woff2"); }
+@font-face { font-family: "Acherus Grotesque"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("https://sl-design-team.github.io/jellyroll/fonts/acherus-grotesque-regular.woff2") format("woff2"); }
+@font-face { font-family: "Acherus Grotesque"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url("https://sl-design-team.github.io/jellyroll/fonts/acherus-grotesque-medium.woff2") format("woff2"); }
+@font-face { font-family: "Acherus Grotesque"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("https://sl-design-team.github.io/jellyroll/fonts/acherus-grotesque-bold.woff2") format("woff2"); }
+@font-face { font-family: "Acherus Grotesque"; font-style: normal; font-weight: 800; font-display: swap;
+  src: url("https://sl-design-team.github.io/jellyroll/fonts/acherus-grotesque-extrabold.woff2") format("woff2"); }
 
 /*
   CSS for Docs
@@ -154,11 +166,22 @@
   --SL-grey10 :#1F2125;
 
 
-  /* fonts */
-  --font-header: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-body: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-bold: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-code: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  /* fonts — JellyRoll (SnapLogic Design System 2.0) */
+  --font-header: "Acherus Grotesque", system-ui, "SF Pro", "Segoe UI", sans-serif;
+  --font-body: "Acherus Grotesque", system-ui, "SF Pro", "Segoe UI", sans-serif;
+  --font-bold: "Acherus Grotesque", system-ui, "SF Pro", "Segoe UI", sans-serif;
+  --font-code: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* JellyRoll type scale */
+  --type-title-size: 32px;      --type-title-line: 38px;      --type-title-weight: 800;
+  --type-heading-size: 24px;    --type-heading-line: 36px;    --type-heading-weight: 800;
+  --type-subheading-size: 20px; --type-subheading-line: 32px; --type-subheading-weight: 800;
+  --type-cardtitle-size: 18px;  --type-cardtitle-line: 28px;  --type-cardtitle-weight: 800;
+  --type-label-size: 14px;      --type-label-line: 22px;      --type-label-weight: 800;
+  --type-body-size: 14px;       --type-body-line: 22px;       --type-body-weight: 400;
+  --type-small-size: 12px;      --type-small-line: 18px;      --type-small-weight: 400;
+  --type-micro-size: 10px;      --type-micro-line: 14px;      --type-micro-weight: 800;
+  --type-pill-size: 10px;       --type-pill-line: 14px;       --type-pill-weight: 800;
 
   /* global */
   --hover-textcolor: #1F2125;
@@ -580,27 +603,29 @@ main a[rel*="external"]::after {
    ============================== */
 
 .topictitle1 {
-  font-family: var(--font-body);
-  font-size: 32px;
-  font-weight: 700;
+  font-family: var(--font-header);
+  font-size: var(--type-title-size);
+  font-weight: var(--type-title-weight);
+  line-height: var(--type-title-line);
   padding: 0;
   margin-bottom: 16px;
   color: #063490;
   letter-spacing: -0.01em;
-  line-height: 1.3;
 }
 .topictitle2 {
-  font-size: 24px;
-  font-weight: 800;
-  font-family: var(--font-body);
+  font-size: var(--type-heading-size);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-line);
+  font-family: var(--font-header);
   padding: 0 0 0.3em 0;
   color: #063490;
 }
 .detsummtitle,
 .sectiontitle {
-  font-size: 18px;
-  font-weight: 700;
-  font-family: var(--font-body);
+  font-size: var(--type-subheading-size);
+  font-weight: var(--type-subheading-weight);
+  line-height: var(--type-subheading-line);
+  font-family: var(--font-header);
   padding: 0.2em 0;
   margin: 5px 0;
   position: relative;
@@ -6599,10 +6624,10 @@ a.xref.landing-card:hover {
 
 /* Task landing page title + description */
 .task-home-page-title {
-  font-size: 2.75rem;
-  font-weight: 700;
+  font-size: var(--type-title-size);
+  font-weight: var(--type-title-weight);
+  line-height: var(--type-title-line);
   color: #063490;
-  line-height: 1.15;
   margin: 0 0 12px;
 }
 
@@ -6622,8 +6647,9 @@ a.xref.landing-card:hover {
 
 /* Section titles within the landing page */
 .task-home-section-title {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--type-heading-size);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-line);
   color: var(--c2-grey1);
   margin: 32px 0 8px;
 }
@@ -6678,11 +6704,11 @@ a.xref.landing-card:hover {
 }
 
 .task-home-card-title {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: var(--type-cardtitle-size);
+  font-weight: var(--type-cardtitle-weight);
+  line-height: var(--type-cardtitle-line);
   color: var(--c2-grey1);
   margin: 0;
-  line-height: 1.3;
 }
 
 .task-home-card-title a {
@@ -6745,8 +6771,9 @@ a.xref.landing-card:hover {
 
 /* Product landing page title + description */
 .product-landing-page-title {
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: var(--type-title-size);
+  font-weight: var(--type-title-weight);
+  line-height: var(--type-title-line);
   color: #063490;
   margin: 0 0 12px;
 }
@@ -6766,8 +6793,9 @@ a.xref.landing-card:hover {
 }
 
 .product-landing-section-title {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: var(--type-heading-size);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-line);
   color: var(--c2-grey1);
   margin: 32px 0 8px;
 }
@@ -6813,11 +6841,11 @@ a.xref.landing-card:hover {
 }
 
 .product-landing-card-title {
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: var(--type-cardtitle-size);
+  font-weight: var(--type-cardtitle-weight);
+  line-height: var(--type-cardtitle-line);
   color: var(--c2-grey1);
   margin: 0;
-  line-height: 1;
 }
 
 .product-landing-card p {
@@ -6866,8 +6894,9 @@ a.xref.landing-card:hover {
 
 /* Section heading within task home */
 .task-home-section-title {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--type-heading-size);
+  font-weight: var(--type-heading-weight);
+  line-height: var(--type-heading-line);
   color: var(--c2-grey1);
   margin: 32px 0 8px;
 }
