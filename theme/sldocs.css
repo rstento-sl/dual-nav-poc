@@ -183,6 +183,155 @@
   --type-micro-size: 10px;      --type-micro-line: 14px;      --type-micro-weight: 800;
   --type-pill-size: 10px;       --type-pill-line: 14px;       --type-pill-weight: 800;
 
+  /* JellyRoll foundation tokens (palette, spacing, radius, shadows) */
+  --sl-blue-50: #F2F6FC;
+  --sl-blue-100: #E6ECF8;
+  --sl-blue-200: #CED9F0;
+  --sl-blue-300: #9CB3E1;
+  --sl-blue-400: #6B8DD2;
+  --sl-blue-500: #3967C3;
+  --sl-blue-600: #0841B4;
+  --sl-blue-700: #063490;
+  --sl-blue-800: #05276C;
+  --sl-blue-900: #031A48;
+  --sl-blue-1000: #020D24;
+  --sl-teal-50: #F2F8F8;
+  --sl-teal-100: #E6F2F2;
+  --sl-teal-200: #CEE6E5;
+  --sl-teal-300: #9DCDCC;
+  --sl-teal-400: #6BB3B2;
+  --sl-teal-500: #3A9A99;
+  --sl-teal-600: #09817F;
+  --sl-teal-700: #076766;
+  --sl-teal-800: #054D4C;
+  --sl-teal-900: #043433;
+  --sl-teal-1000: #021A19;
+  --sl-indigo-50: #F4F6F9;
+  --sl-indigo-100: #EAEDF3;
+  --sl-indigo-200: #D6DAE6;
+  --sl-indigo-300: #ACB5CE;
+  --sl-indigo-400: #8390B5;
+  --sl-indigo-500: #596B9D;
+  --sl-indigo-600: #304684;
+  --sl-indigo-700: #26386A;
+  --sl-indigo-800: #1D2A4F;
+  --sl-indigo-900: #131C35;
+  --sl-indigo-1000: #0A0E1A;
+  --sl-orange-50: #FEF7F3;
+  --sl-orange-100: #FEF0E7;
+  --sl-orange-200: #FEE0CE;
+  --sl-orange-300: #FDC29D;
+  --sl-orange-400: #FBA36D;
+  --sl-orange-500: #FA853C;
+  --sl-orange-600: #F9660B;
+  --sl-orange-700: #C75209;
+  --sl-orange-800: #953D07;
+  --sl-orange-900: #642904;
+  --sl-orange-1000: #321402;
+  --sl-yellow-50: #FFFBF2;
+  --sl-yellow-100: #FFF8E6;
+  --sl-yellow-200: #FEF2CD;
+  --sl-yellow-300: #FDE49B;
+  --sl-yellow-400: #FDD768;
+  --sl-yellow-500: #FCC936;
+  --sl-yellow-600: #FBBC04;
+  --sl-yellow-700: #C99603;
+  --sl-yellow-800: #977102;
+  --sl-yellow-900: #644B02;
+  --sl-yellow-1000: #322601;
+  --sl-purple-50: #F7F5F9;
+  --sl-purple-100: #EFEBF3;
+  --sl-purple-200: #E0D7E6;
+  --sl-purple-300: #C0AFCE;
+  --sl-purple-400: #A186B5;
+  --sl-purple-500: #815E9D;
+  --sl-purple-600: #623684;
+  --sl-purple-700: #4E2B6A;
+  --sl-purple-800: #3B204F;
+  --sl-purple-900: #271635;
+  --sl-purple-1000: #140B1A;
+  --sl-green-50: #F2F8F3;
+  --sl-green-100: #E6F2E8;
+  --sl-green-200: #CCE5D1;
+  --sl-green-300: #99CBA4;
+  --sl-green-400: #67B176;
+  --sl-green-500: #349749;
+  --sl-green-600: #017D1B;
+  --sl-green-700: #016416;
+  --sl-green-800: #014B10;
+  --sl-green-900: #00320B;
+  --sl-green-1000: #001905;
+  --sl-red-50: #FDF3F5;
+  --sl-red-100: #FCE8EC;
+  --sl-red-200: #F9D2D8;
+  --sl-red-300: #F4A4B1;
+  --sl-red-400: #EE778B;
+  --sl-red-500: #E94964;
+  --sl-red-600: #E31C3D;
+  --sl-red-700: #B61631;
+  --sl-red-800: #881125;
+  --sl-red-900: #5B0B18;
+  --sl-red-1000: #2D060C;
+  --sl-pink-50: #FDF3F8;
+  --sl-pink-100: #FCE8F1;
+  --sl-pink-200: #F9D2E3;
+  --sl-pink-300: #F4A5C7;
+  --sl-pink-400: #EE78AB;
+  --sl-pink-500: #E94B8F;
+  --sl-pink-600: #E31C73;
+  --sl-pink-700: #B6165C;
+  --sl-pink-800: #881145;
+  --sl-pink-900: #5B0B2E;
+  --sl-pink-1000: #2D0617;
+  --sl-grey-50: #FAFAFB;
+  --sl-grey-100: #F5F6F8;
+  --sl-grey-200: #EBEDF1;
+  --sl-grey-300: #D7DCE3;
+  --sl-grey-400: #C4CAD6;
+  --sl-grey-500: #B0B9C8;
+  --sl-grey-600: #9CA7BA;
+  --sl-grey-700: #7D8695;
+  --sl-grey-800: #5E6470;
+  --sl-grey-900: #3E434A;
+  --sl-grey-1000: #1F2125;
+  --sl-ai-50: #F6F8FF;
+  --sl-ai-100: #EEF1FF;
+  --sl-ai-200: #D7DCFF;
+  --sl-ai-300: #B3BCFF;
+  --sl-ai-400: #8B97F2;
+  --sl-ai-500: #6672D8;
+  --sl-ai-600: #545FC4;
+  --sl-ai-700: #434AA3;
+  --sl-ai-800: #313777;
+  --sl-ai-900: #222652;
+  --sl-ai-1000: #111329;
+  --sl-white: #FFFFFF;
+  --sl-black: #000000;
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-pill: 999px;
+  --shadow-raised: 0px 2px 4px rgba(206, 217, 240, 0.8);
+  --shadow-raised-hover: 0px 4px 8px rgba(206, 217, 240, 1);
+  --shadow-overlay: 0px 8px 24px rgba(38, 40, 44, 0.18);
+  --shadow-overlay-strong: 0px 12px 32px rgba(38, 40, 44, 0.28);
+  --shadow-focus-ring: 0 0 0 3px rgba(9, 129, 127, 0.35);
+  --shadow-inset-sunken: inset 0 1px 2px rgba(38, 40, 44, 0.08);
+  --field-radius: var(--radius-sm);
+
   /* global */
   --hover-textcolor: #1F2125;
   --bordercolor: #EBEDF1;
@@ -1027,17 +1176,25 @@ article ul,article ol {
   padding-bottom: 12px;
 }
 .feedback-popup-container .feedbackbtn{
-  border: 0px;
-  padding: 12px;
+  border: 1.5px solid transparent;
+  padding: 6px 18px;
   text-align: center;
-  background: var(--SL-blue06);
+  background: var(--sl-blue-600, #0841B4);
   color: #FFFFFF;
-  border-radius: 5px;
+  border-radius: var(--radius-sm, 4px);
   cursor: pointer;
   margin-top: 16px;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 800;
+  font-family: var(--font-header);
+  transition: background 0.15s;
+}
+.feedback-popup-container .feedbackbtn:hover{
+  background: linear-gradient(112.63deg, #0B9D9B 12.38%, #0841B4 137.46%);
+}
+.feedback-popup-container .feedbackbtn:active{
+  background: var(--sl-teal-400, #6BB3B2);
 }
 
 #error_message{
@@ -1498,19 +1655,26 @@ br {
   cursor: pointer;
 }
 .feedbackbutton{
-  /* border:1px Solid #D7DCE3; */
-  border-radius: 4px;
-  padding: 5px 20px;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm, 4px);
+  padding: 6px 18px;
   font-size: 14px;
-  font-weight: 700;
+  line-height: 22px;
+  font-weight: 800;
   color: #FFFFFF;
   height: 40px;
   text-align: center;
   align-content: center;
   width: 100%;
-  background: #063490;
-  letter-spacing: 0.03em;
+  background: var(--sl-blue-600, #0841B4);
   cursor:pointer;
+  transition: background 0.15s;
+}
+.feedbackbutton:hover{
+  background: linear-gradient(112.63deg, #0B9D9B 12.38%, #0841B4 137.46%);
+}
+.feedbackbutton:active{
+  background: var(--sl-teal-400, #6BB3B2);
 }
 .feedback-popup-container1 {
   display: none;
@@ -1575,14 +1739,16 @@ br {
 .feedback-buttons button:first-child {
   margin: 0px;
   font-size: 14px;
-  padding: 5px 20px;
+  line-height: 22px;
+  font-weight: 800;
+  padding: 6px 18px;
   height: 30px;
   text-align: center;
-  background: var(--SL-blue06);
+  background: var(--sl-blue-600, #0841B4);
   color: #FFFFFF;
-  font-family: var(--font-body);
-  border-radius: 5px;
-  border: 1px solid var(--SL-blue06);
+  font-family: var(--font-header);
+  border-radius: var(--radius-sm, 4px);
+  border: 1.5px solid transparent;
 }
 .feedback-buttons button:last-child {
   margin: 0px;
@@ -7033,18 +7199,24 @@ a.xref.landing-card:hover {
 .feedback-send-btn {
   display: block;
   text-align: center;
-  padding: 8px 16px;
-  background: var(--SL-blue06);
+  padding: 6px 18px;
+  background: var(--sl-blue-600, #0841B4);
   color: white !important;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 600;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm, 4px);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 800;
   text-decoration: none !important;
-  transition: background 0.2s;
+  transition: background 0.15s;
 }
 
 .feedback-send-btn:hover {
-  background: var(--SL-blue08);
+  background: linear-gradient(112.63deg, #0B9D9B 12.38%, #0841B4 137.46%);
+}
+
+.feedback-send-btn:active {
+  background: var(--sl-teal-400, #6BB3B2);
 }
 
 @media screen and (max-width: 1200px) {
