@@ -1182,7 +1182,7 @@ article ul,article ol {
     height: 40px;
     border: 1px solid var(--color-border-default, #C4CAD6);
     border-radius: var(--radius-sm, 4px);
-    padding: 0 10px;
+    padding: 0 12px;
     font-size: 14px;
     font-family: var(--font-body);
     color: var(--SL-grey06);
@@ -1203,7 +1203,7 @@ article ul,article ol {
     z-index: 999; /* Ensure it is behind the popup but on top of other content */
 }
 .feedback-popup-container  .input_field{
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .feedback-popup-container .input_field input[type="text"],
@@ -1213,7 +1213,7 @@ article ul,article ol {
   color:var(--SL-grey06);
   width: 100%;
   height: 30px;
-  padding: 5px;
+  padding: 8px;
   font-size: 14px;
   font-family: var(--font-body);
 }
@@ -1694,7 +1694,7 @@ br {
     display: flex;
     flex-flow: column;
     align-items: center;
-    row-gap: 10px;
+    row-gap: 12px;
     width: 100%;
   }
   .feedbacktext{
@@ -1770,7 +1770,7 @@ br {
 }
 .feedback-header {
   font-weight: 850;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color:  #1F2125;
   font-size: 16px;
   line-height: 20px;
