@@ -455,18 +455,21 @@
   --expandablehdr-bgcolor: #EBEDF1;
 
   /* notes and admonitions */
-  --note-note-color: #434AA3;
-  --note-important-color:  #076766;
-  --note-tip-color:        #017D1B;
-  --note-remember-color:   #977102;
-  --note-warning-color:    #E31C3D;
-  --note-trouble-color:    #FA853C;
-  --note-note-bgcolor:       #F5F6F8;
-  --note-important-bgcolor:  #EBEDF1;
-  --note-tip-bgcolor:        #EBEDF1;
-  --note-remember-bgcolor:   #F5F6F8;
-  --note-warning-bgcolor:    #EBEDF1;
-  --note-trouble-bgcolor:    #F5F6F8;
+  /* Note callouts mapped to JellyRoll semantic alert palette (border-600 / bg-100) */
+  --note-note-color: #304684;      /* information (indigo-600) */
+  --note-important-color:  #623684; /* discovery (purple-600) */
+  --note-tip-color:        #017D1B; /* success (green-600) */
+  --note-remember-color:   #304684; /* information (indigo-600) */
+  --note-warning-color:    #F9660B; /* warning (orange-600) */
+  --note-trouble-color:    #F9660B; /* warning (orange-600) */
+  --note-danger-color:     #E31C3D; /* alert (red-600) */
+  --note-note-bgcolor:       #EAEDF3; /* indigo-100 */
+  --note-important-bgcolor:  #EFEBF3; /* purple-100 */
+  --note-tip-bgcolor:        #E6F2E8; /* green-100 */
+  --note-remember-bgcolor:   #EAEDF3; /* indigo-100 */
+  --note-warning-bgcolor:    #FEF0E7; /* orange-100 */
+  --note-trouble-bgcolor:    #FEF0E7; /* orange-100 */
+  --note-danger-bgcolor:     #FCE8EC; /* red-100 */
   --note-padding: 16px;
   --note-icon-side-size: 30px;
   --note-icon-margin-right: 4px;
@@ -2739,6 +2742,10 @@ section img,
 .note_attention  {
   background-color: var(--note-note-bgcolor);
   border-left: 4px solid var(--note-note-color);
+}
+.note_danger {
+  background-color: var(--note-danger-bgcolor);
+  border-left: 4px solid var(--note-danger-color);
 }
 .note_note{
   position: relative;
@@ -6914,14 +6921,14 @@ a.xref.landing-card:hover {
 .task-home-card {
   background: #ffffff;
   border: 1px solid var(--c2-grey7, #EBEDF1);
-  border-radius: 12px;
+  border-radius: var(--radius-lg, 8px);
   padding: 24px;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-raised, 0px 2px 4px rgba(206, 217, 240, 0.8));
 }
 
 .task-home-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-raised-hover, 0px 4px 8px rgba(206, 217, 240, 1));
   border-color: var(--c2-grey5, #9CA7BA);
   transform: translateY(-2px);
 }
@@ -7051,14 +7058,14 @@ a.xref.landing-card:hover {
 .product-landing-card {
   background: #ffffff;
   border: 1px solid var(--c2-grey7, #EBEDF1);
-  border-radius: 12px;
+  border-radius: var(--radius-lg, 8px);
   padding: 20px 24px;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-raised, 0px 2px 4px rgba(206, 217, 240, 0.8));
 }
 
 .product-landing-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-raised-hover, 0px 4px 8px rgba(206, 217, 240, 1));
   border-color: var(--c2-grey5, #9CA7BA);
   transform: translateY(-2px);
 }
