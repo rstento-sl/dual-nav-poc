@@ -6882,10 +6882,10 @@ a.xref.landing-card:hover {
 .task-home-page-shortdesc {
   display: block;
   font-style: normal;
-  font-size: 0.95rem;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
   color: var(--c2-grey3);
-  line-height: 1.6;
-  margin: 0 0 28px;
+  margin: 0 0 24px;
 }
 
 /* Hero section — hidden; title/shortdesc serve this purpose */
@@ -6969,18 +6969,19 @@ a.xref.landing-card:hover {
 }
 
 .task-home-card p {
-  font-size: 1rem;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  font-weight: var(--type-body-weight);
   color: var(--c2-grey3);
-  margin: 0 0 10px 0;
-  line-height: 1.5;
+  margin: 0 0 8px 0;
 }
 
 .task-home-card-header p {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: var(--type-cardtitle-size);
+  font-weight: var(--type-cardtitle-weight);
+  line-height: var(--type-cardtitle-line);
   color: var(--c2-grey1);
   margin: 0;
-  line-height: 1.3;
 }
 
 .task-home-card ul {
@@ -7013,6 +7014,13 @@ a.xref.landing-card:hover {
 .task-home-card-red { background: #E94964; }
 .task-home-card-gray { background: #5E6470; }
 
+/* Uniform teal accent dots on all landing cards — matches figma / JR card-icon default.
+   Descendant specificity (0,2,0) beats the single-class color-variant modifiers (0,1,0). */
+.task-home-card .task-home-card-icon,
+.product-landing-card .product-landing-card-icon {
+  background: var(--sl-teal-600, #09817F);
+}
+
 /* ==============================
    PRODUCT LANDING PAGE (All Products)
    ============================== */
@@ -7029,10 +7037,10 @@ a.xref.landing-card:hover {
 .product-landing-page-shortdesc {
   display: block;
   font-style: normal;
-  font-size: 0.95rem;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
   color: var(--c2-grey3);
-  line-height: 1.6;
-  margin: 0 0 28px;
+  margin: 0 0 24px;
 }
 
 /* Hero section — hidden; title/shortdesc serve this purpose */
@@ -7097,18 +7105,19 @@ a.xref.landing-card:hover {
 }
 
 .product-landing-card p {
-  font-size: 0.85rem;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  font-weight: var(--type-body-weight);
   color: var(--c2-grey3);
-  margin: 0 0 10px 0;
-  line-height: 1.5;
+  margin: 0 0 8px 0;
 }
 
 .product-landing-card-header p {
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: var(--type-cardtitle-size);
+  font-weight: var(--type-cardtitle-weight);
+  line-height: var(--type-cardtitle-line);
   color: var(--c2-grey1);
   margin: 0;
-  line-height: 1;
 }
 
 .product-landing-card ul {
