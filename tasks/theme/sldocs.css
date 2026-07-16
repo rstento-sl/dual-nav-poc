@@ -7573,8 +7573,12 @@ a.hp-banner-cta,
   line-height: 0;
 }
 .hp-video-logo {
+  /* Explicit box (an inline SVG with width:auto collapses to 0 under the
+     generic `section img { height:auto }` rule). object-fit:contain keeps a
+     differently-proportioned logo from distorting if the asset is swapped. */
   height: 24px;
   width: 75px;
+  object-fit: contain;
   display: block;
   border: none;
   cursor: default;
@@ -7591,33 +7595,39 @@ a.hp-banner-cta,
 .hp-video-card-cta {
   margin: 0;
 }
-.hp-video-card-cta a,
-.hp-video-card-cta a.xref {
+/* CTA is a DITA <xref>, so it always carries the .xref class and lives inside
+   <article>. Rather than out-specificity-war the global `article .xref` link
+   rules, force the two contested properties (text color + underline) with
+   !important — the same approach .hp-banner-cta uses. This keeps the button
+   legible no matter what future .xref color rules are added. .hp-cta-button is
+   the semantic hook; .hp-video-card-cta a is a fallback for pre-rebuild output. */
+.hp-cta-button,
+.hp-video-card-cta a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   background: var(--sl-blue-600, #0841B4);
-  color: #ffffff;
+  color: #ffffff !important;
   font-size: 0.875rem;
   font-weight: 800;
-  text-decoration: none;
+  text-decoration: none !important;
   padding: 6px 18px;
   border: 1.5px solid transparent;
   border-radius: var(--radius-sm, 4px);
   transition: background 0.15s ease;
 }
-.hp-video-card-cta a.xref:visited {
-  color: #ffffff;
+.hp-cta-button:visited,
+.hp-video-card-cta a:visited {
+  color: #ffffff !important;
 }
-.hp-video-card-cta a:hover,
-.hp-video-card-cta a.xref:hover {
-  color: #ffffff;
-  text-decoration: none;
+.hp-cta-button:hover,
+.hp-video-card-cta a:hover {
+  color: #ffffff !important;
   background: linear-gradient(180deg, var(--sl-blue-500, #134FC2) 0%, var(--sl-blue-600, #0841B4) 100%);
 }
-.hp-video-card-cta a:active,
-.hp-video-card-cta a.xref:active {
-  color: #ffffff;
+.hp-cta-button:active,
+.hp-video-card-cta a:active {
+  color: #ffffff !important;
   background: var(--sl-teal-400, #6BB3B2);
 }
 
