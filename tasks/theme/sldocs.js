@@ -3535,36 +3535,6 @@ $(window).on("resize", function () {
   initCarousel($('.hp-goal-cards'));
   initCarousel($('.hp-feature-cards'));
 
-  // Homepage video card — cross-fade through user-assistance video thumbnails
-  (function rotateVideoThumbs() {
-    var card = document.querySelector('.hp-video-card');
-    if (!card) return;
-    var ids = ['TpEVmzVcDVM', '8QNJQu6MXwY', 'AvOf9EFzH_c', 'Sx9nko2LcDw',
-               'jTghaTn9lqA', '8NbxtdPHWYk', 'hyoYFzlY-6k', 'Vi9HTiqv4BY'];
-    function srcFor(i) { return 'https://img.youtube.com/vi/' + ids[i] + '/hqdefault.jpg'; }
-    ids.forEach(function(id) { var im = new Image(); im.src = 'https://img.youtube.com/vi/' + id + '/hqdefault.jpg'; });
-    // Two stacked layers for cross-fade
-    var layers = [];
-    for (var i = 0; i < 2; i++) {
-      var d = document.createElement('div');
-      d.className = 'hp-video-thumb';
-      card.insertBefore(d, card.firstChild);
-      layers.push(d);
-    }
-    card.classList.add('has-thumbs');
-    var idx = 0, active = 0;
-    layers[0].style.backgroundImage = "url('" + srcFor(0) + "')";
-    layers[0].classList.add('is-active');
-    setInterval(function() {
-      idx = (idx + 1) % ids.length;
-      var next = 1 - active;
-      layers[next].style.backgroundImage = "url('" + srcFor(idx) + "')";
-      layers[next].classList.add('is-active');
-      layers[active].classList.remove('is-active');
-      active = next;
-    }, 3500);
-  })();
-
   // Hero search box — click triggers the header search
   var heroSearch = document.querySelector('.hp-hero-search');
   if (heroSearch) {

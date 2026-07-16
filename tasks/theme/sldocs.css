@@ -7555,37 +7555,26 @@ a.hp-banner-cta,
 .hp-video-card {
   flex: 0 0 360px;
   position: relative;
-  overflow: hidden;
   min-height: 168px;
-  border-radius: 18px;
-  padding: 16px 16px;
+  border-radius: var(--radius-lg, 8px);
+  padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #063490 0%, #0841B4 55%, #3967C3 100%);
-}
-/* faint decorative rings */
-.hp-video-card::before {
-  content: '';
-  position: absolute;
-  right: -34px;
-  top: -26px;
-  width: 116px;
-  height: 116px;
-  border-radius: 50%;
-  border: 18px solid rgba(255, 255, 255, 0.06);
+  gap: 16px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid var(--color-border-default, #C4CAD6);
+  box-shadow: var(--shadow-raised, 0px 2px 4px rgba(206, 217, 240, 0.8));
 }
 .hp-video-card-brand {
-  position: absolute;
-  top: 12px;
-  left: 14px;
   margin: 0;
   line-height: 0;
 }
 .hp-video-logo {
-  height: 16px;
-  width: 50px;
+  height: 24px;
+  width: 75px;
   display: block;
   border: none;
   cursor: default;
@@ -7593,37 +7582,34 @@ a.hp-banner-cta,
 .hp-video-card .hp-video-card-title,
 .hp-video-card p.hp-video-card-title {
   margin: 0;
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 600;
+  color: var(--color-text-default, #111329);
+  font-size: var(--type-cardtitle-size, 1.125rem);
+  font-weight: var(--type-cardtitle-weight, 800);
+  line-height: var(--type-cardtitle-line, 1.55);
   text-align: center;
 }
 .hp-video-card-cta {
-  position: absolute;
-  bottom: 12px;
-  right: 14px;
   margin: 0;
 }
 .hp-video-card-cta a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #0841B4;
+  background: var(--sl-blue-600, #0841B4);
   color: #ffffff;
-  font-size: 0.76rem;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 800;
   text-decoration: none;
-  padding: 6px 13px;
-  border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  padding: 6px 18px;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm, 4px);
   transition: background 0.15s ease;
 }
 .hp-video-card-cta a:hover {
-  background: #0841B4;
+  background: linear-gradient(180deg, var(--sl-blue-500, #134FC2) 0%, var(--sl-blue-600, #0841B4) 100%);
 }
-.hp-video-play {
-  font-size: 0.7rem;
-  line-height: 1;
+.hp-video-card-cta a:active {
+  background: var(--sl-teal-400, #6BB3B2);
 }
 
 @media screen and (max-width: 900px) {
@@ -8401,47 +8387,6 @@ p.hp-hero-subtitle {
 
 @media (max-width: 600px) {
   .video-grid { grid-template-columns: 1fr; }
-}
-
-/* ==============================
-   HOMEPAGE VIDEO CARD — ROTATING THUMBNAILS
-   ============================== */
-/* JS injects .hp-video-thumb layers behind the card content; the gradient
-   becomes a semi-transparent overlay so the logo/title/CTA stay legible. */
-.hp-video-card .hp-video-thumb {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-  z-index: 0;
-}
-
-.hp-video-card .hp-video-thumb.is-active {
-  opacity: 1;
-}
-
-/* Gradient overlay above thumbnails, below content — darker toward the
-   bottom-left (logo/title/CTA) and lighter at top-right so the thumbnail
-   stays visible while text remains legible. */
-.hp-video-card.has-thumbs::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(11,21,48,0.78) 0%, rgba(19,79,194,0.52) 50%, rgba(28,146,196,0.40) 100%);
-  z-index: 1;
-}
-
-/* Keep the logo + CTA above the thumbnail/overlay — they are already
-   absolutely positioned, so only z-index is needed (don't reset position). */
-.hp-video-card-brand,
-.hp-video-card-cta {
-  z-index: 2;
-}
-
-.hp-video-card.has-thumbs .hp-video-card-cta a {
-  box-shadow: 0 1px 6px rgba(0,0,0,0.25);
 }
 
 /* ============================== END ============================== */
