@@ -7591,7 +7591,8 @@ a.hp-banner-cta,
 .hp-video-card-cta {
   margin: 0;
 }
-.hp-video-card-cta a {
+.hp-video-card-cta a,
+.hp-video-card-cta a.xref {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -7605,10 +7606,18 @@ a.hp-banner-cta,
   border-radius: var(--radius-sm, 4px);
   transition: background 0.15s ease;
 }
-.hp-video-card-cta a:hover {
+.hp-video-card-cta a.xref:visited {
+  color: #ffffff;
+}
+.hp-video-card-cta a:hover,
+.hp-video-card-cta a.xref:hover {
+  color: #ffffff;
+  text-decoration: none;
   background: linear-gradient(180deg, var(--sl-blue-500, #134FC2) 0%, var(--sl-blue-600, #0841B4) 100%);
 }
-.hp-video-card-cta a:active {
+.hp-video-card-cta a:active,
+.hp-video-card-cta a.xref:active {
+  color: #ffffff;
   background: var(--sl-teal-400, #6BB3B2);
 }
 
