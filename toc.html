@@ -56,7 +56,8 @@
                         <li class="topicref"><a href="mcp/mcp-quickstart.html">Quick Start</a></li>
                         <li class="topicref"><a href="mcp/mcp-client-setup.html">Set Up an MCP Client</a></li>
                         <li class="topicref"><a href="mcp/mcp-server-setup.html">MCP Server Setup</a><ul>
-                              <li class="topicref"><a href="mcp/create-server-pipe.html">Create MCP Server Pipeline</a></li>
+                              <li class="topicref"><a href="mcp/mcp-server-pipeline-wizard.html">MCP Server Pipeline Builder</a></li>
+                              <li class="topicref"><a href="mcp/create-server-pipe.html">Create MCP Pipeline Manually</a></li>
                               <li class="topicref"><a href="mcp/register-mcp-server.html">Register MCP Server</a></li>
                               <li class="topicref"><a href="mcp/mcp-server-asset.html">Manage MCP Servers</a></li>
                               <li class="topicref"><a href="mcp/mcp-add-policy.html">Create Authentication Policy</a><ul>
@@ -72,29 +73,31 @@
                      </ul>
                   </li>
                   <li class="topicref"><a href="snapgpt/snapgpt-home.html">SnapGPT</a><ul>
-                        <li class="topicref"><a href="snapgpt/snapgpt-about.html">IntroductionIntroduction</a></li>
-                        <li class="topicref"><a href="snapgpt/snapgpt-use.html">Interact with SnapGPT</a><ul>
-                              <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-rag.html">Generate pipeline</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-analyze-pipelines.html">Analyze pipeline</a></li>
-                              <li class="topicref"><a href="snapgpt/generate-queries.html">Generate queries</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-copilot.html">Configure Snaps with Snap copilot</a><ul>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-copilot-snap-banner.html">Launch SnapGPT from Snap settings </a></li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-about.html">Introduction</a><ul>
+                              <li class="topicref"><a href="snapgpt/snapgpt-use.html">Interact with SnapGPT</a><ul>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-rag.html">Generate pipeline</a></li>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-analyze-pipelines.html">Analyze pipeline</a></li>
+                                    <li class="topicref"><a href="snapgpt/generate-queries.html">Generate queries</a></li>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-copilot.html">Configure Snaps with Snap copilot</a><ul>
+                                          <li class="topicref"><a href="snapgpt/snapgpt-copilot-snap-banner.html">Launch SnapGPT from Snap settings </a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-preview-data-insights.html">Get insights on the Snaps preview data</a></li>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-refine-pipelines.html">Refine pipelines</a></li>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-image.html">Generate a pipeline from an image</a></li>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate expressions</a><ul>
+                                          <li class="topicref"><a href="snapgpt/mapper-expr-example1.html">Map to target</a></li>
+                                          <li class="topicref"><a href="snapgpt/mapper-expr-example2.html">Extract pipeline parameters</a></li>
+                                       </ul>
+                                    </li>
                                  </ul>
                               </li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-preview-data-insights.html">Get insights on the Snaps preview data</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-refine-pipelines.html">Refine pipelines</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-image.html">Generate a pipeline from an image</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate expressions</a><ul>
-                                    <li class="topicref"><a href="snapgpt/mapper-expr-example1.html">Map to target</a></li>
-                                    <li class="topicref"><a href="snapgpt/mapper-expr-example2.html">Extract pipeline parameters</a></li>
-                                 </ul>
-                              </li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-settings.html">Configure SnapGPT</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-best-practices.html">Prompt tips</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-modes.html">Thinking and Planning modes</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-question-and-answer.html">SnapGPT FAQ</a></li>
                            </ul>
                         </li>
-                        <li class="topicref"><a href="snapgpt/snapgpt-settings.html">Configure SnapGPT</a></li>
-                        <li class="topicref"><a href="snapgpt/snapgpt-best-practices.html">Prompt tips</a></li>
-                        <li class="topicref"><a href="snapgpt/snapgpt-thinking-modes.html">Thinking modes</a></li>
-                        <li class="topicref"><a href="snapgpt/snapgpt-question-and-answer.html">SnapGPT FAQ</a></li>
                      </ul>
                   </li>
                </ul>
@@ -151,7 +154,13 @@
                         </li>
                         <li class="topicref"><a href="api-m/workflows/work-services.html">Introduction to Services</a><ul>
                               <li class="topicref"><a href="api-m/workflows/service-config.html">Service configuration</a></li>
-                              <li class="topicref"><a href="api-m/workflows/endpoint-config.html">Endpoint configuration</a></li>
+                              <li class="topicref"><a href="api-m/workflows/endpoint-config.html">Endpoint configuration</a><ul>
+                                    <li class="topicref"><a href="api-m/concepts/upstream-path.html">Path resolution</a></li>
+                                    <li class="topicref"><a href="api-m/workflows/path-examples.html">Path examples</a></li>
+                                 </ul>
+                              </li>
+                              <li class="topicref"><a href="api-m/workflows/service-asset-tab.html">Related assets</a></li>
+                              <li class="topicref"><a href="api-m/workflows/documentation-categories.html">Documentation and categories</a></li>
                               <li class="topicref"><a href="api-m/workflows/service-test-pub.html">Test and publish Services</a></li>
                            </ul>
                         </li>
@@ -174,8 +183,10 @@
                               </li>
                               <li class="topicref"><a href="api-m/workflows/create-service-from-spec.html">Create Service from spec</a></li>
                               <li class="topicref"><a href="api-m/workflows/create-service-version.html">Create new Service version from scratch</a></li>
+                              <li class="topicref"><a href="api-m/workflows/find-services.html">Find Services</a></li>
                               <li class="topicref"><a href="api-m/workflows/create-catalog-policy.html">Create Catalog Policy</a></li>
                               <li class="topicref"><a href="api-m/workflows/create-policy.html">Create Policy</a></li>
+                              <li class="topicref"><a href="api-m/workflows/find-policies.html">Find Policies</a></li>
                               <li class="topicref"><a href="api-m/workflows/edit-service.html">Edit Service details </a></li>
                               <li class="topicref"><a href="api-m/workflows/edit-service-version.html">Edit Service version</a></li>
                               <li class="topicref"><a href="api-m/workflows/edit-endpoint.html">Edit endpoint</a></li>
@@ -458,9 +469,10 @@
                         </li>
                      </ul>
                   </li>
-                  <li class="topicref"><a href="designer/designer-home.html">Designer</a><ul>
-                        <li class="topicref"><a href="designer/designer-about.html">Introduction</a></li>
+                  <li class="topicref"><a href="designer/designer-about.html">Introduction</a><ul>
                         <li class="topicref"><a href="designer/designer-toolbar.html">Designer Toolbar</a></li>
+                        <li class="topicref"><a href="designer/pipeline-and-snap-basics.html">Pipeline and Snap basics</a></li>
+                        <li class="topicref"><a href="designer/asset-palette.html">Asset Palette</a></li>
                         <li class="topicref"><a href="designer/keyboard-commands.html">Keyboard Commands</a></li>
                         <li class="topicref"><a href="designer/print-pipeline.html">Print Pipeline</a></li>
                         <li class="topicref"><a href="designer/using-pipeline-notes-in-designer.html">Using Pipeline Notes in SnapLogic Designer</a></li>
@@ -473,6 +485,11 @@
                                     <li class="topicref"><a href="design-integrations/example-error-handling.html">Example—Error pipeline</a></li>
                                     <li class="topicref"><a href="design-integrations/error-handling-strategies.html">Error handling strategies: Industry scenarios</a></li>
                                     <li class="topicref"><a href="design-integrations/purpose-error-handling.html">Error handling workflow</a></li>
+                                 </ul>
+                              </li>
+                              <li class="topicref"><a href="introduction/first-pipeline.html">Create your first pipeline</a><ul>
+                                    <li class="topicref"><a href="introduction/upload-file.html">Upload the CSV file</a></li>
+                                    <li class="topicref"><a href="design-integrations/compose-pipeline.html">Compose the pipeline</a></li>
                                  </ul>
                               </li>
                            </ul>
@@ -492,7 +509,10 @@
                         <li class="topicref topichead">Core Functions
                            <ul>
                               <li class="topicref"><a href="design-integrations/global-functions.html">Global Functions</a></li>
-                              <li class="topicref"><a href="design-integrations/date-functions.html">Date Functions</a></li>
+                              <li class="topicref"><a href="design-integrations/date-functions.html">Date Functions</a><ul>
+                                    <li class="topicref"><a href="design-integrations/database-date-types.html">Database Date Types</a></li>
+                                 </ul>
+                              </li>
                            </ul>
                         </li>
                         <li class="topicref topichead">String and Text Functions
@@ -572,7 +592,7 @@
                         <li class="topicref"><a href="git-integration/git-integration-about.html">IntroductionGit Integration</a></li>
                         <li class="topicref"><a href="git-integration/repo-track.html">Track with a repository</a></li>
                         <li class="topicref"><a href="git-integration/concurrent-dev.html">Concurrent development</a></li>
-                        <li class="topicref"><a href="git-integration/app-gateway.html">Beta app gateway</a></li>
+                        <li class="topicref"><a href="git-integration/app-gateway.html">Beta App Gateway</a></li>
                         <li class="topicref"><a href="git-integration/git-integration-azure.html">Configure Azure Repos</a></li>
                         <li class="topicref"><a href="git-integration/git-integration-github.html">Configure GitHub or GHEC</a></li>
                         <li class="topicref"><a href="git-integration/gitlab-self-managed-about.html">Configure GitLab on-premises</a></li>
@@ -588,7 +608,7 @@
                         <li class="topicref"><a href="git-integration/git-authorize.html">Authorize with a Git Provider</a></li>
                         <li class="topicref"><a href="git-integration/git-deauthorize.html">Deauthorize SnapLogic</a></li>
                         <li class="topicref"><a href="git-integration/git-operations.html">Git operations</a><ul>
-                              <li class="topicref"><a href="git-integration/git-check-out-git-repo-project-space.html">Checkout project space</a></li>
+                              <li class="topicref"><a href="git-integration/git-check-out-git-repo-project-space.html">Checkout project space or project</a></li>
                               <li class="topicref"><a href="git-integration/git-create-project-from-repo.html">Create project</a></li>
                               <li class="topicref"><a href="git-integration/git-check-out-branch-tag.html">Checkout branch or tag</a></li>
                               <li class="topicref"><a href="git-integration/git-create-branch.html">Create branch</a></li>
@@ -617,7 +637,6 @@
                         <li class="topicref"><a href="manager/api-management.html">API Management</a></li>
                         <li class="topicref"><a href="manager/recycle.html">Recycle Bin</a></li>
                         <li class="topicref"><a href="manager/runtime-archive.html">Runtime Archive</a></li>
-                        <li class="topicref"><a href="manager/configure-custom-org-branding.html">Configure-custom-org-branding</a></li>
                         <li class="topicref"><a href="manager/projects.html">Project spaces and projects</a><ul>
                               <li class="topicref"><a href="manager/create-a-project-space.html">Create a project space</a></li>
                               <li class="topicref"><a href="manager/assign-permissions-project-space.html">Assign permissions across projects</a></li>
@@ -629,6 +648,7 @@
                                  </ul>
                               </li>
                               <li class="topicref"><a href="manager/create-a-project.html">Create a project</a></li>
+                              <li class="topicref"><a href="manager/move-snaplex-to-project.html">Move a Snaplex to a Project</a></li>
                               <li class="topicref"><a href="manager/delete-a-project.html">Delete a project</a></li>
                               <li class="topicref"><a href="manager/import-and-export-project.html">Import and export projects</a></li>
                               <li class="topicref"><a href="manager/migrate-projects-to-another-org.html">Migrate projects to another org</a></li>
@@ -856,15 +876,16 @@
                            </ul>
                         </li>
                         <li class="topicref"><a href="public-apis/apis-project.html">Project APIs</a><ul>
-                              <li class="topicref"><a href="public-apis/post-project-git-branch-project-path.html">Create a Git branch</a></li>
-                              <li class="topicref"><a href="public-apis/post-project-create-project-project-path.html">Create project from Git files</a></li>
-                              <li class="topicref"><a href="public-apis/post-project-checkout-project-path.html">Check out project files from Git</a></li>
-                              <li class="topicref"><a href="public-apis/post-project-discard-changes.html">Discard local changes</a></li>
-                              <li class="topicref"><a href="public-apis/post-project-pull-project-path.html">Pull project files from Git</a></li>
-                              <li class="topicref"><a href="public-apis/post-project-git-tag-project-path.html">Add a Git tag</a></li>
-                              <li class="topicref"><a href="public-apis/get-project-git-tag-project-path.html">Retrieve Git tags</a></li>
-                              <li class="topicref"><a href="public-apis/post-project-git-commit.html">Commit project files to Git</a></li>
-                              <li class="topicref"><a href="public-apis/get-project-repo-status-project-path.html">Retrieve the status of the Git repository</a></li>
+                              <li class="topicref"><a href="public-apis/post-project-git-branch-project-path.html">Create a branch</a></li>
+                              <li class="topicref"><a href="public-apis/post-project-create-project-project-path.html">Create a project from repo</a></li>
+                              <li class="topicref"><a href="public-apis/post-project-checkout-project-path.html">Check out files</a></li>
+                              <li class="topicref"><a href="public-apis/post-project-discard-changes.html">Discard changes</a></li>
+                              <li class="topicref"><a href="public-apis/post-project-pull-project-path.html">Pull a project</a></li>
+                              <li class="topicref"><a href="public-apis/post-project-pull-project-space-path.html">Pull project space projects</a></li>
+                              <li class="topicref"><a href="public-apis/post-project-git-tag-project-path.html">Add a tag</a></li>
+                              <li class="topicref"><a href="public-apis/get-project-git-tag-project-path.html">Get tags</a></li>
+                              <li class="topicref"><a href="public-apis/post-project-git-commit.html">Commit files</a></li>
+                              <li class="topicref"><a href="public-apis/get-project-repo-status-project-path.html">Get repo status</a></li>
                               <li class="topicref"><a href="public-apis/post-project-copy-assets.html">Copy assets between projects</a></li>
                               <li class="topicref"><a href="public-apis/post-project-migrate-project-path.html">Migrate a project to another Env/Org</a></li>
                               <li class="topicref"><a href="public-apis/get-project-migrate-status-token.html">Retrieve the status of a migration</a></li>
@@ -872,7 +893,7 @@
                               <li class="topicref"><a href="public-apis/post-project-import-import-path.html">Import a project</a></li>
                               <li class="topicref"><a href="public-apis/get-project-export-individual-asset.html">Export individual assets</a></li>
                               <li class="topicref"><a href="public-apis/post-project-import-individual-asset.html">Import individual assets</a></li>
-                              <li class="topicref"><a href="public-apis/untrack-project-git.html">Untrack project with Git</a></li>
+                              <li class="topicref"><a href="public-apis/untrack-project-git.html">Untrack a project</a></li>
                            </ul>
                         </li>
                         <li class="topicref"><a href="public-apis/apis-snaplex.html">Snaplex APIs</a><ul>
@@ -887,6 +908,7 @@
                               <li class="topicref"><a href="public-apis/post-snaplex-version-latest-plexpath.html">Update the Snaplex to the latest version</a></li>
                               <li class="topicref"><a href="public-apis/get-snaplex-version.html">Get all versions of the Snaplex package</a></li>
                               <li class="topicref"><a href="public-apis/get-snaplex-version-latest.html">Get the latest active version of the Snaplex package</a></li>
+                              <li class="topicref"><a href="public-apis/get-snaplex-provision.html">Retrieve node capacity data</a></li>
                               <li class="topicref"><a href="public-apis/delete-groundplex.html">Delete a Groundplex</a></li>
                            </ul>
                         </li>
@@ -906,6 +928,27 @@
                               <li class="topicref"><a href="public-apis/patch-groups-org-group.html">Add or remove users from a group</a></li>
                               <li class="topicref"><a href="public-apis/put-groups-org-group.html">Change group membership</a></li>
                               <li class="topicref"><a href="public-apis/delete-groups-org-group.html">Delete a group</a></li>
+                           </ul>
+                        </li>
+                        <li class="topicref"><a href="public-apis/apis-mcp.html">MCP APIs</a><ul>
+                              <li class="topicref"><a href="public-apis/apis-mcp-full.html">Full toolset</a><ul>
+                                    <li class="topicref"><a href="public-apis/post-platform-mcp-mcp.html">Send an MCP request</a></li>
+                                    <li class="topicref"><a href="public-apis/get-platform-mcp-mcp.html">Open an MCP event stream</a></li>
+                                    <li class="topicref"><a href="public-apis/delete-platform-mcp-mcp.html">End an MCP session</a></li>
+                                 </ul>
+                              </li>
+                              <li class="topicref"><a href="public-apis/apis-mcp-platform.html">Platform toolset</a><ul>
+                                    <li class="topicref"><a href="public-apis/post-platform-mcp-mcp-platform.html">Send a Platform MCP request</a></li>
+                                    <li class="topicref"><a href="public-apis/get-platform-mcp-mcp-platform.html">Open a Platform MCP event stream</a></li>
+                                    <li class="topicref"><a href="public-apis/delete-platform-mcp-mcp-platform.html">End a Platform MCP session</a></li>
+                                 </ul>
+                              </li>
+                              <li class="topicref"><a href="public-apis/apis-mcp-pygen.html">PyGen toolset</a><ul>
+                                    <li class="topicref"><a href="public-apis/post-platform-mcp-mcp-pygen.html">Send a PyGen MCP request</a></li>
+                                    <li class="topicref"><a href="public-apis/get-platform-mcp-mcp-pygen.html">Open a PyGen MCP event stream</a></li>
+                                    <li class="topicref"><a href="public-apis/delete-platform-mcp-mcp-pygen.html">End a PyGen MCP session</a></li>
+                                 </ul>
+                              </li>
                            </ul>
                         </li>
                         <li class="topicref"><a href="public-apis/api-perms-vs-manager-perms.html">Permission in Manager and in APIs</a></li>
@@ -1063,7 +1106,10 @@
                                           <li class="topicref"><a href="snaps/snaps-core/sp-binary/sp-file-operation-snap-behavior-for-key-operations.html">Snap Behavior for Key Operations</a></li>
                                        </ul>
                                     </li>
-                                    <li class="topicref"><a href="snaps/snaps-core/sp-binary/file-reader.html">File Reader</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-core/sp-binary/file-reader.html">File Reader</a><ul>
+                                          <li class="topicref"><a href="snaps/snaps-core/sp-binary/generate-sas-uri.html">Generate SAS URI</a></li>
+                                       </ul>
+                                    </li>
                                     <li class="topicref"><a href="snaps/snaps-core/sp-binary/file-writer.html">File Writer</a></li>
                                     <li class="topicref"><a href="snaps/snaps-core/sp-binary/multi-file-reader.html">Multi File Reader</a></li>
                                     <li class="topicref"><a href="snaps/snaps-core/sp-binary/multipart-writer.html">Multipart Writer</a></li>
@@ -1351,7 +1397,7 @@
                                     <li class="topicref"><a href="snaps/snaps-core/sp-snaplogic-metadata/snap-metadata-read.html">SnapLogic Read</a></li>
                                     <li class="topicref"><a href="snaps/snaps-core/sp-snaplogic-metadata/snap-metadata-update.html">SnapLogic Update</a></li>
                                     <li class="topicref"><a href="snaps/snaps-core/sp-snaplogic-metadata/sp-examples.html">Snap Pack examples</a><ul>
-                                          <li class="topicref"><a href="snaps/examples/core/sp-metadata/example-metadata-create/example-metadata-create.html">Create account</a></li>
+                                          <li class="topicref"><a href="snaps/examples/core/sp-metadata/example-metadata-create/example-metadata-create.html">Create an Account</a></li>
                                           <li class="topicref"><a href="snaps/examples/core/sp-metadata/example-metadata-read/example-metadata-read.html">Read and update assets</a></li>
                                        </ul>
                                     </li>
@@ -1435,6 +1481,7 @@
                                     <li class="topicref"><a href="snaps/snaps-core/sp-transform/snap-pivot.html">Pivot</a></li>
                                     <li class="topicref"><a href="snaps/snaps-core/sp-transform/snap-parquet-formatter.html">Parquet Formatter</a></li>
                                     <li class="topicref"><a href="snaps/snaps-core/sp-transform/snap-parquet-parser.html">Parquet Parser</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-core/sp-transform/ppt-parser.html">PPTX Parser</a></li>
                                     <li class="topicref"><a href="snaps/snaps-core/sp-transform/snap-record-replay.html">Record Replay</a></li>
                                     <li class="topicref"><a href="snaps/snaps-core/sp-transform/snap-sort.html">Sort</a></li>
                                     <li class="topicref"><a href="snaps/snaps-core/sp-transform/snap-sequence.html">Sequence</a></li>
@@ -1553,6 +1600,10 @@
                                           </li>
                                           <li class="topicref"><a href="snaps/examples/core/sp-transform/parquet-snap-examples.html">Parquet Snap examples</a><ul>
                                                 <li class="topicref"><a href="snaps/examples/core/sp-transform/snap-parquet-formatter/example-transform-document-data-into-parquet-format-and-vice-versa/example-transform-document-data-into-parquet-format-and-vice-versa.html">Transform document data into Parquet format and vice-versa</a></li>
+                                             </ul>
+                                          </li>
+                                          <li class="topicref"><a href="snaps/examples/core/sp-transform/pptx-parser-examples.html">PPTX Parser examples</a><ul>
+                                                <li class="topicref"><a href="snaps/examples/core/sp-transform/snap-pptx-parser/example-pptx-parser/example-pptx-parser.html">Parse a PowerPoint presentation using PPTX Parser</a></li>
                                              </ul>
                                           </li>
                                           <li class="topicref"><a href="snaps/examples/core/sp-transform/sort-examples.html">Sort Snap examples</a><ul>
@@ -2325,6 +2376,19 @@
                                     <li class="topicref"><a href="snaps/snaps-data/sp-snowflake/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
+                              <li class="topicref"><a href="snaps/snaps-data/sp-snowflake-cdc/sp-snowflake-cdc-about.html">Snowflake CDC</a><ul>
+                                    <li class="topicref"><a href="snaps/snaps-data/sp-snowflake-cdc/sp-snowflake-cdc-accounts-config.html">Configure Snowflake CDC account</a><ul>
+                                          <li class="topicref"><a href="snaps/snaps-data/sp-snowflake-cdc/acct-snowflake-cdc.html">Snowflake CDC Account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/snaps-data/sp-snowflake-cdc/snap-snowflake-cdc.html">Snowflake CDC</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-data/sp-snowflake-cdc/sp-examples.html">Snap Pack examples</a><ul>
+                                          <li class="topicref"><a href="snaps/examples/data/sp-snowflake-cdc/example-snowflake-cdc.html">Retrieve DML Statements ata from target table</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/snaps-data/sp-snowflake-cdc/sp-history.html">Snap Pack history</a></li>
+                                 </ul>
+                              </li>
                               <li class="topicref"><a href="snaps/sp-sql-server/sp-sqlserver-about.html">SQL Server</a><ul>
                                     <li class="topicref"><a href="snaps/sp-sql-server/faq-sql-server-retry-mechanism.html">FAQ: Retry Mechanism in SQL Server Snaps</a></li>
                                     <li class="topicref"><a href="snaps/sp-sql-server/sp-sqlserver-account-config.html">Configure SQL Server Accounts</a><ul>
@@ -2795,12 +2859,12 @@
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-amazon-bedrock-converse-agent.html">Amazon Bedrock Converse API Agent</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-agent-retrieve.html">Agent Retrieve</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-amazon-bedrock-converse-api.html">Amazon Bedrock Converse API</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-ab-capi-tool-calling.html">Amazon Bedrock Converse API Tool Calling</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-ab-capi-tool-calling.html">Amazon Bedrock Converse API Tool Calling (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-ab-capi-function-generator.html">Amazon Bedrock Function Generator</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-agent-retrieve-generate.html">Agent Retrieve and Generate</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-amazon-titan-embedder.html">Amazon Titan Embedder</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-amazon-bedrock-prompt-generator.html">Amazon Bedrock Prompt Generator</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-ab-capi-function-result-generator.html">Amazon Bedrock Function Result Generator</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-ab-capi-function-result-generator.html">Amazon Bedrock Function Result Generator (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-amazon-titan-chat-completions.html">Amazon Titan Chat Completions</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-ac-on-aws-chat-completions.html">Anthropic Claude on AWS Chat Completions</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-ac-on-aws-messages.html">Anthropic Claude on AWS Messages</a></li>
@@ -2834,11 +2898,11 @@
                                        </ul>
                                     </li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-chat-completions-agent.html">Azure OpenAI Chat Completions Agent</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-add-message.html">Add Message</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-add-message.html">Add Message (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-ds-ai-search.html">Azure Data Source AI Search</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-ao-add-vec-st-file.html">Azure OpenAI Add Vector Store File</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-aoa-asst-sto.html">Azure OpenAI Assistants Submit Tool Outputs</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-aoa-asst-tcr.html">Azure OpenAI Assistants Tool Call Router</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-aoa-asst-sto.html">Azure OpenAI Assistants Submit Tool Outputs (Not Recommended)</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-aoa-asst-tcr.html">Azure OpenAI Assistants Tool Call Router (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-chat-completions.html">Azure OpenAI Chat Completions</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-ao-create-vec-st.html">Azure OpenAI Create Vector Store</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-embedder.html">Azure OpenAI Embedder</a></li>
@@ -2851,9 +2915,9 @@
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-ao-remove-vec-st-file.html">Azure OpenAI Remove Vector Store File</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-tool-calling.html">Azure OpenAI Tool Calling</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-ao-upload-file.html">Azure OpenAI Upload File</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-create-run-thread.html"> Create and Run Thread</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-create-thread.html">Create Thread</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-run-thread.html">  Run Thread</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-create-run-thread.html">Create and Run Thread (Not Recommended)</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-create-thread.html">Create Thread (Not Recommended)</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-run-thread.html">  Run Thread (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/azure-openai-structured-outputs.html">How to use Structured Outputs with Azure OpenAI LLMs</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/sp-examples.html">Snap Pack examples</a><ul>
                                           <li class="topicref"><a href="snaps/examples/machine-learning/sp-azure-openai-llm/example-azure-openai-embedder/example-azure-openai-embedder.html">Generate vector embeddings</a></li>
@@ -2880,11 +2944,11 @@
                                        </ul>
                                     </li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-api-agent.html">Google Gemini API Agent</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-apc.html">Google Gemini API Tool Calling</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-apc.html">Google Gemini API Tool Calling (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-google-gemini-embedder.html">Google Gemini Embedder</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-google-gemini-generate.html">Google Gemini Generate</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-fg.html">Google GenAI Function Generator</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-frg.html">Google GenAI Function Result Generator</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-frg.html">Google GenAI Function Result Generator (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-mm-contgen.html">Google GenAI Multimodal Content Generator</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-google-genai-prompt-generator.html">Google GenAI Prompt Generator</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-vtx-embedder.html">Google VertexAI Embedder</a></li>
@@ -2898,7 +2962,8 @@
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-vtx-rag-clf.html">Google VertexAI RAG Corpus List File</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-vtx-rag-crf.html">Google VertexAI RAG Corpus Remove File</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-vtx-rag-rq.html">Google VertexAI RAG Retrieval Query</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-vtx-toolcall.html">Google VertexAI Tool Calling</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-vtx-toolcall.html">Google VertexAI Tool Calling (Not Recommended)</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/snap-gg-vtx-api-agent.html">Google Vertex AI Gemini API Agent</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-google-genai-llm/sp-examples.html">Snap Pack examples</a><ul>
                                           <li class="topicref"><a href="snaps/examples/machine-learning/sp-google-genai-llm/example-google-gemini-embedder/example-google-gemini-embedder.html">Generate vector embeddings</a></li>
                                           <li class="topicref"><a href="snaps/examples/machine-learning/sp-google-genai-llm/example-google-prompt-gemini-generate/example-google-prompt-gemini-generate.html">Generate prompt and text response</a></li>
@@ -2955,28 +3020,29 @@
                                     </li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-oa-chat-completions-agent.html">OpenAI Chat Completions Agent</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/create-openai-vector-store.html">Create an OpenAI Vector Store</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-add-message.html">Add Message</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-create-run-thread.html">Create and Run Thread  </a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-add-message.html">Add Message (Not Recommended)</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-create-run-thread.html">Create and Run Thread (Not Recommended)  </a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-oa-create-vstore.html">OpenAI Create Vector Store</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-create-thread.html">Create Thread</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-create-thread.html">Create Thread (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-openai-add-vector-store-file.html">OpenAI Add Vector Store File</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-oa-asst-sto.html">OpenAI Assistants Submit Tool Outputs</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-oa-asst-tcr.html">OpenAI Assistants Tool Call Router</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-oa-asst-sto.html">OpenAI Assistants Submit Tool Outputs (Not Recommended)</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-oa-asst-tcr.html">OpenAI Assistants Tool Call Router (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-openai-chat-completions.html">OpenAI Chat Completions</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-openai-embedder.html">OpenAI Embedder</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-openai-function-generator.html">OpenAI Function Generator</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-openai-function-result-generator.html">OpenAI Function Result Generator</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-oa-asst-sto.html">OpenAI Assistants Submit Tool Outputs</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-oa-asst-sto.html">OpenAI Assistants Submit Tool Outputs (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-openai-list-files.html">OpenAI List Files</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-openai-list-vector-files.html">OpenAI List Vector Store Files</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-oa-mm-contgen.html">OpenAI Multimodal Content Generator</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-openai-prompt-generator.html">OpenAI Prompt Generator</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-openai-remove-vector-store-file.html">OpenAI Remove Vector Store File</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-openai-tool-calling.html">OpenAI Tool Calling</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-openai-tool-calling.html">OpenAI Tool Calling (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-openai-upload-file.html">OpenAI Upload File</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-run-thread.html">Run Thread</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-run-thread.html">Run Thread (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-oa-responses-api-gen.html">OpenAI Responses API Generation</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-oa-responses-api-tc.html">OpenAI Responses API Tool Calling</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-oa-responses-api-tc.html">OpenAI Responses API Tool Calling (Not Recommended)</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/snap-oa-responses-api-agent.html">OpenAI Responses API Agent</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-openai-llm/sp-examples.html">Snap Pack examples</a><ul>
                                           <li class="topicref"><a href="snaps/examples/machine-learning/sp-openai-llm/example-create-run-thread-add-message/example-create-run-thread-add-message.html">Create, add, and run the thread</a></li>
                                           <li class="topicref"><a href="snaps/examples/machine-learning/sp-openai-llm/example-openai-asst-sto-tcr/example-openai-asst-sto-tcr.html">Fetch temperature of a location along with tool integration</a></li>
@@ -3213,29 +3279,31 @@
                      </ul>
                   </li>
                   <li class="topicref"><a href="snapgpt/snapgpt-home.html">SnapGPT</a><ul>
-                        <li class="topicref"><a href="snapgpt/snapgpt-about.html">IntroductionIntroduction</a></li>
-                        <li class="topicref"><a href="snapgpt/snapgpt-use.html">Interact with SnapGPT</a><ul>
-                              <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-rag.html">Generate pipeline</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-analyze-pipelines.html">Analyze pipeline</a></li>
-                              <li class="topicref"><a href="snapgpt/generate-queries.html">Generate queries</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-copilot.html">Configure Snaps with Snap copilot</a><ul>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-copilot-snap-banner.html">Launch SnapGPT from Snap settings </a></li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-about.html">Introduction</a><ul>
+                              <li class="topicref"><a href="snapgpt/snapgpt-use.html">Interact with SnapGPT</a><ul>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-rag.html">Generate pipeline</a></li>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-analyze-pipelines.html">Analyze pipeline</a></li>
+                                    <li class="topicref"><a href="snapgpt/generate-queries.html">Generate queries</a></li>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-copilot.html">Configure Snaps with Snap copilot</a><ul>
+                                          <li class="topicref"><a href="snapgpt/snapgpt-copilot-snap-banner.html">Launch SnapGPT from Snap settings </a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-preview-data-insights.html">Get insights on the Snaps preview data</a></li>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-refine-pipelines.html">Refine pipelines</a></li>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-image.html">Generate a pipeline from an image</a></li>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate expressions</a><ul>
+                                          <li class="topicref"><a href="snapgpt/mapper-expr-example1.html">Map to target</a></li>
+                                          <li class="topicref"><a href="snapgpt/mapper-expr-example2.html">Extract pipeline parameters</a></li>
+                                       </ul>
+                                    </li>
                                  </ul>
                               </li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-preview-data-insights.html">Get insights on the Snaps preview data</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-refine-pipelines.html">Refine pipelines</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-image.html">Generate a pipeline from an image</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate expressions</a><ul>
-                                    <li class="topicref"><a href="snapgpt/mapper-expr-example1.html">Map to target</a></li>
-                                    <li class="topicref"><a href="snapgpt/mapper-expr-example2.html">Extract pipeline parameters</a></li>
-                                 </ul>
-                              </li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-settings.html">Configure SnapGPT</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-best-practices.html">Prompt tips</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-modes.html">Thinking and Planning modes</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-question-and-answer.html">SnapGPT FAQ</a></li>
                            </ul>
                         </li>
-                        <li class="topicref"><a href="snapgpt/snapgpt-settings.html">Configure SnapGPT</a></li>
-                        <li class="topicref"><a href="snapgpt/snapgpt-best-practices.html">Prompt tips</a></li>
-                        <li class="topicref"><a href="snapgpt/snapgpt-thinking-modes.html">Thinking modes</a></li>
-                        <li class="topicref"><a href="snapgpt/snapgpt-question-and-answer.html">SnapGPT FAQ</a></li>
                      </ul>
                   </li>
                </ul>
@@ -3303,6 +3371,7 @@
                               <li class="topicref"><a href="admin-manager/trusted-environment.html">Trusted environments</a></li>
                            </ul>
                         </li>
+                        <li class="topicref"><a href="admin-manager/configure-custom-org-branding.html">Configure Custom Org Branding</a></li>
                      </ul>
                   </li>
                   <li class="topicref"><a href="admin-manager/cloudplex-secure-connectivity.html">Cloudplex Secure Connectivity</a><ul>
@@ -3363,7 +3432,6 @@
                               <li class="topicref"><a href="snaplexes/monitor-snaplex-health.html">Monitor Snaplex health</a></li>
                            </ul>
                         </li>
-                        <li class="topicref"><a href="snaplexes/move-snaplex-to-project.html">Move a Snaplex to a Project</a></li>
                         <li class="topicref"><a href="snaplexes/cache-svc-about.html">Cache Service Guide</a></li>
                         <li class="topicref"><a href="snaplexes/cloudplexes-about.html">Cloudplexes</a></li>
                         <li class="topicref"><a href="snaplexes/groundplexes-about.html">Groundplexes</a><ul>
@@ -3396,7 +3464,10 @@
                                  </ul>
                               </li>
                               <li class="topicref"><a href="snaplexes/groundplex-node-config.html">Groundplex Node Configuration</a><ul>
-                                    <li class="topicref"><a href="snaplexes/node-property-configuration.html">Node properties</a></li>
+                                    <li class="topicref"><a href="snaplexes/node-property-configuration.html">Node properties</a><ul>
+                                          <li class="topicref"><a href="snaplexes/groundplex-specify-node-ip.html">Set a specific IP address for a Groundplex node</a></li>
+                                       </ul>
+                                    </li>
                                     <li class="topicref"><a href="snaplexes/snaplex-configure-for-snaps.html">Snaplex configuration for Snaps</a></li>
                                     <li class="topicref"><a href="snaplexes/snaplex-memory.html">Memory management</a></li>
                                     <li class="topicref"><a href="snaplexes/adding-nodes-groundplex.html">Adding nodes to an existing Groundplex</a><ul>
@@ -3406,7 +3477,7 @@
                                     </li>
                                     <li class="topicref"><a href="snaplexes/configuration-options.html">Configuration options</a><ul>
                                           <li class="topicref"><a href="snaplexes/snaplex-configuration-changes.html">Snaplex configuration changes</a></li>
-                                          <li class="topicref"><a href="snaplexes/configure-java-version-groundplex.html">Configure JRE version</a><ul>
+                                          <li class="topicref"><a href="snaplexes/configure-java-version-groundplex.html">Configure the JRE Version</a><ul>
                                                 <li class="topicref"><a href="snaplexes/jdk17-support-guide.html">Support Guide for JRE 17</a></li>
                                              </ul>
                                           </li>
@@ -3471,20 +3542,23 @@
                               <li class="topicref"><a href="monitor/execution-table.html">Configure the executions table</a></li>
                               <li class="topicref"><a href="monitor/download-executions.html">Download execution records</a></li>
                               <li class="topicref"><a href="monitor/pipeline-details-panel.html">View pipeline details</a><ul>
-                                    <li class="topicref"><a href="monitor/snap-statistics-tab.html">Snap Statistics tab</a></li>
-                                    <li class="topicref"><a href="monitor/pipeline-logs-tab.html">Pipeline Logs tab</a></li>
-                                    <li class="topicref"><a href="monitor/pipeline-parameters-tab.html">Pipeline Parameters tab</a></li>
-                                    <li class="topicref"><a href="monitor/state-transition-tab.html">State Transition tab</a></li>
+                                    <li class="topicref"><a href="monitor/snap-statistics-tab.html">Snap statistics tab</a></li>
+                                    <li class="topicref"><a href="monitor/children-tab.html">Children tab</a></li>
+                                    <li class="topicref"><a href="monitor/pipeline-logs-tab.html">Pipeline logs tab</a></li>
+                                    <li class="topicref"><a href="monitor/pipeline-parameters-tab.html">Pipeline parameters tab</a></li>
+                                    <li class="topicref"><a href="monitor/state-transition-tab.html">State transition tab</a></li>
+                                    <li class="topicref"><a href="monitor/ultra-requests-tab.html">Ultra requests tab</a></li>
                                  </ul>
                               </li>
                            </ul>
                         </li>
                         <li class="topicref"><a href="monitor/monitor-snaplex.html">Infrastructure</a><ul>
-                              <li class="topicref"><a href="monitor/sys-overview-graph-view.html">System overview graph view</a></li>
-                              <li class="topicref"><a href="monitor/sys-overview-list-view.html">System overview table view</a></li>
+                              <li class="topicref"><a href="monitor/sys-overview-graph-view.html">Infrastructure Graphs view</a></li>
+                              <li class="topicref"><a href="monitor/infrastructure-snaplexes-view.html">Infrastructure Snaplexes view</a></li>
+                              <li class="topicref"><a href="monitor/sys-overview-list-view.html">Infrastructure Nodes view</a></li>
                               <li class="topicref"><a href="monitor/analyze-infrastructure.html">Analyze and manage Snaplexes</a></li>
                               <li class="topicref"><a href="monitor/snaplex-details-panel.html">Snaplex details panel</a></li>
-                              <li class="topicref"><a href="monitor/node-details-panel.html">Node details panel</a></li>
+                              <li class="topicref"><a href="monitor/node-details-panel.html">View node details</a></li>
                            </ul>
                         </li>
                         <li class="topicref"><a href="monitor/metrics-about.html">Metrics</a><ul>
@@ -3524,7 +3598,7 @@
                         </li>
                         <li class="topicref"><a href="tool-integrations/docker-new-relic.html">Docker deployment</a><ul>
                               <li class="topicref"><a href="tool-integrations/docker-new-relic-otel-coll.html">Configure the OTel collector</a></li>
-                              <li class="topicref"><a href="tool-integrations/docker-new-relic-deploy.html">Deploy collector and restart nodes</a></li>
+                              <li class="topicref"><a href="tool-integrations/docker-new-relic-deploy.html">Deploy the OTel collector and restart Groundplex nodes</a></li>
                            </ul>
                         </li>
                         <li class="topicref"><a href="tool-integrations/windows-otel-deployment.html">Windows deployment</a></li>
@@ -3534,12 +3608,12 @@
                               <li class="topicref"><a href="tool-integrations/docker-new-relic-add-metrics.html">Filter OTel configuration metrics</a></li>
                            </ul>
                         </li>
-                        <li class="topicref"><a href="tool-integrations/node-metric-reference.html">Node metric reference</a></li>
+                        <li class="topicref"><a href="tool-integrations/node-metric-reference.html">Snaplex metrics, Kubernetes attributes, and log reference</a></li>
                      </ul>
                   </li>
                </ul>
             </li>
-            <li class="topicref"><a href="Chunk330108051.html#Chunk330108051">Glossary</a></li>
+            <li class="topicref"><a href="Chunk843387111.html#Chunk843387111">Glossary</a></li>
          </ul>
       </nav>
    </body>
