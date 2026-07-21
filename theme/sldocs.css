@@ -7534,7 +7534,13 @@ a.hp-banner-cta,
 /* Inline links within a what's-new description (e.g. linked Snap names) */
 .hp-item-desc a {
   color: #ffffff;
-  text-decoration: underline;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.hp-item-desc a:hover {
+  border-bottom-color: rgba(255,255,255,0.85);
 }
 
 /* Circular carousel-style next control (decorative) */
