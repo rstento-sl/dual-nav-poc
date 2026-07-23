@@ -5647,14 +5647,14 @@ nav.toc span {
   /* font-size: 100%; */
   line-height: 20px;
   transition: 0.3s;
-  /* Size to content (min full-width for the hover/active background) and keep
-     titles on one line — long titles are revealed via the TOC's horizontal
-     scroll instead of being ellipsis-truncated. */
-  min-width: 100%;
-  width: max-content;
+  /* Wrap long titles onto multiple lines so they are fully visible and fit the
+     panel — no ellipsis truncation, and no horizontal overflow that would break
+     the view switcher or section headers. */
+  width: 100%;
   display: inline-block;
   overflow: visible;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 nav.toc > ul > li.active > a,
 nav.toc > ul > li > ul > li.active > a {
