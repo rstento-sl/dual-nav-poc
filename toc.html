@@ -52,10 +52,10 @@
                      </ul>
                   </li>
                   <li class="topicref"><a href="mcp/mcp-home.html">MCP</a><ul>
-                        <li class="topicref"><a href="mcp/mcp-about.html">IntroductionMCP</a></li>
-                        <li class="topicref"><a href="mcp/mcp-quickstart.html">Quick Start</a></li>
+                        <li class="topicref"><a href="mcp/mcp-about.html">MCP</a></li>
                         <li class="topicref"><a href="mcp/mcp-client-setup.html">Set Up an MCP Client</a></li>
                         <li class="topicref"><a href="mcp/mcp-server-setup.html">MCP Server Setup</a><ul>
+                              <li class="topicref"><a href="mcp/mcp-quickstart.html">Quick Start</a></li>
                               <li class="topicref"><a href="mcp/mcp-server-pipeline-wizard.html">MCP Server Pipeline Builder</a></li>
                               <li class="topicref"><a href="mcp/create-server-pipe.html">Create MCP Pipeline Manually</a></li>
                               <li class="topicref"><a href="mcp/register-mcp-server.html">Register MCP Server</a></li>
@@ -63,6 +63,7 @@
                               <li class="topicref"><a href="mcp/mcp-add-policy.html">Create Authentication Policy</a><ul>
                                     <li class="topicref"><a href="mcp/mcp-oauth2-client-creds.html">MCP OAuth2 Client Credentials rule</a></li>
                                     <li class="topicref"><a href="mcp/mcp-oauth2-jwt.html">MCP OAuth2 JWT Validator rule</a></li>
+                                    <li class="topicref"><a href="mcp/mcp-token-exchange.html">MCP Token Exchange rule</a></li>
                                  </ul>
                               </li>
                               <li class="topicref"><a href="mcp/mcp-connect-client.html">Connect Client</a></li>
@@ -72,32 +73,67 @@
                         </li>
                      </ul>
                   </li>
-                  <li class="topicref"><a href="snapgpt/snapgpt-home.html">SnapGPT</a><ul>
-                        <li class="topicref"><a href="snapgpt/snapgpt-about.html">Introduction</a><ul>
-                              <li class="topicref"><a href="snapgpt/snapgpt-use.html">Interact with SnapGPT</a><ul>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-rag.html">Generate pipeline</a></li>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-analyze-pipelines.html">Analyze pipeline</a></li>
-                                    <li class="topicref"><a href="snapgpt/generate-queries.html">Generate queries</a></li>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-copilot.html">Configure Snaps with Snap copilot</a><ul>
-                                          <li class="topicref"><a href="snapgpt/snapgpt-copilot-snap-banner.html">Launch SnapGPT from Snap settings </a></li>
-                                       </ul>
-                                    </li>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-preview-data-insights.html">Get insights on the Snaps preview data</a></li>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-refine-pipelines.html">Refine pipelines</a></li>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-image.html">Generate a pipeline from an image</a></li>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate expressions</a><ul>
-                                          <li class="topicref"><a href="snapgpt/mapper-expr-example1.html">Map to target</a></li>
-                                          <li class="topicref"><a href="snapgpt/mapper-expr-example2.html">Extract pipeline parameters</a></li>
-                                       </ul>
-                                    </li>
-                                 </ul>
-                              </li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-settings.html">Configure SnapGPT</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-best-practices.html">Prompt tips</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-modes.html">Thinking and Planning modes</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-question-and-answer.html">SnapGPT FAQ</a></li>
+                  <li class="topicref"><a href="mcp-server-tools/mcp-server-tools-home.html">MCP Server Tools</a><ul>
+                        <li class="topicref"><a href="mcp-server-tools/apis-mcp.html">SnapLogic MCP Server tools</a></li>
+                        <li class="topicref"><a href="mcp-server-tools/mcp-server-connect.html">Connect an MCP client</a></li>
+                        <li class="topicref"><a href="mcp-server-tools/apis-mcp-full.html">Full toolset</a><ul>
+                              <li class="topicref"><a href="mcp-server-tools/post-platform-mcp-mcp.html">Send an MCP request</a></li>
+                              <li class="topicref"><a href="mcp-server-tools/get-platform-mcp-mcp.html">Open an MCP event stream</a></li>
+                              <li class="topicref"><a href="mcp-server-tools/delete-platform-mcp-mcp.html">End an MCP session</a></li>
                            </ul>
                         </li>
+                        <li class="topicref"><a href="mcp-server-tools/apis-mcp-platform.html">Platform toolset</a><ul>
+                              <li class="topicref"><a href="mcp-server-tools/post-platform-mcp-mcp-platform.html">Send a Platform MCP request</a></li>
+                              <li class="topicref"><a href="mcp-server-tools/get-platform-mcp-mcp-platform.html">Open a Platform MCP event stream</a></li>
+                              <li class="topicref"><a href="mcp-server-tools/delete-platform-mcp-mcp-platform.html">End a Platform MCP session</a></li>
+                           </ul>
+                        </li>
+                        <li class="topicref"><a href="mcp-server-tools/apis-mcp-pygen.html">PyGen toolset</a><ul>
+                              <li class="topicref"><a href="mcp-server-tools/post-platform-mcp-mcp-pygen.html">Send a PyGen MCP request</a></li>
+                              <li class="topicref"><a href="mcp-server-tools/get-platform-mcp-mcp-pygen.html">Open a PyGen MCP event stream</a></li>
+                              <li class="topicref"><a href="mcp-server-tools/delete-platform-mcp-mcp-pygen.html">End a PyGen MCP session</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="topicref"><a href="snapcode/snapcode-home.html">SnapCode</a><ul>
+                        <li class="topicref"><a href="snapcode/snapcode-about.html">Introduction</a></li>
+                        <li class="topicref"><a href="snapcode/snapcode-install.html">Install SnapCode</a></li>
+                        <li class="topicref"><a href="snapcode/snapcode-migrate.html">Migrate to the SnapCode plugin</a></li>
+                        <li class="topicref"><a href="snapcode/snapcode-use.html">Use SnapCode</a></li>
+                        <li class="topicref"><a href="snapcode/snapcode-troubleshooting.html">Troubleshoot SnapCode</a></li>
+                     </ul>
+                  </li>
+                  <li class="topicref"><a href="snapgpt/snapgpt-home.html">SnapGPT</a><ul>
+                        <li class="topicref"><a href="snapgpt/snapgpt-about.html">Introduction</a></li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-use.html">Interact with SnapGPT</a><ul>
+                              <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-rag.html">Generate pipeline</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-analyze-pipelines.html">Analyze pipeline</a></li>
+                              <li class="topicref"><a href="snapgpt/generate-queries.html">Generate queries</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-copilot.html">Configure Snaps with Snap copilot</a><ul>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-copilot-snap-banner.html">Launch SnapGPT from Snap settings </a></li>
+                                 </ul>
+                              </li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-preview-data-insights.html">Get insights on the Snaps preview data</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-refine-pipelines.html">Refine pipelines</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-image.html">Generate a pipeline from an image</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate expressions</a><ul>
+                                    <li class="topicref"><a href="snapgpt/mapper-expr-example1.html">Map to target</a></li>
+                                    <li class="topicref"><a href="snapgpt/mapper-expr-example2.html">Extract pipeline parameters</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-monitor.html">SnapGPT in Monitor</a><ul>
+                              <li class="topicref"><a href="snapgpt/snapgpt-check-snaplex-health.html">Check Snaplex health</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-analyze-failed-execution.html">Analyze a failed pipeline execution</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-plan-snaplex-capacity.html">Plan Snaplex capacity</a></li>
+                           </ul>
+                        </li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-settings.html">Configure SnapGPT</a></li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-best-practices.html">Prompt tips</a></li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-modes.html">Thinking and Planning modes</a></li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-question-and-answer.html">SnapGPT FAQ</a></li>
                      </ul>
                   </li>
                </ul>
@@ -126,7 +162,7 @@
                      </ul>
                   </li>
                   <li class="topicref"><a href="api-m/apim-home.html">API Management</a><ul>
-                        <li class="topicref"><a href="api-m/apim-about.html">Introduction</a></li>
+                        <li class="topicref"><a href="api-m/apim-about.html">API Management 3.0  </a></li>
                         <li class="topicref"><a href="api-m/concepts/get-started.html">Getting started</a><ul>
                               <li class="topicref"><a href="api-m/concepts/compare-classic-30.html">Compare Classic APIM with APIM 3.0</a></li>
                               <li class="topicref"><a href="api-m/concepts/classic-30-interface.html">Interface mapping: Classic to 3.0</a></li>
@@ -141,8 +177,8 @@
                         <li class="topicref"><a href="api-m/concepts/rule-updates.html">Rule and Snaplex updates</a></li>
                         <li class="topicref"><a href="api-m/concepts/tutorial-hello-services.html">Tutorial: Hello world</a><ul>
                               <li class="topicref"><a href="api-m/concepts/tutorial-create-service.html">Create the Service</a></li>
-                              <li class="topicref"><a href="api-m/concepts/tutorial-create-policy.html">Create a Policy</a></li>
-                              <li class="topicref"><a href="api-m/concepts/tutorial-test-service.html">Test and Publish</a></li>
+                              <li class="topicref"><a href="api-m/concepts/tutorial-create-policy.html">Create a policy</a></li>
+                              <li class="topicref"><a href="api-m/concepts/tutorial-test-service.html">Test and publish</a></li>
                               <li class="topicref"><a href="api-m/concepts/tutorial-enable-try-it.html">Enable Try it out</a></li>
                            </ul>
                         </li>
@@ -525,7 +561,7 @@
                         <li class="topicref topichead">Array Functions
                            <ul>
                               <li class="topicref"><a href="design-integrations/array-functions.html">Array Functions</a></li>
-                              <li class="topicref"><a href="design-integrations/match-operator.html">The match Control Operator</a></li>
+                              <li class="topicref"><a href="concepts/match-operator.html">The match Control Operator</a></li>
                            </ul>
                         </li>
                         <li class="topicref topichead">JSON and Object Functions
@@ -557,7 +593,6 @@
                         <li class="topicref topichead">Advanced Topics
                            <ul>
                               <li class="topicref"><a href="design-integrations/jsonpath.html">JSONPath</a></li>
-                              <li class="topicref"><a href="concepts/match-operator.html">The match Control Operator</a></li>
                               <li class="topicref"><a href="concepts/expression-libraries.html">Expression Libraries</a></li>
                            </ul>
                         </li>
@@ -568,11 +603,12 @@
                         </li>
                      </ul>
                   </li>
-                  <li class="topicref"><a href="design-integrations/copy-or-migrate-pipeline.html">Copy or migrate pipeline</a></li>
-                  <li class="topicref"><a href="design-integrations/import-pipeline.html">Import a Pipeline</a></li>
+                  <li class="topicref"><a href="design-integrations/copy-or-migrate-pipeline.html">Copy a pipeline</a></li>
+                  <li class="topicref"><a href="design-integrations/import-pipeline.html">Export and import a pipeline</a></li>
                   <li class="topicref"><a href="design-integrations/compare-pipelines.html">Compare pipelines</a></li>
-                  <li class="topicref"><a href="design-integrations/delete-pipeline.html">Delete a Pipeline</a></li>
-                  <li class="topicref"><a href="design-integrations/move-pipeline.html">Move or rename a pipeline</a></li>
+                  <li class="topicref"><a href="design-integrations/delete-pipeline.html">Delete a pipeline</a></li>
+                  <li class="topicref"><a href="design-integrations/move-pipeline.html">Move a pipeline</a></li>
+                  <li class="topicref"><a href="design-integrations/validate-pipeline.html">Validate a pipeline</a></li>
                   <li class="topicref"><a href="design-integrations/pipeline-queueing.html">Pipeline queueing</a></li>
                   <li class="topicref"><a href="design-integrations/manually-running-a-pipeline.html">Manually run a pipeline</a></li>
                   <li class="topicref"><a href="design-integrations/stopping-a-running-pipeline.html">Stop a running pipeline</a></li>
@@ -589,15 +625,14 @@
                   <li class="topicref"><a href="design-integrations/suggest.html">Transform Snap suggestions</a></li>
                   <li class="topicref"><a href="design-integrations/timeouts.html">Timeouts</a></li>
                   <li class="topicref"><a href="git-integration/git-integration-home.html">Git Integration</a><ul>
-                        <li class="topicref"><a href="git-integration/git-integration-about.html">IntroductionGit Integration</a></li>
+                        <li class="topicref"><a href="git-integration/git-integration-about.html">Git Integration</a></li>
                         <li class="topicref"><a href="git-integration/repo-track.html">Track with a repository</a></li>
                         <li class="topicref"><a href="git-integration/concurrent-dev.html">Concurrent development</a></li>
-                        <li class="topicref"><a href="git-integration/app-gateway.html">Beta App Gateway</a></li>
                         <li class="topicref"><a href="git-integration/git-integration-azure.html">Configure Azure Repos</a></li>
                         <li class="topicref"><a href="git-integration/git-integration-github.html">Configure GitHub or GHEC</a></li>
+                        <li class="topicref"><a href="git-integration/git-integration-ghes.html">Configure GitHub Enterprise Server</a></li>
                         <li class="topicref"><a href="git-integration/gitlab-self-managed-about.html">Configure GitLab on-premises</a></li>
                         <li class="topicref"><a href="git-integration/gitlab.html">Configure GitLab.com</a></li>
-                        <li class="topicref"><a href="git-integration/git-integration-ghes.html">Configure GitHub Enterprise Server</a></li>
                         <li class="topicref"><a href="git-integration/git-integration-bitbucket.html">Configure Bitbucket Data Center</a><ul>
                               <li class="topicref"><a href="cicd/bit-bucket/bitbucket-authenticate.html">Manage Bitbucket access token</a></li>
                               <li class="topicref"><a href="cicd/bit-bucket/bitbucket-checkout-repo.html">Checkout project space</a></li>
@@ -605,6 +640,7 @@
                               <li class="topicref"><a href="cicd/bit-bucket/bitbucket-commit.html">Commit updates</a></li>
                            </ul>
                         </li>
+                        <li class="topicref"><a href="git-integration/app-gateway.html">Beta App Gateway</a></li>
                         <li class="topicref"><a href="git-integration/git-authorize.html">Authorize with a Git Provider</a></li>
                         <li class="topicref"><a href="git-integration/git-deauthorize.html">Deauthorize SnapLogic</a></li>
                         <li class="topicref"><a href="git-integration/git-operations.html">Git operations</a><ul>
@@ -636,7 +672,10 @@
                         <li class="topicref"><a href="manager/autosync-manager.html">AutoSync Manager</a></li>
                         <li class="topicref"><a href="manager/api-management.html">API Management</a></li>
                         <li class="topicref"><a href="manager/recycle.html">Recycle Bin</a></li>
-                        <li class="topicref"><a href="manager/runtime-archive.html">Runtime Archive</a></li>
+                        <li class="topicref"><a href="manager/runtime-archive.html">Runtime Archive</a><ul>
+                              <li class="topicref"><a href="manager/download-runtime-archive.html">Download a Runtime Archive File</a></li>
+                           </ul>
+                        </li>
                         <li class="topicref"><a href="manager/projects.html">Project spaces and projects</a><ul>
                               <li class="topicref"><a href="manager/create-a-project-space.html">Create a project space</a></li>
                               <li class="topicref"><a href="manager/assign-permissions-project-space.html">Assign permissions across projects</a></li>
@@ -692,65 +731,6 @@
                         </li>
                      </ul>
                   </li>
-                  <li class="topicref"><a href="manager/task.html">Deploy pipelines</a><ul>
-                        <li class="topicref"><a href="manager/create-notifications.html">Configure task notifications</a></li>
-                        <li class="topicref"><a href="manager/scheduled-tasks.html">Scheduled Tasks</a><ul>
-                              <li class="topicref"><a href="manager/create-scheduled-tasks.html">Create a Scheduled Task</a><ul>
-                                    <li class="topicref"><a href="manager/configure-regular-schedule.html">Configure Regular Schedule</a></li>
-                                    <li class="topicref"><a href="manager/configure-blackout-dates.html"> Configure Blackout Dates</a></li>
-                                 </ul>
-                              </li>
-                              <li class="topicref"><a href="manager/view-task-details.html">View task details</a></li>
-                              <li class="topicref"><a href="manager/set-repeatable-schedule.html">Set a repeatable schedule</a></li>
-                              <li class="topicref"><a href="manager/configure-timeouts-and-notifications.html">Configure timeouts</a></li>
-                              <li class="topicref"><a href="manager/view-scheduled-task-schedules-in-manager.html">View schedules</a></li>
-                              <li class="topicref"><a href="manager/task-queuing.html">Scheduled Task Queuing Preview</a></li>
-                           </ul>
-                        </li>
-                        <li class="topicref"><a href="manager/triggered-tasks.html">Triggered Tasks</a><ul>
-                              <li class="topicref"><a href="manager/create-triggered-task.html">Create a Triggered Task</a></li>
-                              <li class="topicref"><a href="manager/run-triggered-task.html">Run Triggered Task</a></li>
-                              <li class="topicref"><a href="manager/view-triggered-task-details.html">View Triggered Task details </a></li>
-                              <li class="topicref"><a href="manager/triggered-task-configuration-options.html">Configuration options</a></li>
-                              <li class="topicref"><a href="manager/stop-triggered-task.html">Stop Triggered Task</a></li>
-                              <li class="topicref"><a href="manager/design-triggered-task-pipelines.html">Design Triggered Task pipelines</a></li>
-                              <li class="topicref"><a href="manager/pass-pipeline-arguments-to-triggered-task.html">Pass pipeline arguments to Triggered Task</a></li>
-                              <li class="topicref"><a href="manager/deploy-tasks-from-on-premises-networks.html">Deploy tasks from on-premises networks</a></li>
-                              <li class="topicref"><a href="manager/triggered-task-execution.html">Synchronous and asynchronous Triggered Task execution</a></li>
-                              <li class="topicref"><a href="manager/using-triggered-tasks-with-enterprise-scheduler.html"> Triggered Tasks with Enterprise Scheduler</a></li>
-                              <li class="topicref"><a href="manager/monitor-and-troubleshoot-triggered-tasks.html">Monitor and troubleshoot Triggered Tasks</a></li>
-                           </ul>
-                        </li>
-                        <li class="topicref"><a href="manager/ultra-task-pipelines.html">Ultra Tasks</a><ul>
-                              <li class="topicref"><a href="manager/types-ultra-pipelines.html">Pipeline requirements for Ultra Tasks</a></li>
-                              <li class="topicref"><a href="manager/create-ultra-task.html">Create an Ultra Task</a></li>
-                              <li class="topicref"><a href="manager/invoke-ultra-pipelines-tasks.html">Invoke Ultra Tasks</a></li>
-                              <li class="topicref"><a href="manager/headless-ultra-tasks.html">Headless Ultra Tasks</a></li>
-                              <li class="topicref"><a href="manager/low-latency-ultra-tasks.html">Low-latency Ultra Tasks</a></li>
-                              <li class="topicref"><a href="manager/overview-ultra-tasks.html">Ultra Tasks in production</a><ul>
-                                    <li class="topicref"><a href="manager/deployment-architecture.html">Deployment architecture for Ultra Tasks</a></li>
-                                    <li class="topicref"><a href="manager/deploy-feedmaster-node.html">Deploy FeedMaster node </a></li>
-                                    <li class="topicref"><a href="manager/configure-ultra-task-alias.html">Configure an alias for High Availability</a></li>
-                                 </ul>
-                              </li>
-                              <li class="topicref"><a href="manager/monitor-ultra-pipeline-tasks.html">Monitor Ultra Tasks</a></li>
-                              <li class="topicref"><a href="manager/troubleshooting-ultra-pipeline.html">Troubleshoot Ultra Tasks</a></li>
-                              <li class="topicref"><a href="manager/ultra-pipeline-faqs.html">Ultra Task FAQs</a></li>
-                              <li class="topicref"><a href="manager/best-practices-ultra-pipeline-tasks.html">Best Practices for Ultra Tasks </a></li>
-                              <li class="topicref"><a href="manager/snap-support-for-ultra-tasks.html">Snap Support for Ultra Tasks</a></li>
-                              <li class="topicref"><a href="manager/ultra-create-web-apps.html">Building Real-Time Web Apps</a></li>
-                           </ul>
-                        </li>
-                        <li class="topicref"><a href="manager/task-admin-operations.html">Common task administrative operations</a><ul>
-                              <li class="topicref"><a href="manager/edit-task.html">Edit a Task</a></li>
-                              <li class="topicref"><a href="manager/enable-and-disable-task.html">Enable and disable task</a></li>
-                              <li class="topicref"><a href="manager/task-details.html">Task details</a></li>
-                              <li class="topicref"><a href="manager/move-task.html">Move a task</a></li>
-                              <li class="topicref"><a href="manager/view-pipeline-apis.html">View pipeline APIs in Swagger</a></li>
-                           </ul>
-                        </li>
-                     </ul>
-                  </li>
                   <li class="topicref"><a href="pattern-library/pattern-library-about.html">Public pattern library</a><ul>
                         <li class="topicref"><a href="pattern-library/explore-patterns.html">Explore patterns</a></li>
                         <li class="topicref"><a href="pattern-library/use-patterns.html">Use patterns</a></li>
@@ -788,7 +768,6 @@
                                     <li class="topicref"><a href="public-apis/post-apim-publish-versions.html">Publish a set of API versions</a></li>
                                     <li class="topicref"><a href="public-apis/post-apim-retire-versions.html">Retire a set of API versions</a></li>
                                     <li class="topicref"><a href="public-apis/get-apim-pending-user.html">Retrieve a list of pending users</a></li>
-                                    <li class="topicref"><a href="public-apis/post-apim-get-api-log-org.html">Retrieve API Management logs</a></li>
                                     <li class="topicref"><a href="public-apis/post-apim-unpublish-versions.html">Unpublish a set of API versions</a></li>
                                  </ul>
                               </li>
@@ -846,13 +825,14 @@
                               <li class="topicref"><a href="public-apis/get-catalog-task.html">Retrieve tasks list</a></li>
                               <li class="topicref"><a href="public-apis/get-catalog-pipeline.html">Retrieve pipeline list</a></li>
                               <li class="topicref"><a href="public-apis/get-catalog-account.html">Retrieve account list</a></li>
-                              <li class="topicref"><a href="public-apis/get-catalog-tasks-id.html">Retrieve tasks list with id</a></li>
+                              <li class="topicref"><a href="public-apis/get-catalog-tasks-id.html">Retrieve task details with id</a></li>
                               <li class="topicref"><a href="public-apis/get-catalog-pipeline-id.html">Retrieve pipeline details with id</a></li>
                               <li class="topicref"><a href="public-apis/get-catalog-accounts-id.html">Retrieve account details with id</a></li>
                            </ul>
                         </li>
                         <li class="topicref"><a href="public-apis/apis-log.html">Log APIs</a><ul>
                               <li class="topicref"><a href="public-apis/get-log-org.html">Retrieve task logs</a></li>
+                              <li class="topicref"><a href="public-apis/post-apim-get-api-log-org.html">Retrieve API Management logs</a></li>
                            </ul>
                         </li>
                         <li class="topicref"><a href="public-apis/apis-runtime.html">Runtime APIs</a><ul>
@@ -930,33 +910,12 @@
                               <li class="topicref"><a href="public-apis/delete-groups-org-group.html">Delete a group</a></li>
                            </ul>
                         </li>
-                        <li class="topicref"><a href="public-apis/apis-mcp.html">MCP APIs</a><ul>
-                              <li class="topicref"><a href="public-apis/apis-mcp-full.html">Full toolset</a><ul>
-                                    <li class="topicref"><a href="public-apis/post-platform-mcp-mcp.html">Send an MCP request</a></li>
-                                    <li class="topicref"><a href="public-apis/get-platform-mcp-mcp.html">Open an MCP event stream</a></li>
-                                    <li class="topicref"><a href="public-apis/delete-platform-mcp-mcp.html">End an MCP session</a></li>
-                                 </ul>
-                              </li>
-                              <li class="topicref"><a href="public-apis/apis-mcp-platform.html">Platform toolset</a><ul>
-                                    <li class="topicref"><a href="public-apis/post-platform-mcp-mcp-platform.html">Send a Platform MCP request</a></li>
-                                    <li class="topicref"><a href="public-apis/get-platform-mcp-mcp-platform.html">Open a Platform MCP event stream</a></li>
-                                    <li class="topicref"><a href="public-apis/delete-platform-mcp-mcp-platform.html">End a Platform MCP session</a></li>
-                                 </ul>
-                              </li>
-                              <li class="topicref"><a href="public-apis/apis-mcp-pygen.html">PyGen toolset</a><ul>
-                                    <li class="topicref"><a href="public-apis/post-platform-mcp-mcp-pygen.html">Send a PyGen MCP request</a></li>
-                                    <li class="topicref"><a href="public-apis/get-platform-mcp-mcp-pygen.html">Open a PyGen MCP event stream</a></li>
-                                    <li class="topicref"><a href="public-apis/delete-platform-mcp-mcp-pygen.html">End a PyGen MCP session</a></li>
-                                 </ul>
-                              </li>
-                           </ul>
-                        </li>
                         <li class="topicref"><a href="public-apis/api-perms-vs-manager-perms.html">Permission in Manager and in APIs</a></li>
                         <li class="topicref"><a href="public-apis/changelog-papi.html">Public APIs Changelog</a></li>
                      </ul>
                   </li>
                   <li class="topicref"><a href="security/security-home.html">Security</a><ul>
-                        <li class="topicref"><a href="security/security-about.html">IntroductionSecurity</a></li>
+                        <li class="topicref"><a href="security/security-about.html">Introduction</a></li>
                         <li class="topicref"><a href="security/platform-overview.html">Platform components</a><ul>
                               <li class="topicref"><a href="security/inbound-outbound-communication.html">Secure communication</a></li>
                               <li class="topicref"><a href="security/pipeline-access.html">Pipeline Access</a></li>
@@ -991,7 +950,7 @@
                   </li>
                   <li class="topicref"><a href="snaplabs/snaplabs-about.html">SnapLabs</a></li>
                   <li class="topicref"><a href="snaps/snaps-home.html">Snaps</a><ul>
-                        <li class="topicref"><a href="snaps/snaps-about.html">Introduction</a></li>
+                        <li class="topicref"><a href="snaps/snaps-about.html">Snaps reference</a></li>
                         <li class="topicref"><a href="snaps/snaps-core/snaps-core-about.html">Core Snaps</a><ul>
                               <li class="topicref"><a href="snaps/snaps-core/sp-api-suite/sp-api-suite-about.html">API Suite</a><ul>
                                     <li class="topicref"><a href="snaps/snaps-core/sp-api-suite/sp-api-suite-account-config.html">Configure API Suite Accounts</a><ul>
@@ -1607,7 +1566,7 @@
                                              </ul>
                                           </li>
                                           <li class="topicref"><a href="snaps/examples/core/sp-transform/sort-examples.html">Sort Snap examples</a><ul>
-                                                <li class="topicref"><a href="snaps/examples/core/sp-transform/example-sort/example-sort-fields%20.html">Sort Fields</a></li>
+                                                <li class="topicref"><a href="snaps/examples/core/sp-transform/example-sort/example-sort-fields.html">Sort Fields</a></li>
                                              </ul>
                                           </li>
                                           <li class="topicref"><a href="snaps/examples/core/sp-transform/sequence-examples.html">Sequence Snap examples</a><ul>
@@ -1946,16 +1905,16 @@
                                     </li>
                                     <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-bulk-load-cloud.html">BigQuery Bulk Load - Cloud Storage</a></li>
                                     <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-bulk-load-streaming.html">BigQuery Bulk Load - Streaming</a></li>
-                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-bulk-upsert-streaming.html">BigQuery Bulk Upsert - Streaming</a></li>
-                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-dataset-create.html">BigQuery Dataset Create</a></li>
-                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-dataset-delete.html">BigQuery Dataset Delete</a></li>
-                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-dataset-list.html">BigQuery Dataset List</a></li>
-                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-execute.html">BigQuery Execute</a></li>
-                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-table-create.html">BigQuery Table Create</a></li>
-                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-table-data-list.html">BigQuery Table Data List</a></li>
-                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-table-delete.html">BigQuery Table Delete</a></li>
-                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-table-list.html">BigQuery Table List</a></li>
-                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-write.html">BigQuery Write</a></li>
+                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-bulk-upsert-streaming.html">BigQuery - Bulk Upsert (Streaming)</a></li>
+                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-dataset-create.html">BigQuery - Dataset Create</a></li>
+                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-dataset-delete.html">BigQuery - Dataset Delete</a></li>
+                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-dataset-list.html">BigQuery - Dataset List</a></li>
+                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-execute.html">BigQuery - Execute</a></li>
+                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-table-create.html">BigQuery - Table Create</a></li>
+                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-table-data-list.html">BigQuery - Table Data List</a></li>
+                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-table-delete.html">BigQuery - Table Delete</a></li>
+                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-table-list.html">BigQuery - Table List</a></li>
+                                    <li class="topicref"><a href="snaps/sp-google-bigquery/snap-bigquery-write.html">BigQuery - Write</a></li>
                                     <li class="topicref"><a href="snaps/sp-google-bigquery/sp-examples.html">Snap Pack examples</a><ul>
                                           <li class="topicref"><a href="snaps/examples/data/sp-google-bigquery/example-bigquery-bulk-upsert/example-bigquery-bulk-upsert.html">Upsert customer data from Salesforce</a></li>
                                           <li class="topicref"><a href="snaps/examples/data/sp-google-bigquery/example-bigquery-bulk-load-streaming/example-bigquery-bulk-load-streaming.html">Bulk load from PostgreSQL</a></li>
@@ -2128,6 +2087,17 @@
                                        </ul>
                                     </li>
                                     <li class="topicref"><a href="snaps/snaps-data/sp-opensearch/sp-history.html">Snap Pack history</a></li>
+                                 </ul>
+                              </li>
+                              <li class="topicref"><a href="snaps/sp-opentable-iceberg/sp-opentable-iceberg-about.html">Open Table Iceberg</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-opentable-iceberg/sp-opentable-iceberg-accounts-config.html">Configure Open Table Iceberg Accounts</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-opentable-iceberg/opentable-iceberg-account.html">Open Table Iceberg Account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-opentable-iceberg/opentable-iceberg-execute.html">Open Table Iceberg - Execute</a></li>
+                                    <li class="topicref"><a href="snaps/sp-opentable-iceberg/opentable-iceberg-insert.html">Open Table Iceberg - Insert</a></li>
+                                    <li class="topicref"><a href="snaps/sp-opentable-iceberg/opentable-iceberg-select.html">Open Table Iceberg - Select</a></li>
+                                    <li class="topicref"><a href="snaps/sp-opentable-iceberg/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
                               <li class="topicref"><a href="snaps/sp-oracle/sp-oracle-about.html">Oracle</a><ul>
@@ -2322,7 +2292,7 @@
                                  </ul>
                               </li>
                               <li class="topicref"><a href="snaps/snaps-data/sp-snowflake/sp-snowflake-about.html">Snowflake</a><ul>
-                                    <li class="topicref"><a href="snaps/snaps-data/sp-snowflake/sp-snowflake-account-config.html">Configure the Snowflake Account</a><ul>
+                                    <li class="topicref"><a href="snaps/snaps-data/sp-snowflake/sp-snowflake-account-config.html">Configure Snowflake Accounts</a><ul>
                                           <li class="topicref"><a href="snaps/snaps-data/sp-snowflake/config-cross-account-iam-role-support.html">Configure Cross Account IAM Role</a></li>
                                           <li class="topicref"><a href="snaps/snaps-data/sp-snowflake/config-security-integration-oauth2-acc.html">Configure Security Integration for OAuth2 accounts</a></li>
                                           <li class="topicref"><a href="snaps/snaps-data/sp-snowflake/config-create-storage-integration-gcs.html">Create Storage Integration for Google Cloud Storage</a></li>
@@ -2501,12 +2471,52 @@
                            </ul>
                         </li>
                         <li class="topicref"><a href="snaps/snaps-enterprise/snaps-enterprise-about.html">Enterprise Snaps</a><ul>
-                              <li class="topicref"><a href="snaps/sp-active-directory/sp-active-directory-about.html">Active Directory Snap Pack</a><ul>
-                                    <li class="topicref"><a href="snaps/sp-active-directory/sp-history.html">Snap Pack History</a></li>
+                              <li class="topicref"><a href="snaps/sp-active-directory/sp-active-directory-about.html">Active Directory</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-active-directory/sp-active-directory-account-config.html">Configure Active Directory Accounts</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-active-directory/active-directory-basic-auth-account.html">Active Directory Basic Auth Account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-active-directory/active-directory-add-member.html">Active Directory Add Member</a></li>
+                                    <li class="topicref"><a href="snaps/sp-active-directory/active-directory-authenticate-users.html">Active Directory Authenticate Users</a></li>
+                                    <li class="topicref"><a href="snaps/sp-active-directory/active-directory-create-entry.html">Active Directory Create Entry</a></li>
+                                    <li class="topicref"><a href="snaps/sp-active-directory/active-directory-disable-entry.html">Active Directory Disable Entry</a></li>
+                                    <li class="topicref"><a href="snaps/sp-active-directory/active-directory-list-users.html">Active Directory List Users</a></li>
+                                    <li class="topicref"><a href="snaps/sp-active-directory/active-directory-remove-member.html">Active Directory Remove Member</a></li>
+                                    <li class="topicref"><a href="snaps/sp-active-directory/active-directory-rename.html">Active Directory Rename</a></li>
+                                    <li class="topicref"><a href="snaps/sp-active-directory/active-directory-search.html">Active Directory Search</a></li>
+                                    <li class="topicref"><a href="snaps/sp-active-directory/active-directory-update-entry.html">Active Directory Update Entry</a></li>
+                                    <li class="topicref"><a href="snaps/sp-active-directory/active-directory-update-user-photo.html">Active Directory Update User Photo</a></li>
+                                    <li class="topicref"><a href="snaps/sp-active-directory/sp-examples.html">Snap Pack examples</a><ul>
+                                          <li class="topicref"><a href="snaps/examples/sp-active-directory/example-special-characters-add-member/example-using-special-characters-in-distinguished-name.html">Using Special Characters in Distinguished Name</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-active-directory/example-authenticate-users/example-verifying-the-username-and-password-against-the.html">Verifying the Username and Password against the Active Directory</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-active-directory/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
-                              <li class="topicref"><a href="snaps/sp-amazon-sns/sp-amazon-sns-about.html">Amazon SNS Snap Pack</a><ul>
-                                    <li class="topicref"><a href="snaps/sp-amazon-sns/sp-history.html">Snap Pack History</a></li>
+                              <li class="topicref"><a href="snaps/sp-amazon-sns/sp-amazon-sns-about.html">Amazon SNS</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-amazon-sns/sp-amazon-sns-account-config.html">Configure Amazon SNS Accounts</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-amazon-sns/amazon-sns-account.html">Amazon SNS Account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-amazon-sns/create-topic.html">Create Topic</a></li>
+                                    <li class="topicref"><a href="snaps/sp-amazon-sns/manage-topic.html">Manage Topic</a></li>
+                                    <li class="topicref"><a href="snaps/sp-amazon-sns/subscribe-topic.html">Subscribe Topic</a></li>
+                                    <li class="topicref"><a href="snaps/sp-amazon-sns/delete-topic.html">Delete Topic</a></li>
+                                    <li class="topicref"><a href="snaps/sp-amazon-sns/confirm-subscription.html">Confirm Subscription</a></li>
+                                    <li class="topicref"><a href="snaps/sp-amazon-sns/delete-subscription.html">Delete Subscription</a></li>
+                                    <li class="topicref"><a href="snaps/sp-amazon-sns/publish-message.html">Publish Message</a></li>
+                                    <li class="topicref"><a href="snaps/sp-amazon-sns/set-subscription-attribute.html">Set Subscription Attribute</a></li>
+                                    <li class="topicref"><a href="snaps/sp-amazon-sns/sp-examples.html">Snap Pack Examples</a><ul>
+                                          <li class="topicref"><a href="snaps/examples/sp-amazon-sns/example-create-topic/example-create-topic.html">Creating a topic with attributes and tag attributes</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-amazon-sns/example-manage-topic/example-manage-topic.html">Managing a topic by updating its attributes</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-amazon-sns/example-delete-topic/example-delete-topic.html">Deleting a topic using its Topic ARN</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-amazon-sns/example-publish-message/example-publish-message.html">Publishing messages to SQS and email endpoints</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-amazon-sns/example-set-subscription-attribute/example-set-subscription-attribute.html">Setting subscription attributes for a confirmed subscription</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/use-cases/enterprise/sp-amazon-sns/use-case-subscription-confirmation.html">Subscription confirmation</a></li>
+                                    <li class="topicref"><a href="snaps/sp-amazon-sns/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
                               <li class="topicref"><a href="snaps/snaps-enterprise/sp-amazon-sqs/sp-amazon-sqs-about.html">Amazon SQS</a><ul>
@@ -2528,25 +2538,96 @@
                                     <li class="topicref"><a href="snaps/snaps-enterprise/sp-amazon-sqs/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
-                              <li class="topicref"><a href="snaps/sp-azure-service-bus/sp-azure-service-bus-about.html">Azure Service Bus Snap Pack</a><ul>
-                                    <li class="topicref"><a href="snaps/sp-azure-service-bus/sp-history.html">Snap Pack History</a></li>
+                              <li class="topicref"><a href="snaps/sp-azure-service-bus/sp-azure-service-bus-about.html">Azure Service Bus</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-azure-service-bus/sp-azure-service-bus-account-config.html">Configure Azure Service Bus Accounts</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-azure-service-bus/azure-service-bus-account.html">Azure Service Bus Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-azure-service-bus/configuration-in-azure-portal-for-azure-service-bus-account.html">Configuration in Azure Portal for Azure Service Bus account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-azure-service-bus/asb-acknowledge.html">ASB Acknowledge</a></li>
+                                    <li class="topicref"><a href="snaps/sp-azure-service-bus/asb-consumer.html">ASB Consumer</a></li>
+                                    <li class="topicref"><a href="snaps/sp-azure-service-bus/asb-producer.html">ASB Producer</a></li>
+                                    <li class="topicref"><a href="snaps/sp-azure-service-bus/sp-examples.html">Snap Pack Examples</a><ul>
+                                          <li class="topicref"><a href="snaps/examples/sp-azure-service-bus/example-consume-messages-from-azure-service-bus/example-consume-messages-from-azure-service-bus.html">Consume Messages from Azure Service Bus</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-azure-service-bus/example-consume-messages-and-write-to-topic/example-consume-messages-and-write-to-topic.html">Consume Messages and Write to Topic</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-azure-service-bus/example-sending-messages-to-a-queue/example-sending-messages-to-a-queue.html">Sending Messages to a Queue</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-azure-service-bus/example-sending-message-to-a-topic/example-sending-message-to-a-topic.html">Sending Message to a Topic</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-azure-service-bus/example-sending-messages-as-per-the-schedule/example-sending-messages-as-per-the-schedule.html">Sending Messages as per the Schedule</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/examples/sp-azure-service-bus/usecase-mobile-recharge/usecase-mobile-recharge.html">Use Case: Automating Mobile Recharge</a></li>
+                                    <li class="topicref"><a href="snaps/sp-azure-service-bus/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
-                              <li class="topicref"><a href="snaps/sp-box/sp-box-about.html">Box Snap Pack</a><ul>
-                                    <li class="topicref"><a href="snaps/sp-box/sp-box-accounts.html">Configuring Box Accounts</a></li>
+                              <li class="topicref"><a href="snaps/sp-box/sp-box-about.html">Box</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-box/sp-box-account-config.html">Configure Box account</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-box/box-com-account.html">Box Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-box/box-service-account.html">Box Service Account</a></li>
+                                       </ul>
+                                    </li>
                                     <li class="topicref"><a href="snaps/sp-box/sp-box-add-folder.html">Box Add Folder</a></li>
                                     <li class="topicref"><a href="snaps/sp-box/sp-box-create-group.html">Box Create Group</a></li>
                                     <li class="topicref"><a href="snaps/sp-box/sp-box-create-user.html">Box Create User</a></li>
                                     <li class="topicref"><a href="snaps/sp-box/sp-box-directory-browser.html">Box Directory Browser</a></li>
-                                    <li class="topicref"><a href="snaps/sp-box/sp-history.html">Snap Pack History</a></li>
+                                    <li class="topicref"><a href="snaps/sp-box/sp-box-file-operations.html">Box File Operations</a></li>
+                                    <li class="topicref"><a href="snaps/sp-box/sp-box-permissions.html">Box Permissions</a></li>
+                                    <li class="topicref"><a href="snaps/sp-box/sp-box-read.html">Box Read</a></li>
+                                    <li class="topicref"><a href="snaps/sp-box/sp-box-update-user.html">Box Update User</a></li>
+                                    <li class="topicref"><a href="snaps/sp-box/sp-box-write.html">Box Write</a></li>
+                                    <li class="topicref"><a href="snaps/sp-box/sp-examples.html">Snap Pack examples</a><ul>
+                                          <li class="topicref"><a href="snaps/examples/enterprise/sp-box/example-box-add-folder/example-add-folder.html">Add a folder to Box</a></li>
+                                          <li class="topicref"><a href="snaps/examples/enterprise/sp-box/example-box-create-user/example-create-user.html">Create a user in Box</a></li>
+                                          <li class="topicref"><a href="snaps/examples/enterprise/sp-box/example-box-directory-browser/example-directory-browser.html">Browse Box files and folders</a></li>
+                                          <li class="topicref"><a href="snaps/examples/enterprise/sp-box/example-box-file-operations/example-file-operations.html">Move a file in Box</a></li>
+                                          <li class="topicref"><a href="snaps/examples/enterprise/sp-box/example-box-permissions/example-permissions.html">Add and remove a collaborator in Box</a></li>
+                                          <li class="topicref"><a href="snaps/examples/enterprise/sp-box/example-box-update-user/example-update-user.html">Update a user in Box</a></li>
+                                          <li class="topicref"><a href="snaps/examples/enterprise/sp-box/example-box-write/example-write.html">Write a file to Box</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-box/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
                               <li class="topicref"><a href="snaps/sp-copybook/sp-copybook-about.html">Copybook Snap Pack</a><ul>
                                     <li class="topicref"><a href="snaps/sp-copybook/sp-history.html">Snap Pack History</a></li>
                                  </ul>
                               </li>
-                              <li class="topicref"><a href="snaps/sp-coupa/sp-coupa-about.html">Coupa Snap Pack</a><ul>
-                                    <li class="topicref"><a href="snaps/sp-coupa/sp-history.html">Snap Pack History</a></li>
+                              <li class="topicref"><a href="snaps/sp-coupa/sp-coupa-about.html">Coupa</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-coupa/sp-coupa-account-config.html">Configure Coupa account</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-coupa/configuring-coupa-oauth2-portal.html">Application Configuration in Coupa Portal for OAuth2 Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-coupa/configuring-coupa-dynamic-oauth2-portal.html">Application Configuration in Coupa Portal for Dynamic OAuth2 Token Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-coupa/coupa-oauth2-account.html">Coupa OAuth2 Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-coupa/coupa-dynamic-oauth2-account.html">Coupa Dynamic OAuth2 Account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-coupa/snap-coupa-create.html">Coupa Create</a></li>
+                                    <li class="topicref"><a href="snaps/sp-coupa/snap-coupa-read.html">Coupa Read</a></li>
+                                    <li class="topicref"><a href="snaps/sp-coupa/snap-coupa-update.html">Coupa Update</a></li>
+                                    <li class="topicref"><a href="snaps/sp-coupa/sp-examples.html">Snap Pack examples</a><ul>
+                                          <li class="topicref"><a href="snaps/examples/sp-coupa/example-coupa-create/example-coupa-create.html">Creating an Account Type Record</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-coupa/example-coupa-read/example-coupa-read.html">Reading and Updating Inactive Records</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-coupa/example-coupa-update/example-coupa-update.html">Fetching and Updating Inactive Records</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-coupa/sp-history.html">Snap Pack history</a></li>
+                                 </ul>
+                              </li>
+                              <li class="topicref"><a href="snaps/sp-dropbox/sp-dropbox-about.html">Dropbox</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-dropbox/configure-dropbox-account.html">Configure Dropbox Accounts</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-dropbox/access-token-account.html">Dropbox Access Token Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-dropbox/oauth2-account.html">Dropbox OAuth2 Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-dropbox/team-account.html">Dropbox Team Account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-dropbox/create-shared-link.html">Dropbox Create Shared Link</a></li>
+                                    <li class="topicref"><a href="snaps/sp-dropbox/get-cursor.html">Dropbox Get Cursor</a></li>
+                                    <li class="topicref"><a href="snaps/sp-dropbox/get-sharing-members.html">Dropbox Get Sharing Members</a></li>
+                                    <li class="topicref"><a href="snaps/sp-dropbox/get-tags.html">Dropbox Get Tags</a></li>
+                                    <li class="topicref"><a href="snaps/sp-dropbox/identity-sync.html">Dropbox Identity Sync</a></li>
+                                    <li class="topicref"><a href="snaps/sp-dropbox/list.html">Dropbox List</a></li>
+                                    <li class="topicref"><a href="snaps/sp-dropbox/paper-write.html">Dropbox Paper Write</a></li>
+                                    <li class="topicref"><a href="snaps/sp-dropbox/read.html">Dropbox Read</a></li>
+                                    <li class="topicref"><a href="snaps/sp-dropbox/write.html">Dropbox Write</a></li>
+                                    <li class="topicref"><a href="snaps/sp-dropbox/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
                               <li class="topicref"><a href="snaps/snaps-enterprise/sp-edifact/sp-edifact-about.html">EDIFACT</a><ul>
@@ -2589,8 +2670,24 @@
                                     <li class="topicref"><a href="snaps/sp-expensify/sp-history.html">Snap Pack History</a></li>
                                  </ul>
                               </li>
-                              <li class="topicref"><a href="snaps/sp-exact-online/sp-exact-online-about.html">Exact Online Snap Pack</a><ul>
-                                    <li class="topicref"><a href="snaps/sp-exact-online/sp-history.html">Snap Pack History</a></li>
+                              <li class="topicref"><a href="snaps/sp-exact-online/sp-exact-online-about.html">Exact Online</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-exact-online/sp-exact-online-account-config.html">Configure Exact Online Accounts</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-exact-online/exact-online-oauth2-account.html">Exact Online OAuth 2.0 Account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-exact-online/exact-online-create.html">Exact Online Create</a></li>
+                                    <li class="topicref"><a href="snaps/sp-exact-online/exact-online-read.html">Exact Online Read</a></li>
+                                    <li class="topicref"><a href="snaps/sp-exact-online/exact-online-update.html">Exact Online Update</a></li>
+                                    <li class="topicref"><a href="snaps/sp-exact-online/exact-online-delete.html">Exact Online Delete</a></li>
+                                    <li class="topicref"><a href="snaps/sp-exact-online/sp-examples.html">Snap Pack examples</a><ul>
+                                          <li class="topicref"><a href="snaps/examples/sp-exact-online/exact-online-create/example-creating-new-accounts-in-exact-online-instance.html">Creating New Accounts in Exact Online Instance CRM Service</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-exact-online/exact-online-delete/example-deleting-an-account-from-the-exact-online.html">Deleting an account from the Exact Online instance CRM server</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-exact-online/exact-online-read/example-retrieving-account-data-from-exact-online.html">Retrieving Account Data from Exact Online Instance CRM Service</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-exact-online/exact-online-update/example-updating-account-details-from-exact-online.html">Updating account details from Exact Online Instance CRM service</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/use-cases/sp-exact-online/usecase-sending-emails-to-employees.html">Use Case: Sending Emails to Employees</a></li>
+                                    <li class="topicref"><a href="snaps/sp-exact-online/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
                               <li class="topicref"><a href="snaps/sp-google-directory/sp-google-directory-about.html">Google Directory Snap Pack</a><ul>
@@ -2603,6 +2700,17 @@
                               </li>
                               <li class="topicref"><a href="snaps/sp-hubspot/sp-hubspot-about.html">HubSpot Snap Pack</a><ul>
                                     <li class="topicref"><a href="snaps/sp-hubspot/sp-history.html">Snap Pack History</a></li>
+                                 </ul>
+                              </li>
+                              <li class="topicref"><a href="snaps/sp-ibmmq/sp-ibmmq-about.html">IBM MQ</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-ibmmq/configure-ibmmq-accounts.html">Configure IBM MQ Accounts</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-ibmmq/ibm-mq-account.html">IBM MQ Account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-ibmmq/snap-ibm-mq-acknowledge.html">IBM MQ Acknowledge</a></li>
+                                    <li class="topicref"><a href="snaps/sp-ibmmq/snap-ibm-mq-consumer.html">IBM MQ Consumer</a></li>
+                                    <li class="topicref"><a href="snaps/sp-ibmmq/snap-ibm-mq-producer.html">IBM MQ Producer</a></li>
+                                    <li class="topicref"><a href="snaps/sp-ibmmq/sp-history.html">Snap Pack History</a></li>
                                  </ul>
                               </li>
                               <li class="topicref"><a href="snaps/snaps-enterprise/sp-infor-m3/sp-infor-m3-about.html">Infor M3</a><ul>
@@ -2649,8 +2757,26 @@
                                     <li class="topicref"><a href="snaps/sp-jms/sp-history.html">Snap Pack History</a></li>
                                  </ul>
                               </li>
-                              <li class="topicref"><a href="snaps/sp-ldap/sp-ldap-about.html">LDAP Snap Pack</a><ul>
-                                    <li class="topicref"><a href="snaps/sp-ldap/sp-history.html">Snap Pack History</a></li>
+                              <li class="topicref"><a href="snaps/sp-ldap/sp-ldap-about.html">LDAP</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-ldap/sp-ldap-account-config.html">Configure LDAP Accounts</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-ldap/ldap-account.html">LDAP Account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-ldap/ldap-add-attribute.html">LDAP Add Attribute</a></li>
+                                    <li class="topicref"><a href="snaps/sp-ldap/ldap-add-entry.html">LDAP Add Entry</a></li>
+                                    <li class="topicref"><a href="snaps/sp-ldap/ldap-delete-attribute-value.html">LDAP Delete Attribute Value</a></li>
+                                    <li class="topicref"><a href="snaps/sp-ldap/ldap-delete-attribute.html">LDAP Delete Attribute</a></li>
+                                    <li class="topicref"><a href="snaps/sp-ldap/ldap-delete-entry.html">LDAP Delete Entry</a></li>
+                                    <li class="topicref"><a href="snaps/sp-ldap/ldap-lookup.html">LDAP Lookup</a></li>
+                                    <li class="topicref"><a href="snaps/sp-ldap/ldap-modify-attribute-value.html">LDAP Modify Attribute Value</a></li>
+                                    <li class="topicref"><a href="snaps/sp-ldap/ldap-modify-entry.html">LDAP Modify Entry</a></li>
+                                    <li class="topicref"><a href="snaps/sp-ldap/ldap-search.html">LDAP Search</a></li>
+                                    <li class="topicref"><a href="snaps/sp-ldap/sp-examples.html">Snap Pack Examples</a><ul>
+                                          <li class="topicref"><a href="snaps/examples/sp-ldap/example-fetching-records-using-and-not-filters/ex-fetching-records-using-and-not-filters.html">Fetching records using AND NOT filters</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-ldap/example-ldap-delete-attribute-value/example-ldap-delete-attribute-value.html">LDAP Delete Attribute Value example</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-ldap/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
                               <li class="topicref"><a href="snaps/sp-marketo/sp-marketo-about.html">Marketo Snap Pack</a><ul>
@@ -2763,12 +2889,101 @@
                                     <li class="topicref"><a href="snaps/sp-sap-successfactors/sp-history.html">Snap Pack History</a></li>
                                  </ul>
                               </li>
-                              <li class="topicref"><a href="snaps/sp-salesforce/sp-salesforce-about.html">Salesforce Snap Pack</a><ul>
-                                    <li class="topicref"><a href="snaps/sp-salesforce/sp-history.html">Snap Pack History</a></li>
+                              <li class="topicref"><a href="snaps/sp-salesforce/sp-salesforce-about.html">Salesforce</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/sp-salesforce-accounts-config.html">Configure Salesforce Accounts</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-salesforce/application-configuration-in-salesforce-portal-for-oauth2-account-to-use-in-salesforce.html">Application Configuration in Salesforce Portal for OAuth2 Account to use in Salesforce</a></li>
+                                          <li class="topicref"><a href="snaps/sp-salesforce/configuration-setup-for-salesforce-jwt-oauth2-account.html">Configuration setup for Salesforce JWT OAuth2 Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-salesforce/salesforce-account.html">Salesforce Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-salesforce/salesforce-dynamic-account.html">Salesforce Dynamic Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-salesforce/salesforce-jwt-oauth2-account.html">Salesforce JWT OAuth2 Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-salesforce/salesforce-mutual-authentication-account.html">Salesforce Mutual Authentication Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-salesforce/salesforce-mutual-authentication-setup.html">Salesforce Mutual Authentication Setup</a></li>
+                                          <li class="topicref"><a href="snaps/sp-salesforce/salesforce-oauth2-account.html">Salesforce OAuth2 Account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-batch-create.html">Salesforce Batch Create</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-bulk-create.html">Salesforce Bulk Create</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-bulk-delete.html">Salesforce Bulk Delete</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-bulk-query.html">Salesforce Bulk Query</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-bulk-update.html">Salesforce Bulk Update</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-bulk-upsert.html">Salesforce Bulk Upsert</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-create.html">Salesforce Create</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-delete.html">Salesforce Delete</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-download.html">Salesforce Download</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-lookup.html">Salesforce Lookup</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-poller.html">Salesforce Poller</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-publisher.html">Salesforce Publisher</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-read.html">Salesforce Read</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-soql.html">Salesforce SOQL</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-sosl.html">Salesforce SOSL</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-subscriber.html">Salesforce Subscriber</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-update.html">Salesforce Update</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-upsert.html">Salesforce Upsert</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-wave-analytics.html">Salesforce Wave Analytics</a></li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/sp-examples.html">Snap Pack Examples</a><ul>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/batch-create/ex-create-multiple-records.html">Creating Multiple Records</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/bulk-create/ex-create-a-new-bulk-record-in-salesforce-object.html">Create a New Bulk Record in Salesforce Object</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/bulk-create/ex-display-empty-string-or-null-data-as-null.html">Display empty string or null data as null in the output</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/bulk-delete/ex-delete-records-in-bulk.html">Delete Records In Bulk from Salesforce</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/bulk-query/ex-query-for-contacts-in-salesforce.html">Querying for Contacts in Salesforce Using Upstream Parameters in the&nbsp;Bulk Query Snap
+                                                - Understanding the Pipeline</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/bulk-update/ex-update-records-in-bulk.html">Update Records in Bulk in Salesforce</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/bulk-upsert/ex-insert-records-in-bulk.html">Inserting Bulk Records in Salesforce</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/create/ex-create-new-records.html">Create new records in Salesforce</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/delete/ex-delete-a-record.html">Deleting a Record in Salesforce</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/download/ex-download-document-and-convert-to-binary.html">Download a Document from Salesforce and Convert into Binary </a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/lookup/ex-look-up-records.html">Looking up Records</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/lookup/ex-look-up-records-with-rest-api.html">Looking-up Records with REST API Using the Correlation ID</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/lookup/ex-look-up-records-with-a-single-lookup-request.html">Looking-up Records with a Single Lookup Request</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/lookup/ex-look-up-records-using-correlation-id.html">Looking-up Records Using Correlation ID</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/poller/ex-poll-the-status-of-the-object-creation-action.html">Poll the status of the object creation actiion</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/poller/ex-salesforce-poller-error-output-view.html">Salesforce Poller pipeline with generic error output view</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/publisher/ex-process-different-input-documents.html">Processing Different Input Documents</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/read/ex-read-records-from-an-object.html">Reading Records from an Object</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/read/ex-read-records-in-bulk.html">Reading Records in Bulk</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/read/ex-salesforce-snap-reading-the-bulk-records-with-the.html">Salesforce Snap Reading the Bulk Records with the Dynamic Account Enabled</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/read/ex-using-second-output-view.html">Using Second Output View</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/soql/ex-salesforce-soql.html">Salesforce SOQL example</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/sosl/ex-read-object-records-using-sosl.html">Reading Object Records using SOSL</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/subscriber/ex-process-platform-events-in-salesforce.html">Process Platform Events in Salesforce</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/subscriber/ex-process-salesforce-events-through-custom-channels.html">Process Salesforce events through custom channels</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/update/ex-update-a-new-record.html">Update a New Record</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/upsert/ex-upsert-a-new-record-in-a-salesforce-object.html">Upserting a new record in a Salesforce object</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/upsert/ex-upsert-department-record.html">Upserting Department Record and Associating with an Employee Record</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-salesforce/wave-analytics/ex-salesforce-wave-analytics.html">Salesforce Wave Analytics example</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/salesforce-use-case-examples.html">Use Case Examples</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-salesforce/insert-records-into-salesforce-object.html">Insert Records into Salesforce Object</a></li>
+                                          <li class="topicref"><a href="snaps/sp-salesforce/pipeline-data-from-salesforce-com-and-servicenow.html">Pipeline: Data from Salesforce.com and ServiceNow</a></li>
+                                          <li class="topicref"><a href="snaps/sp-salesforce/pipeline-salesforce-com-data-to-a-file.html">Pipeline: Salesforce.com Data to a File</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-salesforce/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
-                              <li class="topicref"><a href="snaps/sp-servicenow/sp-servicenow-about.html">ServiceNow Snap Pack</a><ul>
-                                    <li class="topicref"><a href="snaps/sp-servicenow/sp-history.html">Snap Pack History</a></li>
+                              <li class="topicref"><a href="snaps/sp-servicenow/sp-servicenow-about.html">ServiceNow</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-servicenow/sp-servicenow-account-config.html">Configure ServiceNow Accounts</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-servicenow/servicenow.html">ServiceNow Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-servicenow/servicenow-oauth2-account.html">ServiceNow OAuth2 Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-servicenow/oauth2-account-app-config-for-servicenow.html">Application Configuration in ServiceNow Portal for OAuth2 Account to use in ServiceNow</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-servicenow/servicenow-attachment-download.html">ServiceNow Attachment Download</a></li>
+                                    <li class="topicref"><a href="snaps/sp-servicenow/servicenow-delete.html">ServiceNow Delete</a></li>
+                                    <li class="topicref"><a href="snaps/sp-servicenow/servicenow-insert.html">ServiceNow Insert</a></li>
+                                    <li class="topicref"><a href="snaps/sp-servicenow/servicenow-query.html">ServiceNow Query</a></li>
+                                    <li class="topicref"><a href="snaps/sp-servicenow/servicenow-statistics.html">ServiceNow Statistics</a></li>
+                                    <li class="topicref"><a href="snaps/sp-servicenow/servicenow-update.html">ServiceNow Update</a></li>
+                                    <li class="topicref"><a href="snaps/sp-servicenow/sp-examples.html">Snap Pack examples</a><ul>
+                                          <li class="topicref"><a href="snaps/examples/sp-servicenow/example-insert-catalog-categories-into-servicenow/example-insert-catalog-categories-into-servicenow.html">Insert catalog categories into ServiceNow</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-servicenow/example-servicenow-delete/example-servicenow-delete.html">Delete Record in ServiceNow</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-servicenow/example-servicenow-query/example-servicenow-query.html">Fetch Active Incidents from ServiceNow</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-servicenow/example-servicenow-update/example-servicenow-update.html">Update Records in ServiceNow</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-servicenow/usecase-use-case-data-from-salesforce-com-and-servicenow.html">Use Case: Data from Salesforce.com and ServiceNow</a></li>
+                                    <li class="topicref"><a href="snaps/sp-servicenow/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
                               <li class="topicref"><a href="snaps/sp-sharepoint-online/sp-sharepoint-online-about.html">SharePoint Online Snap Pack</a><ul>
@@ -2831,16 +3046,92 @@
                                     <li class="topicref"><a href="snaps/sp-twilio/sp-history.html">Snap Pack History</a></li>
                                  </ul>
                               </li>
+                              <li class="topicref"><a href="snaps/sp-veeva/sp-veeva-about.html">Veeva Vault CRM</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-veeva/configuring-veeva-accounts.html">Configure Veeva Vault Accounts</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-veeva/veeva-vault-account.html">Veeva Vault Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-veeva/veeva-vault-oauth2-account.html">Veeva Vault OAuth2 Account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-bulk-query.html">Veeva Bulk Query</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-create.html">Veeva Create</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-delete.html">Veeva Delete</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-document-create.html">Veeva Document Create</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-document-delete.html">Veeva Document Delete</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-document-download.html">Veeva Document Download</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-document-read.html">Veeva Document Read</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-document-update.html">Veeva Document Update</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-document-upload.html">Veeva Document Upload</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-document-version-create.html">Veeva Document Version Create</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-lookup.html">Veeva Lookup</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-metadata-read.html">Veeva Metadata Read</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-query.html">Veeva Query</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-read.html">Veeva Read</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-update.html">Veeva Update</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/snap-veeva-upsert.html">Veeva Upsert</a></li>
+                                    <li class="topicref"><a href="snaps/sp-veeva/sp-history.html">Snap Pack history</a></li>
+                                 </ul>
+                              </li>
                               <li class="topicref"><a href="snaps/sp-workday-prism-analytics/sp-workday-prism-analytics-about.html">Workday Prism Analytics Snap Pack</a><ul>
                                     <li class="topicref"><a href="snaps/sp-workday-prism-analytics/sp-history.html">Snap Pack History</a></li>
                                  </ul>
                               </li>
-                              <li class="topicref"><a href="snaps/sp-workday/sp-workday-about.html">Workday Snap Pack</a><ul>
-                                    <li class="topicref"><a href="snaps/sp-workday/sp-history.html">Snap Pack History</a></li>
+                              <li class="topicref"><a href="snaps/sp-workday/sp-workday-about.html">Workday</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-workday/sp-workday-account-config.html">Configure Workday Accounts</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-workday/workday-account.html">Workday Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-workday/workday-dynamic-account.html">Workday Dynamic Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-workday/workday-rest-access-token.html">Workday REST Access Token</a></li>
+                                          <li class="topicref"><a href="snaps/sp-workday/workday-rest-oauth2-account.html">Workday REST OAuth2 Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-workday/application-configuration-in-workday-portal-for-rest-access-token-account.html">Application Configuration in Workday Portal for REST Access Token Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-workday/application-configuration-in-workday-portal-for-workday-rest-oauth2-account.html">Application Configuration in Workday Portal for Workday REST OAuth2 Account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-workday/workday-cancel.html">Workday Cancel</a></li>
+                                    <li class="topicref"><a href="snaps/sp-workday/workday-read.html">Workday Read</a></li>
+                                    <li class="topicref"><a href="snaps/sp-workday/workday-rest.html">Workday REST</a></li>
+                                    <li class="topicref"><a href="snaps/sp-workday/workday-write.html">Workday Write</a></li>
+                                    <li class="topicref"><a href="snaps/sp-workday/workdayql.html">WorkdayQL</a></li>
+                                    <li class="topicref"><a href="snaps/sp-workday/sp-examples.html">Snap Pack Examples</a><ul>
+                                          <li class="topicref"><a href="snaps/examples/sp-workday/example-canceling-an-invoice-using-the-revenue-management/example-canceling-an-invoice-using-the-revenue-management.html">Canceling an Invoice Using the Revenue Management Service</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-workday/example-handling-an-error-after-an-attempted-cancellation/example-handling-an-error-after-an-attempted-cancellation.html">Handling an Error After an Attempted Cancellation</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-workday/example-creating-and-retrieving-compensation-details/example-creating-and-retrieving-compensation-details.html">Creating and Retrieving Compensation Details</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-workday/example-displaying-records-for-values-provided-upstream/example-displaying-records-for-values-provided-upstream.html">Displaying Records For Values Provided Upstream</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-workday/example-get-worker-from-allworkers/example-get-worker-from-allworkers.html">Get Worker from allWorkers</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-workday/example-getting-all-records-from-workday-using-pagination/example-getting-all-records-from-workday-using-pagination.html">Getting All Records From Workday Using Pagination</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-workday/example-getting-applicants-from-workday/example-getting-applicants-from-workday.html">Getting Applicants from Workday</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-workday/example-querying-for-precise-data-using-the-workday-read/example-querying-for-precise-data-using-the-workday-read.html">Querying for Precise Data Using the Workday Read Snap</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-workday/example-retrieving-data-modifications/example-retrieving-data-modifications.html">Retrieving Data Modifications</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-workday/example-using-the-workday-read-snap-for-error-handling/example-using-the-workday-read-snap-for-error-handling.html">Using the Workday Read Snap for Error Handling</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-workday/example-viewing-the-simplified-output-of-documents/example-viewing-the-simplified-output-of-documents.html">Viewing the Simplified Output of Documents</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-workday/example-workday-write-snap-to-support-import-objects/example-workday-write-snap-to-support-import-objects.html">Workday Write Snap to support import objects</a></li>
+                                          <li class="topicref"><a href="snaps/examples/sp-workday/example-write-an-object-successfully/example-write-an-object-successfully.html">Write an Object successfully</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-workday/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
                               <li class="topicref"><a href="snaps/sp-xactly/sp-xactly-about.html">Xactly Snap Pack</a><ul>
                                     <li class="topicref"><a href="snaps/sp-xactly/sp-history.html">Snap Pack History</a></li>
+                                 </ul>
+                              </li>
+                              <li class="topicref"><a href="snaps/sp-zendesk/sp-zendesk-about.html">Zendesk</a><ul>
+                                    <li class="topicref"><a href="snaps/sp-zendesk/sp-zendesk-accounts-config.html">Configure Zendesk Accounts</a><ul>
+                                          <li class="topicref"><a href="snaps/sp-zendesk/zendesk-account.html">Zendesk Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-zendesk/zendesk-oauth2-account.html">Zendesk OAuth2 Account</a></li>
+                                          <li class="topicref"><a href="snaps/sp-zendesk/zendesk-access-token-account.html">Zendesk Access Token Account</a></li>
+                                       </ul>
+                                    </li>
+                                    <li class="topicref"><a href="snaps/sp-zendesk/read-users.html">Read Users</a></li>
+                                    <li class="topicref"><a href="snaps/sp-zendesk/read-help-center-articles.html">Read Help Center Articles</a></li>
+                                    <li class="topicref"><a href="snaps/sp-zendesk/read-community-posts.html">Read Community Posts</a></li>
+                                    <li class="topicref"><a href="snaps/sp-zendesk/read-community-topics.html">Read Community Topics</a></li>
+                                    <li class="topicref"><a href="snaps/sp-zendesk/read-organizations.html">Read Organizations</a></li>
+                                    <li class="topicref"><a href="snaps/sp-zendesk/read-groups.html">Read Groups</a></li>
+                                    <li class="topicref"><a href="snaps/sp-zendesk/read-organization-memberships.html">Read Organization Memberships</a></li>
+                                    <li class="topicref"><a href="snaps/sp-zendesk/read-group-memberships.html">Read Group Memberships</a></li>
+                                    <li class="topicref"><a href="snaps/sp-zendesk/read-user-segments.html">Read User Segments</a></li>
+                                    <li class="topicref"><a href="snaps/sp-zendesk/search-zendesk.html">Search Zendesk</a></li>
+                                    <li class="topicref"><a href="snaps/sp-zendesk/download-attachment.html">Download Attachment</a></li>
+                                    <li class="topicref"><a href="snaps/sp-zendesk/sp-history.html">Snap Pack history</a></li>
                                  </ul>
                               </li>
                               <li class="topicref"><a href="snaps/sp-zuora/sp-zuora-about.html">Zuora Snap Pack</a><ul>
@@ -2890,6 +3181,7 @@
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/sp-azure-openai-llm-account-config.html">Configure the Azure OpenAI LLM accounts</a><ul>
                                           <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/app-config-azure-ms-entra.html">OAuth2.0 setup in Microsoft Entra</a></li>
                                           <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/acct-azure-openai-api-key.html">Azure OpenAI API Key Account</a></li>
+                                          <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/acct-azure-ai-foundry-api-key.html">Azure AI Foundry API Key Account</a></li>
                                           <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/acct-azure-ds-api-key.html">Azure Data Source API Key Account</a></li>
                                           <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/acct-azure-ua-mi.html">Azure User Assigned Managed Identity Account</a></li>
                                           <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/acct-azure-openai-entra-app.html">Azure OpenAI Entra ID Application Account</a></li>
@@ -2897,21 +3189,21 @@
                                           <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/acct-azure-openai-entra-token.html">Azure OpenAI Entra Token Account</a></li>
                                        </ul>
                                     </li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-chat-completions-agent.html">Azure OpenAI Chat Completions Agent</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-chat-completions-agent.html">Azure AI Foundry Chat Completions Agent</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-add-message.html">Add Message (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-ds-ai-search.html">Azure Data Source AI Search</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-ao-add-vec-st-file.html">Azure OpenAI Add Vector Store File</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-aoa-asst-sto.html">Azure OpenAI Assistants Submit Tool Outputs (Not Recommended)</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-aoa-asst-tcr.html">Azure OpenAI Assistants Tool Call Router (Not Recommended)</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-chat-completions.html">Azure OpenAI Chat Completions</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-chat-completions.html">Azure AI Foundry Chat Completions</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-ao-create-vec-st.html">Azure OpenAI Create Vector Store</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-embedder.html">Azure OpenAI Embedder</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-function-generator.html">Azure OpenAI Function Generator</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-function-result-generator.html">Azure OpenAI Function Result Generator</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-ao-list-files.html">Azure OpenAI List Files</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-ao-list-vec-files.html">Azure OpenAI List Vector Store Files</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-ao-mm-contgen.html">Azure OpenAI Multimodal Content Generator</a></li>
-                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-prompt-generator.html">Azure OpenAI Prompt Generator</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-ao-mm-contgen.html">Azure AI Foundry Multimodal Content Generator</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-prompt-generator.html">Azure AI Foundry Prompt Generator</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-ao-remove-vec-st-file.html">Azure OpenAI Remove Vector Store File</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-azure-openai-tool-calling.html">Azure OpenAI Tool Calling</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-azure-openai-llm/snap-ao-upload-file.html">Azure OpenAI Upload File</a></li>
@@ -3279,31 +3571,35 @@
                      </ul>
                   </li>
                   <li class="topicref"><a href="snapgpt/snapgpt-home.html">SnapGPT</a><ul>
-                        <li class="topicref"><a href="snapgpt/snapgpt-about.html">Introduction</a><ul>
-                              <li class="topicref"><a href="snapgpt/snapgpt-use.html">Interact with SnapGPT</a><ul>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-rag.html">Generate pipeline</a></li>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-analyze-pipelines.html">Analyze pipeline</a></li>
-                                    <li class="topicref"><a href="snapgpt/generate-queries.html">Generate queries</a></li>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-copilot.html">Configure Snaps with Snap copilot</a><ul>
-                                          <li class="topicref"><a href="snapgpt/snapgpt-copilot-snap-banner.html">Launch SnapGPT from Snap settings </a></li>
-                                       </ul>
-                                    </li>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-preview-data-insights.html">Get insights on the Snaps preview data</a></li>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-refine-pipelines.html">Refine pipelines</a></li>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-image.html">Generate a pipeline from an image</a></li>
-                                    <li class="topicref"><a href="snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate expressions</a><ul>
-                                          <li class="topicref"><a href="snapgpt/mapper-expr-example1.html">Map to target</a></li>
-                                          <li class="topicref"><a href="snapgpt/mapper-expr-example2.html">Extract pipeline parameters</a></li>
-                                       </ul>
-                                    </li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-about.html">Introduction</a></li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-use.html">Interact with SnapGPT</a><ul>
+                              <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-rag.html">Generate pipeline</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-analyze-pipelines.html">Analyze pipeline</a></li>
+                              <li class="topicref"><a href="snapgpt/generate-queries.html">Generate queries</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-copilot.html">Configure Snaps with Snap copilot</a><ul>
+                                    <li class="topicref"><a href="snapgpt/snapgpt-copilot-snap-banner.html">Launch SnapGPT from Snap settings </a></li>
                                  </ul>
                               </li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-settings.html">Configure SnapGPT</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-best-practices.html">Prompt tips</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-modes.html">Thinking and Planning modes</a></li>
-                              <li class="topicref"><a href="snapgpt/snapgpt-question-and-answer.html">SnapGPT FAQ</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-preview-data-insights.html">Get insights on the Snaps preview data</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-refine-pipelines.html">Refine pipelines</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-image.html">Generate a pipeline from an image</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate expressions</a><ul>
+                                    <li class="topicref"><a href="snapgpt/mapper-expr-example1.html">Map to target</a></li>
+                                    <li class="topicref"><a href="snapgpt/mapper-expr-example2.html">Extract pipeline parameters</a></li>
+                                 </ul>
+                              </li>
                            </ul>
                         </li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-monitor.html">SnapGPT in Monitor</a><ul>
+                              <li class="topicref"><a href="snapgpt/snapgpt-check-snaplex-health.html">Check Snaplex health</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-analyze-failed-execution.html">Analyze a failed pipeline execution</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-plan-snaplex-capacity.html">Plan Snaplex capacity</a></li>
+                           </ul>
+                        </li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-settings.html">Configure SnapGPT</a></li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-best-practices.html">Prompt tips</a></li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-modes.html">Thinking and Planning modes</a></li>
+                        <li class="topicref"><a href="snapgpt/snapgpt-question-and-answer.html">SnapGPT FAQ</a></li>
                      </ul>
                   </li>
                </ul>
@@ -3311,7 +3607,6 @@
             <li class="topicref"><a href="administration-about.html">Administration</a><ul>
                   <li class="topicref"><a href="admin-manager/admin-manager-home.html">Admin Manager</a><ul>
                         <li class="topicref"><a href="admin-manager/admin-manager-about.html">Introduction</a></li>
-                        <li class="topicref"><a href="admin-manager/administration-get-started.html">Get Started</a></li>
                         <li class="topicref"><a href="admin-manager/designer-settings.html">Designer settings</a></li>
                         <li class="topicref"><a href="admin-manager/snapgpt-settings.html">SnapGPT settings</a></li>
                         <li class="topicref"><a href="admin-manager/apim.html">API Management 3.0 settings</a></li>
@@ -3387,29 +3682,29 @@
                         <li class="topicref"><a href="manager/migrate-acceptance.html">Acceptance testing</a></li>
                      </ul>
                   </li>
-                  <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-about.html">Secrets Management</a><ul>
-                        <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-aws.html">AWS Secrets Manager</a><ul>
-                              <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-aws-config-role-based.html">Role-based authentication</a></li>
-                              <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-aws-config-key-based.html">Key-based authentication</a></li>
+                  <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-about.html">Secrets Management</a><ul>
+                        <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-aws.html">AWS Secrets Manager</a><ul>
+                              <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-aws-config-role-based.html">Role-based authentication</a></li>
+                              <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-aws-config-key-based.html">Key-based authentication</a></li>
                            </ul>
                         </li>
-                        <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-azure-kv.html">Azure Key Vault</a><ul>
-                              <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-azure-kv-set-up-vault.html">Set up Azure configuration</a></li>
-                              <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-azure-kv-config-groundplex.html">Configure Groundplex nodes</a></li>
+                        <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-azure-kv.html">Azure Key Vault</a><ul>
+                              <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-azure-kv-set-up-vault.html">Set up Azure configuration</a></li>
+                              <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-azure-kv-config-groundplex.html">Configure Groundplex nodes</a></li>
                            </ul>
                         </li>
-                        <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-cyberark.html">CyberArk Conjur</a><ul>
-                              <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-cyberark-config-groundplex.html">Configure Groundplex nodes</a></li>
+                        <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-cyberark.html">CyberArk Conjur</a><ul>
+                              <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-cyberark-config-groundplex.html">Configure Groundplex nodes</a></li>
                            </ul>
                         </li>
-                        <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-hashicorp.html">HashiCorp Vault</a><ul>
-                              <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-hashicorp-set-up-vault-using-approle.html">Set up a Vault using Approle</a></li>
-                              <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-hashicorp-set-up-vault-using-ldap.html">Set up a Vault using LDAP</a></li>
-                              <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-hashicorp-config-groundplex.html">Configure Groundplex nodes</a></li>
-                              <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-hashicorp-troubleshoot.html">Troubleshooting configuration errors with HashiCorp </a></li>
+                        <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-hashicorp.html">HashiCorp Vault</a><ul>
+                              <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-hashicorp-set-up-vault-using-approle.html">Set up a Vault using Approle</a></li>
+                              <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-hashicorp-set-up-vault-using-ldap.html">Set up a Vault using LDAP</a></li>
+                              <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-hashicorp-config-groundplex.html">Configure Groundplex nodes</a></li>
+                              <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-hashicorp-troubleshoot.html">Troubleshooting configuration errors with HashiCorp </a></li>
                            </ul>
                         </li>
-                        <li class="topicref"><a href="secrets-mgmt/secrets-mgmt-config-accounts.html">Configure Snap accounts</a></li>
+                        <li class="topicref"><a href="cicd/secrets-mgmt/secrets-mgmt-config-accounts.html">Configure Snap accounts</a></li>
                      </ul>
                   </li>
                   <li class="topicref"><a href="snaplexes/snaplexes-home.html">Snaplexes</a><ul>
@@ -3418,6 +3713,8 @@
                               <li class="topicref"><a href="snaplexes/version-compatibility.html">Version compatibility</a></li>
                               <li class="topicref"><a href="snaplexes/snap-pack-versions.html">Snap Pack versions</a></li>
                               <li class="topicref"><a href="snaplexes/snaplex-version.html">Snaplex version</a></li>
+                              <li class="topicref"><a href="snaplexes/snaplex-version-by-release.html">Snaplex versions by release</a></li>
+                              <li class="topicref"><a href="snaplexes/snaplex-auto-upgrade.html">Auto-upgrade your Snaplex</a></li>
                               <li class="topicref"><a href="snaplexes/test-version.html">Test new releases</a></li>
                               <li class="topicref"><a href="snaplexes/rollback-snaplex.html">Downgrade a Snaplex</a></li>
                            </ul>
@@ -3478,7 +3775,7 @@
                                     <li class="topicref"><a href="snaplexes/configuration-options.html">Configuration options</a><ul>
                                           <li class="topicref"><a href="snaplexes/snaplex-configuration-changes.html">Snaplex configuration changes</a></li>
                                           <li class="topicref"><a href="snaplexes/configure-java-version-groundplex.html">Configure the JRE Version</a><ul>
-                                                <li class="topicref"><a href="snaplexes/jdk17-support-guide.html">Support Guide for JRE 17</a></li>
+                                                <li class="topicref"><a href="snaplexes/jdk21-support-guide.html">Support Guide for JRE 17 and JRE 21</a></li>
                                              </ul>
                                           </li>
                                           <li class="topicref"><a href="snaplexes/snaplex-node-customizations.html">Snaplex node customizations</a></li>
@@ -3505,11 +3802,11 @@
                   </li>
                </ul>
             </li>
-            <li class="topicref"><a href="observability-about.html">Observability</a><ul>
-                  <li class="topicref"><a href="tool-integrations/lineage-about.html">Data Lineage Collection</a><ul>
-                        <li class="topicref"><a href="tool-integrations/map-ol-spec.html">OpenLineage events</a></li>
+            <li class="topicref"><a href="otel/observability-about.html">Observability</a><ul>
+                  <li class="topicref"><a href="otel/lineage-about.html">Data Lineage Collection</a><ul>
+                        <li class="topicref"><a href="otel/map-ol-spec.html">OpenLineage events</a></li>
                         <li class="topicref"><a href="tool-integrations/lineage-for-ultra-tasks.html">Scheduled Lineage for Ultra Tasks</a></li>
-                        <li class="topicref"><a href="tool-integrations/lineage-snaps.html">Snaps that support data lineage</a></li>
+                        <li class="topicref"><a href="otel/lineage-snaps.html">Snaps that support data lineage</a></li>
                      </ul>
                   </li>
                   <li class="topicref"><a href="monitor/monitor-home.html">Monitor</a><ul>
@@ -3517,7 +3814,10 @@
                         <li class="topicref"><a href="monitor/faq.html">FAQs</a></li>
                         <li class="topicref"><a href="monitor/monitor-quick-reference.html">Monitor quick reference</a></li>
                         <li class="topicref"><a href="monitor/monitor-analyze.html">Analyze pipelines and infrastructure</a></li>
-                        <li class="topicref"><a href="monitor/insights.html">Insights</a></li>
+                        <li class="topicref"><a href="monitor/insights.html">Insights</a><ul>
+                              <li class="topicref"><a href="monitor/node-usage.html">Node usage</a></li>
+                           </ul>
+                        </li>
                         <li class="topicref"><a href="monitor/catalog.html">Asset catalog</a><ul>
                               <li class="topicref"><a href="monitor/view-metadata.html">View metadata and relationships</a><ul>
                                     <li class="topicref"><a href="monitor/catalog-task-details.html">View task details</a></li>
@@ -3566,11 +3866,13 @@
                               <li class="topicref"><a href="monitor/use-metric-charts.html">Work with Metrics graphs</a></li>
                            </ul>
                         </li>
+                        <li class="topicref"><a href="monitor/mcp-servers.html">MCP Server observability</a></li>
                         <li class="topicref"><a href="monitor/observe-api-metrics.html">API metrics</a><ul>
                               <li class="topicref"><a href="monitor/troubleshooting-api-metrics.html">Troubleshoot APIM requests and Ultra Tasks</a></li>
                            </ul>
                         </li>
-                        <li class="topicref"><a href="monitor/mcp-metrics.html">MCP metrics</a></li>
+                        <li class="topicref"><a href="monitor/mcp-metrics.html">MCP Server metrics</a></li>
+                        <li class="topicref"><a href="monitor/snapgpt-usage.html">SnapGPT usage</a></li>
                         <li class="topicref"><a href="monitor/api-usage.html">API usage</a></li>
                         <li class="topicref"><a href="monitor/notification-center.html">Notification center</a><ul>
                               <li class="topicref"><a href="monitor/alerts-tab.html">Alerts tab</a></li>
@@ -3579,7 +3881,7 @@
                               <li class="topicref"><a href="monitor/notification-settings-tab.html">Notification settings tab</a></li>
                               <li class="topicref"><a href="monitor/new-notification.html">Create a notification</a></li>
                               <li class="topicref"><a href="monitor/new-broadcast.html">Create a broadcast notice</a></li>
-                              <li class="topicref"><a href="monitor/snaplex-node-notification.html">Create a Snaplex node notification</a></li>
+                              <li class="topicref"><a href="monitor/snaplex-node-notification.html">Create a Snaplex notification</a></li>
                               <li class="topicref"><a href="monitor/task-notification.html">Create a task notification</a></li>
                               <li class="topicref"><a href="monitor/configure-slack.html">Manage the Slack integration</a></li>
                               <li class="topicref"><a href="monitor/node-init-alerts.html">Node initialization alerts</a></li>
@@ -3590,30 +3892,30 @@
                         <li class="topicref"><a href="monitor/troubleshooting.html">Troubleshooting</a></li>
                      </ul>
                   </li>
-                  <li class="topicref"><a href="tool-integrations/observability-about.html">Third-party Observability</a><ul>
-                        <li class="topicref"><a href="tool-integrations/otel-collector-kubernetes.html">Kubernetes deployment</a><ul>
-                              <li class="topicref"><a href="tool-integrations/otel-k8s-config-deploy.html">Configure the DaemonSet</a></li>
-                              <li class="topicref"><a href="tool-integrations/otel-k8s-deploy-groundplex.html">Configure the Groundplex nodes</a></li>
+                  <li class="topicref"><a href="otel/observability-about.html">ObservabilityThird-party Observability</a><ul>
+                        <li class="topicref"><a href="otel/otel-collector-kubernetes.html">Kubernetes deployment</a><ul>
+                              <li class="topicref"><a href="otel/otel-k8s-config-deploy.html">Configure the DaemonSet</a></li>
+                              <li class="topicref"><a href="otel/otel-k8s-deploy-groundplex.html">Configure the Groundplex nodes</a></li>
                            </ul>
                         </li>
-                        <li class="topicref"><a href="tool-integrations/docker-new-relic.html">Docker deployment</a><ul>
-                              <li class="topicref"><a href="tool-integrations/docker-new-relic-otel-coll.html">Configure the OTel collector</a></li>
-                              <li class="topicref"><a href="tool-integrations/docker-new-relic-deploy.html">Deploy the OTel collector and restart Groundplex nodes</a></li>
+                        <li class="topicref"><a href="otel/docker-new-relic.html">Docker deployment</a><ul>
+                              <li class="topicref"><a href="otel/docker-new-relic-otel-coll.html">Configure the OTel collector</a></li>
+                              <li class="topicref"><a href="otel/docker-new-relic-deploy.html">Deploy the OTel collector and restart Groundplex nodes</a></li>
                            </ul>
                         </li>
-                        <li class="topicref"><a href="tool-integrations/windows-otel-deployment.html">Windows deployment</a></li>
-                        <li class="topicref"><a href="tool-integrations/linux-otel-deployment.html">Linux deployment</a></li>
-                        <li class="topicref"><a href="tool-integrations/otel-k8s-datadog.html">Observe in Datadog</a></li>
-                        <li class="topicref"><a href="tool-integrations/otel-docker-new-relic.html">Observe in New Relic</a><ul>
-                              <li class="topicref"><a href="tool-integrations/docker-new-relic-add-metrics.html">Filter OTel configuration metrics</a></li>
+                        <li class="topicref"><a href="otel/windows-otel-deployment.html">Windows deployment</a></li>
+                        <li class="topicref"><a href="otel/linux-otel-deployment.html">Linux deployment</a></li>
+                        <li class="topicref"><a href="otel/otel-k8s-datadog.html">Observe in Datadog</a></li>
+                        <li class="topicref"><a href="otel/otel-docker-new-relic.html">Observe in New Relic</a><ul>
+                              <li class="topicref"><a href="otel/docker-new-relic-add-metrics.html">Filter OTel configuration metrics</a></li>
                            </ul>
                         </li>
-                        <li class="topicref"><a href="tool-integrations/node-metric-reference.html">Snaplex metrics, Kubernetes attributes, and log reference</a></li>
+                        <li class="topicref"><a href="otel/node-metric-reference.html">Snaplex metrics, Kubernetes attributes, and log reference</a></li>
                      </ul>
                   </li>
                </ul>
             </li>
-            <li class="topicref"><a href="Chunk565822271.html#Chunk565822271">Glossary</a></li>
+            <li class="topicref"><a href="Chunk1313126315.html#Chunk1313126315">Glossary</a></li>
          </ul>
       </nav>
    </body>

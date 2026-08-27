@@ -1,0 +1,998 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2026"><meta name="generator" content="DITA-OT"><title>Kafka Consumer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <!-- <link rel="icon" type="image/x-icon" href="/img/icons/logo/sl-logo.ico"/> -->
+  <!-- <link rel="icon" type="image/svg+xml" href="/img/icons/logo/sl-logo.svg"/> -->
+  <!--<link rel="icon" type="image/x-icon"  href="https://d3132s9xzuu9s8.cloudfront.net/k/sl-logo-teal.ico" />-->
+  <!-- <link rel="icon" type="image/svg+xml" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/favicon-teal-grad-128.svg"/> -->
+  <link rel="icon" type="image/svg+xml" href="https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-indigo-icon.svg">
+  <!--<link rel="icon" type="image/svg+xml" href="https://d3132s9xzuu9s8.cloudfront.net/k/sl-logo-teal.svg"/>-->
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+  <!-- Highlight.js for syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/gradient-light.min.css" integrity="sha512-6GvgqJ7t7UxZlT1V0sPyyZt5C+Kd7gR0dleu1G0uQxGm3k2FNc+6qXo5KcYqvSxgkXcVqYwGmTtX2C8rM1FJyA==" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-1c+VZVZPp4GqV1GZx1xA7YpXzXhY+S8o8QGx5yR3kS7E2T+I9vZbHcB6uOt+O6fQ1f+uR5u9jY8Cj7KvU3pRmA==" crossorigin="anonymous"></script>
+
+  <!-- Optional: Add specific language support -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js" integrity="sha512-fh7FqY7p8e2LP4xG1bH2AfGHlC3FJf8oU7GYo6vQ3zj6Z1+5pJH8qv5SW2Uu1eOoqsgqF8os2xHjlGcE1O3Npw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js" integrity="sha512-X9sBVkC+Xh1KmN6lVgKXoxc5A5FE1kP7V7sCFbfJEu2p7G2t3wH2Vx7XzH1E5dZlTQql2aR9ZT7gWZ7XqB5K4Q==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js" integrity="sha512-0q4H0TkvhH9e7j8C1uBl3xD4C9h1cUZg42jF0cF2d7u1N8g9PwJ1sH0F6uZ4xkJvXz2o8Y6k1v5lW7HP6v9ySQ==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js" integrity="sha512-3tU1a1FxPl8H1s2Ck0VqgZq3O/8wH6pH1PqR6mJ5vIu9zJxC1B8oN8lD1Q+Uu2p6P2rZ5jvYkR1nYVZ3fZ7hLw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js" integrity="sha512-5J7YxqV4mP3u+zL5fY3ZpF5H1nD8bQxU7tXvQh4pO1zD2xL8rV7hK9YcQnZrE1lM8fHh3vH8K5Kf7oW4R3VxvA==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/sql.min.js" integrity="sha512-l4sZx3rS4Lw3d1BvI1kVwL5gT3bD9uP3VfCqY6N7pX8jK0wT2yJ+YwU9mN4qV3ZxW1pD7bH5nE6uK5qT2U6xXg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js" integrity="sha512-G2lYw9qF6NnD4vQ5oT0yU3bU9lX7eP3hQ6rVwZ7mL2kJ3fP9qW4vR8yS6uJxN2oT4tZcW1sF8uV9yH3nB1k2xQ==" crossorigin="anonymous"></script>
+
+  <!-- Rainbow (Deprecated) -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/2.1.4/themes/github.css" /> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/2.1.4/rainbow.min.js"></script> -->
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script> -->
+
+  <!-- Google Analytics (gtag.js) – Enable for live site only.
+  <script async="true" src="https://www.googletagmanager.com/gtag/js?id=G-W8ZVFJP785"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-W8ZVFJP785');
+  </script>
+  -->
+
+  <!-- GCSE -->
+  <!-- <script async="true" src="https://cse.google.com/cse.js?cx=25d4aa9829a3148ff"/> -->
+
+  <!-- FontAwesome -->
+  <!-- <script src="https://kit.fontawesome.com/a548053f9e.js" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://kit.fontawesome.com/77a505b9e0.js" crossorigin="anonymous"></script> -->
+
+  <!-- Preload images -->
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-blue.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-up.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-down.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-left-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-right-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/codeblock-copy-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-up-fill-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-down-fill-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-down-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/IMPORTANT.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/TIP.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/REMEMBER.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/WARNING.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/CAUTION.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/community-logo-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/icon-legacy-site-search.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/3-stars-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/cross-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/sl-logo-indigo-icon.svg" as="image">
+  <!-- BugHerd -->
+  <!-- <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=1tn2hl0shbd0tgl9ifyteq" async="true"></script> stage-main -->
+  <!-- Include Bing Custom Search JavaScript SDK -->
+  <!-- <script src="https://www.bing.com/api/customsearch/search/sdk"></script> -->
+<link rel="stylesheet" type="text/css" href="../../../theme/commonltr.css"><link rel="stylesheet" type="text/css" href="../../../theme/sldocs.css"></head><body id="snap-kafka-consumer"><header role="banner"><div class="header">
+<div class="headertopsection">
+  <div class="mainbanner">
+    <!-- Hamburger for mobile -->
+    <i class="hamburgericon"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/hamburger-icon.svg" alt="menu"></i>
+
+    <!-- Logo and Site Title -->
+    <a href="../../../../index.html" class="header-logo-link">
+      <img class="noborder noexpand header-logo-img" src="https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-indigo-icon.svg" alt="SnapLogic Logo">
+    </a>
+    <ph class="site-title site-title-compact"><a href="../../../../index.html">SnapLogic Documentation</a></ph>
+
+    <!-- Search bar (right-aligned in top row) -->
+    <div class="search-container-compact desktop-nav">
+      <span onclick="showPopup()" class="search-icon-compact"><i><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-white.svg" alt="search-icon"></i></span>
+      <input type="text" id="searchQuery" placeholder="Search docs" spellcheck="false" autocomplete="off" onfocus="showdropdown()">
+    </div>
+  </div>
+
+  <!-- Product Dropdown Menus (separate row) -->
+  <nav class="product-menu-header desktop-nav">
+    <!-- Home link (no dropdown) -->
+    <a href="../../../../index.html" class="menu-home-link">Home</a>
+
+    <!-- Dropdown 1: AI Ecosystem -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        AI Ecosystem <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../agentcreator/agentcreator-home.html">AgentCreator</a>
+        <a href="../../../../mcp/mcp-home.html">MCP</a>
+        <a href="../../../../mcp-server-tools/mcp-server-tools-home.html">MCP Server Tools</a>
+        <a href="../../../../snapcode/snapcode-home.html">SnapCode</a>
+        <a href="../../../../snapgpt/snapgpt-home.html">SnapGPT</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 2: Integration Platform -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Integration platform <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../api-m/apim-home.html">API Management</a>
+        <a href="../../../../autosync/autosync-home.html">AutoSync</a>
+        <a href="../../../../designer/designer-home.html">Designer</a>
+        <a href="../../../../git-integration/git-integration-home.html">Git Integration</a>
+        <a href="../../../../manager/manager-home.html">Project Manager</a>
+        <a href="../../../../pattern-library/pattern-library-about.html">Pattern Library</a>
+        <a href="../../../../public-apis/public-apis-home.html">Public APIs</a>
+        <a href="../../../../security/security-home.html">Security</a>
+        <a href="../../../../snaplabs/snaplabs-about.html">SnapLabs</a>
+        <a href="../../../../snaps/snaps-home.html">Snaps</a>
+        <a href="../../../../snapgpt/snapgpt-home.html">SnapGPT</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 3: Administration &amp; Governance -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Administration <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../admin-manager/admin-manager-home.html">Admin Manager</a>
+        <a href="../../../../admin-manager/cloudplex-secure-connectivity.html">Cloud Connectivity</a>
+        <a href="../../../../manager/migrate-about.html">Migrate Environments</a>
+        <a href="../../../../secrets-mgmt/secrets-mgmt-about.html">Secrets Management</a>
+        <a href="../../../../snaplexes/snaplexes-home.html">Snaplexes</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 4: Observability -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Observability <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../tool-integrations/lineage-about.html">Data Lineage</a>
+        <a href="../../../../monitor/monitor-home.html">Monitor</a>
+        <a href="../../../../tool-integrations/observability-about.html">Observability Integrations</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 5: Tutorials -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Tutorials <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../tutorials/tutorials-admin-manager.html">Admin Manager</a>
+        <a href="../../../../tutorials/tutorials-autosync.html">AutoSync</a>
+        <a href="../../../../tutorials/tutorials-designer.html">Designer</a>
+        <a href="../../../../tutorials/tutorials-monitor.html">Monitor</a>
+        <a href="../../../../tutorials/tutorials-snapgpt.html">SnapGPT</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 6: Examples -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Examples <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../examples/examples-admin-manager.html">Admin Manager</a>
+        <a href="../../../../examples/examples-autosync.html">AutoSync</a>
+        <a href="../../../../examples/examples-designer.html">Designer</a>
+        <a href="../../../../examples/examples-monitor.html">Monitor</a>
+        <a href="../../../../examples/examples-snapgpt.html">SnapGPT</a>
+      </div>
+    </div>
+  </nav>
+
+  <ul class="topmenu">
+    <!-- Original search for mobile -->
+     <li class="search-popup-hdr">
+                <div id="search-container">
+                    <span onclick="showPopup()" id="search-container-icon"><i><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-white.svg" alt="search-icon"></i></span>
+                    <input type="text" id="searchQueryDesktop" placeholder="Search the documentation and community posts" spellcheck="false" autocomplete="off" onfocus="showdropdown()">
+                </div>
+            </li>
+  </ul>
+
+  <ul class="topmenusearch">
+  <li>
+                <div id="search-container-mobile">
+                    <span onclick="showPopup()"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-blue.svg" alt="search-icon"></span>
+                    <input type="text" id="searchQuerymobile" placeholder="Search the docs" spellcheck="false" autocomplete="off" onfocus="showdropdown()">
+                </div>
+            </li>
+      <li><span><i><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-white.svg" alt="search-icon"></i></span></li>
+  </ul>
+</div>
+  <div id="search-popup">
+    <div class="search-main">
+      <div class="Search-filters">
+      <div>
+      <li><h1>Filter search results</h1><img class="noborder noexpand close-filters-button" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg" alt="Close Filters"></li>
+      <li class="filter-item"><input type="checkbox" value="All" name="Content" checked=""><p>All</p></li>
+      <li class="filter-item"><input type="checkbox" value="Documentation" name="Content">
+        <p>New Documentation Site</p>
+        <img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-down-icon.svg" class="docfilterchevron noborder" alt="Toggle"></li>
+        <ul class="Doc-filters">
+          <li class="filter-item"><input type="checkbox" value="autosync" name="AutoSync"><p>AutoSync</p></li>
+          <li class="filter-item"><input type="checkbox" value="admin-manager" name="Admin Manager"><p>Admin Manager</p></li>
+          <li class="filter-item"><input type="checkbox" value="security" name="Security"><p>Security</p></li>
+          <li class="filter-item"><input type="checkbox" value="snaps" name="Snaps"><p>Snaps</p></li>
+          <li class="filter-item"><input type="checkbox" value="snaplexes" name="Snaplexes"><p>Snaplexes</p></li>
+          <li class="filter-item"><input type="checkbox" value="monitor" name="Monitor"><p>Monitor</p></li>
+          <li class="filter-item"><input type="checkbox" value="public-apis" name="Snaplogic Public APIs"><p>Snaplogic Public APIs</p></li>
+          <li class="filter-item"><input type="checkbox" value="git-integration" name="Git Integration"><p>Git Integration</p></li>
+          <li class="filter-item"><input type="checkbox" value="cicd/secrets-mgm" name="Secrets Management"><p>Secrets Management</p></li>
+          <li class="filter-item"><input type="checkbox" value="genai" name="GenAI App Builder"><p>AgentCreator</p></li>
+        </ul>
+        <li class="filter-item"><input type="checkbox" value="Confluence" name="Content">
+        <p>Legacy Site</p></li>
+        <ul class="legacy-filters-text">
+          <li>
+            <span><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/tool-tip-icon.svg" alt="icon"></span>
+            <span>No advanced filters available</span>
+          </li>
+        </ul>
+      </div>
+      </div>
+      <div class="search-page-main">
+        <div class="search-bar-advanced">
+           <div class="back-button">
+           <img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/arrow-narrow-left.svg" alt="backicon">
+           </div>
+          <div class="search-bar">
+          <div>
+          <span class="cleartext"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg" alt="clearicon"></span>
+           <span class="advancedsearchicon"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-blue.svg" alt="search-icon"></span>
+            <input placeholder="Search the documentation and community posts" type="text" spellcheck="false" autocomplete="off" onfocus="showdropdown2()">
+            </div>
+            <div id="autosuggest-dropdown2"></div>
+          </div>
+          <div class="show-filters-button"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/show-filters.svg" alt="clearicon"></div>
+          <div class="advance_search_button">Search</div>
+
+        </div>
+        <div class="results_count"></div>
+        <div id="searched-results"></div>
+         <div id="show-more" class="">Show more results</div>
+      </div>
+    </div>
+  </div>
+</div></header><nav class="toc" role="navigation"><ul><li><a href="../../../goals/learn-platform-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h5l1 1v9l-1-1H2V3z"/><path d="M14 3H9l-1 1v9l1-1h5V3z"/></svg> Learn about the SnapLogic Platform</a><ul><li><a href="../../../introduction/introduction-about.html">Platform components</a><ul><li><a href="../../../introduction/platform-overview.html">Platform components</a></li></ul></li><li><a href="../../../introduction/workflow.html">Working in the SnapLogic environment</a></li><li><a href="../../../introduction/interface-overview.html">Navigate the SnapLogic UIInterface Overview</a></li><li><a href="../../../introduction/manage-account.html">Manage your account</a><ul><li><a href="../../../introduction/user-profile.html">User account settings</a></li><li><a href="../../../introduction/user-mfa-setup.html">Set up MFA</a></li></ul></li><li><a href="../../../introduction/release-process.html">SnapLogic releases</a></li><li><a href="../../../introduction/platform-notifications.html">Logs, alerts, and notifications</a></li><li><a href="../../../introduction/timezone-settings.html">Time zone settings</a></li><li><a href="../../../cicd/cicd-about.html">CI/CD support</a></li><li><a href="../../../tool-integrations/tools-about.html">Tool integrations</a></li><li><a href="../../../introduction/documentation-roadmap.html">Documentation roadmap</a></li><li><a href="../../../introduction/intro-faq.html">SnapLogic FAQs</a></li><li><a href="../../../Chunk1935680106.html#Chunk1935680106">Glossary</a><ul></ul></li></ul></li><li><a href="../../../goals/get-started-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2L10 6H14L11 9L12 13L8 10.5L4 13L5 9L2 6H6L8 2Z"/></svg> Get Started</a><ul><li><a href="../../../goals/goal-integrate-data.html">Integrate Data</a></li><li><a href="../../../goals/goal-create-agent.html">Create an Intelligent Agent</a></li><li><a href="../../../goals/goal-transform-data.html">Transform Data</a></li><li><a href="../../../goals/goal-govern-api-use.html">Govern API Use</a></li><li><span>Agent Developers</span></li><li><span>Environment Admins</span><ul><li><a href="../../../admin-manager/create-user-account.html">Create User Accounts</a></li><li><a href="../../../admin-manager/admin-manager-create-snaplex.html">Create a Snaplex</a></li><li><span>Manage Snap Packs</span></li></ul></li><li><span>Integration Developers</span><ul><li><span>Configure Your Profile</span></li><li><span>Configure Snap Accounts</span></li><li><span>Monitor Integrations</span></li></ul></li><li><a href="../../../goals/tutorials-about.html">Tutorials</a><ul><li><a href="../../../goals/tutorial-first-pipeline.html">Create Your First Pipeline in Designer</a></li><li><a href="../../../goals/tutorial-first-autosync.html">Create Your First AutoSync Pipeline</a></li><li><a href="../../../goals/tutorial-first-agent.html">Create Your First Agent</a></li><li><a href="../../../goals/tutorial-first-apim.html">Create Your First APIM Service</a></li></ul></li></ul></li><li><a href="../../../goals/administer-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 7h6M5 10h4"/></svg> Administer the SnapLogic environment</a><ul><li><a href="../../../goals/control-plane-about.html">Control Plane</a><ul><li><a href="../../../manager/configure-custom-org-branding.html">Configure Custom Organization Branding</a></li><li><span>AutoSync Settings: Snap Pack Versions &amp; Allow Nullable Columns</span></li><li><span>APIM 3.0 Settings</span></li><li><span>Designer Settings: Pipeline Validation &amp; Data Preview</span></li><li><span>SnapGPT Settings</span></li><li><span>User Session Timeouts</span></li><li><span>Password Expiration</span></li><li><a href="../../../admin-manager/create-user-account.html">Create User AccountsCreate user account</a></li><li><a href="../../../admin-manager/create-team-account.html">Create Team AccountsCreate team account</a></li><li><a href="../../../admin-manager/create-service-account.html">Create Service AccountsCreate service account</a></li><li><a href="../../../admin-manager/edit-user-account.html">Edit User Accounts</a></li><li><a href="../../../autosync/account-groups.html">Organize Accounts into Groups</a></li></ul></li><li><a href="../../../goals/data-plane-about.html">Data Plane</a><ul><li><a href="../../../admin-manager/admin-manager-create-snaplex.html">Create a Snaplex</a></li><li><a href="../../../admin-manager/admin-manager-update-snaplex.html">Update a Snaplex</a></li><li><span>Configure Snaplex Allowlists</span></li><li><span>Add SnapLogic IPs to Client Allowlists</span></li><li><span>Configure Snaplex Auto-Upgrade</span></li><li><span>Start a Snaplex</span></li><li><span>Stop a Snaplex</span></li><li><span>Install a Groundplex</span></li><li><span>Configure a Groundplex</span></li><li><a href="../../../designer/upgrade-to-a-new-snaplex-version.html">Upgrade to a New Snaplex Version</a></li></ul></li><li><span>Security</span><ul><li><a href="../../../admin-manager/create-idp-integration.html">Create Identity Provider IntegrationCreate IdP application</a></li><li><a href="../../../admin-manager/configure-sso.html">Configure Single Sign-OnConfigure SSO</a></li><li><a href="../../../admin-manager/enhanced-encryption.html">Enable Enhanced Encryption (Admin)</a></li><li><a href="../../../autosync/enhanced-account-encryption.html">Enable Enhanced Encryption (AutoSync)</a></li></ul></li></ul></li><li><a href="../../../goals/develop-integrations-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 1.5"/></svg> Develop and Deploy Integrations</a><ul><li><a href="../../../goals/cdw-about.html">Automate data synchronization</a><ul><li><a href="../../../autosync/create-credentials.html">Create Data Source CredentialsCreate credentials</a></li><li><a href="../../../autosync/create-data-pipeline.html">Create a Data PipelineCreate a data pipeline</a></li><li><a href="../../../autosync/choose-tables.html">Choose Tables to SyncChoose tables</a></li><li><a href="../../../autosync/view-data-pipeline.html">View Data Pipeline StatusView data pipeline</a></li><li><a href="../../../autosync/enable-notifications.html">Enable Data Pipeline NotificationsEnable notifications</a></li></ul></li><li><a href="../../../goals/apps-databases-about.html">Design pipelines</a><ul><li><a href="../../../snapgpt/snapgpt-pipe-gen-rag.html">Generate a Pipeline with SnapGPTGenerate pipeline</a></li><li><a href="../../../snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate Expressions with SnapGPT</a></li><li><a href="../../../snapgpt/mapper-expr-example1.html">Generate Mapper Expressions with SnapGPT</a></li><li><a href="../../../snapgpt/generate-queries.html">Generate SQL Queries with SnapGPT</a></li><li><a href="../../../snapgpt/mapper-expr-example2.html">Extract Pipeline Parameters with SnapGPT</a></li><li><a href="../../../snapgpt/snapgpt-analyze-pipelines.html">Analyze Pipelines with SnapGPT</a></li><li><a href="../../../snapgpt/snapgpt-refine-pipelines.html">Refine Pipelines with SnapGPTRefine pipelines</a></li><li><a href="../../../snapgpt/snapgpt-pipe-gen-image.html">Generate a Pipeline from an Image</a></li><li><a href="../../../designer/print-pipeline.html">Print a Pipeline</a></li><li><a href="../../../designer/using-pipeline-notes-in-designer.html">Use Pipeline Notes in Designer</a></li></ul></li><li><span>Set Up Git Integration</span><ul><li><a href="../../../git-integration/git-integration-about.html">Git Integration</a></li><li><a href="../../../git-integration/git-authorize.html">Authorize Git Access</a></li><li><a href="../../../git-integration/git-integration-github.html">Connect to GitHub</a></li><li><a href="../../../git-integration/git-create-project-from-repo.html">Create a Project from a Repository</a></li></ul></li><li><span>Work with Assets in Git</span><ul><li><a href="../../../git-integration/git-operations.html">Git Operations Reference</a></li><li><a href="../../../git-integration/git-add-asset.html">Add an Asset to Git</a></li><li><a href="../../../git-integration/git-create-branch.html">Create a Branch</a></li><li><a href="../../../git-integration/git-commit-all-updates.html">Commit All Updates</a></li><li><a href="../../../git-integration/git-pull-from-repo.html">Pull from a Repository</a></li></ul></li></ul></li><li><a href="../../../goals/deploy-pipelines-about.html">Deploy Pipelines</a><ul><li><a href="../../../manager/task.html">Deploy pipelines</a><ul><li><a href="../../../manager/create-notifications.html">Configure task notifications</a></li><li><a href="../../../manager/scheduled-tasks.html">Scheduled Tasks</a><ul><li><a href="../../../manager/create-scheduled-tasks.html">Create a Scheduled Task</a><ul><li><a href="../../../manager/configure-regular-schedule.html">Configure Regular Schedule</a></li><li><a href="../../../manager/configure-blackout-dates.html"> Configure Blackout Dates</a></li></ul></li><li><a href="../../../manager/view-task-details.html">View task details</a></li><li><a href="../../../manager/set-repeatable-schedule.html">Set a repeatable schedule</a></li><li><a href="../../../manager/configure-timeouts-and-notifications.html">Configure timeouts</a></li><li><a href="../../../manager/view-scheduled-task-schedules-in-manager.html">View schedules</a></li><li><a href="../../../manager/task-queuing.html">Scheduled Task Queuing Preview</a></li></ul></li><li><a href="../../../manager/triggered-tasks.html">Triggered Tasks</a><ul><li><a href="../../../manager/create-triggered-task.html">Create a Triggered Task</a></li><li><a href="../../../manager/run-triggered-task.html">Run Triggered Task</a></li><li><a href="../../../manager/view-triggered-task-details.html">View Triggered Task details </a></li><li><a href="../../../manager/triggered-task-configuration-options.html">Configuration options</a></li><li><a href="../../../manager/stop-triggered-task.html">Stop Triggered Task</a></li><li><a href="../../../manager/design-triggered-task-pipelines.html">Design Triggered Task pipelines</a></li><li><a href="../../../manager/pass-pipeline-arguments-to-triggered-task.html">Pass pipeline arguments to Triggered Task</a></li><li><a href="../../../manager/deploy-tasks-from-on-premises-networks.html">Deploy tasks from on-premises networks</a></li><li><a href="../../../manager/triggered-task-execution.html">Synchronous and asynchronous Triggered Task execution</a></li><li><a href="../../../manager/using-triggered-tasks-with-enterprise-scheduler.html"> Triggered Tasks with Enterprise Scheduler</a></li><li><a href="../../../manager/monitor-and-troubleshoot-triggered-tasks.html">Monitor and troubleshoot Triggered Tasks</a></li></ul></li><li><a href="../../../manager/ultra-task-pipelines.html">Ultra Tasks</a><ul><li><a href="../../../manager/types-ultra-pipelines.html">Pipeline requirements for Ultra Tasks</a></li><li><a href="../../../manager/create-ultra-task.html">Create an Ultra Task</a></li><li><a href="../../../manager/invoke-ultra-pipelines-tasks.html">Invoke Ultra Tasks</a></li><li><a href="../../../manager/headless-ultra-tasks.html">Headless Ultra Tasks</a></li><li><a href="../../../manager/low-latency-ultra-tasks.html">Low-latency Ultra Tasks</a></li><li><a href="../../../manager/overview-ultra-tasks.html">Ultra Tasks in production</a><ul><li><a href="../../../manager/deployment-architecture.html">Deployment architecture for Ultra Tasks</a></li><li><a href="../../../manager/deploy-feedmaster-node.html">Deploy FeedMaster node</a></li><li><a href="../../../manager/configure-ultra-task-alias.html">Configure an alias for High Availability</a></li></ul></li><li><a href="../../../manager/monitor-ultra-pipeline-tasks.html">Monitor Ultra Tasks</a></li><li><a href="../../../manager/best-practices-ultra-pipeline-tasks.html">Best Practices for Ultra Tasks </a></li><li><a href="../../../manager/snap-support-for-ultra-tasks.html">Snap Support for Ultra Tasks</a></li><li><a href="../../../manager/ultra-create-web-apps.html">Building Real-Time Web Apps</a></li></ul></li><li><a href="../../../manager/task-admin-operations.html">Common task administrative operations</a><ul><li><a href="../../../manager/edit-task.html">Edit a Task</a></li><li><a href="../../../manager/enable-and-disable-task.html">Enable and disable task</a></li><li><a href="../../../manager/task-details.html">Task details</a></li><li><a href="../../../manager/move-task.html">Move a task</a></li><li><a href="../../../manager/view-pipeline-apis.html">View pipeline APIs in Swagger</a></li></ul></li></ul></li></ul></li><li><a href="../../../goals/develop-agents-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 1.5"/></svg> Develop Agents</a><ul><li><span>Build Agents</span><ul><li><a href="../../../agentcreator/agentcreator-getstarted-build-agents.html">Get Started Building Agents</a></li><li><a href="../../../agentcreator/agentcreator-build-agents.html">Agent Architecture and Pipeline Design</a></li><li><a href="../../../agentcreator/agent-creator-tool-pipelines.html">Create Tool Pipelines</a></li></ul></li><li><span>Prompt Composition</span><ul><li><a href="../../../agentcreator/prompt-composer/agentcreator-promptcomposer-about.html">About Prompt Composer</a></li><li><a href="../../../agentcreator/prompt-composer/agentcreator-promptcomposer-launch.html">Get Started with Prompt Composer</a></li></ul></li><li><span>Use MCP</span><ul><li><a href="../../../mcp/mcp-quickstart.html">MCP Quickstart</a></li><li><a href="../../../mcp/mcp-server-setup.html">Set Up an MCP Server</a></li><li><a href="../../../mcp/mcp-client-setup.html">Set Up an MCP Client</a></li><li><a href="../../../mcp/mcp-connect-client.html">Connect a Client to Your Server</a></li></ul></li><li><span>Test &amp; Debug</span><ul><li><a href="../../../agentcreator/agentvis/agentcreator-agent-visualizer-about.html">Agent Visualizer</a></li><li><a href="../../../agentcreator/agentvis/agentvis-launch.html">Get Started with Agent Visualizer</a></li></ul></li><li><span>Deploy &amp; Use Cases</span><ul><li><a href="../../../agentcreator/agentcreator-usecase-briefing-agent.html">Use Case: Briefing Agent</a></li></ul></li></ul></li><li><a href="../../../goals/manage-apis-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8l2 4-2 4H4L2 6l2-4z"/><path d="M5 6h6"/></svg> Manage APIs</a><ul><li><a href="../../../goals/api-management-about.html">API Management</a></li><li><span>Services</span><ul><li><a href="../../../api-m/workflows/service-create.html">Create a Service</a></li><li><a href="../../../api-m/workflows/work-services.html">Work with Services</a></li><li><a href="../../../api-m/workflows/create-service-from-spec.html">Create a Service from an OpenAPI Spec</a></li><li><a href="../../../api-m/workflows/service-config.html">Configure a Service</a></li><li><a href="../../../api-m/workflows/endpoint-config.html">Configure Endpoints</a></li><li><a href="../../../api-m/workflows/service-test-pub.html">Test and Publish a Service</a></li><li><a href="../../../api-m/workflows/publish-service.html">Publish to the Developer Portal</a></li></ul></li><li><span>Policies</span><ul><li><a href="../../../api-m/workflows/policies-rules.html">Policies and Rules Overview</a></li><li><a href="../../../api-m/workflows/create-policy.html">Create a Policy</a></li><li><a href="../../../api-m/workflows/enable-subscription.html">Enable Subscriptions</a></li></ul></li><li><span>Authentication</span><ul><li><a href="../../../public-apis/generate-jwt.html">Authenticate using JWT</a></li></ul></li><li><span>Pipeline Operations</span><ul><li><a href="../../../public-apis/post-runtime-start-org-ruuid.html">Start a Pipeline</a></li><li><a href="../../../public-apis/get-runtime-org.html">List Pipeline Executions</a></li></ul></li><li><span>Project Management</span><ul><li><a href="../../../public-apis/post-project-import-import-path.html">Import a Project</a></li></ul></li><li><span>Users &amp; Infrastructure</span><ul><li><a href="../../../public-apis/post-users.html">Create a User</a></li><li><a href="../../../public-apis/get-snaplex-org.html">Manage Snaplexes</a></li></ul></li></ul></li><li><a href="../../../goals/configure-security-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="8" height="7" rx="1"/><path d="M6 7V5a2 2 0 014 0v2"/><circle cx="8" cy="10.5" r="1" fill="currentColor"/></svg> Configure Security</a><ul><li><span>Authentication</span><ul><li><span>Authentication for the Control Plane</span><ul><li><a href="../../../admin-manager/authentication.html">Authentication Overview</a></li><li><a href="../../../admin-manager/create-idp-integration.html">Create Identity Provider IntegrationCreate IdP application</a></li><li><a href="../../../admin-manager/configure-sso.html">Configure Single Sign-OnConfigure SSO</a></li></ul></li><li><a href="../../../goals/security/auth-public-apis.html">Authentication for Public APIs</a></li><li><a href="../../../goals/security/auth-apim-services.html">Authentication for APIM Services</a></li></ul></li><li><span>Encryption</span><ul><li><a href="../../../admin-manager/enhanced-encryption.html">Enable Enhanced Encryption (Admin)</a></li><li><a href="../../../autosync/enhanced-account-encryption.html">Enable Enhanced Encryption (AutoSync)</a></li><li><a href="../../../admin-manager/account-encryption.html">Account Encryption</a></li><li><a href="../../../admin-manager/email-encryption.html">Email Encryption</a></li></ul></li><li><span>Secrets Management</span><ul><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-about.html">Secrets Management Overview</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-config-accounts.html">Configure Accounts for Secrets ManagementConfigure Snap accounts</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-aws.html">AWS Secrets Manager</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-azure-kv.html">Azure Key Vault</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-hashicorp.html">HashiCorp Vault</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-cyberark.html">CyberArk Conjur</a></li></ul></li><li><span>Allowlists &amp; Certificates</span><ul><li><a href="../../../admin-manager/allowlist.html">Configure Allowlists</a></li><li><a href="../../../admin-manager/groundplex-allowlist.html">Groundplex Allowlist</a></li><li><a href="../../../admin-manager/cloud-triggered-allowlist.html">Cloud-Triggered Task Allowlist</a></li><li><a href="../../../admin-manager/cors-allowlist.html">CORS Allowlist</a></li><li><a href="../../../admin-manager/email-allowlist.html">Email Allowlist</a></li></ul></li></ul></li><li><a href="../../../goals/monitoring-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="2.5" width="13" height="9" rx="1"/><path d="M5 14h6"/><path d="M4 7l3 -2 2 3 3 -4"/></svg> Monitor the runtime</a><ul><li><span>APIs</span><ul><li><a href="../../../monitor/observe-api-metrics.html">View API Metrics</a></li></ul></li><li><span>Environment Assets</span><ul><li><a href="../../../monitor/catalog.html">Browse the Asset CatalogAsset catalog</a></li><li><a href="../../../monitor/view-metadata.html">View Asset Metadata</a></li><li><a href="../../../monitor/asset-table-config.html">Configure the Asset TableConfigure asset table</a></li><li><a href="../../../monitor/custom-metadata.html">Manage Custom Metadata</a></li><li><a href="../../../monitor/download-upload-metadata.html">Download and Upload MetadataDownload and upload</a></li><li><a href="../../../monitor/add-supplemental-metadata.html">Add Supplemental Metadata</a></li><li><a href="../../../monitor/edit-task-metadata.html">Edit Task Metadata</a></li></ul></li><li><span>MCP</span></li><li><span>Pipelines</span><ul><li><a href="../../../monitor/monitor-analyze.html">Analyze Pipelines</a></li><li><a href="../../../monitor/insights.html">View Pipeline Insights</a></li><li><a href="../../../monitor/analyze-execution.html">Analyze ExecutionPipeline executions</a></li><li><a href="../../../monitor/find-executions.html">Find Executions</a></li><li><a href="../../../monitor/stop-executions.html">Stop Executions</a></li><li><a href="../../../monitor/download-executions.html">Download Executions</a></li><li><a href="../../../monitor/pipeline-details-panel.html">View Pipeline Details</a></li><li><a href="../../../monitor/snap-statistics-tab.html">View Snap Statistics</a></li><li><a href="../../../monitor/pipeline-logs-tab.html">View Pipeline Logs</a></li><li><a href="../../../monitor/pipeline-parameters-tab.html">View Pipeline Parameters</a></li><li><a href="../../../monitor/state-transition-tab.html">View State Transitions</a></li></ul></li><li><span>Snaplexes</span></li><li><span>Snaps</span><ul><li><a href="../../../monitor/snap-statistics-tab.html">View Snap Statistics</a></li></ul></li></ul></li><li><a href="../../../goals/observe-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="8" cy="8" r="6"/></svg> Observability</a><ul><li><a href="../../../otel/observability-datadog.html">Integrate with Datadog</a></li><li><a href="../../../tool-integrations/observability-newrelic.html">Integrate with New Relic</a></li><li><a href="../../../monitor/observe-api-metrics.html">View API Metrics</a></li><li><a href="../../../monitor/insights.html">View Pipeline Insights</a></li><li><a href="../../../monitor/analyze-metrics.html">Analyze Snaplex Metrics</a></li></ul></li><li><a href="../../../goals/troubleshoot-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="4.5"/><path d="M8 8v1"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/><path d="M6.5 12h3l0.5 2h-4z"/></svg> Troubleshoot</a><ul><li><a href="../../../introduction/navigate-snaplogic-support.html">Get Support</a></li><li><span>Accounts</span></li><li><span>Agents</span></li><li><span>APIM Services</span></li><li><span>MCP Servers</span></li><li><span>Pipelines</span></li><li><span>Runtime Behavior</span></li><li><span>Snaplexes</span></li><li><span>Snaps</span></li><li><span>Tasks</span></li></ul></li></ul></nav><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+    <h1 class="title topictitle1" id="ariaid-title1">Kafka Consumer</h1>
+    <div class="body refbody">
+        <section class="section">
+            
+            <div class="p">You can use the Kafka Consumer Snap to read or consume documents from a Kafka topic.<div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+                    <ul class="ul">
+                        <li class="li">We recommend that you do not combine consumer groups and partitions when
+                            configuring the <span class="ph"> <a class="xref" href="../../../common/../snaps/snaps-data/sp-kafka/kafka-consumer.html">Kafka Consumer</a></span>.</li>
+                        <li class="li">For the notifications to work properly, a record output by the Consumer
+                            Snap must be acknowledged by the<span class="ph"> <a class="xref" href="../../../common/../snaps/snaps-data/sp-kafka/kafka-acknowledge.html">Kafka Acknowledge</a></span> executing on the
+                            same node.</li>
+                    </ul>
+                </div></div>
+        </section>
+        <section class="section">
+            <br><div class="imageleft"><img class="image imageleft img75pc noborder" src="../../../img/snaps/snaps-data/sp-kafka/kafka-consurmer.png" alt="Kafka consumer"></div><br>
+        </section>
+        <section class="section">
+            <ul class="ul ul-snaps-glance">
+                <li class="li"><span class="ph"><img class="image noborder pill-white noexpand" src="../../../common/../img/icons/prod/icon/snap-icons/snap-read-icon.svg"><span class="keyword"></span></span></li>
+                <li class="li"><span class="ph"> <span class="ph"><img class="image icon-green noexpand" src="../../../common/../img/icons/sluiv3/invocation/ultra.svg"></span> Works in <a class="xref" href="../../../manager/ultra-task-pipelines.html">Ultra Tasks</a></span></li>
+            </ul>
+        </section>
+        <section class="section">
+            <p class="p sectiondivtitle">Prerequisites</p>
+            <ul class="ul">
+                <li class="li">A valid account with the required permissions.</li>
+                <li class="li">A Kafka topic with parameters that are valid for consumption (reading).</li>
+            </ul>
+        </section>
+        <section class="section"><h2 class="title sectiontitle">Snap views<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="snaps/snaps-data/sp-kafka/kafka-consumer.html#snap-views"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+            
+            <table class="table snapreftable"><caption></caption><colgroup><col style="width:20%"><col style="width:40%"><col style="width:40%"></colgroup><thead class="thead">
+            <tr class="row">
+              <th class="entry valign-top" id="snap-kafka-consumer__entry__1">Type</th>
+              <th class="entry valign-top" id="snap-kafka-consumer__entry__2">Description</th>
+              <th class="entry valign-top" id="snap-kafka-consumer__entry__3">Examples of upstream and downstream Snaps</th>
+            </tr>
+          </thead><tbody class="tbody">
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__1">Input</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__2">
+                                <p class="p">A document containing a Kafka topic, a consumer group, a partition, and an offset.</p>
+                            </td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__3">
+                                <ul class="ul">
+                                    <li class="li"><span class="ph"><a class="xref" href="../../../common/../snaps/snaps-core/sp-transform/snap-mapper.html">Mapper</a></span></li>
+                                    <li class="li"><span class="ph"><a class="xref" href="../../../common/../snaps/snaps-core/sp-transform/snap-csv-formatter.html">CSV
+          Formatter</a></span></li>
+                                    <li class="li"><span class="ph"><a class="xref" href="../../../common/../snaps/snaps-core/sp-transform/snap-json-formatter.html">JSON
+          Formatter</a></span></li>
+                                    <li class="li"><span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-transform/snap-xml-formatter.html">XML Formatter</a>
+        </span></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__1">Output</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__2">
+                                <p class="p">The message data with key/value parameters and metadata.</p>
+                            </td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__3">
+                                <ul class="ul">
+                                    <li class="li"><span class="ph"><a class="xref" href="../../../common/../snaps/snaps-core/sp-transform/snap-mapper.html">Mapper</a></span></li>
+                                    <li class="li"><span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-copy.html">Copy</a>
+        </span></li>
+                                    <li class="li"><span class="ph"><a class="xref" href="../../../common/../snaps/snaps-core/sp-transform/snap-json-formatter.html">JSON
+          Formatter</a></span></li>
+                                    <li class="li"><span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-binary/file-writer.html">File Writer</a>
+        </span></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="row">
+              <td class="entry align-left" headers="snap-kafka-consumer__entry__1 snap-kafka-consumer__entry__2 snap-kafka-consumer__entry__3" colspan="3">
+              	Learn more about <span class="ph"><a class="xref" href="../../../common/../design-integrations/error-handling.html">Error handling</a></span>.
+              	
+              </td>
+            </tr>
+                    </tbody></table>
+        </section>
+        <section class="section"><h2 class="title sectiontitle">Snap settings<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="snaps/snaps-data/sp-kafka/kafka-consumer.html#snap-settings"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+            
+            <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Legend:</span> 
+        <ul class="ul">
+          
+          <li class="li">Expression icon (<img class="image inline-icon" src="../../../common/../img/icons/sluimisc/expressionSelected-Enabled.svg">): Allows using
+            pipeline parameters to set field values dynamically (if enabled). SnapLogic Expressions
+            are not supported. If disabled, you can provide a static value. </li>
+          <li class="li">SnapGPT (<img class="image inline-icon" src="../../../common/../img/icons/sluimisc/snapgpt.svg">): Generates SnapLogic Expressions
+            based on natural language using SnapGPT. <a class="xref" href="../../../snapgpt/snapgpt-generate-expressions-mapper-snap.html" title="Use SnapGPT to generate expressions to use in Snaps with expression-enabled fields.">Learn
+            more.</a></li>
+          <li class="li"> Suggestion icon (<img class="image inline-icon" src="../../../common/../img/icons/sluimisc/suggest.svg">): Populates a
+            list of values dynamically based on your Snap configuration. You can select only one
+            attribute at a time using the icon. Type into the field if it supports a comma-separated
+            list of values.</li>
+          <li class="li">Upload <img class="image inline-icon" src="../../../common/../img/icons/prod-slui/designer/database.png">: Uploads files. <a class="xref" href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1439404" target="_blank" rel="external noopener">Learn more</a>.</li>
+          
+        </ul>Learn more about the icons in the <a class="xref" href="../../../common/../snaps/snap-settings-dialog.html">../../../common/../snaps/snap-settings-dialog.html</a>. </div>
+            <table class="table snapreftable"><caption></caption><colgroup><col style="width:20%"><col style="width:20%"><col style="width:60%"></colgroup><thead class="thead">
+            <tr class="row">
+              <th class="entry valign-top" id="snap-kafka-consumer__entry__11">Field/Field set</th>
+              <th class="entry valign-top" id="snap-kafka-consumer__entry__12">Type</th>
+              <th class="entry valign-top" id="snap-kafka-consumer__entry__13">Description</th>
+            </tr>
+          </thead><tbody class="tbody">
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11"><p class="p">Label</p> <p class="p"><code class="ph codeph"><span class="ph">String</span></code></p></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">String</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">
+                                <p class="p"><span class="ph">
+                  <span class="ph"><strong class="ph b">Required.</strong></span> Specify a unique name for the Snap. Modify this
+                  to be more appropriate, especially if more than one of the same Snaps is in the
+                  pipeline. </span></p>
+                                <p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span><em class="ph i">Kafka Consumer</em></p>
+                                <p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span><em class="ph i">Consumer_sales_data</em></p>
+                            </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Topic</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">String/Suggestion</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13"> Specify the topic from which messages are to be read. <p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>N/A</p>
+                                <span class="ph"><strong class="ph b">Example</strong>: </span>T1 </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Partition Number</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Integer/Expression</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13"> Specify the partition number. Partitions allow you to
+                                parallelize a topic by splitting the data in a particular topic
+                                across multiple brokers. They allow multiple consumers to read from
+                                a topic in parallel. <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> This field is optional unless <strong class="ph b">Seek
+                                        type</strong> is set to <strong class="ph b">Specify offset</strong>, in which case it
+                                    is required. A value that is equal to or greater than the total
+                                    number of partitions for the topic is allowed so that when a
+                                    target partition is added to the topic, the Snap is ready to
+                                    consume the messages without restarting.</div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>N/A</p>
+                                <span class="ph"><strong class="ph b">Example</strong>: </span>2 </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Group ID</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">String/Expression</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">
+                                <span class="ph"><strong class="ph b">Required.</strong></span> Specify a unique string that
+                                identifies the group to which this consumer belongs. The Consumer
+                                Snaps can be grouped together by using the same group ID
+                                    value.<div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> Kafka performs group rebalancing whenever a new
+                                    consumer instance joins the group. We recommend you to specify a
+                                    unique Group ID for each Snap instance to avoid rebalancing of
+                                    all other consumer instances existing in the group.</div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>N/A</p>
+                                <span class="ph"><strong class="ph b">Example</strong>: </span>people </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Client ID</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">String/Expression</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13"><p class="p">Specify the Client ID to pass to the server when making
+                                    requests. If you do not specify a value, a default value is
+                                    created using any of the following
+                                        expressions:</p><p class="p"><code class="ph codeph">pipe.startTime.getTime() + ‘|' +
+                                        +</code></p><p class="p"><code class="ph codeph">pipe.hostname + '|' +
+                                    +</code></p><p class="p"><code class="ph codeph">pipe.projectPath + '/' +
+                                        +</code></p><p class="p"><code class="ph codeph">pipe.label + '/' +
+                                        +</code></p><p class="p"><code class="ph codeph">snap.label + '|' +
+                                        +</code></p><p class="p"><code class="ph codeph">pipe.ruuid + '|' +
+                                        +</code></p><p class="p"><code class="ph codeph">snap.instanceId</code></p><p class="p">This
+                                    Client ID is used to correlate requests sent to brokers with
+                                    each client and track the source of requests.</p><div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The
+                                        <strong class="ph b">Client ID</strong> value is used to track acknowledgements
+                                    when using the <span class="ph"> <a class="xref" href="../../../common/../snaps/snaps-data/sp-kafka/kafka-acknowledge.html">Kafka Acknowledge</a></span> Snap. The value must be unique for each Consumer Snap
+                                    instance. For example, if a pipeline has more than one Consumer
+                                    Snap, an expression like <code class="ph codeph">pipe.ruuid</code> is
+                                    insufficient for the <code class="ph codeph">Client ID</code>, because the
+                                    value is the same for both Snaps in the same pipeline instance.
+                                    In such cases, each Consumer Snap should use a unique prefix as
+                                    part of the expression: <code class="ph codeph">"topic1-consumer-" +
+                                        pipe.ruuid</code>.</div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>N/A</p>
+                                <span class="ph"><strong class="ph b">Example</strong>: </span><kbd class="ph userinput">testclient001</kbd></td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Message Count</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Integer/Expression</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13"> Specify the number of messages to be read before the consumption
+                                process stops. <ul class="ul">
+                                    <li class="li">If the message count is positive, the Snap terminates when
+                                        it reaches the specified count, or when all available
+                                        messages are read if fewer than the specified count
+                                        exist.</li>
+                                    <li class="li">If the message count is negative, the Snap continues to read
+                                        messages indefinitely.</li>
+                                    <li class="li">If the message count is 0, the Snap reads all currently
+                                        available messages and then terminates.</li>
+                                </ul><div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> If you set 0 as the value for <span class="ph uicontrol">Message
+                                        Count</span>, you might need to increase the
+                                        <strong class="ph b">Fetching Timeout</strong> value to avoid premature termination
+                                    when records are actually available. </div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>-1</p>
+                                <span class="ph"><strong class="ph b">Example</strong>: </span>20 </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Wait For Full Count</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Checkbox</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13"> Activates when you enter a positive integer value or expression
+                                in the <span class="ph uicontrol">Message Count</span> field.<p class="p">Select this
+                                    checkbox to enable the Snap to read and process messages until
+                                    the specified number in the <span class="ph uicontrol">Message Count</span>
+                                    field is reached.</p><p class="p">If deselected, the Snap terminates when
+                                    the specified number in the <strong class="ph b">Message Count</strong> field is
+                                    reached, or when all available messages are read if the number
+                                    of message is less than the specified count.</p><p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span><em class="ph i">Selected</em></p>
+                            </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Max Poll Records</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Integer/Expression</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13"> Select or enter the maximum number of records in a batch that is
+                                to be returned by a single call to poll. <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+                                    <p class="p">Increasing this value can improve performance, but also
+                                        increases the number of records that require acknowledgement
+                                        when <strong class="ph b">Auto commit</strong> is set to false and <strong class="ph b">Acknowledge
+                                            mode</strong> is set to Wait after each batch of records. In
+                                        this case, the value of <strong class="ph b">Acknowledge timeout</strong> should be
+                                        adjusted accordingly. This value sets an upper limit to the
+                                        batch size, but Kafka might choose to return a smaller
+                                        number of records depending on other factors, such as the
+                                        size of each record.</p>
+                                </div><p class="p">Try decreasing this value if you encounter the error:
+                                        <em class="ph i">Commit cannot be completed since the group has already
+                                        rebalanced and assigned the partitions to another
+                                        member.</em></p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>500</p>
+                                <span class="ph"><strong class="ph b">Example</strong>: </span>500 </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Max Poll Interval (ms)</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Integer/Expression</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13"> Defines the maximum time between poll invocations. This field
+                                corresponds to the <a class="xref" href="https://kafka.apache.org/documentation/#consumerconfigs_max.poll.interval.ms" target="_blank" rel="external noopener">Kafka </a><code class="ph codeph"><a class="xref" href="http://max.poll.interval.ms/" target="_blank" rel="external noopener">max.poll.interval.ms</a></code><a class="xref" href="https://kafka.apache.org/documentation/#consumerconfigs_max.poll.interval.ms" target="_blank" rel="external noopener"> property</a>.<div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> If the
+                                    account’s <strong class="ph b">Advanced Kafka Properties</strong> specifies a value for
+                                            <code class="ph codeph"><a class="xref" href="http://max.poll.interval.ms/" target="_blank" rel="external noopener">max.poll.interval.ms</a></code>, that value takes
+                                    precedence over any value in the Snap Settings and a warning is
+                                    displayed. We recommend removing any such value from the account
+                                    and using the value specified in the Snap Settings
+                                    instead.</div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>300000 (5
+                                    min.)</p>
+                                <span class="ph"><strong class="ph b">Example</strong>: </span>180000 </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Fetching Timeout</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Integer/Expression</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13"> Specify the number of milliseconds the Snap must wait for a
+                                single successful poll request. <p class="p">If the timeout expires (due to
+                                    network or other issues), then the Snap polls again for more
+                                    messages, unless the message count is 0, in which case it stops
+                                    as expected.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>2000</p>
+                                <span class="ph"><strong class="ph b">Example</strong>: </span>2000 </td>
+                        </tr>
+                        
+                        
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Auto Commit</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Checkbox</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">Select this checkbox to enable the Snap to commit offsets
+                                automatically as messages are consumed and sent to the output
+                                    view.<p class="p">If you deselect the <strong class="ph b">Auto Commit</strong> check box, the
+                                    Pipeline must contain one or more Acknowledge Snaps downstream
+                                    to acknowledge the documents that are output by the Consumer,
+                                    each of which represents an individual Kafka message, after each
+                                    document is appropriately processed by the other snaps between
+                                    the Consumer and Acknowledge Snaps.</p><p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span><em class="ph i">Selected</em></p></td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Acknowledge Mode</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Dropdown list</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">
+                                <p class="p">Activates when you deselect the <strong class="ph b">Auto Commit</strong> checkbox.</p>
+                                <p class="p">Choose the Acknowledge Mode that determines when the Snap should wait for acknowledgments from the downstream Acknowledge Snaps. The available options are:</p>
+                                <ul class="ul">
+                                    <li class="li"><strong class="ph b">Wait after each record:</strong> The Snap writes a single record, then waits for that record to be acknowledged before writing another record.</li>
+                                    <li class="li"><strong class="ph b">Wait after each batch of records:</strong> The Snap polls the broker to obtain a batch of records, writes all records in the batch, and then waits for each of these records to be individually acknowledged before polling again. This option has more throughput and is faster.</li>
+                                </ul>
+                                <div class="p">
+                                    <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> You must configure the <strong class="ph b">Acknowledge Timeout</strong> value
+                                        based on the Acknowledge Mode configuration.</div>
+                                </div>
+                                <p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>Wait after each record</p>
+                                <p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>Wait after each batch of
+                                    records.</p>
+                            </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Acknowledge Timeout (sec)</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Integer/Expression</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13"> Activates when you deselect the <strong class="ph b">Auto Commit</strong> check
+                                    box.<p class="p">Enter the maximum number of seconds to wait for a
+                                    notification from the Acknowledge Snap before committing the
+                                    offset.</p><div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+                                    <ul class="ul">
+                                        <li class="li">When <strong class="ph b">Acknowledge Mode</strong> is set to <strong class="ph b">Wait after
+                                                each record</strong>, the timeout is the maximum time
+                                            allowed to process one record.</li>
+                                        <li class="li">When <strong class="ph b">Acknowledge Mode</strong> is set to <strong class="ph b">Wait after
+                                                each batch of records</strong>, the timeout is the
+                                            maximum time allowed to process all of the records in a
+                                            single batch.</li>
+                                        <li class="li">When you configure either of the acknowledgment modes
+                                            and if a timeout occurs, an error message is generated,
+                                            which includes a complete list of the unacknowledged
+                                            records, including metadata. However, if you configure
+                                            an error view, the error is written to it, and the
+                                            Consumer continues processing subsequent records. If no
+                                            error view is configured, this error aborts the Snap and
+                                            the pipeline execution stops.</li>
+                                    </ul>
+                                </div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>10</p>
+                                <span class="ph"><strong class="ph b">Example</strong>: </span>15 </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Acknowledge Timeout Policy</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Dropdown list</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">Activates when you deselect the <strong class="ph b">Auto Commit</strong>
+                                    checkbox.<p class="p">Choose an Acknowledge Timeout Policy to handle
+                                    acknowledge timeout errors. Available options:</p><ul class="ul">
+                                    <li class="li">Reprocess: This option reprocesses the unacknowledged
+                                        records that are caused by acknowledge timeouts. The Snap
+                                        writes an error detailing unacknowledged records to the
+                                        Error view (if configured) and then commits the offset of
+                                        the first unacknowledged record for reprocessing.</li>
+                                    <li class="li">Continue: This option ignores the unacknowledged records
+                                        caused by acknowledge timeouts. The Snap writes an error
+                                        message detailing unacknowledged records to the Error view
+                                        (if configured), and then process subsequent records.</li>
+                                </ul><div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The Acknowledge Timeout Policy determines behavior when:<ul class="ul">
+                                        <li class="li">Auto Commit is deselected.</li>
+                                        <li class="li">The Error view is configured as <strong class="ph b">Route Error Data to
+                                                Error View</strong> or <strong class="ph b">Discard Error Data and
+                                                Continue</strong>.</li>
+                                    </ul></div><p class="p">When the Consumer’s Partition is not set, an
+                                    acknowledge timeout triggers a group rebalance, which can result
+                                    in reprocessing in a different Consumer instance within the same
+                                    group.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span><em class="ph i">Reprocess</em></p></td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Seek Type</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Dropdown list</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">
+                                <p class="p">Choose the position where the Consumer Snap should begin reading messages when first initialized and executed.</p>
+                                <p class="p">The available options are:</p>
+                                <ul class="ul">
+                                    <li class="li"><span class="ph uicontrol">Beginning</span>: Starts from the first message in the queue.</li>
+                                    <li class="li"><span class="ph uicontrol">End</span>: Starts from the last committed offset. If none found, uses <strong class="ph b">Auto Offset Reset</strong>.</li>
+                                    <li class="li"><span class="ph uicontrol">End (skip all existing messages)</span>: Starts from the end of the assigned partitions. Reads only new messages added after execution begins.</li>
+                                    <li class="li"><span class="ph uicontrol">Specify Offset</span>: Starts from the value of the <strong class="ph b">Offset</strong> field. Requires a partition number.</li>
+                                    <li class="li"><span class="ph uicontrol">Earliest from timestamp</span>: Starts from
+                                        the earliest <span class="ph uicontrol">Offset</span> at or after the
+                                        timestamp value specified. Applicable with either a specific
+                                        partition number provided in the <span class="ph uicontrol">Partition
+                                            Number</span>, or with no partition specified.</li>
+                                </ul>
+                                <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+                                    <p class="p">The Kafka Consumer Snap commits offsets to Kafka as it
+                                        consumes records. If the Pipeline aborts, Kafka saves the
+                                        position of the last read records in each partition. If the
+                                        Pipeline is restarted, and<strong class="ph b"> Seek Type</strong> is set to
+                                            <em class="ph i">End</em>, the Snap continues reading from the first
+                                        unacknowledged record in each partitions.</p>
+                                    <p class="p">If the Consumer Snap is configured with an Error View, the
+                                        Snap continues processing records as if the unacknowledged
+                                        records had been acknowledged (after reporting the error to
+                                        the Error View). The committed offsets reflect this
+                                        continuation policy. If there is no Error View when a
+                                        timeout occurs, the committed offsets reflect the first
+                                        unacknowledged record of each partition.</p>
+                                </div>
+                                <p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span><em class="ph i">End</em></p>
+                            </td>
+                        </tr>
+                        
+                        
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Offset</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">String/Expression</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13"><p class="p">Activates when you choose <span class="ph uicontrol">Specify Offset</span> in the <span class="ph uicontrol">Seek
+                                Type</span> list.</p><p class="p">Specify the Offset from which the Consumer
+                                    should start consuming the message. The Offset is specific to a
+                                    partition. Hence, when you specify an offset, you must specify
+                                    the partition number. The offset starts from 0 for any
+                                    partition. The Consumer can start consuming from any offset in
+                                    the partition regardless of the messages that have been read
+                                    earlier.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>N/A</p>
+                                <span class="ph"><strong class="ph b">Example</strong>: </span>10</td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Minimum seek timestamp (ms)*</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">String/Expression</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13"><p class="p">Activates when you choose <strong class="ph b">Earliest from timestamp</strong> in
+                                    the <strong class="ph b">Seek Type</strong> list.</p><div class="p">Specify the timestamp value.
+                                    Accepted timestamp formats are:<ul class="ul" id="snap-kafka-consumer__ul_f2k_x2d_f3c">
+                                        <li class="li">ms since Unix epoch (e.g. 1609459200000)</li>
+                                        <li class="li">SnapLogic expression language datetime object (e.g.
+                                            <code class="ph codeph">Date.now()</code>)</li>
+                                    </ul></div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>N/A</p>
+                                <span class="ph"><strong class="ph b">Example</strong>: </span>1609459200000</td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Auto Offset Reset</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Dropdown list</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">
+                                <p class="p">Choose an option for auto offset reset from the list.</p>
+                                <p class="p">If the <span class="ph uicontrol">Seek Type</span> is End and the committed
+                                    offset for the partition cannot be found, then you need to
+                                    specify where to read the offset within the partition. The
+                                    available options are:</p>
+                                <ul class="ul">
+                                    <li class="li"><span class="ph uicontrol">Earliest:</span> The starting position is set to the first
+                                        message in the topic.</li>
+                                    <li class="li"><span class="ph uicontrol">Latest:</span> The starting position is set to the last
+                                        offset of each partition. </li>
+                                </ul>
+                                <p class="p">This field is used only if no offsets have been committed for the
+                                    current partition.</p>
+                                <p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span><em class="ph i">Earliest</em></p>
+                            </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Output Mode</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Dropdown list</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">
+                                <p class="p">Activates when you select the <span class="ph uicontrol">Auto Commit</span> field, or when
+                                    you set <span class="ph uicontrol">Acknowledge Mode</span> to Wait after each batch of
+                                    records.</p>
+                                <p class="p">Choose the mode to output the consumed records. The available 
+                                    options are:</p>
+                                <ul class="ul">
+                                    <li class="li">One output document per record: Every record received from
+                                        Kafka has a corresponding output document.</li>
+                                    <li class="li"> One output document per batch: Preserves the batching of
+                                        records as received from Kafka. Every poll that returns a
+                                        non-empty set of records results in a single output document
+                                        containing the list of records as batch, batch_size and
+                                        batch_index.</li>
+                                </ul>
+                                <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+                                    <p class="p">Use the One output document per batch mode if you want to
+                                        preserve the batching in your Pipeline's data flow. This
+                                        mode is useful when Auto Commit is disabled and Acknowledge
+                                        Mode is Wait after each batch of records, depending on the
+                                        nature of processing between the Kafka Consumer and the
+                                        Kafka Acknowledge Snaps.</p>
+                                    <p class="p">The processing between the Consumer and the Acknowledge Snaps
+                                        involve dealing with the records in batches, such as writing
+                                        each batch to a single file or processing each batch with a
+                                        child Pipeline.</p>
+                                    <p class="p">We recommend that you use a JSON Splitter Snap to split each
+                                        output batch into individual records since the Acknowledge
+                                        Snap requires individual records as input and not
+                                        batches.</p>
+                                </div>
+                                <p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>One output document per
+                                    record</p>
+                            </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Key Deserializer</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Dropdown list</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">
+                                <p class="p">Choose the target data type for the deserialized key of each record.</p>
+                                <ul class="ul">
+                                    <li class="li">String</li>
+                                    <li class="li">JSON</li>
+                                    <li class="li">JSON_SR (requires schema registry)</li>
+                                    <li class="li">Avro (requires schema registry)</li>
+                                    <li class="li">ByteArray</li>
+                                    <li class="li">Int16, Int32, Int64</li>
+                                    <li class="li">Float32, Float64</li>
+                                    <li class="li">BigInteger, BigDecimal</li>
+                                </ul>
+                                <div class="p">
+                                    <ul class="ul">
+                                        <li class="li">Ensure that your Confluent Kafka Account's configuration
+                                            includes the schema registry if you select Avro or
+                                            JSON_SR as the Key Deserializer value.</li>
+                                        <li class="li">The Avro and JSON Schema formats depend on the schema
+                                            being registered in Kafka Schema Registry. The Kafka
+                                            account associated with the Snap must have the Schema
+                                            Registry configured.</li>
+                                    </ul>
+                                </div>
+                                <p class="p">Ensure that your Confluent Kafka Account's configuration includes
+                                    the schema registry if you select Avro as the Key Deserializer
+                                    value. </p>
+                                <p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span><em class="ph i">String</em></p>
+                            </td>
+                        </tr>
+                        
+                        
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Value Deserializer</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Dropdown list</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">
+                                <p class="p">Choose the target data type for the deserialized value of each
+                                    record. </p><ul class="ul">
+                                    <li class="li">String</li>
+                                    <li class="li">JSON</li>
+                                    <li class="li">JSON_SR (requires schema registry)</li>
+                                    <li class="li">Avro (requires schema registry)</li>
+                                    <li class="li">ByteArray</li>
+                                    <li class="li">Int16, Int32, Int64</li>
+                                    <li class="li">Float32, Float64</li>
+                                    <li class="li">BigInteger, BigDecimal</li>
+                                </ul><p class="p">The Avro and JSON Schema formats depend on the schema being
+                                    registered in the Kafka Schema Registry. The Kafka account
+                                    associated with the Snap must have the Schema Registry
+                                    configured.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span><em class="ph i">String</em></p>
+                                <span class="ph"><strong class="ph b">Example</strong>: </span><kbd class="ph userinput">Int64</kbd>
+                            </td>
+                        </tr>
+                        
+                        
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Default Header Deserializer</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Dropdown list</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">Choose a Header Deserializer that is to be assigned to the
+                                headers that are not configured in the <strong class="ph b">Header Deserializers</strong>
+                                table. <p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span><em class="ph i">String</em></p><span class="ph"><strong class="ph b">Example</strong>: </span><kbd class="ph userinput">JSON</kbd></td>
+                        </tr>
+                        
+                        
+                        <tr class="row fieldset">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Header Deserializers</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12 snap-kafka-consumer__entry__13" colspan="2">
+                                <p class="p">Use this field set to define the <strong class="ph b">Key</strong> and
+                                        <strong class="ph b">Deserializer</strong> for any headers that require a
+                                    deserializer other than the Default Header Deserializer. </p>
+                                <p class="p">Click <strong class="ph b">+</strong> to add a new row and define the values accordingly.</p>
+                            </td>
+                        </tr>
+                        
+                        <tr class="row subfield">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Key</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">String/Expression</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">Specify a name for the header that requires a Deserializer other
+                                than the default. <p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>N/A</p><span class="ph"><strong class="ph b">Example</strong>: </span>East -1</td>
+                        </tr>
+                        
+                        <tr class="row subfield">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Deserializer</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">String/Expression</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">Select a Deserializer for the header to convert its value to a
+                                specific data type. <p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>String</p>
+                                <span class="ph"><strong class="ph b">Example</strong>: </span>JSON </td>
+                        </tr>
+                        
+                        
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Include Timestamp</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Checkbox</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">
+                                <p class="p">Select this checkbox to include a timestamp in the metadata of
+                                    each record sent to the output view.</p>
+                                <p class="p">A timestamp is the number of milliseconds elapsed since midnight,
+                                    January 1, 1970 UTC. All Kafka records contain a timestamp and a
+                                    copy of the topic’s <code class="ph codeph">message.timestamp.type</code>
+                                    setting.</p>
+                                <p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span><em class="ph i">Not selected</em></p>
+                            </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Pass Through</td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Checkbox</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">
+                                <p class="p">Select this checkbox to allow the original document to pass through. The output includes metadata in the message regardless of this setting.</p>
+                                <p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span><em class="ph i">Not selected</em></p>
+                            </td>
+                        </tr>
+                        
+                        
+                        <tr class="row">
+                            <td class="entry" headers="snap-kafka-consumer__entry__11">Snap execution <p class="p"><code class="ph codeph"><span class="ph">Dropdown list</span></code></p></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__12"><span class="ph">Dropdown list</span></td>
+                            <td class="entry" headers="snap-kafka-consumer__entry__13">
+                                <p class="p">Select one of the three modes in which the Snap executes:</p>
+                                <ul class="ul">
+                                    <li class="li"><strong class="ph b">Validate &amp; Execute:</strong> Performs limited execution and generates preview data during validation, then performs full execution during runtime.</li>
+                                    <li class="li"><strong class="ph b">Execute only:</strong> Performs full execution during Pipeline runtime without generating preview data.</li>
+                                    <li class="li"><strong class="ph b">Disabled:</strong> Disables the Snap and all downstream Snaps.</li>
+                                </ul>
+                                <p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span><em class="ph i">Validate &amp;
+                                    Execute</em></p>
+                            </td>
+                        </tr>
+                        
+                        
+                    </tbody></table>
+        </section>
+        <section class="section snap-examples"><h2 class="title sectiontitle">Examples<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="snaps/snaps-data/sp-kafka/kafka-consumer.html#examples"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+            
+            <ul class="ul">
+                <li class="li"><a class="xref" href="../../examples/data/sp-kafka/example-consuming-messages/example-consuming-messages.html">../../examples/data/sp-kafka/example-consuming-messages/example-consuming-messages.html</a></li>
+            </ul>
+        </section>
+        <section class="section" id="snap-kafka-consumer__section-troubleshooting"><h2 class="title sectiontitle">Troubleshooting<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="snaps/snaps-data/sp-kafka/kafka-consumer.html#troubleshooting"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+            
+            <details class="div details" open="true">
+                <p class="p condition detsummdivtitle"><samp class="ph msgph">Failed to start Ultra Tasks: Could
+                        not initialize class
+                        com.github.luben.zstd.ZstdOutputStreamNoFinalizer.</samp></p>
+                <div class="div solution">
+                    <p class="p cause">The <span class="ph"> <a class="xref" href="../../../common/../snaps/snaps-data/sp-kafka/kafka-consumer.html">Kafka Consumer</a></span>
+                        fails to consume messages if the compression type of the file is ZSTD,
+                        because this Compression type requires a native library.</p>
+                    <p class="p remedy">The native library is bundled with the Snap Pack. To
+                        obtain the current version of the native library, contact <a class="xref" href="mailto:support@snaplogic.com" target="_blank" rel="external noopener"><u class="ph u">support@snaplogic.com</u></a>. After you get the native
+                        library:</p>
+                    <p class="p">Place the native library (<code class="ph codeph">libzstd-jni-1.5.5-5.so</code>) in
+                            <code class="ph codeph">/opt/snaplogic/ldlib</code> and set the JVM options to
+                        override the ZSTD library property.</p>
+                    <div class="p remedy">
+                        <ul class="ul">
+                            <li class="li">
+                                <p class="p">Property <code class="ph codeph">= jcc.jvm_options</code></p>
+                            </li>
+                            <li class="li">
+                                <p class="p">Value =
+                                        <code class="ph codeph">-DZstdNativePath=/opt/snaplogic/ldlib/libzstd-jni-1.5.5-5.so</code></p>
+                            </li>
+                        </ul>
+                        <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> The library version changes each time the Snap Pack dependencies are
+                            updated. The current version is 1.5.5-5.</div>
+                    </div>
+                </div>
+            </div>
+            <details class="div details" open="true">
+                <p class="p condition detsummdivtitle"><samp class="ph msgph">Failed to consume messages with
+                        Seek Type=Beginning</samp></p>
+                <div class="div solution">
+                    <p class="p cause">The <span class="ph"> <a class="xref" href="../../../common/../snaps/snaps-data/sp-kafka/kafka-consumer.html">Kafka Consumer</a></span>
+                        fails to consume messages if the compression type of the file is SNAPPY,
+                        because this Compression type requires a native library
+                            (<code class="ph codeph">libsnappyjava.so</code> on Linux).</p>
+                    <div class="p">Place the <code class="ph codeph">libsnappyjava.so</code> file under
+                            <code class="ph codeph">/opt/snaplogic/ldlib/</code> folder across all JCC nodes and
+                        add the following global property under Node properties of your Snaplex.<ul class="ul">
+                            <li class="li">
+                                <p class="p">Property <code class="ph codeph">= jcc.jvm_options</code></p>
+                            </li>
+                            <li class="li">
+                                <p class="p">Value =
+                                        <code class="ph codeph">-Dorg.xerial.snappy.disable.bundled.libs=true</code></p>
+                            </li>
+                        </ul></div>
+                    <p class="p">You can extract the <em class="ph i">snappy-java-1.1.10.1.jar</em> from this zip file:
+                            <em class="ph i">libsnapjava-for-Linux-from-snappy-java-1.1.10.1.zip</em></p>
+                </div>
+            </div>
+        </section>
+    </div>
+</article></main><footer role="contentinfo"><div class="footer">
+  <div>
+  <p class="newsbanner">
+   <span> The migration of the <a href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/overview?homepageId=34537" target="_blank"> legacy docs </a> to this site is in progress.
+   </span>
+   <span>
+   <img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/x-close.svg" alt="thumbsup-icon">
+   </span>
+  </p>
+  </div>
+  <div class="ftrlegal">
+    <!-- <p class="copyright"><a href="/refs/copyright.html">© <ph class="copyrightyear"></ph> SnapLogic, Inc.</a></p> -->
+     <div class="footer_top">
+     <div>
+     <a href="../../../../index.html"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-indigo-icon.svg" alt="SnapLogic Logo"></a>
+     <a href="../../../../index.html">SnapLogic Documentation</a>
+     </div>
+     <div>
+     <ul>
+      <!-- <li><a href="/refs/copyright.html">© <ph class="copyrightyear"></ph> SnapLogic, Inc.</a></li>  <a class="xref" href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/49855/SnapLogic+Releases" target="_blank" rel="external noopener">Release Notes</a>-->
+        <!-- <li><a href="https://learn.snaplogic.com/" target="_blank" rel="external noopener">SnapLogic Academy</a></li> -->
+        <li><span>Explore</span><span><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-up-white-icon.svg" alt="SnapLogic Logo"></span></li>
+        <li><a class="xref" href="https://learn.snaplogic.com/" target="_blank" rel="external noopener">SnapLogic Academy</a></li>
+        <li><a class="xref" href="https://community.snaplogic.com/" target="_blank" rel="external noopener">Integration Nation</a></li>
+        <li><a class="xref" href="https://www.snaplogic.com/" target="_blank" rel="external noopener">Company</a></li>
+    <!-- <li><a href="https://community.snaplogic.com/" target="_blank" rel="external noopener">Integration Nation</a></li> -->
+    <!-- <li><a href="mailto:support@snaplogic.com" target="_blank" rel="external noopener">Support</a></li> -->
+    <!-- <li><a href="https://www.snaplogic.com/" target="_blank" rel="external noopener">Company</a></li> -->
+    </ul>
+       <ul>
+      <li><span>Need Help?</span><span><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-up-white-icon.svg" alt="SnapLogic Logo"></span></li>
+      <li>
+      <!-- <a><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/envelope-icon.svg' alt='envelope-icon'/></a> -->
+      <a href="mailto:documentation@snaplogic.com">Documentation Team</a></li>
+      <li>
+      <!-- <a><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/envelope-icon.svg' alt='envelope-icon'/></a> -->
+      <a href="mailto:support@snaplogic.com">Customer Support Team</a></li>
+      </ul>
+      </div>
+    </div>
+    <div class="footer_bottom">
+     <!-- <p  class="footer_logo"> -->
+    <!-- <a href="../index.html"><img class="noborder" src="https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-new.svg" alt="SnapLogic Logo"/></a> -->
+    <!-- <a href="../index.html"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/sl-logo-teal.svg" alt="SnapLogic Logo"/></a> -->
+    <!-- <a href="../../../../index.html"><img class="noborder" src="/img/icons/logo/sl_logo_combo_rev_rgb.svg" alt="SnapLogic Logo"/></a> -->
+    <!-- <ph class="footer-site-title">SnapLogic Documentation</ph> -->
+    <!-- </p> -->
+     <ul>
+      <li><a href="/refs/copyright.html">Copyright</a></li>
+       <li class="copyright">© <ph class="copyrightyear"></ph> SnapLogic, Inc.</li>
+    </ul>
+     <!-- <ul> -->
+      <!-- <ul>
+      <li>Need Help?</li>
+      <li><a><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/envelope-icon.svg' alt='envelope-icon'/></a><a href="mailto:documentation@snaplogic.com">Documentation Team</a></li>
+      <li><a><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/envelope-icon.svg' alt='envelope-icon'/></a><a href="mailto:support@snaplogic.com">Customer Support Team</a></li>
+      </ul> -->
+    <!-- </ul> -->
+    <ul>
+      <li><a class="xref" href="https://www.facebook.com/SnapLogic" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-facebook.svg" alt="ftr-logo"></a></li>
+      <li><a class="xref" href="https://twitter.com/SnapLogic" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-twitter.svg" alt="ftr-logo"></a></li>
+      <li><a class="xref" href="https://www.linkedin.com/company/snaplogic" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-linkedin.svg" alt="ftr-logo"></a></li>
+      <li><a class="xref" href="https://www.instagram.com/snaplogicinc" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-instagram.svg" alt="ftr-logo"></a></li>
+      <li><a class="xref" href="https://www.youtube.com/snaplogic" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-youtube.svg" alt="ftr-logo"></a></li>
+    </ul>
+    </div>
+
+  </div>
+
+  <!-- <script src="https://d3132s9xzuu9s8.cloudfront.net/k/sldocs.js"/> -->
+  <script src="/theme/sldocs.js"></script>
+  
+</div></footer></body></html>

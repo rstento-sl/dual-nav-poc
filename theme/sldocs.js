@@ -137,88 +137,19 @@ function DisplayModal()  {
 }
 
 function ReleaseNotes(){
-  var ReleaseData= {
-    "JanuaryRelease2026": {
-      "title": "January Release",
-      "features": [
-        {
-          "category": "Agent Creator",
-          "details": [
-            "Introduced the MCP Client Snap Pack, which adds the capability of connecting to your MCP Server"
-            ],
-          "url":"https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/4350771203/January+2026+Release+Notes#AgentCreator"
-        },
-        {
-          "category": "APIM 3.0",
-          "details": [
-            "GA release",
-            "Tracing added for new components"
-            ],
-          "url":"https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/4350771203/January+2026+Release+Notes#API-Management-3.0"
-        },
-         {
-          "category": "SnapLogic Community",
-          "details": [
-            "Integration Nation has moved to Slack to enhance user engagement",
-            ],
-          "url":"https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/4350771203/January+2026+Release+Notes#SnapLogic-Community"
-        },
-        {
-          "category": "Monitor",
-          "details": [
-            "Multiple UI enhancements on the Pipeline execution and Infrastructure pages"
-          ],
-          "url":"https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/4350771203/January+2026+Release+Notes#Monitor"
-        },
-         {
-          "category": "Snaps",
-          "details": [
-            "Enhanced the visual styling and color palette of Snap components to improve usability",
-            "Added the PostgreSQL Bulk Upsert Snap and Teradata Multi Execute Snap"
-          ],
-          "url":"https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/4350771203/January+2026+Release+Notes#Snaps"
-        },
-      ]
-    },
-    // "FebruaryRelease2026": {
-    //   "title": "February Release",
-    //   "features": [
-    //     {
-    //       "category": "AgentCreator",
-    //       "details": [
-    //         "Pipeline tags enable you to label pipelines as Agent and Tools",
-    //         "The ability to pass accounts downstream from APIM and OpenAI Function Generator Snaps in Agent pipelines"
-    //         ],
-    //       "url":"https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/4414636040/February+2026+Release+Notes#AgentCreator"
-    //     },
-    //     {
-    //       "category": "APIM 3.0",
-    //       "details": [
-    //         "The Git Integration supports Service Subscriptions",
-    //         ],
-    //       "url":"https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/4414636040/February+2026+Release+Notes#API-Management-3.0"
-    //     },
-    //     {
-    //       "category": "Snaps",
-    //       "details": [
-    //         "Added Databricks - Execute Snap",
-    //         "Added HTML to PDF Converter Snap",
-    //         "Added the PostgreSQL - Bulk Upsert and Teradata - Multi Execute Snaps"
-    //       ],
-    //       "url":"https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/4414636040/February+2026+Release+Notes#Snaps"
-    //     },
-    //     {
-    //       "category": "User Interface",
-    //       "details": [
-    //         "Updated waffle menu, updated Designer, and introduction of Project Manager"
-    //       ],
-    //       "url":"https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/4414636040/February+2026+Release+Notes#%3AAnnounce%3A-User-Experience-Updates"
-    //     }
-    //   ]
-    // },
-  }
- 
-  var features = ReleaseData.JanuaryRelease2026.features;
+  // Fetch release notes from CloudFront/S3
+  fetch('https://d3132s9xzuu9s8.cloudfront.net/st/Data/release-notes.json')
+    .then(response => response.json())
+    .then(ReleaseData => {
+      renderReleaseNotes(ReleaseData);
+    })
+    .catch(error => {
+      console.error('Failed to fetch release notes:', error);
+    });
+
+  function renderReleaseNotes(ReleaseData) {
+    var currentRelease = ReleaseData.currentRelease;
+    var features = ReleaseData[currentRelease].features;
   var container = $(".Corousel_Container");
 
   if (features.length === 0) {
@@ -267,6 +198,14 @@ function ReleaseNotes(){
       categoryContainer.append(categoryA);
       var learnMoreText = $("<p class='learn-more'><a href='"+features[i].url +"' target='_blank'>Learn more</a></p>");
       categoryContainer.append(learnMoreText);
+
+      // Add badge if present in data
+      if (features[i].badge) {
+        var badge = $('<div class="td-badge"><span><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/3-stars-icon.svg" alt="td-badge-icon"></span><span>' + features[i].badge + '</span></div>');
+        categoryContainer.css('position', 'relative');
+        categoryContainer.append(badge);
+      }
+
       categoryContainermain.append(categoryContainer);
     }
 
@@ -334,6 +273,7 @@ function ReleaseNotes(){
       showCategories();
     }
   });
+  } // End of renderReleaseNotes function
 }
 
 // Breadcrumbs - MOVED TO BUILD TIME (postprocess.py: breadcrumbs)
@@ -1723,6 +1663,18 @@ $(document).ready(function() {
 
   // Sidenav TOC
   // -- initialize --
+  // Mark the current page's TOC entry as active based on URL (needed for local preview builds)
+  (function SetActivePage() {
+    var page = window.location.pathname.replace(/\/$/, '/index').split('/').pop().replace(/\.html$/, '');
+    $('nav.toc a').each(function() {
+      var href = $(this).attr('href') || '';
+      var linkPage = href.split('/').pop().replace(/\.html$/, '');
+      if (linkPage && linkPage === page) {
+        $(this).closest('li').addClass('active');
+        return false;
+      }
+    });
+  })();
   MarkParents();
 
   // POC: Add icons to top-level nav section headings
@@ -1760,7 +1712,9 @@ $(document).ready(function() {
     'Admin Manager': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 7h6M5 10h4"/></svg>',
     'AutoSync': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a5 5 0 019-2"/><path d="M12 6l1-3 3 1"/><path d="M13 8a5 5 0 01-9 2"/><path d="M4 10l-1 3-3-1"/></svg>',
     'Designer': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11l7-7 3 3-7 7H2v-3z"/></svg>',
-    'SnapGPT': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4a1 1 0 011-1h8a1 1 0 011 1v5a1 1 0 01-1 1H6l-3 2z"/></svg>'
+    'SnapGPT': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4a1 1 0 011-1h8a1 1 0 011 1v5a1 1 0 01-1 1H6l-3 2z"/></svg>',
+    'SnapCode': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="10.5 4.5 14.5 8 10.5 11.5"/><polyline points="5.5 4.5 1.5 8 5.5 11.5"/></svg>',
+    'MCP Server Tools': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="4" rx="1"/><rect x="2" y="9" width="12" height="4" rx="1"/><circle cx="4.5" cy="5" r="0.4" fill="currentColor"/><circle cx="4.5" cy="11" r="0.4" fill="currentColor"/></svg>'
   };
 
   function addSectionIcons() {
@@ -2340,20 +2294,12 @@ $('.communityfilterchevron').on('click', function(event) {
         <span class="td-desc">SnapLogic array functions and properties for creating, searching, transforming, sorting, and converting arrays</span>
       </li>
       <li>
-        <a href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1439344/Date+Functions+and+Properties" target="_blank"><p>Date Functions and Properties</p></a>
-        <span class="td-desc">SnapLogic date functions for parsing, comparing, formatting, and adjusting dates/times (including time zones)</span>
+        <a href="https://docs.snaplogic.com/design-integrations/error-handling.html"><p>Error handling</p></a>
+        <span class="td-desc">Error handling is a crucial aspect of building reliable data integration pipelines in SnapLogic.</span>
       </li>
       <li>
-        <a href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/2614591489/HTTP+Client" target="_blank"><p>HTTP Client Snap</p></a>
+        <a href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/2614591489/HTTP+Client" target="_blank"><p>HTTP Client</p></a>
         <span class="td-desc">An advanced REST Snap that enables you to send HTTP requests and receive responses.</span>
-      </li>
-      <li>
-        <a href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1438286/Mapper" target="_blank"><p>Mapper Snap</p></a>
-        <span class="td-desc">The Mapper Snap evaluates an expression and writes the result to the target path.</span>
-      </li>
-      <li>
-        <a href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1438684/Pipeline+Execute"><p>Pipeline Execute</p></a>
-        <span class="td-desc">The Pipeline Execute Snap executes a pipeline in a specific Snaplex with the specified parameters.</span>
       </li>
       <li>
         <a href="https://docs.snaplogic.com/public-apis/public-apis-about.html"><p>Public APIs</p></a>
@@ -2362,6 +2308,14 @@ $('.communityfilterchevron').on('click', function(event) {
       <li>
         <a href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1439357/String+Functions+and+Properties" target="_blank"><p>String Functions and Properties</p></a>
         <span class="td-desc">SnapLogic string literals, functions, and properties for creating, searching, transforming, formatting, and validating text values.</span>
+      </li>
+      <li>
+        <a href="https://docs.snaplogic.com/snaplexes/snaplexes-about.html"><p>The SnapLogic Snaplex</p></a>
+        <span class="td-desc">An overview of Snaplexes (both Cloudplex and Groundplex).</span>
+      </li>
+      <li>
+        <a href="https://docs.snaplogic.com/mcp/mcp-troubleshooting.html"><p>Troubleshooting MCP Server Errors</p></a>
+        <span class="td-desc">Diagnose and resolve common MCP Server errors using MCP metrics and pipeline execution logs.</span>
       </li>
       <li>
         <a href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1438042/Understand+Expressions+in+the+SnapLogic+Platform" target="_blank"><p>Understand Expressions in the SnapLogic Platform</p></a>
@@ -2959,7 +2913,7 @@ $(window).on("resize", function () {
   const $toc = $('nav.toc');
 
   // Derive product slugs from the nav HTML (used by switcher and filtering)
-  // Strips ../ prefixes to get the real directory path (e.g., "cicd/git-integration")
+  // Strips ../ prefixes to get the real directory path (e.g., "git-integration")
   var productSlugs = [];
   $('nav.toc > ul > li:not(.nav-view-switcher-li) > ul > li > a').each(function() {
     var href = $(this).attr('href') || '';
@@ -3399,7 +3353,9 @@ $(window).on("resize", function () {
       'snaps': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='8' height='8' rx='2'/%3E%3Crect x='13' y='3' width='8' height='8' rx='2'/%3E%3Crect x='3' y='13' width='8' height='8' rx='2'/%3E%3Crect x='13' y='13' width='8' height='8' rx='2'/%3E%3C/svg%3E",
       'apim': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3Cpath d='M2 17l10 5 10-5'/%3E%3Cpath d='M2 12l10 5 10-5'/%3E%3C/svg%3E",
       'snaplexes': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='2' width='20' height='8' rx='2'/%3E%3Crect x='2' y='14' width='20' height='8' rx='2'/%3E%3Ccircle cx='6' cy='6' r='1'/%3E%3Ccircle cx='6' cy='18' r='1'/%3E%3C/svg%3E",
-      'git-integration': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='18' r='3'/%3E%3Ccircle cx='6' cy='6' r='3'/%3E%3Ccircle cx='18' cy='6' r='3'/%3E%3Cpath d='M12 15V9'/%3E%3Cpath d='M9 7.5L12 9l3-1.5'/%3E%3C/svg%3E"
+      'git-integration': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='18' r='3'/%3E%3Ccircle cx='6' cy='6' r='3'/%3E%3Ccircle cx='18' cy='6' r='3'/%3E%3Cpath d='M12 15V9'/%3E%3Cpath d='M9 7.5L12 9l3-1.5'/%3E%3C/svg%3E",
+      'snapcode': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='16 18 22 12 16 6'/%3E%3Cpolyline points='8 6 2 12 8 18'/%3E%3C/svg%3E",
+      'mcp-server-tools': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='6' rx='1.5'/%3E%3Crect x='3' y='14' width='18' height='6' rx='1.5'/%3E%3Ccircle cx='7' cy='7' r='0.6' fill='%231E5BD6'/%3E%3Ccircle cx='7' cy='17' r='0.6' fill='%231E5BD6'/%3E%3C/svg%3E"
     };
     // Category-level icons (for "All Products" view)
     var CATEGORY_ICONS = {
@@ -3443,6 +3399,8 @@ $(window).on("resize", function () {
         'public pattern library': NAV_ICONS['designer'],
         'pattern library': NAV_ICONS['designer'],
         'git integration': NAV_ICONS['git-integration'],
+        'snapcode': NAV_ICONS['snapcode'],
+        'mcp server tools': NAV_ICONS['mcp-server-tools'],
         'ai ecosystem': CATEGORY_ICONS['ai ecosystem'],
         'integration platform': CATEGORY_ICONS['integration platform'],
         'administration': CATEGORY_ICONS['administration'],
