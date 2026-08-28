@@ -1,5 +1,38 @@
 /*
   Basic JavaScript/JQuery
+
+  Table of contents (added by Claude, AI assistant, 2026-08-28 -- the code
+  below wasn't reorganized, this just documents where things already are):
+
+    Sidenav TOC helpers ..................... line 39   (MarkParents, MarkActiveTree, etc.)
+    Tabs ..................................... line 111  (ShowTab)
+    Downloadable files ....................... line 126  (Downloadable)
+    Dates ..................................... line 133  (CopyrightYyyy)
+    Modal images .............................. line 143  (AddModalDiv, DisplayModal)
+    Homepage release-notes carousel .......... line 175  (ReleaseNotes and its helpers)
+    Codeblock copy button .................... line 325  (CopycodeBlocks)
+    Permalinks (click-to-copy + hover) ....... line 372  (AddPermalinkHandlers)
+    Bing search: execute, fetch, filter ...... line 422  (ExecuteSearch, fetchResults, filteringsearchResults)
+    Bing search: render results .............. line 604  (displayResults, getImageSrcByUrl, infinite scroll)
+    Bing search: facet filters ................ line 718  (applyFilters, filterResults, displayResultsCount)
+    Search popup open/close .................. line 832  (showPopup, hidePopup)
+    Autosuggest dropdowns (3 variants) ....... line 867  (showdropdown, hidedropdown, ExecuteAutosuggest)
+    Resizable left sidenav ................... line 983  (ResizableSidenav)
+    Right-hand "On this page" sidebar ........ line 1084 (RighthandToc, scrollToActiveItem)
+    Mobile slide-out nav ...................... line 1206 (sidenavigationPopup)
+    Related-links sidebar migration .......... line 1228 (MoveRelatedLinksToSidebar)
+    Glossary page enhancements ................ line 1265 (EnhanceGlossary: A-Z bar, letter cards, Export PDF)
+    Feedback popup ............................ line 1370 (FeedBackPopup and its helpers)
+    Sidenav overflow tooltips ................. line 1646 (checkOverflowAndAddTooltips)
+    $(document).ready(): page init ........... line 1728 (nav active-state, section icons, expand/collapse,
+                                                            search wiring, filter wiring, related-links promotion,
+                                                            abbreviation list, right sidebar, feedback wiring)
+    Dual-nav view state (URL + sessionStorage)  ... inside the ready() block, ~line 2906
+                                                            (seedFromUrlParams, updateUrlState, product/task
+                                                            filtering, view switcher, swapNav, nav icons)
+    Homepage card carousels ................... inside the ready() block, ~line 3523 (initCarousel)
+    Floating action buttons (Back to Top, AI) ...... line 3607 (IIFE, vanilla JS)
+    Product-nav "categories only" default .......... line 3709 (IIFE, vanilla JS)
 */
 
 
@@ -101,6 +134,7 @@ function Downloadable()  {
 function YyyyMmDd()  {
   $('ph.date').innerHTML().replaceWith( new Date( this ).format( 'YYYY-MM-DD' ) )
 }
+// sets the copyright year text from the current date
 function CopyrightYyyy()  {
   thisyear = new Date().getFullYear();
   $('ph.copyrightyear').text( thisyear );
@@ -113,6 +147,7 @@ function AddModalDiv()  {
   $('.body').prepend( modalelem );
   $('.modal').hide();
 }
+// wires up the image-lightbox modal: click an image to open it, click outside or Esc to close
 function DisplayModal()  {
   $('img:not(.noexpand):not(.inline-icon)').on("click", function() {
     if (!$('.modal').is(':visible')) {
@@ -136,6 +171,7 @@ function DisplayModal()  {
   });
 }
 
+// top-level entry: fetches homepage release-notes data and renders the carousel
 function ReleaseNotes(){
   // Fetch release notes from CloudFront/S3
   fetch('https://d3132s9xzuu9s8.cloudfront.net/st/Data/release-notes.json')
@@ -147,6 +183,7 @@ function ReleaseNotes(){
       console.error('Failed to fetch release notes:', error);
     });
 
+  // builds the release-notes carousel DOM from the fetched data
   function renderReleaseNotes(ReleaseData) {
     var currentRelease = ReleaseData.currentRelease;
     var features = ReleaseData[currentRelease].features;
@@ -169,6 +206,7 @@ function ReleaseNotes(){
   });
   var visibleCount = getVisibleCount(); //number of visible containers
   
+  // responsive column count for the release-notes carousel
   function getVisibleCount() {
     if (window.innerWidth >= 1024) { // Desktop
         return 4;
@@ -178,6 +216,7 @@ function ReleaseNotes(){
         return 1;
     }
   }
+  // renders one page of the release-notes carousel, including nav buttons and badges
   function showCategories() {
     container.empty();
 
@@ -371,7 +410,10 @@ let fetchedResultsArray = [];
 var offset = 0;
 var isFetching = false; // To prevent multiple simultaneous fetches
 var searchTerm = ''; // Define searchTerm globally
-const subscriptionKey = 'af30877e191d4793a70bd661ff2ebdb3';
+// Removed by Claude (AI assistant), 2026-08-28: hardcoded Bing subscription key,
+// exposed in page source. Left blank — unused by any live code path below
+// (fetchResults uses the Google key instead; see that function for the same fix).
+const subscriptionKey = '';
 // const customConfigId = '0d3c009b-9139-4613-906f-24518b808572';
 const initialCount = 100; // Fetch 200 results initially
 let displayCount = 20; // Display 20 results at a time
@@ -379,6 +421,7 @@ const market = 'en-US';
 let displayedResultsArray = [];
 let maxResults = 100; // Maximum number of results to fetch
 let initialFetches = 1;
+// resets search state and kicks off a new search for the given term
 function ExecuteSearch(term) {
   fetchedResultsArray = [];
   displayedResultsArray = [];
@@ -396,7 +439,7 @@ function ExecuteSearch(term) {
 //   isFetching = true;
 
 //   const googleSearchEndpoint = 'https://www.googleapis.com/customsearch/v1'; // Google Custom Search API endpoint
-//   const apiKey = 'AIzaSyCiI_vt8-JOOWqwQf3IBUAhb2j3qBq9ieU'; // Replace with your Google API key
+//   const apiKey = ''; // Redacted by Claude (AI assistant), 2026-08-28 — was a hardcoded key; see fetchResults below
 //   const searchEngineId = '25d4aa9829a3148ff'; // Replace with your Search Engine ID
 //   const allowedDomains = [
 //     "docs.snaplogic.com",
@@ -456,8 +499,12 @@ function fetchResults(searchTerm, startIndex) {
   isFetching = true;
 
   const googleSearchEndpoint = 'https://www.googleapis.com/customsearch/v1'; // Google Custom Search API endpoint
-  const apiKey = 'AIzaSyCiI_vt8-JOOWqwQf3IBUAhb2j3qBq9ieU'; // Replace with your Google API key
+  // Removed by Claude (AI assistant), 2026-08-28: this was a hardcoded Google Custom
+  // Search API key, exposed to anyone viewing page source. Search is disabled until
+  // the key is restored via a non-client-exposed mechanism (e.g. a backend proxy).
+  const apiKey = ''; // Replace with your Google API key
   const searchEngineId = '25d4aa9829a3148ff';// Replace with your Search Engine ID
+  if (!apiKey) { isFetching = false; return; }
 
   $.ajax({
     url: googleSearchEndpoint,
@@ -505,6 +552,7 @@ function fetchResults(searchTerm, startIndex) {
   });
 }
 
+// dedupes and filters raw Bing search results before display (drops legacy-URL noise, repeat IDs/snippets)
 function filteringsearchResults(fetchedResults, searchTerm) {
   // const existingNames = new Set(); // For name-based uniqueness
   const existingIds = new Set(); // For ID-based uniqueness
@@ -559,6 +607,7 @@ function filteringsearchResults(fetchedResults, searchTerm) {
     return true;
   });
 }
+// renders search result cards into #searched-results
 function displayResults(results) {
   var Searchedresults = $("<div>").addClass("Results-component");
   for (var i = 0; i < results.length; i++) {
@@ -611,6 +660,7 @@ function displayResults(results) {
   setupScrollListener(); // Add scroll listener after results are displayed
 }
 
+// picks a source-site icon (docs / community / legacy) for a search result based on its URL
 function getImageSrcByUrl(url) {
   if (url.includes("https://docs.snaplogic.com/")) {
     return "https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-indigo-icon.svg";
@@ -622,6 +672,7 @@ function getImageSrcByUrl(url) {
   }
 }
 
+// infinite-scroll trigger for search results: shows/hides the "Show More" button near the bottom
 function setupScrollListener() {
   $("#searched-results").off('scroll').on('scroll', function() {
     if ($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight - 50 && !isFetching) {
@@ -637,6 +688,7 @@ function setupScrollListener() {
   });
 }
 
+// shows the "Show More" search-results button (only when the "All" source filter is active)
 function displayShowMoreButton() {
   if ($(".Search-filters div:first-child li input[value='All']").is(":checked")) {
     $("#show-more").show();
@@ -644,6 +696,7 @@ function displayShowMoreButton() {
   $("#show-more").hide();
 }
 }
+// hides the "Show More" search-results button
 function hideShowMoreButton() {
   $("#show-more").hide();
 }
@@ -668,6 +721,7 @@ $("#show-more").on('click', function() {
   }
 });
 
+// re-filters and re-renders the currently loaded search results by the selected facets
 function applyFilters(searchFilters, docfilters ,communityfilters) {
   console.log(searchFilters, docfilters);
   var filteredResults = filterResults(displayedResultsArray, searchFilters, docfilters,communityfilters);
@@ -681,6 +735,7 @@ function applyFilters(searchFilters, docfilters ,communityfilters) {
   }
 }
 
+// the actual facet filtering logic (source, doc-section, community-section) for search results
 function filterResults(results, searchFilters, docfilters,communityfilters) {
   let filteredResults = results;
 
@@ -723,6 +778,7 @@ function filterResults(results, searchFilters, docfilters,communityfilters) {
   return filteredResults;
 }
 
+// builds the "N results for X in Y" summary text shown above search results
 function displayResultsCount(query, filteredCount, searchFilters, docfilters) {
   let countText = `Showing results for "${query}"`;
   if (filteredCount === 1) {
@@ -772,12 +828,14 @@ function displayResultsCount(query, filteredCount, searchFilters, docfilters) {
 }
 
 
+// clears the search results area and shows a "No results found" message
 function displayNoResults() {
   $("#searched-results").empty();
   $("#pagination").empty();
   $(".results_count").text("No results found");
 }
 
+// opens the full-page search overlay
 function showPopup() {
   var popup = document.getElementById('search-popup');
   popup.style.display = 'block';
@@ -794,6 +852,7 @@ function showPopup() {
 
 }
 
+// closes the full-page search overlay
 function hidePopup() {
   var popup = document.getElementById('search-popup');
   popup.style.display = 'none';
@@ -811,40 +870,51 @@ function hidePopup() {
   // $(".topmenusearch li:eq(1)").hide();
 }
 
+// no-op stub: desktop search box's dropdown is hidden via CSS, kept for symmetry with show/hidedropdown2/3
 function showdropdown() {
   // var dropdown = document.getElementById('autosuggest-dropdown');
   // dropdown.style.display = 'none';
 }
 
+// no-op stub, see showdropdown() above
 function hidedropdown() {
   // var dropdown = document.getElementById('autosuggest-dropdown');
   // dropdown.style.display = 'none';
 }
 
+// hides the compact-header search box's autosuggest dropdown
 function showdropdown2() {
   var dropdown = document.getElementById('autosuggest-dropdown2');
   dropdown.style.display = 'none';
 }
 
+// (duplicate of showdropdown2 above — hides the same dropdown; kept as-is, not consolidated)
 function hidedropdown2() {
   var dropdown = document.getElementById('autosuggest-dropdown2');
   dropdown.style.display = 'none';
 }
 
+// hides the mobile search box's autosuggest dropdown (.dropdown3)
 function showdropdown3() {
   var dropdown = $('.dropdown3');
   dropdown.style.display = 'none';
 }
 
+// (duplicate of showdropdown3 above — hides the same dropdown; kept as-is, not consolidated)
 function hidedropdown3() {
   var dropdown = $('.dropdown3');
   dropdown.style.display = 'none';
 }
 
+// fetches Bing autosuggest results for the given query and renders or clears the dropdown
 function ExecuteAutosuggest(query){
   // var query = document.getElementById("searchQuery").value;
-  var subscriptionKey = "8e902f5980e24b0fa43d00563eae816e";
+  // Removed by Claude (AI assistant), 2026-08-28: this was a hardcoded Bing Search
+  // subscription key, exposed to anyone viewing page source. Autosuggest is disabled
+  // until the key is restored via a non-client-exposed mechanism (e.g. a backend proxy).
+  var subscriptionKey = "";
   var customConfigId = "d3f3ae18-ee21-48f9-b3ab-145bb0af4897";
+  if (!subscriptionKey) { return; }
   var endpoint = "https://api.bing.microsoft.com/v7.0/custom/suggestions/search";
   var market = "en-US";  // Adjust the market as needed
   
@@ -869,6 +939,7 @@ function ExecuteAutosuggest(query){
   });
 }
 
+// renders autosuggest results into all 3 search-box dropdown variants (desktop/compact/mobile)
 function displayAutosuggestions(suggestionGroups) {
   var containers = [".autosuggestions", "#autosuggest-dropdown2",".dropdown3"];
   containers.forEach(function(container) {
@@ -901,6 +972,7 @@ function displayAutosuggestions(suggestionGroups) {
   });
 }
 
+// shows a "No suggestions found" message in all 3 autosuggest dropdown variants
 function displayNoSuggestionsMessage() {
   var containers = [".autosuggestions", "#autosuggest-dropdown2",".dropdown3"];
   containers.forEach(function(container) {
@@ -910,6 +982,7 @@ function displayNoSuggestionsMessage() {
   });
 }
 
+// resets the search facet checkboxes to their default state ("All" checked, rest cleared)
 function ResetSearchFilters() {
   $(".Search-filters div:first-child li input[type='checkbox']").prop("checked", false);
   $(".Search-filters div:first-child li:nth-child(2) input[type='checkbox']").prop("checked",true);
@@ -928,6 +1001,7 @@ function ResizableSidenav() {
   $('nav.toc').append(navdivelement);
   var isCollapsed = false;
 
+  // expands/collapses the left sidenav via the resize-handle icon
   function toggleCollapse() {
     var tocElement = $(".toc");
     var bodyElement = $("body");
@@ -975,6 +1049,7 @@ function ResizableSidenav() {
       $('.toc, .resizable-sidenav').css('transition', '');
   }
 
+  // wires up click-and-drag resizing of the left sidenav width
   function initializeResizable() {
     var isResizing = false;
     var initialX, initialWidth, initialNavWidth;
@@ -1120,6 +1195,7 @@ function RighthandToc() {
   }
 }
 
+// scrolls the right-hand "On this page" sidebar so the active item sits near vertical center
 function scrollToActiveItem() {
   var $sidebar = $('.right-sidebar');
   var $activeItem = $sidebar.find('.otp-list li.active');
@@ -1137,6 +1213,7 @@ function scrollToActiveItem() {
   }
 }
 
+// builds the mobile slide-out nav (clones nav.toc into a hidden panel, wires the close button)
 function sidenavigationPopup(){
   var closeIcon = $("<img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/cross-icon.svg' alt='cross-icon'/>");
   var closebutton = $("<div>").addClass("sidenav_closebutton").append(closeIcon);
@@ -1500,6 +1577,7 @@ function FeedBackPopup(){
 
 }
 
+// clears the feedback form's fields, selections, and error messages
 function ResetFeedbackForm() {
   // Clear the radio button selections
   $('input[name="feedback"]').prop('checked', false);
@@ -1522,10 +1600,12 @@ function ResetFeedbackForm() {
   $('.selected-feedback-text').text('');
 }
 
+// basic email-format check used by the feedback form
 function validateEmail(email) {
   var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
 }
+// hides the page scrollbar while the search popup is open (kept regardless of branch — same CSS either way)
 function toggleScrollbar() {
   if ($('#search-popup').is(':visible')) {
       // console.log('Popup is visible. Hiding scrollbar.');
@@ -1543,6 +1623,7 @@ function toggleScrollbar() {
       $('html').get(0).style.setProperty('--webkit-scrollbar-width', '0px');
   }
 }
+// POSTs feedback form data to the EmailJS API
 function Sendfeedback(email,feedbacktype,message){
   var pageTitle = document.querySelector('main article h1').textContent.trim();
   var pageUrl = window.location.href;
@@ -1631,6 +1712,7 @@ function checkOverflowAndAddTooltips() {
   });
 }
 
+// re-runs the nav overflow-tooltip check after the sidenav is resized (ResizeObserver callback)
 function handleSidenavWidthChange() {
   checkOverflowAndAddTooltips(); // Recheck overflow 
 }
@@ -1717,6 +1799,7 @@ $(document).ready(function() {
     'MCP Server Tools': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="4" rx="1"/><rect x="2" y="9" width="12" height="4" rx="1"/><circle cx="4.5" cy="5" r="0.4" fill="currentColor"/><circle cx="4.5" cy="11" r="0.4" fill="currentColor"/></svg>'
   };
 
+  // adds the matching SVG from sectionIcons to each top-level nav heading whose text matches
   function addSectionIcons() {
     $('nav.toc > ul > li:not(.nav-view-switcher-li)').each(function() {
       var $heading = $(this).children('a, span').first();
@@ -1926,6 +2009,7 @@ $(document).ready(function() {
   $navContainer.on('scroll', synchronizeScroll);
   $mainContainer.on('scroll', synchronizeScroll);
 
+  // keeps the left nav and main content scroll positions loosely in sync when scrolling up
   function synchronizeScroll() {
     const navScrollTop = $navContainer.scrollTop();
     const mainScrollTop = $mainContainer.scrollTop();
@@ -1950,6 +2034,7 @@ $(document).ready(function() {
       ExecuteSearch(query);
   }
   });
+  // wraps a short (<=5 char) search query in quotes so it isn't treated as a stray substring match
   function updatePlaceholder(inputField) {
     let query = $(inputField).val().trim(); // Get the input value and trim whitespace
   
@@ -2446,6 +2531,7 @@ $('.communityfilterchevron').on('click', function(event) {
       $('.community-filters-text').hide();
   }
 });
+// auto-checks the "All" search-source checkbox when no other source checkbox is checked
 function updateAllCheckbox() {
   var anyChecked = $(".Search-filters div:first-child >li >input").not("[value='All']").is(":checked");
   console.log(anyChecked)
@@ -2494,6 +2580,7 @@ updateAllCheckbox();
   $(".sphtable colgroup col:nth-child(3)").css("width", "65%");
   $(".sphtable colgroup col:nth-child(4)").css("width", "0%");
 
+  // moves a DITA relationship-table's links (relconcepts/reltasks/relref) into the unified "Related information" block, or renames it if already merged
   function handleRelElements(relClass) {
      // Check if an element with the class 'relinfo' exists in the document
     if ($('.relinfo').length) {
@@ -2673,6 +2760,7 @@ updateAllCheckbox();
       }
     });
 
+  // true if a word is fully uppercase and more than one letter (used to skip capitalizing likely abbreviations)
   function isAbbreviation(word) {
     // Check if the word is fully capitalized and has more than one letter (likely an abbreviation)
     return word === word.toUpperCase() && word.length > 1;
@@ -2866,6 +2954,7 @@ $(window).on("resize", function () {
   seedFromUrlParams();
 
 
+  // writes the current nav view/category/product state back into the URL's query string for shareable links
   function updateUrlState() {
     var params = new URLSearchParams();
     var activeNav = sessionStorage.getItem('activeNav');
@@ -2924,6 +3013,7 @@ $(window).on("resize", function () {
     }
   });
 
+  // returns which known product slug (if any) the given path belongs to
   function getProductSlugFromPath(path) {
     for (var pi = 0; pi < productSlugs.length; pi++) {
       if (path.includes('/' + productSlugs[pi] + '/')) return productSlugs[pi];
@@ -3339,81 +3429,20 @@ $(window).on("resize", function () {
       // else: show full tree (default behavior)
     }
 
-    // Product-specific nav icons (matching homepage feature cards)
-    var NAV_ICONS = {
-      'autosync': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12a9 9 0 0115-6.7'/%3E%3Cpath d='M21 3v6h-6'/%3E%3Cpath d='M21 12a9 9 0 01-15 6.7'/%3E%3Cpath d='M3 21v-6h6'/%3E%3C/svg%3E",
-      'designer': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='7' height='7' rx='1'/%3E%3Crect x='14' y='3' width='7' height='7' rx='1'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1'/%3E%3Crect x='14' y='14' width='7' height='7' rx='1'/%3E%3Cpath d='M10 6.5h4'/%3E%3Cpath d='M6.5 10v4'/%3E%3Cpath d='M17.5 10v4'/%3E%3Cpath d='M10 17.5h4'/%3E%3C/svg%3E",
-      'snapgpt': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231E5BD6' stroke='none'%3E%3Ccircle cx='12' cy='12' r='2.2'/%3E%3Ccircle cx='8.5' cy='9' r='1.8'/%3E%3Ccircle cx='15.5' cy='9' r='1.8'/%3E%3Ccircle cx='8.5' cy='15' r='1.8'/%3E%3Ccircle cx='15.5' cy='15' r='1.8'/%3E%3Ccircle cx='6' cy='12' r='1.5'/%3E%3Ccircle cx='18' cy='12' r='1.5'/%3E%3Ccircle cx='12' cy='6.5' r='1.5'/%3E%3Ccircle cx='12' cy='17.5' r='1.5'/%3E%3C/svg%3E",
-      'admin-manager': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 005 15.9a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 5a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019 9.1a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z'/%3E%3C/svg%3E",
-      'monitor': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='3' width='20' height='14' rx='2'/%3E%3Cpath d='M8 21h8'/%3E%3Cpath d='M12 17v4'/%3E%3Cpath d='M7 10l3-3 2 2 5-5'/%3E%3C/svg%3E",
-      'agent': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4h12a2 2 0 012 2v12a2 2 0 01-2 2H4V4z'/%3E%3Cpath d='M8 8h6'/%3E%3Cpath d='M8 12h4'/%3E%3Cpath d='M8 16h2'/%3E%3Cpath d='M18 8l3-3 1 1-3 3'/%3E%3Cpath d='M19 9l-4 4v2h2l4-4'/%3E%3C/svg%3E",
-      'mcp': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='6' cy='6' r='3'/%3E%3Ccircle cx='18' cy='6' r='3'/%3E%3Ccircle cx='6' cy='18' r='3'/%3E%3Ccircle cx='18' cy='18' r='3'/%3E%3Cpath d='M9 6h6'/%3E%3Cpath d='M6 9v6'/%3E%3Cpath d='M18 9v6'/%3E%3Cpath d='M9 18h6'/%3E%3C/svg%3E",
-      'security': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 018 0v4'/%3E%3Ccircle cx='12' cy='16' r='1.5'/%3E%3C/svg%3E",
-      'public-apis': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6h16M4 12h16M4 18h10'/%3E%3Ccircle cx='20' cy='18' r='2'/%3E%3Cpath d='M18 16l-1.5-1.5'/%3E%3C/svg%3E",
-      'snaps': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='8' height='8' rx='2'/%3E%3Crect x='13' y='3' width='8' height='8' rx='2'/%3E%3Crect x='3' y='13' width='8' height='8' rx='2'/%3E%3Crect x='13' y='13' width='8' height='8' rx='2'/%3E%3C/svg%3E",
-      'apim': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3Cpath d='M2 17l10 5 10-5'/%3E%3Cpath d='M2 12l10 5 10-5'/%3E%3C/svg%3E",
-      'snaplexes': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='2' width='20' height='8' rx='2'/%3E%3Crect x='2' y='14' width='20' height='8' rx='2'/%3E%3Ccircle cx='6' cy='6' r='1'/%3E%3Ccircle cx='6' cy='18' r='1'/%3E%3C/svg%3E",
-      'git-integration': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='18' r='3'/%3E%3Ccircle cx='6' cy='6' r='3'/%3E%3Ccircle cx='18' cy='6' r='3'/%3E%3Cpath d='M12 15V9'/%3E%3Cpath d='M9 7.5L12 9l3-1.5'/%3E%3C/svg%3E",
-      'snapcode': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='16 18 22 12 16 6'/%3E%3Cpolyline points='8 6 2 12 8 18'/%3E%3C/svg%3E",
-      'mcp-server-tools': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='6' rx='1.5'/%3E%3Crect x='3' y='14' width='18' height='6' rx='1.5'/%3E%3Ccircle cx='7' cy='7' r='0.6' fill='%231E5BD6'/%3E%3Ccircle cx='7' cy='17' r='0.6' fill='%231E5BD6'/%3E%3C/svg%3E",
-      // Added by Claude (AI assistant), 2026-08-27: External MCP Tools nav icon,
-      // added when that product was wired into the site's navigation.
-      'external-mcp-tools': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 2v4'/%3E%3Cpath d='M15 2v4'/%3E%3Cpath d='M6 6h12v5a6 6 0 01-12 0z'/%3E%3Cpath d='M12 17v5'/%3E%3C/svg%3E"
-    };
-    // Category-level icons (for "All Products" view)
-    var CATEGORY_ICONS = {
-      'ai ecosystem': NAV_ICONS['mcp'],
-      'integration platform': NAV_ICONS['designer'],
-      'administration': NAV_ICONS['admin-manager'],
-      'observability': NAV_ICONS['monitor']
-    };
+    // Updated by Claude (AI assistant), 2026-08-28: replaced the per-product/category
+    // icon lookup table (~55 lines mapping product names to bespoke SVGs, which needed
+    // a JS edit for every new product) with a single shared icon. This was the one
+    // remaining spot where adding a product required a JS change — everywhere else,
+    // nav category/product matching already derives from the built nav DOM (see
+    // productSlugs above, ~line 3006), not from hardcoded names. Trades per-product
+    // icon variety for zero JS maintenance when products are added. See
+    // docs/nav-icons.md for the full writeup and how to reintroduce per-product icons
+    // if wanted later.
+    var NAV_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E";
 
+    // returns the nav icon to use — the same one for every product/category
     function getNavIcon(text) {
-      var t = text.toLowerCase().trim();
-      // Exact match against known product/category names
-      var NAME_TO_ICON = {
-        'autosync': NAV_ICONS['autosync'],
-        'designer': NAV_ICONS['designer'],
-        'snapgpt': NAV_ICONS['snapgpt'],
-        'admin manager': NAV_ICONS['admin-manager'],
-        'monitor': NAV_ICONS['monitor'],
-        'agent creator': NAV_ICONS['agent'],
-        'agentcreator': NAV_ICONS['agent'],
-        'mcp': NAV_ICONS['mcp'],
-        'model context protocol (mcp)': NAV_ICONS['mcp'],
-        'security': NAV_ICONS['security'],
-        'configure security': NAV_ICONS['security'],
-        'public apis': NAV_ICONS['public-apis'],
-        'public-apis': NAV_ICONS['public-apis'],
-        'snaps': NAV_ICONS['snaps'],
-        'snaps reference': NAV_ICONS['snaps'],
-        'api management': NAV_ICONS['apim'],
-        'api management 3.0': NAV_ICONS['apim'],
-        'classic api management': NAV_ICONS['apim'],
-        'apim-classic': NAV_ICONS['apim'],
-        'snaplexes': NAV_ICONS['snaplexes'],
-        'cloud connectivity': NAV_ICONS['snaplexes'],
-        'data lineage': NAV_ICONS['monitor'],
-        'secrets management': NAV_ICONS['security'],
-        'snaplabs': NAV_ICONS['agent'],
-        'observability integrations': NAV_ICONS['monitor'],
-        'migrate environments': NAV_ICONS['snaplexes'],
-        'project manager': NAV_ICONS['admin-manager'],
-        'public pattern library': NAV_ICONS['designer'],
-        'pattern library': NAV_ICONS['designer'],
-        'git integration': NAV_ICONS['git-integration'],
-        'snapcode': NAV_ICONS['snapcode'],
-        'mcp server tools': NAV_ICONS['mcp-server-tools'],
-        // Added by Claude (AI assistant), 2026-08-27, when External MCP Tools
-        // was wired into the site's navigation.
-        'external mcp tools': NAV_ICONS['external-mcp-tools'],
-        'ai ecosystem': CATEGORY_ICONS['ai ecosystem'],
-        'integration platform': CATEGORY_ICONS['integration platform'],
-        'administration': CATEGORY_ICONS['administration'],
-        'observability': CATEGORY_ICONS['observability']
-      };
-      var FALLBACK_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E";
-      return NAME_TO_ICON[t] || FALLBACK_ICON;
+      return NAV_ICON;
     }
 
     // Add icons to visible top-level nav headings (skip if inline SVG icon already present)
@@ -3453,6 +3482,7 @@ $(window).on("resize", function () {
     var ROWS = 2;
     var $cards = $container.children();
 
+    // responsive column count for the homepage goal/feature card carousels
     function colsPerPage() {
       if (window.innerWidth <= 600) return 1;
       if (window.innerWidth <= 1024) return 2;
@@ -3474,6 +3504,7 @@ $(window).on("resize", function () {
       });
     }
 
+    // enables/disables the carousel's prev/next buttons based on scroll position
     function updateButtons() {
       var scrollLeft = $container.scrollLeft();
       var maxScroll = $container[0].scrollWidth - $container[0].clientWidth;
@@ -3481,6 +3512,7 @@ $(window).on("resize", function () {
       $next.prop('disabled', scrollLeft >= maxScroll - 1);
     }
 
+    // scrolls the carousel one page left or right
     function scrollByPage(direction) {
       $container.animate({
         scrollLeft: $container.scrollLeft() + direction * $container[0].clientWidth
@@ -3542,6 +3574,7 @@ $(window).on("resize", function () {
     return best || document.scrollingElement || document.documentElement;
   }
 
+  // builds the floating Back-to-Top and AI-assistant buttons and wires their scroll/click behavior
   function initFloatingButtons() {
     if (!document.body || document.getElementById('sl-fab-stack')) return; // no duplicates
 
@@ -3578,12 +3611,14 @@ $(window).on("resize", function () {
     var SHOW_AT = 250;
     var ticking = false;
 
+    // shows/hides the Back-to-Top button based on scroll position
     function update() {
       ticking = false;
       var top = (scroller && scroller.scrollTop) || window.pageYOffset || 0;
       if (top > SHOW_AT) toTop.classList.add('is-visible');
       else toTop.classList.remove('is-visible');
     }
+    // throttles the scroll handler to one update per animation frame
     function onScroll() {
       if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
     }
@@ -3623,6 +3658,7 @@ $(window).on("resize", function () {
 (function () {
   'use strict';
 
+  // on the All Products page, collapses every category to just its heading (products stay hidden until clicked)
   function collapseProductNav() {
     if (window.location.pathname.indexOf('/tasks/') !== -1) return; // product view only
     if (window.location.pathname.indexOf('products-about') === -1) return;
