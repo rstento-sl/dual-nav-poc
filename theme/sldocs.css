@@ -8074,6 +8074,14 @@ p.hp-hero-subtitle {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23F9660B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 12a9 9 0 0115-6.7'/%3E%3Cpath d='M21 3v6h-6'/%3E%3Cpath d='M21 12a9 9 0 01-15 6.7'/%3E%3Cpath d='M3 21v-6h6'/%3E%3C/svg%3E");
 }
 
+/* Added by Claude (AI assistant), 2026-08-27: Data Lineage homepage card icon,
+   added when Data Lineage got its own homepage tile (previously unrepresented
+   on the homepage as part of an unaddressable "Tool Integrations" grouping). */
+.hp-feat-lineage::before {
+  background-color: color-mix(in srgb, var(--SL-blue08) 14%, #ffffff);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%2305276C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5' cy='6' r='2'/%3E%3Ccircle cx='19' cy='6' r='2'/%3E%3Ccircle cx='12' cy='18' r='2'/%3E%3Cpath d='M5 8v4a2 2 0 002 2h3'/%3E%3Cpath d='M19 8v4a2 2 0 01-2 2h-3'/%3E%3Cpath d='M12 14v2'/%3E%3C/svg%3E");
+}
+
 .hp-feat-designer::before {
   background-color: color-mix(in srgb, var(--SL-teal06) 14%, #ffffff);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%2309817F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3' y='3' width='7' height='7' rx='1'/%3E%3Crect x='14' y='3' width='7' height='7' rx='1'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1'/%3E%3Crect x='14' y='14' width='7' height='7' rx='1'/%3E%3Cpath d='M10 6.5h4'/%3E%3Cpath d='M6.5 10v4'/%3E%3Cpath d='M17.5 10v4'/%3E%3Cpath d='M10 17.5h4'/%3E%3C/svg%3E");
@@ -8097,6 +8105,14 @@ p.hp-hero-subtitle {
 .hp-feat-git::before {
   background-color: color-mix(in srgb, var(--SL-orange06) 14%, #ffffff);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23F9660B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='18' r='3'/%3E%3Ccircle cx='6' cy='6' r='3'/%3E%3Ccircle cx='18' cy='6' r='3'/%3E%3Cpath d='M12 15V9'/%3E%3Cpath d='M9 7.5L12 9l3-1.5'/%3E%3C/svg%3E");
+}
+
+/* Added by Claude (AI assistant), 2026-08-27: External MCP Tools homepage
+   card icon, added when that product was wired into the site's navigation
+   (a real product-coverage gap from a colleague's same-day main drift). */
+.hp-feat-external-mcp-tools::before {
+  background-color: color-mix(in srgb, var(--SL-grey06) 14%, #ffffff);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%239CA7BA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 2v4'/%3E%3Cpath d='M15 2v4'/%3E%3Cpath d='M6 6h12v5a6 6 0 01-12 0z'/%3E%3Cpath d='M12 17v5'/%3E%3C/svg%3E");
 }
 
 .hp-feat-mcp::before {
@@ -8137,6 +8153,48 @@ p.hp-hero-subtitle {
 .hp-feat-monitor::before {
   background-color: color-mix(in srgb, var(--SL-red05) 14%, #ffffff);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23E94964' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2' y='3' width='20' height='14' rx='2'/%3E%3Cpath d='M8 21h8'/%3E%3Cpath d='M12 17v4'/%3E%3Cpath d='M7 10l3-3 2 2 5-5'/%3E%3C/svg%3E");
+}
+
+/* Added by Claude (AI assistant), 2026-08-27: Observability (OTel) homepage
+   card icon, added when Observability got its own homepage tile (previously
+   unrepresented on the homepage as part of an unaddressable "Tool
+   Integrations" grouping, per user direction to split it out). */
+.hp-feat-observability::before {
+  background-color: color-mix(in srgb, var(--SL-red07) 14%, #ffffff);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23B61631' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 3v3M12 18v3M3 12h3M18 12h3'/%3E%3C/svg%3E");
+}
+
+/* Added by Claude (AI assistant), 2026-08-27: Pattern Library homepage card
+   icon, added when Pattern Library got its own homepage tile (was a
+   pre-existing gap: registered in the nav but never given a card). */
+.hp-feat-pattern-library::before {
+  background-color: color-mix(in srgb, var(--SL-gold04) 14%, #ffffff);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23FBA36D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3' y='3' width='7' height='7' rx='1'/%3E%3Crect x='14' y='3' width='7' height='7' rx='1'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1'/%3E%3Crect x='14' y='14' width='7' height='7' rx='1'/%3E%3C/svg%3E");
+}
+
+/* Added by Claude (AI assistant), 2026-08-27: dedicated Project Manager
+   homepage card icon. Project Manager's card previously reused the
+   .hp-feat-admin class (a copy-paste bug), so it rendered with the exact
+   same icon as the separate Admin Manager card. This gives it its own. */
+.hp-feat-manager::before {
+  background-color: color-mix(in srgb, var(--SL-indigo03) 14%, #ffffff);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23B0B9C8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 7l9-4 9 4-9 4-9-4z'/%3E%3Cpath d='M3 7v10l9 4 9-4V7'/%3E%3Cpath d='M12 11v10'/%3E%3C/svg%3E");
+}
+
+/* Added by Claude (AI assistant), 2026-08-27: Secrets Management homepage
+   card icon, added when Secrets Management got its own homepage tile (was a
+   pre-existing gap: registered in the nav but never given a card). */
+.hp-feat-secrets-mgmt::before {
+  background-color: color-mix(in srgb, var(--SL-teal04) 14%, #ffffff);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%236BB3B2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3' y='11' width='18' height='10' rx='2'/%3E%3Ccircle cx='12' cy='16' r='2'/%3E%3Cpath d='M7 11V8a5 5 0 0110 0v3'/%3E%3C/svg%3E");
+}
+
+/* Added by Claude (AI assistant), 2026-08-27: SnapLabs homepage card icon,
+   added when SnapLabs got its own homepage tile (was a pre-existing gap:
+   registered in the nav but never given a card). */
+.hp-feat-snaplabs::before {
+  background-color: color-mix(in srgb, var(--SL-green04) 14%, #ffffff);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%2367B176' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 2v6L4 20a1 1 0 001 2h14a1 1 0 001-2l-5-12V2'/%3E%3Cpath d='M8.5 2h7'/%3E%3Cpath d='M6.5 15h11'/%3E%3C/svg%3E");
 }
 
 .hp-feature-card .hp-card-title {

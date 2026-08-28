@@ -3355,7 +3355,10 @@ $(window).on("resize", function () {
       'snaplexes': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='2' width='20' height='8' rx='2'/%3E%3Crect x='2' y='14' width='20' height='8' rx='2'/%3E%3Ccircle cx='6' cy='6' r='1'/%3E%3Ccircle cx='6' cy='18' r='1'/%3E%3C/svg%3E",
       'git-integration': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='18' r='3'/%3E%3Ccircle cx='6' cy='6' r='3'/%3E%3Ccircle cx='18' cy='6' r='3'/%3E%3Cpath d='M12 15V9'/%3E%3Cpath d='M9 7.5L12 9l3-1.5'/%3E%3C/svg%3E",
       'snapcode': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='16 18 22 12 16 6'/%3E%3Cpolyline points='8 6 2 12 8 18'/%3E%3C/svg%3E",
-      'mcp-server-tools': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='6' rx='1.5'/%3E%3Crect x='3' y='14' width='18' height='6' rx='1.5'/%3E%3Ccircle cx='7' cy='7' r='0.6' fill='%231E5BD6'/%3E%3Ccircle cx='7' cy='17' r='0.6' fill='%231E5BD6'/%3E%3C/svg%3E"
+      'mcp-server-tools': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='6' rx='1.5'/%3E%3Crect x='3' y='14' width='18' height='6' rx='1.5'/%3E%3Ccircle cx='7' cy='7' r='0.6' fill='%231E5BD6'/%3E%3Ccircle cx='7' cy='17' r='0.6' fill='%231E5BD6'/%3E%3C/svg%3E",
+      // Added by Claude (AI assistant), 2026-08-27: External MCP Tools nav icon,
+      // added when that product was wired into the site's navigation.
+      'external-mcp-tools': "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E5BD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 2v4'/%3E%3Cpath d='M15 2v4'/%3E%3Cpath d='M6 6h12v5a6 6 0 01-12 0z'/%3E%3Cpath d='M12 17v5'/%3E%3C/svg%3E"
     };
     // Category-level icons (for "All Products" view)
     var CATEGORY_ICONS = {
@@ -3401,6 +3404,9 @@ $(window).on("resize", function () {
         'git integration': NAV_ICONS['git-integration'],
         'snapcode': NAV_ICONS['snapcode'],
         'mcp server tools': NAV_ICONS['mcp-server-tools'],
+        // Added by Claude (AI assistant), 2026-08-27, when External MCP Tools
+        // was wired into the site's navigation.
+        'external mcp tools': NAV_ICONS['external-mcp-tools'],
         'ai ecosystem': CATEGORY_ICONS['ai ecosystem'],
         'integration platform': CATEGORY_ICONS['integration platform'],
         'administration': CATEGORY_ICONS['administration'],
