@@ -5549,16 +5549,28 @@ nav.toc li >a ,nav.toc li >span{
   -webkit-font-smoothing: antialiased;
 }  */
 
+/* Fixed by Claude (AI assistant), 2026-08-30, at Ruth Stento's direction: the chevron
+   was an inline ::before marker sharing horizontal space with the text on line 1 only —
+   when a label wrapped to a second line, that line reverted to the block's true left
+   edge, sticking out further left than line 1 (no hanging indent). Reserving the
+   chevron's width as padding-left on the link itself (applies to every wrapped line)
+   and absolutely positioning the chevron inside that padding fixes it — no Figma spec
+   available for this, applied the standard hanging-indent pattern for a leading icon. */
+nav.toc li.navparent > a:first-child, nav.toc li.navparent > span:first-child {
+  position: relative;
+  padding-left: 16px;
+}
 nav.toc li.navparent > a:first-child:before, nav.toc li.navparent > span:first-child:before  {
   content: "";
   display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 8px;
   background-image: url(https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-right-icon.svg);
   background-size: contain;
   background-repeat: no-repeat;
   width: 12px;
   height: 12px;
-  margin-right: 4px;
-  vertical-align: middle;
 }
 nav.toc li.navexpand > a:first-child:before, nav.toc li.navexpand > span:first-child:before   {
   background-image: url(https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-down-icon.svg);
@@ -5616,15 +5628,24 @@ nav.toc li:not(.navparent):not(.navexpand) > span {
 }
 /* Leaf nav items (no children, no chevron) reserve the chevron's width so their
    text aligns with sibling items that do have a chevron — otherwise a leaf like
-   "SnapLabs" outdents and reads as a parent header that siblings nest under. */
+   "SnapLabs" outdents and reads as a parent header that siblings nest under.
+   Fixed by Claude (AI assistant), 2026-08-30, at Ruth Stento's direction: same
+   wrapping bug as the navparent chevron above — converted to padding-left +
+   absolute positioning so wrapped lines stay aligned instead of jutting out left. */
+nav.toc li:not(.navparent):not(.navexpand) > a:first-child,
+nav.toc li:not(.navparent):not(.navexpand) > span:first-child {
+  position: relative;
+  padding-left: 16px;
+}
 nav.toc li:not(.navparent):not(.navexpand) > a:first-child::before,
 nav.toc li:not(.navparent):not(.navexpand) > span:first-child::before {
   content: "";
   display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 8px;
   width: 12px;
   height: 12px;
-  margin-right: 4px;
-  vertical-align: middle;
 }
 nav.toc li.navparent:has(> ul:empty) > a:first-child:before, 
 nav.toc li.navparent:has(> ul:empty) > span:first-child:before,
