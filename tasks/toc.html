@@ -32,7 +32,7 @@
                   <li class="topicref"><a href="tool-integrations/tools-about.html">Tool integrations</a></li>
                   <li class="topicref"><a href="introduction/documentation-roadmap.html">Documentation roadmap</a></li>
                   <li class="topicref"><a href="introduction/intro-faq.html">SnapLogic FAQs</a></li>
-                  <li class="topicref"><a href="Chunk1997906683.html#Chunk1997906683">Glossary</a></li>
+                  <li class="topicref"><a href="Chunk445251075.html#Chunk445251075">Glossary</a></li>
                </ul>
             </li>
             <li class="topicref"><a href="goals/get-started-about.html">Get Started</a><ul>
@@ -88,11 +88,15 @@
                   <li class="topicref"><a href="goals/data-plane-about.html">Data Plane</a><ul>
                         <li class="topicref"><a href="admin-manager/admin-manager-create-snaplex.html">Create a Snaplex</a></li>
                         <li class="topicref"><a href="admin-manager/admin-manager-update-snaplex.html">Update a Snaplex</a></li>
-                        <li class="topicref"><a href="admin-manager/allowlist.html">Configure Snaplex Allowlists</a></li>
-                        <li class="topicref"><a href="admin-manager/cloud-triggered-allowlist.html">Add SnapLogic IPs to Client Allowlists</a></li>
+                        <li class="topicref"><a href="admin-manager/allowlist.html">Configure Snaplex Allowlists</a><ul>
+                              <li class="topicref"><a href="admin-manager/groundplex-allowlist.html">Groundplex allowlist</a></li>
+                              <li class="topicref"><a href="admin-manager/cloud-triggered-allowlist.html">Cloud-triggered allowlist</a></li>
+                              <li class="topicref"><a href="admin-manager/cors-allowlist.html">CORS allowlist</a></li>
+                              <li class="topicref"><a href="admin-manager/email-allowlist.html">Email domain allowlist</a></li>
+                           </ul>
+                        </li>
                         <li class="topicref"><a href="snaplexes/snaplex-auto-upgrade.html">Configure Snaplex Auto-Upgrade</a></li>
-                        <li class="topicref"><a href="snaplexes/groundplex-start-stop-on-linux.html">Start a Snaplex Start or stop a Groundplex</a></li>
-                        <li class="topicref"><a href="snaplexes/groundplex-start-stop-on-linux.html">Start a Snaplex Start or stop a Groundplex</a></li>
+                        <li class="topicref"><a href="snaplexes/groundplex-start-stop-on-linux.html">Start or Stop a Snaplex Start or stop a Groundplex</a></li>
                         <li class="topicref"><a href="snaplexes/groundplex-deployment-guides.html">Install a Groundplex</a></li>
                         <li class="topicref"><a href="snaplexes/manage-groundplex-nodes-snaplex.html">Configure a Groundplex</a></li>
                         <li class="topicref"><a href="designer/upgrade-to-a-new-snaplex-version.html">Upgrade to a New Snaplex Version</a></li>
@@ -100,10 +104,20 @@
                   </li>
                   <li class="topicref topichead">Security
                      <ul>
-                        <li class="topicref"><a href="admin-manager/create-idp-integration.html">Create Identity Provider IntegrationCreate IdP application</a></li>
-                        <li class="topicref"><a href="admin-manager/configure-sso.html">Configure Single Sign-OnConfigure SSO</a></li>
-                        <li class="topicref"><a href="admin-manager/enhanced-encryption.html">Enable Enhanced Encryption (Admin)</a></li>
-                        <li class="topicref"><a href="autosync/enhanced-account-encryption.html">Enable Enhanced Encryption (AutoSync)</a></li>
+                        <li class="topicref topichead">Authentication for the SnapLogic environment
+                           <ul>
+                              <li class="topicref"><a href="admin-manager/create-idp-integration.html">Create Identity Provider IntegrationCreate IdP application</a></li>
+                              <li class="topicref"><a href="admin-manager/configure-sso.html">Configure Single Sign-OnConfigure SSO</a></li>
+                              <li class="topicref"><a href="admin-manager/admin-manager-sessions.html">User Session Timeouts</a></li>
+                              <li class="topicref"><a href="admin-manager/password-expiration.html">Password Expiration</a></li>
+                           </ul>
+                        </li>
+                        <li class="topicref topichead">Encryption
+                           <ul>
+                              <li class="topicref"><a href="admin-manager/enhanced-encryption.html">Enable Enhanced Encryption (Admin)</a></li>
+                              <li class="topicref"><a href="autosync/enhanced-account-encryption.html">Enable Enhanced Encryption (AutoSync)</a></li>
+                           </ul>
+                        </li>
                      </ul>
                   </li>
                </ul>
@@ -150,7 +164,7 @@
                </ul>
             </li>
             <li class="topicref"><a href="goals/deploy-pipelines-about.html">Deploy Pipelines</a><ul>
-                  <li class="topicref"><a href="deploying-pipelines/task.html">Deploy pipelines</a><ul>
+                  <li class="topicref"><a href="deploying-pipelines/task.html">Introduction</a><ul>
                         <li class="topicref"><a href="deploying-pipelines/create-notifications.html">Configure task notifications</a></li>
                         <li class="topicref"><a href="deploying-pipelines/scheduled-tasks.html">Scheduled Tasks</a><ul>
                               <li class="topicref"><a href="deploying-pipelines/create-scheduled-tasks.html">Create a Scheduled Task</a><ul>
@@ -281,10 +295,15 @@
                   <li class="topicref topichead">Allowlists &amp; Certificates
                      <ul>
                         <li class="topicref"><a href="admin-manager/allowlist.html">Configure Snaplex Allowlists</a></li>
-                        <li class="topicref"><a href="admin-manager/groundplex-allowlist.html">Groundplex Allowlist</a></li>
-                        <li class="topicref"><a href="admin-manager/cloud-triggered-allowlist.html">Add SnapLogic IPs to Client Allowlists</a></li>
-                        <li class="topicref"><a href="admin-manager/cors-allowlist.html">CORS Allowlist</a></li>
-                        <li class="topicref"><a href="admin-manager/email-allowlist.html">Email Allowlist</a></li>
+                        <li class="topicref"><a href="admin-manager/groundplex-allowlist.html">Groundplex allowlist</a></li>
+                        <li class="topicref"><a href="admin-manager/cloud-triggered-allowlist.html">Cloud-triggered allowlist</a></li>
+                        <li class="topicref"><a href="admin-manager/cors-allowlist.html">CORS allowlist</a></li>
+                        <li class="topicref"><a href="admin-manager/email-allowlist.html">Email domain allowlist</a></li>
+                        <li class="topicref"><a href="security/certificates-about.html">TLS Certificates</a><ul>
+                              <li class="topicref"><a href="security/certificate-renewal.html">SnapLogic Certificate Updates</a></li>
+                              <li class="topicref"><a href="security/change-certificate.html">Update Groundplex certificateUpdate Groundplex certificate</a></li>
+                           </ul>
+                        </li>
                      </ul>
                   </li>
                </ul>

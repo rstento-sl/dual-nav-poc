@@ -5565,7 +5565,15 @@ nav.toc li.navparent > a:first-child:before, nav.toc li.navparent > span:first-c
   display: inline-block;
   position: absolute;
   left: 0;
-  top: 8px;
+  /* Fixed by Claude (AI assistant), 2026-08-31, at Ruth Stento's direction: a fixed
+     top: 8px only lined up for the specific item this was tuned against — nested items
+     under a different category (e.g. AI Ecosystem's children) use a different
+     line-height, so the chevron sat visibly above-left of the text instead of centered
+     on it. top: 50% + translateY(-50%) centers relative to the link's own line height
+     regardless of font-size/line-height, so it's correct everywhere, not just the one
+     case it was checked against. */
+  top: 50%;
+  transform: translateY(-50%);
   background-image: url(https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-right-icon.svg);
   background-size: contain;
   background-repeat: no-repeat;
@@ -5643,7 +5651,12 @@ nav.toc li:not(.navparent):not(.navexpand) > span:first-child::before {
   display: inline-block;
   position: absolute;
   left: 0;
-  top: 8px;
+  /* Fixed by Claude (AI assistant), 2026-08-31, at Ruth Stento's direction: same
+     fixed-top-8px fragility as the navparent chevron above — centers correctly
+     regardless of line-height instead of only matching whatever was checked at the
+     time. */
+  top: 50%;
+  transform: translateY(-50%);
   width: 12px;
   height: 12px;
 }
