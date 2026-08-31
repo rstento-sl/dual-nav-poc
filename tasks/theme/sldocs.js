@@ -1767,7 +1767,11 @@ $(document).ready(function() {
     'Get Started': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2L10 6H14L11 9L12 13L8 10.5L4 13L5 9L2 6H6L8 2Z"/></svg>',
     'Administer the Environment': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 7h6M5 10h4"/></svg>',
     'Develop Agents': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 1.5"/></svg>',
-    'Develop & Deploy Integrations': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 1.5"/></svg>',
+    'Develop Pipelines': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 1.5"/></svg>',
+    // Added by Claude (AI assistant), 2026-08-31, at Ruth Stento's direction: the
+    // "Deploy Pipelines" task category had no nav-section icon at all — this map only
+    // had an entry for the old, differently-named "Develop & Deploy Integrations" key.
+    'Deploy Pipelines': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8"/><path d="M5 5l3-3 3 3"/><path d="M3 11v2a1 1 0 001 1h8a1 1 0 001-1v-2"/></svg>',
     'Manage APIs': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8l2 4-2 4H4L2 6l2-4z"/><path d="M5 6h6"/></svg>',
     'Monitor': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="2.5" width="13" height="9" rx="1"/><path d="M5 14h6"/><path d="M4 7l3 -2 2 3 3 -4"/></svg>',
     'Observability': '<svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="8" cy="8" r="6"/></svg>',

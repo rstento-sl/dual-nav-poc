@@ -1,0 +1,1016 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2026"><meta name="generator" content="DITA-OT"><title>Pipeline Execute</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <!-- <link rel="icon" type="image/x-icon" href="/img/icons/logo/sl-logo.ico"/> -->
+  <!-- <link rel="icon" type="image/svg+xml" href="/img/icons/logo/sl-logo.svg"/> -->
+  <!--<link rel="icon" type="image/x-icon"  href="https://d3132s9xzuu9s8.cloudfront.net/k/sl-logo-teal.ico" />-->
+  <!-- <link rel="icon" type="image/svg+xml" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/favicon-teal-grad-128.svg"/> -->
+  <link rel="icon" type="image/svg+xml" href="https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-indigo-icon.svg">
+  <!--<link rel="icon" type="image/svg+xml" href="https://d3132s9xzuu9s8.cloudfront.net/k/sl-logo-teal.svg"/>-->
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+  <!-- Highlight.js for syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/gradient-light.min.css" integrity="sha512-6GvgqJ7t7UxZlT1V0sPyyZt5C+Kd7gR0dleu1G0uQxGm3k2FNc+6qXo5KcYqvSxgkXcVqYwGmTtX2C8rM1FJyA==" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-1c+VZVZPp4GqV1GZx1xA7YpXzXhY+S8o8QGx5yR3kS7E2T+I9vZbHcB6uOt+O6fQ1f+uR5u9jY8Cj7KvU3pRmA==" crossorigin="anonymous"></script>
+
+  <!-- Optional: Add specific language support -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js" integrity="sha512-fh7FqY7p8e2LP4xG1bH2AfGHlC3FJf8oU7GYo6vQ3zj6Z1+5pJH8qv5SW2Uu1eOoqsgqF8os2xHjlGcE1O3Npw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js" integrity="sha512-X9sBVkC+Xh1KmN6lVgKXoxc5A5FE1kP7V7sCFbfJEu2p7G2t3wH2Vx7XzH1E5dZlTQql2aR9ZT7gWZ7XqB5K4Q==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js" integrity="sha512-0q4H0TkvhH9e7j8C1uBl3xD4C9h1cUZg42jF0cF2d7u1N8g9PwJ1sH0F6uZ4xkJvXz2o8Y6k1v5lW7HP6v9ySQ==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js" integrity="sha512-3tU1a1FxPl8H1s2Ck0VqgZq3O/8wH6pH1PqR6mJ5vIu9zJxC1B8oN8lD1Q+Uu2p6P2rZ5jvYkR1nYVZ3fZ7hLw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js" integrity="sha512-5J7YxqV4mP3u+zL5fY3ZpF5H1nD8bQxU7tXvQh4pO1zD2xL8rV7hK9YcQnZrE1lM8fHh3vH8K5Kf7oW4R3VxvA==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/sql.min.js" integrity="sha512-l4sZx3rS4Lw3d1BvI1kVwL5gT3bD9uP3VfCqY6N7pX8jK0wT2yJ+YwU9mN4qV3ZxW1pD7bH5nE6uK5qT2U6xXg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js" integrity="sha512-G2lYw9qF6NnD4vQ5oT0yU3bU9lX7eP3hQ6rVwZ7mL2kJ3fP9qW4vR8yS6uJxN2oT4tZcW1sF8uV9yH3nB1k2xQ==" crossorigin="anonymous"></script>
+
+  <!-- Rainbow (Deprecated) -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/2.1.4/themes/github.css" /> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/2.1.4/rainbow.min.js"></script> -->
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script> -->
+
+  <!-- Google Analytics (gtag.js) – Enable for live site only.
+  <script async="true" src="https://www.googletagmanager.com/gtag/js?id=G-W8ZVFJP785"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-W8ZVFJP785');
+  </script>
+  -->
+
+  <!-- GCSE -->
+  <!-- <script async="true" src="https://cse.google.com/cse.js?cx=25d4aa9829a3148ff"/> -->
+
+  <!-- FontAwesome -->
+  <!-- <script src="https://kit.fontawesome.com/a548053f9e.js" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://kit.fontawesome.com/77a505b9e0.js" crossorigin="anonymous"></script> -->
+
+  <!-- Preload images -->
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-blue.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-up.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-down.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-left-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-right-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/codeblock-copy-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-up-fill-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-down-fill-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-down-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/IMPORTANT.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/TIP.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/REMEMBER.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/WARNING.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/CAUTION.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/community-logo-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/icon-legacy-site-search.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/3-stars-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/cross-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/sl-logo-indigo-icon.svg" as="image">
+  <!-- BugHerd -->
+  <!-- <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=1tn2hl0shbd0tgl9ifyteq" async="true"></script> stage-main -->
+  <!-- Include Bing Custom Search JavaScript SDK -->
+  <!-- <script src="https://www.bing.com/api/customsearch/search/sdk"></script> -->
+<link rel="stylesheet" type="text/css" href="../../../theme/commonltr.css"><link rel="stylesheet" type="text/css" href="../../../theme/sldocs.css"></head><body id="snap-pipeline-execute"><header role="banner"><!-- Edited by Claude (AI assistant), 2026-08-27:
+     - Added the External MCP Tools, Data Lineage, and Observability
+       Integrations entries when those products were wired into nav
+       (the latter two split out of an unaddressable "Tool Integrations"
+       grouping, per user direction, each getting its own landing page).
+     - Added the Pattern Library and SnapLabs entries, and fixed the
+       Secrets Management entry (was missing its "cicd/" path prefix
+       entirely — a pre-existing broken link, not something this
+       session introduced). All three were registered in the product
+       nav but had never been given homepage cards or dropdown entries.
+     - Repointed the Pattern Library and SnapLabs entries from their old
+       "-about.html" topic pages to their new "-home.html" landing pages,
+       matching the pattern every other dropdown entry already used. --><div class="header">
+<div class="headertopsection">
+  <div class="mainbanner">
+    <!-- Hamburger for mobile -->
+    <i class="hamburgericon"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/hamburger-icon.svg" alt="menu"></i>
+
+    <!-- Logo and Site Title -->
+    <a href="../../../../index.html" class="header-logo-link">
+      <img class="noborder noexpand header-logo-img" src="https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-indigo-icon.svg" alt="SnapLogic Logo">
+    </a>
+    <ph class="site-title site-title-compact"><a href="../../../../index.html">SnapLogic Documentation</a></ph>
+
+    <!-- Search bar (right-aligned in top row) -->
+    <div class="search-container-compact desktop-nav">
+      <span onclick="showPopup()" class="search-icon-compact"><i><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-white.svg" alt="search-icon"></i></span>
+      <input type="text" id="searchQuery" placeholder="Search docs" spellcheck="false" autocomplete="off" onfocus="showdropdown()">
+    </div>
+  </div>
+
+  <!-- Product Dropdown Menus (separate row) -->
+  <nav class="product-menu-header desktop-nav">
+    <!-- Home link (no dropdown) -->
+    <a href="../../../../index.html" class="menu-home-link">Home</a>
+
+    <!-- Dropdown 1: AI Ecosystem -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        AI Ecosystem <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../agentcreator/agentcreator-home.html">AgentCreator</a>
+        <a href="../../../../external-mcp-tools/external-mcp-tools-home.html">External MCP Tools</a>
+        <a href="../../../../mcp/mcp-home.html">MCP</a>
+        <a href="../../../../mcp-server-tools/mcp-server-tools-home.html">MCP Server Tools</a>
+        <a href="../../../../snapcode/snapcode-home.html">SnapCode</a>
+        <a href="../../../../snapgpt/snapgpt-home.html">SnapGPT</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 2: Integration Platform -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Integration platform <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../autosync/autosync-home.html">AutoSync</a>
+        <a href="../../../../designer/designer-home.html">Designer</a>
+        <a href="../../../../git-integration/git-integration-home.html">Git Integration</a>
+        <a href="../../../../manager/manager-home.html">Project Manager</a>
+        <a href="../../../../pattern-library/pattern-library-home.html">Pattern Library</a>
+        <a href="../../../../security/security-home.html">Security</a>
+        <a href="../../../../snaplabs/snaplabs-home.html">SnapLabs</a>
+        <a href="../../../../snaps/snaps-home.html">Snaps</a>
+        <a href="../../../../snapgpt/snapgpt-home.html">SnapGPT</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 3: APIs.
+         Added by Claude (AI assistant), 2026-08-28, at Ruth Stento's direction: pulled
+         "API Management" and "Public APIs" out of Integration Platform into their own
+         menu, and added Classic APIM (already had a -home landing page, just wasn't
+         linked from the header yet). Labels match the ones already established on the
+         homepage feature card (src/index.dita: "APIM 3.0" / "Classic APIM"). -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        APIs <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../api-m/apim-home.html">APIM 3.0</a>
+        <a href="../../../../apim-classic/apim-classic-home.html">Classic APIM</a>
+        <a href="../../../../public-apis/public-apis-home.html">Public APIs</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 4: Administration &amp; Governance -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Administration <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../admin-manager/admin-manager-home.html">Admin Manager</a>
+        <a href="../../../../admin-manager/cloudplex-secure-connectivity.html">Cloud Connectivity</a>
+        <a href="../../../../manager/migrate-about.html">Migrate Environments</a>
+        <a href="../../../../cicd/secrets-mgmt/secrets-mgmt-home.html">Secrets Management</a>
+        <a href="../../../../snaplexes/snaplexes-home.html">Snaplexes</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 5: Observability -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Observability <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../tool-integrations/lineage-home.html">Data Lineage</a>
+        <a href="../../../../monitor/monitor-home.html">Monitor</a>
+        <a href="../../../../tool-integrations/observability-home.html">Observability Integrations</a>
+      </div>
+    </div>
+
+    <!-- Tutorials and Examples dropdowns temporarily removed by
+         Claude (AI assistant), 2026-08-28, at Ruth Stento's direction: not enough
+         content in either section yet to justify a top-level menu slot. Left as a
+         comment, not deleted, so they're a one-step restore (delete this comment
+         wrapper) once there's enough tutorials/examples content to bring them back.
+
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Tutorials <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../tutorials/tutorials-admin-manager.html">Admin Manager</a>
+        <a href="../../../../tutorials/tutorials-autosync.html">AutoSync</a>
+        <a href="../../../../tutorials/tutorials-designer.html">Designer</a>
+        <a href="../../../../tutorials/tutorials-monitor.html">Monitor</a>
+        <a href="../../../../tutorials/tutorials-snapgpt.html">SnapGPT</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Examples <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../examples/examples-admin-manager.html">Admin Manager</a>
+        <a href="../../../../examples/examples-autosync.html">AutoSync</a>
+        <a href="../../../../examples/examples-designer.html">Designer</a>
+        <a href="../../../../examples/examples-monitor.html">Monitor</a>
+        <a href="../../../../examples/examples-snapgpt.html">SnapGPT</a>
+      </div>
+    </div>
+    -->
+  </nav>
+
+  <ul class="topmenu">
+    <!-- Original search for mobile -->
+     <li class="search-popup-hdr">
+                <div id="search-container">
+                    <span onclick="showPopup()" id="search-container-icon"><i><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-white.svg" alt="search-icon"></i></span>
+                    <input type="text" id="searchQueryDesktop" placeholder="Search the documentation and community posts" spellcheck="false" autocomplete="off" onfocus="showdropdown()">
+                </div>
+            </li>
+  </ul>
+
+  <ul class="topmenusearch">
+  <li>
+                <div id="search-container-mobile">
+                    <span onclick="showPopup()"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-blue.svg" alt="search-icon"></span>
+                    <input type="text" id="searchQuerymobile" placeholder="Search the docs" spellcheck="false" autocomplete="off" onfocus="showdropdown()">
+                </div>
+            </li>
+      <li><span><i><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-white.svg" alt="search-icon"></i></span></li>
+  </ul>
+</div>
+  <div id="search-popup">
+    <div class="search-main">
+      <div class="Search-filters">
+      <div>
+      <li><h1>Filter search results</h1><img class="noborder noexpand close-filters-button" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg" alt="Close Filters"></li>
+      <li class="filter-item"><input type="checkbox" value="All" name="Content" checked=""><p>All</p></li>
+      <li class="filter-item"><input type="checkbox" value="Documentation" name="Content">
+        <p>New Documentation Site</p>
+        <img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-down-icon.svg" class="docfilterchevron noborder" alt="Toggle"></li>
+        <ul class="Doc-filters">
+          <li class="filter-item"><input type="checkbox" value="autosync" name="AutoSync"><p>AutoSync</p></li>
+          <li class="filter-item"><input type="checkbox" value="admin-manager" name="Admin Manager"><p>Admin Manager</p></li>
+          <li class="filter-item"><input type="checkbox" value="security" name="Security"><p>Security</p></li>
+          <li class="filter-item"><input type="checkbox" value="snaps" name="Snaps"><p>Snaps</p></li>
+          <li class="filter-item"><input type="checkbox" value="snaplexes" name="Snaplexes"><p>Snaplexes</p></li>
+          <li class="filter-item"><input type="checkbox" value="monitor" name="Monitor"><p>Monitor</p></li>
+          <li class="filter-item"><input type="checkbox" value="public-apis" name="Snaplogic Public APIs"><p>Snaplogic Public APIs</p></li>
+          <li class="filter-item"><input type="checkbox" value="git-integration" name="Git Integration"><p>Git Integration</p></li>
+          <li class="filter-item"><input type="checkbox" value="cicd/secrets-mgm" name="Secrets Management"><p>Secrets Management</p></li>
+          <li class="filter-item"><input type="checkbox" value="genai" name="GenAI App Builder"><p>AgentCreator</p></li>
+        </ul>
+        <li class="filter-item"><input type="checkbox" value="Confluence" name="Content">
+        <p>Legacy Site</p></li>
+        <ul class="legacy-filters-text">
+          <li>
+            <span><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/tool-tip-icon.svg" alt="icon"></span>
+            <span>No advanced filters available</span>
+          </li>
+        </ul>
+      </div>
+      </div>
+      <div class="search-page-main">
+        <div class="search-bar-advanced">
+           <div class="back-button">
+           <img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/arrow-narrow-left.svg" alt="backicon">
+           </div>
+          <div class="search-bar">
+          <div>
+          <span class="cleartext"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg" alt="clearicon"></span>
+           <span class="advancedsearchicon"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-blue.svg" alt="search-icon"></span>
+            <input placeholder="Search the documentation and community posts" type="text" spellcheck="false" autocomplete="off" onfocus="showdropdown2()">
+            </div>
+            <div id="autosuggest-dropdown2"></div>
+          </div>
+          <div class="show-filters-button"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/show-filters.svg" alt="clearicon"></div>
+          <div class="advance_search_button">Search</div>
+
+        </div>
+        <div class="results_count"></div>
+        <div id="searched-results"></div>
+         <div id="show-more" class="">Show more results</div>
+      </div>
+    </div>
+  </div>
+</div></header><nav class="toc" role="navigation"><ul><li><a href="../../../goals/learn-platform-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h5l1 1v9l-1-1H2V3z"/><path d="M14 3H9l-1 1v9l1-1h5V3z"/></svg> Learn about the SnapLogic Platform</a><ul><li><a href="../../../introduction/introduction-about.html">Platform components</a><ul><li><a href="../../../introduction/platform-overview.html">Introduction</a></li></ul></li><li><a href="../../../introduction/workflow.html">Working in the SnapLogic environment</a></li><li><a href="../../../introduction/interface-overview.html">Navigate the SnapLogic UI</a></li><li><a href="../../../introduction/manage-account.html">Manage your account</a><ul><li><a href="../../../introduction/user-profile.html">Configure Your Profile</a></li><li><a href="../../../introduction/user-mfa-setup.html">Set up MFA</a></li></ul></li><li><a href="../../../introduction/release-process.html">SnapLogic releases</a></li><li><a href="../../../introduction/platform-notifications.html">Logs, alerts, and notifications</a></li><li><a href="../../../introduction/timezone-settings.html">Time zone settings</a></li><li><a href="../../../cicd/cicd-about.html">CI/CD support</a></li><li><a href="../../../tool-integrations/tools-about.html">Tool integrations</a></li><li><a href="../../../introduction/documentation-roadmap.html">Documentation roadmap</a></li><li><a href="../../../introduction/intro-faq.html">SnapLogic FAQs</a></li><li><a href="../../../Chunk1997906683.html#Chunk1997906683">Glossary</a><ul></ul></li></ul></li><li><a href="../../../goals/get-started-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2L10 6H14L11 9L12 13L8 10.5L4 13L5 9L2 6H6L8 2Z"/></svg> Get Started</a><ul><li><a href="../../../goals/goal-integrate-data.html">Integrate Data</a></li><li><a href="../../../goals/goal-create-agent.html">Create an Intelligent Agent</a></li><li><a href="../../../goals/goal-transform-data.html">Transform Data</a></li><li><a href="../../../goals/goal-govern-api-use.html">Govern API Use</a></li><li><span>Agent Developers</span><ul><li><a href="../../../agentcreator/agentcreator-getstarted-build-agents.html">Build Agent Pipelines in AgentCreator</a></li><li><a href="../../../agentcreator/agentcreator-concepts.html">AgentCreator Concepts</a></li></ul></li><li><span>Environment Admins</span><ul><li><a href="../../../admin-manager/create-user-account.html">Create User Accounts</a></li><li><a href="../../../admin-manager/admin-manager-create-snaplex.html">Create a Snaplex</a></li><li><a href="../../../manager/snap-packs.html">Manage Snap Packs</a></li></ul></li><li><span>Integration Developers</span><ul><li><a href="../../../introduction/user-profile.html">Configure Your Profile</a></li><li><a href="../../../manager/accounts-cm.html">Configure Snap Accounts</a></li><li><a href="../../../monitor/monitor-about.html">Monitor Integrations</a></li></ul></li><li><a href="../../../goals/tutorials-about.html">Tutorials</a><ul><li><a href="../../../introduction/first-pipeline.html">Create Your First Pipeline in Designer</a></li><li><a href="../../../autosync/use-autosync.html">Create Your First AutoSync Pipeline</a></li><li><a href="../../../agentcreator/agentcreator-usecase-briefing-agent.html">Create Your First Agent</a></li><li><a href="../../../api-m/concepts/tutorial-hello-services.html">Create Your First APIM Service</a></li></ul></li></ul></li><li><a href="../../../goals/administer-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 7h6M5 10h4"/></svg> Administer the SnapLogic environment</a><ul><li><a href="../../../goals/control-plane-about.html">Control Plane</a><ul><li><a href="../../../manager/configure-custom-org-branding.html">Configure Custom Organization Branding</a></li><li><a href="../../../admin-manager/autosync-settings.html">AutoSync Settings: Snap Pack Versions &amp; Allow Nullable Columns</a></li><li><a href="../../../admin-manager/apim.html">APIM 3.0 Settings</a></li><li><a href="../../../admin-manager/designer-settings.html">Designer Settings: Pipeline Validation &amp; Data Preview</a></li><li><a href="../../../snapgpt/snapgpt-settings.html">SnapGPT Settings</a></li><li><a href="../../../admin-manager/admin-manager-sessions.html">User Session Timeouts</a></li><li><a href="../../../admin-manager/password-expiration.html">Password Expiration</a></li><li><a href="../../../admin-manager/create-user-account.html">Create User Accounts</a></li><li><a href="../../../admin-manager/create-team-account.html">Create Team Accounts</a></li><li><a href="../../../admin-manager/create-service-account.html">Create Service Accounts</a></li><li><a href="../../../admin-manager/edit-user-account.html">Edit User Accounts</a></li><li><a href="../../../autosync/account-groups.html">Organize Accounts into Groups</a></li></ul></li><li><a href="../../../goals/data-plane-about.html">Data Plane</a><ul><li><a href="../../../admin-manager/admin-manager-create-snaplex.html">Create a Snaplex</a></li><li><a href="../../../admin-manager/admin-manager-update-snaplex.html">Update a Snaplex</a></li><li><a href="../../../admin-manager/allowlist.html">Configure Snaplex Allowlists</a></li><li><a href="../../../admin-manager/cloud-triggered-allowlist.html">Add SnapLogic IPs to Client Allowlists</a></li><li><a href="../../../snaplexes/snaplex-auto-upgrade.html">Configure Snaplex Auto-Upgrade</a></li><li><a href="../../../snaplexes/groundplex-start-stop-on-linux.html">Start a Snaplex</a></li><li><a href="../../../snaplexes/groundplex-start-stop-on-linux.html">Start a Snaplex</a></li><li><a href="../../../snaplexes/groundplex-deployment-guides.html">Install a Groundplex</a></li><li><a href="../../../snaplexes/manage-groundplex-nodes-snaplex.html">Configure a Groundplex</a></li><li><a href="../../../designer/upgrade-to-a-new-snaplex-version.html">Upgrade to a New Snaplex Version</a></li></ul></li><li><span>Security</span><ul><li><a href="../../../admin-manager/create-idp-integration.html">Create Identity Provider Integration</a></li><li><a href="../../../admin-manager/configure-sso.html">Configure Single Sign-On</a></li><li><a href="../../../admin-manager/enhanced-encryption.html">Enable Enhanced Encryption (Admin)</a></li><li><a href="../../../autosync/enhanced-account-encryption.html">Enable Enhanced Encryption (AutoSync)</a></li></ul></li></ul></li><li><a href="../../../goals/develop-integrations-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 1.5"/></svg> Develop and Deploy Integrations</a><ul><li><a href="../../../goals/cdw-about.html">Automate data synchronization</a><ul><li><a href="../../../autosync/create-credentials.html">Create Data Source Credentials</a></li><li><a href="../../../autosync/create-data-pipeline.html">Create a Data Pipeline</a></li><li><a href="../../../autosync/choose-tables.html">Choose Tables to Sync</a></li><li><a href="../../../autosync/view-data-pipeline.html">View Data Pipeline Status</a></li><li><a href="../../../autosync/enable-notifications.html">Enable Data Pipeline Notifications</a></li></ul></li><li><a href="../../../goals/apps-databases-about.html">Design pipelines</a><ul><li><a href="../../../snapgpt/snapgpt-pipe-gen-rag.html">Generate a Pipeline with SnapGPT</a></li><li><a href="../../../snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate Expressions with SnapGPT</a></li><li><a href="../../../snapgpt/mapper-expr-example1.html">Generate Mapper Expressions with SnapGPT</a></li><li><a href="../../../snapgpt/generate-queries.html">Generate SQL Queries with SnapGPT</a></li><li><a href="../../../snapgpt/mapper-expr-example2.html">Extract Pipeline Parameters with SnapGPT</a></li><li><a href="../../../snapgpt/snapgpt-analyze-pipelines.html">Analyze Pipelines with SnapGPT</a></li><li><a href="../../../snapgpt/snapgpt-refine-pipelines.html">Refine Pipelines with SnapGPT</a></li><li><a href="../../../snapgpt/snapgpt-pipe-gen-image.html">Generate a Pipeline from an Image</a></li><li><a href="../../../designer/print-pipeline.html">Print a Pipeline</a></li><li><a href="../../../designer/using-pipeline-notes-in-designer.html">Use Pipeline Notes in Designer</a></li></ul></li><li><span>Set Up Git Integration</span><ul><li><a href="../../../git-integration/git-integration-about.html">Introduction</a></li><li><a href="../../../git-integration/git-authorize.html">Authorize Git Access</a></li><li><a href="../../../git-integration/git-integration-github.html">Connect to GitHub</a></li><li><a href="../../../git-integration/git-create-project-from-repo.html">Create a Project from a Repository</a></li></ul></li><li><span>Work with Assets in Git</span><ul><li><a href="../../../git-integration/git-operations.html">Git Operations Reference</a></li><li><a href="../../../git-integration/git-add-asset.html">Add an Asset to Git</a></li><li><a href="../../../git-integration/git-create-branch.html">Create a Branch</a></li><li><a href="../../../git-integration/git-commit-all-updates.html">Commit All Updates</a></li><li><a href="../../../git-integration/git-pull-from-repo.html">Pull from a Repository</a></li></ul></li></ul></li><li><a href="../../../goals/deploy-pipelines-about.html">Deploy Pipelines</a><ul><li><a href="../../../deploying-pipelines/task.html">Deploy pipelines</a><ul><li><a href="../../../deploying-pipelines/create-notifications.html">Configure task notifications</a></li><li><a href="../../../deploying-pipelines/scheduled-tasks.html">Scheduled Tasks</a><ul><li><a href="../../../deploying-pipelines/create-scheduled-tasks.html">Create a Scheduled Task</a><ul><li><a href="../../../deploying-pipelines/configure-regular-schedule.html">Configure Regular Schedule</a></li><li><a href="../../../deploying-pipelines/configure-blackout-dates.html"> Configure Blackout Dates</a></li></ul></li><li><a href="../../../deploying-pipelines/view-task-details.html">View task details</a></li><li><a href="../../../deploying-pipelines/set-repeatable-schedule.html">Set a repeatable schedule</a></li><li><a href="../../../deploying-pipelines/configure-timeouts-and-notifications.html">Configure timeouts</a></li><li><a href="../../../deploying-pipelines/view-scheduled-task-schedules-in-manager.html">View schedules</a></li><li><a href="../../../deploying-pipelines/task-queuing.html">Scheduled Task Queuing Preview</a></li></ul></li><li><a href="../../../deploying-pipelines/triggered-tasks.html">Triggered Tasks</a><ul><li><a href="../../../deploying-pipelines/create-triggered-task.html">Create a Triggered Task</a></li><li><a href="../../../deploying-pipelines/run-triggered-task.html">Run Triggered Task</a></li><li><a href="../../../deploying-pipelines/view-triggered-task-details.html">View Triggered Task details </a></li><li><a href="../../../deploying-pipelines/triggered-task-configuration-options.html">Configuration options</a></li><li><a href="../../../deploying-pipelines/stop-triggered-task.html">Stop Triggered Task</a></li><li><a href="../../../deploying-pipelines/design-triggered-task-pipelines.html">Design Triggered Task pipelines</a></li><li><a href="../../../deploying-pipelines/pass-pipeline-arguments-to-triggered-task.html">Pass pipeline arguments to Triggered Task</a></li><li><a href="../../../deploying-pipelines/deploy-tasks-from-on-premises-networks.html">Deploy tasks from on-premises networks</a></li><li><a href="../../../deploying-pipelines/triggered-task-execution.html">Synchronous and asynchronous Triggered Task execution</a></li><li><a href="../../../deploying-pipelines/using-triggered-tasks-with-enterprise-scheduler.html"> Triggered Tasks with Enterprise Scheduler</a></li><li><a href="../../../deploying-pipelines/monitor-and-troubleshoot-triggered-tasks.html">Monitor and Troubleshoot Triggered Tasks</a></li></ul></li><li><a href="../../../deploying-pipelines/ultra-task-pipelines.html">Ultra Tasks</a><ul><li><a href="../../../deploying-pipelines/types-ultra-pipelines.html">Pipeline requirements for Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/create-ultra-task.html">Create an Ultra Task</a></li><li><a href="../../../deploying-pipelines/invoke-ultra-pipelines-tasks.html">Invoke Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/headless-ultra-tasks.html">Headless Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/low-latency-ultra-tasks.html">Low-latency Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/overview-ultra-tasks.html">Ultra Tasks in production</a><ul><li><a href="../../../deploying-pipelines/deployment-architecture.html">Deployment architecture for Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/deploy-feedmaster-node.html">Deploy FeedMaster node</a></li><li><a href="../../../deploying-pipelines/configure-ultra-task-alias.html">Configure an alias for High Availability</a></li></ul></li><li><a href="../../../deploying-pipelines/monitor-ultra-pipeline-tasks.html">Monitor Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/best-practices-ultra-pipeline-tasks.html">Best Practices for Ultra Tasks </a></li><li><a href="../../../deploying-pipelines/snap-support-for-ultra-tasks.html">Snap Support for Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/ultra-create-web-apps.html">Building Real-Time Web Apps</a></li></ul></li><li><a href="../../../deploying-pipelines/task-admin-operations.html">Common task administrative operations</a><ul><li><a href="../../../deploying-pipelines/edit-task.html">Edit a Task</a></li><li><a href="../../../deploying-pipelines/enable-and-disable-task.html">Enable and disable task</a></li><li><a href="../../../deploying-pipelines/task-details.html">Task details</a></li><li><a href="../../../deploying-pipelines/move-task.html">Move a task</a></li><li><a href="../../../deploying-pipelines/view-pipeline-apis.html">View pipeline APIs in Swagger</a></li></ul></li></ul></li></ul></li><li><a href="../../../goals/develop-agents-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 1.5"/></svg> Develop Agents</a><ul><li><span>Build Agents</span><ul><li><a href="../../../agentcreator/agentcreator-getstarted-build-agents.html">Get Started Building Agents</a></li><li><a href="../../../agentcreator/agentcreator-build-agents.html">Agent Architecture and Pipeline Design</a></li><li><a href="../../../agentcreator/agent-creator-tool-pipelines.html">Create Tool Pipelines</a></li></ul></li><li><span>Prompt Composition</span><ul><li><a href="../../../agentcreator/prompt-composer/agentcreator-promptcomposer-about.html">About Prompt Composer</a></li><li><a href="../../../agentcreator/prompt-composer/agentcreator-promptcomposer-launch.html">Get Started with Prompt Composer</a></li></ul></li><li><span>Use MCP</span><ul><li><a href="../../../mcp/mcp-quickstart.html">MCP Quickstart</a></li><li><a href="../../../mcp/mcp-server-setup.html">Set Up an MCP Server</a></li><li><a href="../../../mcp/mcp-client-setup.html">Set Up an MCP Client</a></li><li><a href="../../../mcp/mcp-connect-client.html">Connect a Client to Your Server</a></li></ul></li><li><span>Test &amp; Debug</span><ul><li><a href="../../../agentcreator/agentvis/agentcreator-agent-visualizer-about.html">Agent Visualizer</a></li><li><a href="../../../agentcreator/agentvis/agentvis-launch.html">Get Started with Agent Visualizer</a></li></ul></li><li><span>Deploy &amp; Use Cases</span><ul><li><a href="../../../agentcreator/agentcreator-usecase-briefing-agent.html">Use Case: Briefing Agent</a></li></ul></li></ul></li><li><a href="../../../goals/manage-apis-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8l2 4-2 4H4L2 6l2-4z"/><path d="M5 6h6"/></svg> Manage APIs</a></li><li><a href="../../../goals/configure-security-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="8" height="7" rx="1"/><path d="M6 7V5a2 2 0 014 0v2"/><circle cx="8" cy="10.5" r="1" fill="currentColor"/></svg> Configure Security</a><ul><li><span>Authentication</span><ul><li><span>Authentication for the SnapLogic environment</span><ul><li><a href="../../../admin-manager/create-idp-integration.html">Create Identity Provider Integration</a></li><li><a href="../../../admin-manager/configure-sso.html">Configure Single Sign-On</a></li><li><a href="../../../admin-manager/admin-manager-sessions.html">User Session Timeouts</a></li><li><a href="../../../admin-manager/password-expiration.html">Password Expiration</a></li></ul></li><li><a href="../../../goals/security/auth-public-apis.html">Authentication for Public APIs</a></li><li><a href="../../../goals/security/auth-apim-services.html">Authentication for APIM Services</a></li></ul></li><li><span>Encryption</span><ul><li><a href="../../../admin-manager/enhanced-encryption.html">Enable Enhanced Encryption (Admin)</a></li><li><a href="../../../autosync/enhanced-account-encryption.html">Enable Enhanced Encryption (AutoSync)</a></li><li><a href="../../../admin-manager/account-encryption.html">Account Encryption</a></li><li><a href="../../../admin-manager/email-encryption.html">Email Encryption</a></li></ul></li><li><span>Secrets Management</span><ul><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-about.html">Secrets Management Overview</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-config-accounts.html">Configure Accounts for Secrets Management</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-aws.html">AWS Secrets Manager</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-azure-kv.html">Azure Key Vault</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-hashicorp.html">HashiCorp Vault</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-cyberark.html">CyberArk Conjur</a></li></ul></li><li><span>Allowlists &amp; Certificates</span><ul><li><a href="../../../admin-manager/allowlist.html">Configure Snaplex Allowlists</a></li><li><a href="../../../admin-manager/groundplex-allowlist.html">Groundplex Allowlist</a></li><li><a href="../../../admin-manager/cloud-triggered-allowlist.html">Add SnapLogic IPs to Client Allowlists</a></li><li><a href="../../../admin-manager/cors-allowlist.html">CORS Allowlist</a></li><li><a href="../../../admin-manager/email-allowlist.html">Email Allowlist</a></li></ul></li></ul></li><li><a href="../../../goals/monitoring-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="2.5" width="13" height="9" rx="1"/><path d="M5 14h6"/><path d="M4 7l3 -2 2 3 3 -4"/></svg> Monitor the runtime</a><ul><li><span>APIs</span><ul><li><a href="../../../monitor/observe-api-metrics.html">View API Metrics</a></li></ul></li><li><span>Environment Assets</span><ul><li><a href="../../../monitor/catalog.html">Browse the Asset Catalog</a></li><li><a href="../../../monitor/view-metadata.html">View Asset Metadata</a></li><li><a href="../../../monitor/asset-table-config.html">Configure the Asset Table</a></li><li><a href="../../../monitor/custom-metadata.html">Manage Custom Metadata</a></li><li><a href="../../../monitor/download-upload-metadata.html">Download and Upload Metadata</a></li><li><a href="../../../monitor/add-supplemental-metadata.html">Add Supplemental Metadata</a></li><li><a href="../../../monitor/edit-task-metadata.html">Edit Task Metadata</a></li></ul></li><li><span>MCP</span><ul><li><a href="../../../monitor/mcp-servers.html">MCP Server Observability</a></li><li><a href="../../../monitor/mcp-metrics.html">MCP Server Metrics</a></li></ul></li><li><span>Pipelines</span><ul><li><a href="../../../monitor/monitor-analyze.html">Analyze Pipelines</a></li><li><a href="../../../monitor/insights.html">View Pipeline Insights</a></li><li><a href="../../../monitor/analyze-execution.html">Analyze Execution</a></li><li><a href="../../../monitor/find-executions.html">Find Executions</a></li><li><a href="../../../monitor/stop-executions.html">Stop Executions</a></li><li><a href="../../../monitor/download-executions.html">Download Executions</a></li><li><a href="../../../monitor/pipeline-details-panel.html">View Pipeline Details</a></li><li><a href="../../../monitor/snap-statistics-tab.html">View Snap Statistics</a></li><li><a href="../../../monitor/pipeline-logs-tab.html">View Pipeline Logs</a></li><li><a href="../../../monitor/pipeline-parameters-tab.html">View Pipeline Parameters</a></li><li><a href="../../../monitor/state-transition-tab.html">View State Transitions</a></li></ul></li><li><span>Snaplexes</span><ul><li><a href="../../../snaplexes/snaplex-monitoring.html">Snaplex Monitoring</a></li><li><a href="../../../snaplexes/monitor-snaplex-health.html">Monitor Snaplex Health</a></li><li><a href="../../../snaplexes/bp-use-snaplex-monitoring.html">Monitoring Best Practices</a></li></ul></li><li><span>Snaps</span><ul><li><a href="../../../monitor/snap-statistics-tab.html">View Snap Statistics</a></li></ul></li></ul></li><li><a href="../../../goals/observe-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="8" cy="8" r="6"/></svg> Observability</a><ul><li><a href="../../../otel/otel-collector-kubernetes.html">Integrate with Datadog</a><ul><li><a href="../../../otel/otel-k8s-datadog.html">Observe in Datadog</a></li></ul></li><li><a href="../../../otel/docker-new-relic.html">Integrate with New Relic</a></li><li><a href="../../../monitor/observe-api-metrics.html">View API Metrics</a></li><li><a href="../../../monitor/insights.html">View Pipeline Insights</a></li><li><a href="../../../monitor/analyze-metrics.html">Analyze Snaplex Metrics</a></li></ul></li><li><a href="../../../goals/troubleshoot-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="4.5"/><path d="M8 8v1"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/><path d="M6.5 12h3l0.5 2h-4z"/></svg> Troubleshoot</a><ul><li><a href="../../../introduction/navigate-snaplogic-support.html">Get Support</a></li><li><span>Accounts</span></li><li><span>Agents</span><ul><li><a href="../../../agentcreator/agentcreator-troubleshooting.html">AgentCreator Troubleshooting</a></li><li><a href="../../../agentcreator/agentcreator-faq.html">AgentCreator FAQ</a></li></ul></li><li><span>APIM Services</span></li><li><span>MCP Servers</span><ul><li><a href="../../../mcp/mcp-troubleshooting.html">Troubleshooting MCP Server Errors</a></li></ul></li><li><span>Pipelines</span><ul><li><a href="../../../autosync/troubleshoot-data-pipelines.html">Troubleshoot AutoSync Pipelines</a></li><li><a href="../../../manager/troubleshooting-ultra-pipeline.html">Troubleshoot Ultra Tasks</a></li></ul></li><li><span>Runtime Behavior</span></li><li><span>Snaplexes</span><ul><li><a href="../../../snaplexes/groundplex-faq.html">Groundplex FAQ</a></li></ul></li><li><span>Snaps</span></li><li><span>Tasks</span><ul><li><a href="../../../manager/faq.html">Project Manager FAQs</a></li><li><a href="../../../deploying-pipelines/ultra-pipeline-faqs.html">Ultra Task FAQs</a></li><li><a href="../../../deploying-pipelines/monitor-and-troubleshoot-triggered-tasks.html">Monitor and Troubleshoot Triggered Tasks</a></li></ul></li></ul></li></ul></nav><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+  <h1 class="title topictitle1" id="ariaid-title1">Pipeline Execute </h1>
+  <div class="body refbody">
+    <section class="section">
+      
+      <p class="p">The <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-pipeline-execute.html">Pipeline
+            Execute</a>
+        </span> Snap executes a pipeline in a
+				specific Snaplex with the specified parameters. You can use this Snap to execute multiple
+				child pipelines from a single parent pipeline. Configure the Snap to execute the pipeline
+				and data input.</p>
+      <div class="note tip note_tip"><span class="note_tip_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/TIP.svg" class="noborder" alt="icon"></span><span class="note_tip_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/TIP.svg" class="noborder" alt="icon"></span><span class="note__title">Tip:</span> To execute a SnapLogic pipeline that is exposed as a REST service, use the
+					<span class="ph">
+	        <a class="xref" href="../../../common/../snaps/snaps-core/sp-api-suite/http-client.html">HTTP Client</a>
+	      </span> Snap.</div>
+      <br><img class="image noborder" src="../../../img/snaps/snaps-core/sp-flow/snap-pipeline-execute/snap-pipeline-execute-overview.png" height="560" width="604"><br>
+      <ul class="sl simple ul-snaps-glance">
+        <li class="sli">This is a Flow-type Snap. Learn more about <a class="xref" href="../../../common/../snaps/snap-types.html" title="SnapLogic includes the following basic types of Snaps with distinct icons.">Snap Types</a>.</li>
+        <li class="sli"><span class="ph"><img class="image icon-green noexpand" src="../../../common/../img/icons/sluiv3/invocation/ultra.svg"></span> <span class="ph">Works in <a class="xref" href="../../../deploying-pipelines/ultra-task-pipelines.html">Ultra Tasks</a></span></li>
+      </ul>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Key features<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-flow/snap-pipeline-execute.html#key-features"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <div class="p">The Pipeline Execute Snap enables you to:<ul class="ul">
+          <li class="li">
+            <p class="p">Structure complex pipelines into smaller segments through child pipelines</p>
+          </li>
+          <li class="li">
+            <p class="p">Initiate parallel data processing using the pooling option</p>
+          </li>
+          <li class="li">
+            <p class="p">Orchestrate data processing across nodes, in the Snaplex or across Snaplexes</p>
+          </li>
+          <li class="li">
+            <p class="p">Distribute global values through pipeline parameters across a set of child pipeline
+              Snaps</p>
+          </li>
+        </ul></div>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Supported modes for pipelines<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-flow/snap-pipeline-execute.html#supported-modes-for-pipelines"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <div class="p">
+        <table class="table frame-all"><caption></caption><colgroup><col style="width:50%"><col style="width:50%"></colgroup><thead class="thead">
+              <tr class="row">
+                <th class="entry" id="snap-pipeline-execute__entry__1">Modes</th>
+                <th class="entry" id="snap-pipeline-execute__entry__2">Description</th>
+              </tr>
+            </thead><tbody class="tbody">
+              <tr class="row">
+                <td class="entry" headers="snap-pipeline-execute__entry__1">Standard mode (default)</td>
+                <td class="entry" headers="snap-pipeline-execute__entry__2">
+                  <ul class="ul">
+                    <li class="li">
+                      <p class="p">A new child pipeline is launched for each input document in the standard
+                        mode.</p>
+                    </li>
+                    <li class="li">
+                      <p class="p">If you set pool size = <kbd class="ph userinput">n</kbd> (where n is any number with
+                        the default value of 1), then <kbd class="ph userinput">n</kbd> concurrent child
+                        pipelines can run simultaneously. Each child pipeline processes one document
+                        from the parent and then completes.</p>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-pipeline-execute__entry__1">Reuse mode</td>
+                <td class="entry" headers="snap-pipeline-execute__entry__2">
+                  <ul class="ul">
+                    <li class="li">
+                      <p class="p">In reuse mode, child pipelines are started, and each child pipeline
+                        instance can process multiple input documents from the parent. </p>
+                    </li>
+                    <li class="li">
+                      <p class="p">If you set the pool size = <kbd class="ph userinput">n</kbd> (default 1), then <kbd class="ph userinput">n</kbd> number of
+                        child pipelines are started and they will process the input document in a
+                        streaming manner. The child pipeline needs to have an unlinked input view
+                        for use in reuse mode.</p>
+                    </li>
+                    <li class="li">
+                      <p class="p">Reuse mode is more performant, but it has the restriction that the child
+                        pipeline has to be a streaming pipeline.</p>
+                    </li>
+                    <li class="li">
+                      <p class="p">In reuse mode if a child pipeline fails, it causes the parent pipeline to
+                        fail.</p>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-pipeline-execute__entry__1">Resumable Child pipeline</td>
+                <td class="entry" headers="snap-pipeline-execute__entry__2">
+                  <ul class="ul">
+                    <li class="li">
+                      <p class="p">The resumable pipeline does not support the Pipeline Execute Snap. </p>
+                    </li>
+                    <li class="li">
+                      <p class="p">A regular mode pipeline can use the Pipeline Execute Snap to call a
+                        Resumable mode pipeline. If the child pipeline is a Resumable pipeline, then
+                        the batch size cannot be greater than one. </p>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-pipeline-execute__entry__1">Ultra Task pipelines</td>
+                <td class="entry" headers="snap-pipeline-execute__entry__2">
+                  <ul class="ul">
+                    <li class="li">
+                      <p class="p">Works in <span class="ph"><a class="xref" href="../../../deploying-pipelines/ultra-task-pipelines.html">Ultra Tasks</a></span> pipelines
+                        with the following exceptions: </p>
+                      <ul class="ul">
+                        <li class="li">
+                          <p class="p">The reuse option works in the Ultra pipeline if the child pipelines run
+                            on the same node. Running on a different node in the same Snaplex fails
+                            with a lineage error. To ensure that the child pipelines run on the same
+                            node as the parent pipeline, set <em class="ph i">Execute</em> on to LOCAL_NODE. For
+                            more information, refer to <span class="ph"><a class="xref" href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/809009235/Snap+Support+for+Ultra+Pipelines" target="_blank" rel="external noopener">Snap Support for Ultra Tasks</a></span>.</p>
+                        </li>
+                        <li class="li">
+                          <p class="p">Without reuse enabled, the one-in-one-out requirement for Ultra means
+                            batching is not supported. A runtime check will fail the parent pipeline
+                            if the batch size is set to greater than 1. This would be similar to the
+                            current behavior in DB insert and other Snaps in Ultra mode.</p>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-pipeline-execute__entry__1">ELT Mode</td>
+                <td class="entry" headers="snap-pipeline-execute__entry__2">
+                  <ul class="ul">
+                    <li class="li">
+                      <p class="p">A pipeline can only use the Pipeline Execute Snap to call another pipeline
+                        with ELT Snaps in Standard Mode.</p>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-pipeline-execute__entry__1">Pooling Enabled</td>
+                <td class="entry" headers="snap-pipeline-execute__entry__2">
+                  <ul class="ul">
+                    <li class="li">
+                      <p class="p">The pool size and batch size can both be set to greater than one, in which
+                        case the input documents are spread across the child pipeline in a
+                        round-robin method to ensure that if the child pipeline does any slow
+                        processing external calls, then the processing is spread across the children
+                        in parallel. The limitation of this option is that the document order sent to the child pipeline is not maintained.</p>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody></table>
+      </div>
+      <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+        <p class="p">Replaces Deprecated Snaps: This Snap replaces the <a class="xref" href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1438732" target="_blank" rel="external noopener">ForEach</a> and <a class="xref" href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1438585" target="_blank" rel="external noopener">Task Execute</a> Snaps and the Nested pipeline mechanism.</p>
+      </div>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Fixed issues<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-flow/snap-pipeline-execute.html#fixed-issues"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <div class="p">
+        <ul class="ul">
+          <li class="li">In the June 2026 release (444patches34994), the <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-pipeline-execute.html">Pipeline
+            Execute</a>
+        </span> Snap fixed an issue where the error view routing would cause the parent pipeline to hang.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Behavior changes<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-flow/snap-pipeline-execute.html#behavior-changes"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <div class="p">
+        <ul class="ul">
+          <li class="li">In the May 2026 release (444patches34698), the <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-pipeline-execute.html">Pipeline
+            Execute</a>
+        </span> Snap now correctly routes errors to the parent instead of causing the parent pipeline to stop.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="section">
+      <p class="p sectiondivtitle">Limitations</p>
+      <div class="p">
+        <ul class="ul">
+          <li class="li">If there are insufficient Snaplex nodes to execute the pipeline, the Snap waits until
+            the resources become available. In this scenario, a message appears in the execution
+            statistics dialog.<br><img class="image border" src="../../../img/snaps/snaps-core/sp-flow/snap-pipeline-execute/pipeline-execute-overview-statistics-dialog.png" height="47" width="336"><br></li>
+          <li class="li">
+            <p class="p">Only the last 100 completed child pipeline runs are saved for inspection in the
+              Monitor because this Snap generates many pipeline runtimes.</p>
+          </li>
+          <li class="li">
+            <p class="p">The <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-pipeline-execute.html">Pipeline
+            Execute</a>
+        </span> Snap cannot exceed a
+							depth of 64 child pipelines before they begin to fail.</p>
+            <p class="p">The child pipelines do not display data preview details. However, you can view the
+							data preview for any child pipeline after the <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-pipeline-execute.html">Pipeline
+            Execute</a>
+        </span> Snap completes execution in the
+							parent pipeline. Ultra Pipelines do not support batching.</p>
+          </li>
+          <li class="li">
+            <p class="p">Unlike the <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-transform/snap-group-by-n.html">Group By N</a>
+        </span> Snap, when you
+							configure the Batch field, the documents are processed one by one by the <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-pipeline-execute.html">Pipeline
+            Execute</a>
+        </span> Snap and then transferred to the
+							child pipeline when the parent pipeline receives it. The child pipeline closes when
+							the batch or input stream ends.</p>
+          </li>
+          <li class="li">
+            <p class="p">Error handling for child pipelines inside a parent Ultra Pipeline are not supported.
+							Instead, configure error handling in the Ultra Pipeline with the <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-pipeline-execute.html">Pipeline
+            Execute</a>
+        </span> Snap.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+  	<section class="section snap-examples"><h2 class="title sectiontitle">Examples<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-flow/snap-pipeline-execute.html#examples"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+  		
+  			<ul class="ul">
+  				<li class="li"><a class="xref" href="../../examples/core/sp-flow/snap-pipeline-execute/example-run-a-child-pipeline-multiple-times/example-run-a-child-pipeline-multiple-times.html">../../examples/core/sp-flow/snap-pipeline-execute/example-run-a-child-pipeline-multiple-times/example-run-a-child-pipeline-multiple-times.html</a>: The <span class="ph filepath">PE_Multiple_Executions</span> example project demonstrates how to
+						configure the <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-pipeline-execute.html">Pipeline
+            Execute</a>
+        </span> Snap to execute a
+						child pipeline multiple times.</li>
+  				<li class="li"><a class="xref" href="../../examples/core/sp-flow/snap-pipeline-execute/example-propagate-a-schema-backward/example-propagate-a-schema-backward.html">../../examples/core/sp-flow/snap-pipeline-execute/example-propagate-a-schema-backward/example-propagate-a-schema-backward.html</a>: The <span class="ph filepath">PE_Backward_Schema_Propagation_Contacts.zip</span> example project
+						demonstrates the schema that suggests a feature of the <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-pipeline-execute.html">Pipeline
+            Execute</a>
+        </span> Snap.</li>
+  				<li class="li"><a class="xref" href="../../examples/core/sp-flow/snap-pipeline-execute/example-propagate-schema-backward-and-forward/example-propagate-schema-backward-and-forward.html">../../examples/core/sp-flow/snap-pipeline-execute/example-propagate-schema-backward-and-forward/example-propagate-schema-backward-and-forward.html</a>: The <span class="ph filepath">PE_Backward_Forward_Schema_Propagation</span> example project
+						demonstrates the <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-pipeline-execute.html">Pipeline
+            Execute</a>
+        </span> Snap's
+						capability of propagating schema in both directions – upstream and downstream.</li>
+  			</ul>
+  	</section>
+    <section class="section"><h2 class="title sectiontitle">Snap views<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-flow/snap-pipeline-execute.html#snap-views"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <table class="table snapreftable"><caption></caption><colgroup><col style="width:20%"><col style="width:40%"><col style="width:40%"></colgroup><thead class="thead">
+            <tr class="row">
+              <th class="entry valign-top" id="snap-pipeline-execute__entry__15">Type</th>
+              <th class="entry valign-top" id="snap-pipeline-execute__entry__16">Description</th>
+              <th class="entry valign-top" id="snap-pipeline-execute__entry__17">Examples of upstream and downstream Snaps</th>
+            </tr>
+          </thead><tbody class="tbody">
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__15">Input</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__16">
+                <p class="p">The document or binary data to send to the child pipeline.</p>
+                <p class="p">Retry is not supported if the input view is a Binary data type.</p>
+              </td>
+              <td class="entry" headers="snap-pipeline-execute__entry__17">
+                <ul class="ul">
+                  <li class="li"><span class="ph"><a class="xref" href="../../../common/../snaps/snaps-core/sp-transform/snap-mapper.html">Mapper</a></span></li>
+                  <li class="li"><span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-copy.html">Copy</a>
+        </span></li>
+                </ul>
+              </td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__15">Output</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__16">
+                <ul class="ul">
+                  <li class="li">If the child pipeline has an unlinked output, then documents or binary data
+                    from that view are transferred out of this view.</li>
+                  <li class="li">
+                    <p class="p">If the child pipeline has a linked view then the output document or binary
+                      data is generated for successful runtimes with the <strong class="ph b">run_id</strong> field.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p">Unsuccessful pipeline runs write a document to the error view. If <strong class="ph b">Reuse
+                        executions to process documents</strong> is deselected, the original input or
+                      binary data is added to the output document.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p">For Pool Size Usage: If the Pool Size field value is greater than one, then
+                      the order of records sent to the child pipeline in the output is not
+                      guaranteed to be the same as that of the input.</p>
+                  </li>
+                </ul>
+              </td>
+              <td class="entry" headers="snap-pipeline-execute__entry__17">
+                <ul class="ul">
+                  <li class="li"><span class="ph"><a class="xref" href="../../../common/../snaps/snaps-core/sp-transform/snap-mapper.html">Mapper</a></span></li>
+                  <li class="li"><span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-router.html">Router</a>
+        </span></li>
+                </ul>
+              </td>
+            </tr>
+            <tr class="row">
+              <td class="entry align-left" headers="snap-pipeline-execute__entry__15 snap-pipeline-execute__entry__16 snap-pipeline-execute__entry__17" colspan="3">
+              	Learn more about <span class="ph"><a class="xref" href="../../../common/../design-integrations/error-handling.html" title="Error handling is a crucial aspect of building reliable data integration pipelines in SnapLogic.">Error handling</a></span>.
+              	
+              </td>
+            </tr>
+          </tbody></table>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Snap settings<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-flow/snap-pipeline-execute.html#snap-settings"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+    	<div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Legend:</span> 
+        <ul class="ul">
+          
+          <li class="li">Expression icon (<img class="image inline-icon" src="../../../common/../img/icons/sluimisc/expressionSelected-Enabled.svg">): Allows using
+            pipeline parameters to set field values dynamically (if enabled). SnapLogic Expressions
+            are not supported. If disabled, you can provide a static value. </li>
+          <li class="li">SnapGPT (<img class="image inline-icon" src="../../../common/../img/icons/sluimisc/snapgpt.svg">): Generates SnapLogic Expressions
+            based on natural language using SnapGPT. <a class="xref" href="../../../snapgpt/snapgpt-generate-expressions-mapper-snap.html" title="Use SnapGPT to generate expressions to use in Snaps with expression-enabled fields.">Learn
+            more.</a></li>
+          <li class="li"> Suggestion icon (<img class="image inline-icon" src="../../../common/../img/icons/sluimisc/suggest.svg">): Populates a
+            list of values dynamically based on your Snap configuration. You can select only one
+            attribute at a time using the icon. Type into the field if it supports a comma-separated
+            list of values.</li>
+          <li class="li">Upload <img class="image inline-icon" src="../../../common/../img/icons/prod-slui/designer/database.png">: Uploads files. <a class="xref" href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1439404" target="_blank" rel="external noopener">Learn more</a>.</li>
+          
+        </ul>Learn more about the icons in the <a class="xref" href="../../../common/../snaps/snap-settings-dialog.html">Snap settings dialog</a>. </div>
+      <table class="table snapreftable"><caption></caption><colgroup><col style="width:20%"><col style="width:20%"><col style="width:60%"></colgroup><thead class="thead">
+            <tr class="row">
+              <th class="entry valign-top" id="snap-pipeline-execute__entry__25">Field/Field set</th>
+              <th class="entry valign-top" id="snap-pipeline-execute__entry__26">Type</th>
+              <th class="entry valign-top" id="snap-pipeline-execute__entry__27">Description</th>
+            </tr>
+          </thead><tbody class="tbody">
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__25"><p class="p">Label</p> <p class="p"><code class="ph codeph"><span class="ph">String</span></code></p></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">String</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27"><p class="p"><span class="ph">
+                  <span class="ph"><strong class="ph b">Required.</strong></span> Specify a unique name for the Snap. Modify this
+                  to be more appropriate, especially if more than one of the same Snaps is in the
+                  pipeline. </span></p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">Pipeline Execute</em></p>
+                <span class="ph"><strong class="ph b">Example</strong>: </span>
+                <em class="ph i">ExecuteCustomerUpdate Pipeline</em></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Pipeline</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">Dropdown list/Expression</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27"><span class="ph"><strong class="ph b">Required.</strong></span> Specify the child pipeline's absolute or
+                relative (expression-based) path to run. If you specify only the pipeline name, Snap
+                searches for the pipeline in the following folders in this order:<ul class="ul">
+                  <li class="li">Current project</li>
+                  <li class="li">Shared project-space</li>
+                  <li class="li">Shared folder of the Org</li>
+                </ul><p class="p">You can specify the absolute path to the target project using the
+                    <em class="ph i">Org/project_space/project</em> notation.</p><p class="p">You can also dynamically choose
+                  the pipeline to run by entering an expression in this field when Expressions are
+                  enabled. For example, to run all of the pipelines in a project, you can connect
+                  the <a class="xref" href="https://docs.snaplogic.com/snaps/snaps-core/sp-snaplogic-metadata/snap-metadata-list.html" target="_blank" rel="external noopener">SnapLogic List</a> Snap to this Snap to
+                  retrieve the list of pipelines in the project and run each one.</p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Execute On</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">Dropdown list</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27">Select one of the following Snaplex options to specify the target Snaplex for
+                the child pipeline:<ul class="ul">
+                  <li class="li">
+                    <p class="p"><em class="ph i">LOCAL_NODE.</em> Runs the child pipeline on the same node as the parent
+                      pipeline. This option is recommended when the calls between the child and
+                      parent pipeline are frequent. Use this option for most regular child Pipeline
+                      executions.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">LOCAL_SNAPLEX.</em> Runs the child pipeline on one of the available nodes
+                      in the same Snaplex as the parent pipeline. This option is most effective
+                      when the child pipelines process intensive workloads - such as, a parent
+                      pipeline listing files and calling a child to process data from one of those
+                      files.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">SNAPLEX_WITH_PATH.</em> Runs the child pipeline on a user-specified
+                      Snaplex, and the <strong class="ph b">Snaplex Path</strong> field appears. It's important to note
+                      that this process is highly dependent on the network. The network
+                      communication is optimized for batch data processing since the child Pipeline
+                      is on a remote Snaplex. It is recommended to use this option only when the
+                      child Pipeline needs to run on a different Snaplex because of endpoint
+                      connectivity restrictions or for workload distribution purposes.</p>
+                  </li>
+                </ul><p class="p">For more information, refer to the <strong class="ph b">Best Practices</strong>to be
+                    updated.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">SNAPLEX_WITH_PATH</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">groundplex4-West</em></p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Snaplex path</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">Dropdown list/Expression</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27"><em class="ph i">Appears when you select <strong class="ph b">SNAPLEX_WITH_PATH</strong> for <strong class="ph b">Execute
+                  On</strong>.</em><p class="p">Enter the name of the Snaplex on which you want the child pipeline
+                  to run. Click <img class="image inline-icon" src="../../../common/../img/icons/prod/icon/dropdown-Active.svg"> to select from
+                  the list of Snaplex instances available in your Org.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">DevPlex-1</em></p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Execution Label</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">Dropdown list/Expression</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27">
+                <p class="p">Specify the label to display in the Pipeline view of the Dashboard. </p>
+                <p class="p">You can use this field to differentiate each pipeline execution.</p>
+                <p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p>
+                <p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">NetSuite-Create-Credit-Memo</em></p>
+              </td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Pipeline parameters</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26 snap-pipeline-execute__entry__27" colspan="2">Use this fieldset to define the Pipeline
+                Parameters for the pipeline selected in the <strong class="ph b">Pipeline</strong> field. When you select
+                  <strong class="ph b">Reuse executions to process documents</strong>, you cannot change parameter values
+                from one Pipeline invocation to the next.</td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Parameter name</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">String/Suggestion</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27"><strong class="ph b"><em class="ph i">Debug mode</em></strong><p class="p">Enter the name of the parameter. Select the defined
+                  Pipeline Parameters in the Pipeline field.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">Postal_code</em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Parameter value</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">Dropdown list/Expression</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27">Enter the value for the<span class="ph uicontrol"> Pipeline parameter</span>, which can be an expression
+                based on incoming documents or a constant. <p class="p">If you configure the value as an
+                  expression based on the input, then each incoming document or binary data
+                  evaluates against that expression when to you invoke the pipeline. The result of
+                  the expression is JSON-encoded if it is not a string. The child Pipeline then
+                  needs to use the <code class="ph codeph">JSON.parse()</code> expression to decode the parameter
+                  value.</p><p class="p">When <span class="ph uicontrol">Reuse executions to process documents</span> is enabled, the
+                  parameter values cannot change from one invocation to the next.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">9402</em></p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Reuse executions to process documents</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">Checkbox</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27">Select this checkbox to start a child pipeline and pass multiple inputs to the
+                pipeline. Reusable executions continue to live until all of the input documents to
+                this Snap are fully processed.<div class="note important note_important"><span class="note_important_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/IMPORTANT.svg" class="noborder" alt="icon"></span><span class="note_important_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/IMPORTANT.svg" class="noborder" alt="icon"></span><span class="note__title">Important:</span> 
+                  <ul class="ul">
+                    <li class="li">
+                      When you select this checkbox, and the pipeline parameters use expressions,
+                        the expressions are evaluated with the first document. The parameter value
+                        in the child pipeline does not change across documents.
+                    </li>
+                    <li class="li">
+                      If you do clear this checkbox, a new pipeline execution is created for each
+                        input document.
+                    </li>
+                    <li class="li">
+                      <span class="ph uicontrol">Reuse</span> mode does not support batching.
+                    </li>
+                  </ul>
+                </div><p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Deselected</p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Batch size</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">Integer/Expression</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27"><span class="ph"><strong class="ph b">Required.</strong></span> Specify the number of documents in the batch
+                size. If Batch Size is set to <em class="ph i">N</em>, then <em class="ph i">N</em> input documents are sent to
+                each child pipeline that is started. After <em class="ph i">N</em> documents, the child pipeline
+                input view is closed until the child pipeline completes its execution. The output of
+                the child pipeline (one or more documents) passes to the Pipeline Execute output
+                view. New child pipelines are started after the original pipeline is complete.<div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+                  <ul class="ul">
+                    <li class="li">
+                      Batching is not supported for reuse executions.
+                    </li>
+                    <li class="li">
+                      This option does not support reusable executions.
+                    </li>
+                  </ul>
+                </div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">1</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">2</em></p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Pool size</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">Integer/Expression</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27"><span class="ph"><strong class="ph b">Required.</strong></span> Specify an execution pool size to process
+                multiple input documents or binary data concurrently. When the pool size is greater
+                than one, the Snap starts Pipeline executions as needed up to the specified pool
+                size. <p class="p">When you select <strong class="ph b">Reuse executions to process documents</strong>, the Snap
+                  starts a new execution only if either all executions are busy working on documents
+                  or binary data and the total number of executions is below the pool
+                    size.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">1</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">4</em></p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Timeout (in seconds)</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">Integer/Expression</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27">Specify the number of seconds for which the Snap must wait for the child
+                pipeline to complete the runtime. If the child pipeline does not complete the
+                runtime before the timeout, the execution process stops and is marked as failed.<p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">10</em></p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Retry limit</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">Integer/Expression</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27">Specify the maximum number of retry attempts that the Snap must make in the
+                case of a failure. If the child pipeline does not execute successfully, an error
+                document is written to the error view. If the child pipeline is not in a completed
+                state, then it will retry. The pipeline failure at the application level could have
+                various causes, including network failures.<div class="note important note_important"><span class="note_important_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/IMPORTANT.svg" class="noborder" alt="icon"></span><span class="note_important_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/IMPORTANT.svg" class="noborder" alt="icon"></span><span class="note__title">Important:</span> Usage Guidelines<ul class="ul">
+                    <li class="li">
+                      This feature is incompatible with reusable executions.
+                    </li>
+                    <li class="li">
+                      Enabling <strong class="ph b">Retry</strong> overrides the <kbd class="ph userinput">Pool size</kbd> setting. If a task
+                        fails and retries are enabled, a new instance starts regardless of the
+                        configured pool size.
+                    </li>
+                    <li class="li">
+                      Retry is not supported if the input view is a Binary data type.
+                    </li>
+                  </ul>
+                </div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">3</em></p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Retry interval</td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">Integer/Expression</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27">Specify the minimum number of seconds the Snap must wait between two retry
+                requests. A retry happens only when the previous attempt results in an error. <div class="note warning note_warning"><span class="note_warning_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/WARNING.svg" class="noborder" alt="icon"></span><span class="note_warning_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/WARNING.svg" class="noborder" alt="icon"></span><span class="note__title">Warning:</span> 
+                  <ul class="ul">
+                    <li class="li">
+                      <p class="p">This feature is incompatible with reusable executions. </p>
+                    </li>
+                    <li class="li">
+                      <p class="p">Retry is not supported if the input view is a Binary data type.</p>
+                    </li>
+                  </ul>
+                </div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">10</em></p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-pipeline-execute__entry__25">Snap execution <p class="p"><code class="ph codeph"><span class="ph">Dropdown list</span></code></p></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__26"><span class="ph">Dropdown list</span></td>
+              <td class="entry" headers="snap-pipeline-execute__entry__27">
+                <div class="p"> Choose one of the three modes in
+                  which the Snap executes. Available options are: <ul class="ul">
+                  	<li class="li"><kbd class="ph userinput">Validate &amp; Execute</kbd>: Performs limited execution of
+                      the Snap and generates a data preview during pipeline validation.
+                      Subsequently, performs full execution of the Snap (unlimited records) during
+                      pipeline runtime. </li>
+                  	<li class="li"><kbd class="ph userinput">Execute only</kbd>: Performs full execution of the Snap
+                      during pipeline execution without generating preview data.</li>
+                  	<li class="li"><kbd class="ph userinput">Disabled</kbd>: Disables the Snap and all Snaps that are
+                      downstream from it.</li>
+                  </ul>
+                </div>
+                <p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">Validate and Execute</em>
+                </p>
+                <p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">Execute only</em></p>
+              </td>
+            </tr>
+          </tbody></table>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Troubleshooting<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-flow/snap-pipeline-execute.html#troubleshooting"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <div class="p">
+        <table class="table frame-all"><caption></caption><colgroup><col style="width:33.33333333333333%"><col style="width:33.33333333333333%"><col style="width:33.33333333333333%"></colgroup><thead class="thead">
+              <tr class="row">
+                <th class="entry" id="snap-pipeline-execute__entry__72">Error</th>
+                <th class="entry" id="snap-pipeline-execute__entry__73">Reason</th>
+                <th class="entry" id="snap-pipeline-execute__entry__74">Resolution</th>
+              </tr>
+            </thead><tbody class="tbody">
+              <tr class="row">
+                <td class="entry" headers="snap-pipeline-execute__entry__72">Account validation failed</td>
+                <td class="entry" headers="snap-pipeline-execute__entry__73">The Pipeline ended before the batch could complete execution because of a
+                  connection error.</td>
+                <td class="entry" headers="snap-pipeline-execute__entry__74">Verify that the <strong class="ph b">Refresh token</strong> field is configured to handle the inputs
+                  properly. If you are not sure when the input data is available, configure this
+                  field as zero so the connection is always open.</td>
+              </tr>
+            </tbody></table>
+      </div>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Access pipelines in the Pipeline Catalog in the Designer to create a Child
+        pipeline<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-flow/snap-pipeline-execute.html#access-pipelines-in-the-pipeline-catalog-in-the-designer-to-create-a-child-pipeline"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <p class="p">You can now browse the pipeline catalog for the target child pipeline and then select,
+        drag, and drop it into Canvas. The <strong class="ph b">Designer</strong> automatically adds the child pipeline
+        using the Pipeline Execute Snap. You can preview a child pipeline by hovering over a
+        Pipeline Execute Snap while the parent pipeline is open on the Designer.</p>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Return child pipeline output to the parent pipeline<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-flow/snap-pipeline-execute.html#return-child-pipeline-output-to-the-parent-pipeline"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <p class="p">A common use case for the <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-pipeline-execute.html">Pipeline
+            Execute</a>
+        </span> Snap is
+				to run a child Pipeline whose output is immediately returned to the parent pipeline for
+				further processing. You can achieve this return with the following Pipeline design for the
+				child Pipeline.</p>
+      <p class="p">In this example, the document in this child Pipeline is sent to the parent Pipeline through
+        output1 of the child pipeline. Any unconnected output view is returned to the parent
+        Pipeline. You can use any Snap that completes execution in this way.</p>
+      <br><img class="image border" src="../../../img/snaps/snaps-core/sp-flow/snap-pipeline-execute/snap-pipeline-execute-overview-parent-pipeline.png" height="414" width="987"><br>
+      <br><img class="image border" src="../../../img/snaps/snaps-core/sp-flow/snap-pipeline-execute/snap-pipeline-execute-overview-child-pipeline.png" height="575" width="777"><br>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Execution States<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-flow/snap-pipeline-execute.html#execution-states"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <p class="p">When a <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-pipeline-execute.html">Pipeline
+            Execute</a>
+        </span> Snap activates its child
+				pipeline, you can view the status as it executes on the <span class="ph"><a class="xref" href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1438492/SnapLogic+Designer" target="_blank" rel="external noopener">SnapLogic Designer</a></span> canvas.</p>
+      <div class="p">A child pipeline also reports its execution to the parent pipeline. In the <strong class="ph b">Monitor
+					overview</strong> and <strong class="ph b">Dashboard</strong>, you can hover over the status shown in the Status
+				column for a pipeline with a <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-pipeline-execute.html">Pipeline
+            Execute</a>
+        </span> Snap,
+				and the following messages are displayed for the following scenarios:<ul class="ul">
+					<li class="li">
+						<p class="p">If the parent Pipeline has the status <em class="ph i">Failed</em> shown in the <strong class="ph b">Status</strong>
+							column, the following message is displayed: <em class="ph i">One of the child Pipelines
+							Failed</em>.</p>
+					</li>
+					<li class="li">
+						<p class="p">If the parent Pipeline has the status <em class="ph i">Completed</em> with Errors shown in the
+								<strong class="ph b">Status</strong> column, the following message is displayed: <em class="ph i">One of the child
+								Pipelines completed with Errors</em>.</p>
+					</li>
+				</ul></div>
+      <p class="p">These execution state messages apply even when the child pipeline does not appear on the
+        Dashboard because of child pipeline execution limits.</p>
+      <p class="p">The<strong class="ph b"> Monitor</strong>
+        <strong class="ph b">Execution overview</strong> does not include the <em class="ph i">Completed</em> with <em class="ph i">Warnings</em> status
+        as a searchable status.</p>
+    </section>
+  </div>
+  <nav role="navigation" class="related-links"></nav>
+</article></main><footer role="contentinfo"><div class="footer">
+  <div class="ftrlegal">
+    <!-- <p class="copyright"><a href="/refs/copyright.html">© <ph class="copyrightyear"></ph> SnapLogic, Inc.</a></p> -->
+     <div class="footer_top">
+     <div>
+     <a href="../../../../index.html"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-indigo-icon.svg" alt="SnapLogic Logo"></a>
+     <a href="../../../../index.html">SnapLogic Documentation</a>
+     </div>
+     <div>
+     <ul>
+      <!-- <li><a href="/refs/copyright.html">© <ph class="copyrightyear"></ph> SnapLogic, Inc.</a></li>  <a class="xref" href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/49855/SnapLogic+Releases" target="_blank" rel="external noopener">Release Notes</a>-->
+        <!-- <li><a href="https://learn.snaplogic.com/" target="_blank" rel="external noopener">SnapLogic Academy</a></li> -->
+        <li><span>Explore</span><span><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-up-white-icon.svg" alt="SnapLogic Logo"></span></li>
+        <li><a class="xref" href="https://learn.snaplogic.com/" target="_blank" rel="external noopener">SnapLogic Academy</a></li>
+        <li><a class="xref" href="https://community.snaplogic.com/" target="_blank" rel="external noopener">Integration Nation</a></li>
+        <li><a class="xref" href="https://www.snaplogic.com/" target="_blank" rel="external noopener">Company</a></li>
+    <!-- <li><a href="https://community.snaplogic.com/" target="_blank" rel="external noopener">Integration Nation</a></li> -->
+    <!-- <li><a href="mailto:support@snaplogic.com" target="_blank" rel="external noopener">Support</a></li> -->
+    <!-- <li><a href="https://www.snaplogic.com/" target="_blank" rel="external noopener">Company</a></li> -->
+    </ul>
+       <ul>
+      <li><span>Need Help?</span><span><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-up-white-icon.svg" alt="SnapLogic Logo"></span></li>
+      <li>
+      <!-- <a><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/envelope-icon.svg' alt='envelope-icon'/></a> -->
+      <a href="mailto:documentation@snaplogic.com">Documentation Team</a></li>
+      <li>
+      <!-- <a><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/envelope-icon.svg' alt='envelope-icon'/></a> -->
+      <a href="mailto:support@snaplogic.com">Customer Support Team</a></li>
+      </ul>
+      </div>
+    </div>
+    <div class="footer_bottom">
+     <!-- <p  class="footer_logo"> -->
+    <!-- <a href="../index.html"><img class="noborder" src="https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-new.svg" alt="SnapLogic Logo"/></a> -->
+    <!-- <a href="../index.html"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/sl-logo-teal.svg" alt="SnapLogic Logo"/></a> -->
+    <!-- <a href="../../../../index.html"><img class="noborder" src="/img/icons/logo/sl_logo_combo_rev_rgb.svg" alt="SnapLogic Logo"/></a> -->
+    <!-- <ph class="footer-site-title">SnapLogic Documentation</ph> -->
+    <!-- </p> -->
+     <ul>
+      <li><a href="https://www.snaplogic.com/legal/copyright" target="_blank" rel="external noopener">Copyright</a></li>
+       <li class="copyright">© <ph class="copyrightyear"></ph> SnapLogic, Inc.</li>
+    </ul>
+     <!-- <ul> -->
+      <!-- <ul>
+      <li>Need Help?</li>
+      <li><a><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/envelope-icon.svg' alt='envelope-icon'/></a><a href="mailto:documentation@snaplogic.com">Documentation Team</a></li>
+      <li><a><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/envelope-icon.svg' alt='envelope-icon'/></a><a href="mailto:support@snaplogic.com">Customer Support Team</a></li>
+      </ul> -->
+    <!-- </ul> -->
+    <ul>
+      <li><a class="xref" href="https://www.facebook.com/SnapLogic" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-facebook.svg" alt="ftr-logo"></a></li>
+      <li><a class="xref" href="https://twitter.com/SnapLogic" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-twitter.svg" alt="ftr-logo"></a></li>
+      <li><a class="xref" href="https://www.linkedin.com/company/snaplogic" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-linkedin.svg" alt="ftr-logo"></a></li>
+      <li><a class="xref" href="https://www.instagram.com/snaplogicinc" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-instagram.svg" alt="ftr-logo"></a></li>
+      <li><a class="xref" href="https://www.youtube.com/snaplogic" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-youtube.svg" alt="ftr-logo"></a></li>
+    </ul>
+    </div>
+
+  </div>
+
+  <!-- <script src="https://d3132s9xzuu9s8.cloudfront.net/k/sldocs.js"/> -->
+  <script src="../../../../theme/sldocs.js"></script>
+
+</div></footer></body></html>

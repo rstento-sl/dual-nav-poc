@@ -1,0 +1,1726 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2026"><meta name="generator" content="DITA-OT"><title>HTTP Client</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <!-- <link rel="icon" type="image/x-icon" href="/img/icons/logo/sl-logo.ico"/> -->
+  <!-- <link rel="icon" type="image/svg+xml" href="/img/icons/logo/sl-logo.svg"/> -->
+  <!--<link rel="icon" type="image/x-icon"  href="https://d3132s9xzuu9s8.cloudfront.net/k/sl-logo-teal.ico" />-->
+  <!-- <link rel="icon" type="image/svg+xml" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/favicon-teal-grad-128.svg"/> -->
+  <link rel="icon" type="image/svg+xml" href="https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-indigo-icon.svg">
+  <!--<link rel="icon" type="image/svg+xml" href="https://d3132s9xzuu9s8.cloudfront.net/k/sl-logo-teal.svg"/>-->
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+  <!-- Highlight.js for syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/gradient-light.min.css" integrity="sha512-6GvgqJ7t7UxZlT1V0sPyyZt5C+Kd7gR0dleu1G0uQxGm3k2FNc+6qXo5KcYqvSxgkXcVqYwGmTtX2C8rM1FJyA==" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-1c+VZVZPp4GqV1GZx1xA7YpXzXhY+S8o8QGx5yR3kS7E2T+I9vZbHcB6uOt+O6fQ1f+uR5u9jY8Cj7KvU3pRmA==" crossorigin="anonymous"></script>
+
+  <!-- Optional: Add specific language support -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js" integrity="sha512-fh7FqY7p8e2LP4xG1bH2AfGHlC3FJf8oU7GYo6vQ3zj6Z1+5pJH8qv5SW2Uu1eOoqsgqF8os2xHjlGcE1O3Npw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js" integrity="sha512-X9sBVkC+Xh1KmN6lVgKXoxc5A5FE1kP7V7sCFbfJEu2p7G2t3wH2Vx7XzH1E5dZlTQql2aR9ZT7gWZ7XqB5K4Q==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js" integrity="sha512-0q4H0TkvhH9e7j8C1uBl3xD4C9h1cUZg42jF0cF2d7u1N8g9PwJ1sH0F6uZ4xkJvXz2o8Y6k1v5lW7HP6v9ySQ==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js" integrity="sha512-3tU1a1FxPl8H1s2Ck0VqgZq3O/8wH6pH1PqR6mJ5vIu9zJxC1B8oN8lD1Q+Uu2p6P2rZ5jvYkR1nYVZ3fZ7hLw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js" integrity="sha512-5J7YxqV4mP3u+zL5fY3ZpF5H1nD8bQxU7tXvQh4pO1zD2xL8rV7hK9YcQnZrE1lM8fHh3vH8K5Kf7oW4R3VxvA==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/sql.min.js" integrity="sha512-l4sZx3rS4Lw3d1BvI1kVwL5gT3bD9uP3VfCqY6N7pX8jK0wT2yJ+YwU9mN4qV3ZxW1pD7bH5nE6uK5qT2U6xXg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js" integrity="sha512-G2lYw9qF6NnD4vQ5oT0yU3bU9lX7eP3hQ6rVwZ7mL2kJ3fP9qW4vR8yS6uJxN2oT4tZcW1sF8uV9yH3nB1k2xQ==" crossorigin="anonymous"></script>
+
+  <!-- Rainbow (Deprecated) -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/2.1.4/themes/github.css" /> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/2.1.4/rainbow.min.js"></script> -->
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script> -->
+
+  <!-- Google Analytics (gtag.js) – Enable for live site only.
+  <script async="true" src="https://www.googletagmanager.com/gtag/js?id=G-W8ZVFJP785"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-W8ZVFJP785');
+  </script>
+  -->
+
+  <!-- GCSE -->
+  <!-- <script async="true" src="https://cse.google.com/cse.js?cx=25d4aa9829a3148ff"/> -->
+
+  <!-- FontAwesome -->
+  <!-- <script src="https://kit.fontawesome.com/a548053f9e.js" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://kit.fontawesome.com/77a505b9e0.js" crossorigin="anonymous"></script> -->
+
+  <!-- Preload images -->
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-blue.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-up.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-down.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-left-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-right-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/codeblock-copy-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-up-fill-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/thumbs-down-fill-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-down-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/IMPORTANT.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/TIP.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/REMEMBER.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/WARNING.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/CAUTION.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/community-logo-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/icon-legacy-site-search.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/3-stars-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/cross-icon.svg" as="image">
+    <link rel="preload" href="https://d3132s9xzuu9s8.cloudfront.net/k/img/sl-logo-indigo-icon.svg" as="image">
+  <!-- BugHerd -->
+  <!-- <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=1tn2hl0shbd0tgl9ifyteq" async="true"></script> stage-main -->
+  <!-- Include Bing Custom Search JavaScript SDK -->
+  <!-- <script src="https://www.bing.com/api/customsearch/search/sdk"></script> -->
+<link rel="stylesheet" type="text/css" href="../../../theme/commonltr.css"><link rel="stylesheet" type="text/css" href="../../../theme/sldocs.css"></head><body id="snap-http-client"><header role="banner"><!-- Edited by Claude (AI assistant), 2026-08-27:
+     - Added the External MCP Tools, Data Lineage, and Observability
+       Integrations entries when those products were wired into nav
+       (the latter two split out of an unaddressable "Tool Integrations"
+       grouping, per user direction, each getting its own landing page).
+     - Added the Pattern Library and SnapLabs entries, and fixed the
+       Secrets Management entry (was missing its "cicd/" path prefix
+       entirely — a pre-existing broken link, not something this
+       session introduced). All three were registered in the product
+       nav but had never been given homepage cards or dropdown entries.
+     - Repointed the Pattern Library and SnapLabs entries from their old
+       "-about.html" topic pages to their new "-home.html" landing pages,
+       matching the pattern every other dropdown entry already used. --><div class="header">
+<div class="headertopsection">
+  <div class="mainbanner">
+    <!-- Hamburger for mobile -->
+    <i class="hamburgericon"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/hamburger-icon.svg" alt="menu"></i>
+
+    <!-- Logo and Site Title -->
+    <a href="../../../../index.html" class="header-logo-link">
+      <img class="noborder noexpand header-logo-img" src="https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-indigo-icon.svg" alt="SnapLogic Logo">
+    </a>
+    <ph class="site-title site-title-compact"><a href="../../../../index.html">SnapLogic Documentation</a></ph>
+
+    <!-- Search bar (right-aligned in top row) -->
+    <div class="search-container-compact desktop-nav">
+      <span onclick="showPopup()" class="search-icon-compact"><i><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-white.svg" alt="search-icon"></i></span>
+      <input type="text" id="searchQuery" placeholder="Search docs" spellcheck="false" autocomplete="off" onfocus="showdropdown()">
+    </div>
+  </div>
+
+  <!-- Product Dropdown Menus (separate row) -->
+  <nav class="product-menu-header desktop-nav">
+    <!-- Home link (no dropdown) -->
+    <a href="../../../../index.html" class="menu-home-link">Home</a>
+
+    <!-- Dropdown 1: AI Ecosystem -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        AI Ecosystem <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../agentcreator/agentcreator-home.html">AgentCreator</a>
+        <a href="../../../../external-mcp-tools/external-mcp-tools-home.html">External MCP Tools</a>
+        <a href="../../../../mcp/mcp-home.html">MCP</a>
+        <a href="../../../../mcp-server-tools/mcp-server-tools-home.html">MCP Server Tools</a>
+        <a href="../../../../snapcode/snapcode-home.html">SnapCode</a>
+        <a href="../../../../snapgpt/snapgpt-home.html">SnapGPT</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 2: Integration Platform -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Integration platform <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../autosync/autosync-home.html">AutoSync</a>
+        <a href="../../../../designer/designer-home.html">Designer</a>
+        <a href="../../../../git-integration/git-integration-home.html">Git Integration</a>
+        <a href="../../../../manager/manager-home.html">Project Manager</a>
+        <a href="../../../../pattern-library/pattern-library-home.html">Pattern Library</a>
+        <a href="../../../../security/security-home.html">Security</a>
+        <a href="../../../../snaplabs/snaplabs-home.html">SnapLabs</a>
+        <a href="../../../../snaps/snaps-home.html">Snaps</a>
+        <a href="../../../../snapgpt/snapgpt-home.html">SnapGPT</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 3: APIs.
+         Added by Claude (AI assistant), 2026-08-28, at Ruth Stento's direction: pulled
+         "API Management" and "Public APIs" out of Integration Platform into their own
+         menu, and added Classic APIM (already had a -home landing page, just wasn't
+         linked from the header yet). Labels match the ones already established on the
+         homepage feature card (src/index.dita: "APIM 3.0" / "Classic APIM"). -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        APIs <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../api-m/apim-home.html">APIM 3.0</a>
+        <a href="../../../../apim-classic/apim-classic-home.html">Classic APIM</a>
+        <a href="../../../../public-apis/public-apis-home.html">Public APIs</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 4: Administration &amp; Governance -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Administration <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../admin-manager/admin-manager-home.html">Admin Manager</a>
+        <a href="../../../../admin-manager/cloudplex-secure-connectivity.html">Cloud Connectivity</a>
+        <a href="../../../../manager/migrate-about.html">Migrate Environments</a>
+        <a href="../../../../cicd/secrets-mgmt/secrets-mgmt-home.html">Secrets Management</a>
+        <a href="../../../../snaplexes/snaplexes-home.html">Snaplexes</a>
+      </div>
+    </div>
+
+    <!-- Dropdown 5: Observability -->
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Observability <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../tool-integrations/lineage-home.html">Data Lineage</a>
+        <a href="../../../../monitor/monitor-home.html">Monitor</a>
+        <a href="../../../../tool-integrations/observability-home.html">Observability Integrations</a>
+      </div>
+    </div>
+
+    <!-- Tutorials and Examples dropdowns temporarily removed by
+         Claude (AI assistant), 2026-08-28, at Ruth Stento's direction: not enough
+         content in either section yet to justify a top-level menu slot. Left as a
+         comment, not deleted, so they're a one-step restore (delete this comment
+         wrapper) once there's enough tutorials/examples content to bring them back.
+
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Tutorials <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../tutorials/tutorials-admin-manager.html">Admin Manager</a>
+        <a href="../../../../tutorials/tutorials-autosync.html">AutoSync</a>
+        <a href="../../../../tutorials/tutorials-designer.html">Designer</a>
+        <a href="../../../../tutorials/tutorials-monitor.html">Monitor</a>
+        <a href="../../../../tutorials/tutorials-snapgpt.html">SnapGPT</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropdown-toggle">
+        Examples <span class="arrow">▾</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="../../../../examples/examples-admin-manager.html">Admin Manager</a>
+        <a href="../../../../examples/examples-autosync.html">AutoSync</a>
+        <a href="../../../../examples/examples-designer.html">Designer</a>
+        <a href="../../../../examples/examples-monitor.html">Monitor</a>
+        <a href="../../../../examples/examples-snapgpt.html">SnapGPT</a>
+      </div>
+    </div>
+    -->
+  </nav>
+
+  <ul class="topmenu">
+    <!-- Original search for mobile -->
+     <li class="search-popup-hdr">
+                <div id="search-container">
+                    <span onclick="showPopup()" id="search-container-icon"><i><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-white.svg" alt="search-icon"></i></span>
+                    <input type="text" id="searchQueryDesktop" placeholder="Search the documentation and community posts" spellcheck="false" autocomplete="off" onfocus="showdropdown()">
+                </div>
+            </li>
+  </ul>
+
+  <ul class="topmenusearch">
+  <li>
+                <div id="search-container-mobile">
+                    <span onclick="showPopup()"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-blue.svg" alt="search-icon"></span>
+                    <input type="text" id="searchQuerymobile" placeholder="Search the docs" spellcheck="false" autocomplete="off" onfocus="showdropdown()">
+                </div>
+            </li>
+      <li><span><i><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-white.svg" alt="search-icon"></i></span></li>
+  </ul>
+</div>
+  <div id="search-popup">
+    <div class="search-main">
+      <div class="Search-filters">
+      <div>
+      <li><h1>Filter search results</h1><img class="noborder noexpand close-filters-button" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg" alt="Close Filters"></li>
+      <li class="filter-item"><input type="checkbox" value="All" name="Content" checked=""><p>All</p></li>
+      <li class="filter-item"><input type="checkbox" value="Documentation" name="Content">
+        <p>New Documentation Site</p>
+        <img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-down-icon.svg" class="docfilterchevron noborder" alt="Toggle"></li>
+        <ul class="Doc-filters">
+          <li class="filter-item"><input type="checkbox" value="autosync" name="AutoSync"><p>AutoSync</p></li>
+          <li class="filter-item"><input type="checkbox" value="admin-manager" name="Admin Manager"><p>Admin Manager</p></li>
+          <li class="filter-item"><input type="checkbox" value="security" name="Security"><p>Security</p></li>
+          <li class="filter-item"><input type="checkbox" value="snaps" name="Snaps"><p>Snaps</p></li>
+          <li class="filter-item"><input type="checkbox" value="snaplexes" name="Snaplexes"><p>Snaplexes</p></li>
+          <li class="filter-item"><input type="checkbox" value="monitor" name="Monitor"><p>Monitor</p></li>
+          <li class="filter-item"><input type="checkbox" value="public-apis" name="Snaplogic Public APIs"><p>Snaplogic Public APIs</p></li>
+          <li class="filter-item"><input type="checkbox" value="git-integration" name="Git Integration"><p>Git Integration</p></li>
+          <li class="filter-item"><input type="checkbox" value="cicd/secrets-mgm" name="Secrets Management"><p>Secrets Management</p></li>
+          <li class="filter-item"><input type="checkbox" value="genai" name="GenAI App Builder"><p>AgentCreator</p></li>
+        </ul>
+        <li class="filter-item"><input type="checkbox" value="Confluence" name="Content">
+        <p>Legacy Site</p></li>
+        <ul class="legacy-filters-text">
+          <li>
+            <span><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/tool-tip-icon.svg" alt="icon"></span>
+            <span>No advanced filters available</span>
+          </li>
+        </ul>
+      </div>
+      </div>
+      <div class="search-page-main">
+        <div class="search-bar-advanced">
+           <div class="back-button">
+           <img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/arrow-narrow-left.svg" alt="backicon">
+           </div>
+          <div class="search-bar">
+          <div>
+          <span class="cleartext"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/Close Icon.svg" alt="clearicon"></span>
+           <span class="advancedsearchicon"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/search-icon-blue.svg" alt="search-icon"></span>
+            <input placeholder="Search the documentation and community posts" type="text" spellcheck="false" autocomplete="off" onfocus="showdropdown2()">
+            </div>
+            <div id="autosuggest-dropdown2"></div>
+          </div>
+          <div class="show-filters-button"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/show-filters.svg" alt="clearicon"></div>
+          <div class="advance_search_button">Search</div>
+
+        </div>
+        <div class="results_count"></div>
+        <div id="searched-results"></div>
+         <div id="show-more" class="">Show more results</div>
+      </div>
+    </div>
+  </div>
+</div></header><nav class="toc" role="navigation"><ul><li><a href="../../../goals/learn-platform-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h5l1 1v9l-1-1H2V3z"/><path d="M14 3H9l-1 1v9l1-1h5V3z"/></svg> Learn about the SnapLogic Platform</a><ul><li><a href="../../../introduction/introduction-about.html">Platform components</a><ul><li><a href="../../../introduction/platform-overview.html">Introduction</a></li></ul></li><li><a href="../../../introduction/workflow.html">Working in the SnapLogic environment</a></li><li><a href="../../../introduction/interface-overview.html">Navigate the SnapLogic UI</a></li><li><a href="../../../introduction/manage-account.html">Manage your account</a><ul><li><a href="../../../introduction/user-profile.html">Configure Your Profile</a></li><li><a href="../../../introduction/user-mfa-setup.html">Set up MFA</a></li></ul></li><li><a href="../../../introduction/release-process.html">SnapLogic releases</a></li><li><a href="../../../introduction/platform-notifications.html">Logs, alerts, and notifications</a></li><li><a href="../../../introduction/timezone-settings.html">Time zone settings</a></li><li><a href="../../../cicd/cicd-about.html">CI/CD support</a></li><li><a href="../../../tool-integrations/tools-about.html">Tool integrations</a></li><li><a href="../../../introduction/documentation-roadmap.html">Documentation roadmap</a></li><li><a href="../../../introduction/intro-faq.html">SnapLogic FAQs</a></li><li><a href="../../../Chunk1997906683.html#Chunk1997906683">Glossary</a><ul></ul></li></ul></li><li><a href="../../../goals/get-started-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2L10 6H14L11 9L12 13L8 10.5L4 13L5 9L2 6H6L8 2Z"/></svg> Get Started</a><ul><li><a href="../../../goals/goal-integrate-data.html">Integrate Data</a></li><li><a href="../../../goals/goal-create-agent.html">Create an Intelligent Agent</a></li><li><a href="../../../goals/goal-transform-data.html">Transform Data</a></li><li><a href="../../../goals/goal-govern-api-use.html">Govern API Use</a></li><li><span>Agent Developers</span><ul><li><a href="../../../agentcreator/agentcreator-getstarted-build-agents.html">Build Agent Pipelines in AgentCreator</a></li><li><a href="../../../agentcreator/agentcreator-concepts.html">AgentCreator Concepts</a></li></ul></li><li><span>Environment Admins</span><ul><li><a href="../../../admin-manager/create-user-account.html">Create User Accounts</a></li><li><a href="../../../admin-manager/admin-manager-create-snaplex.html">Create a Snaplex</a></li><li><a href="../../../manager/snap-packs.html">Manage Snap Packs</a></li></ul></li><li><span>Integration Developers</span><ul><li><a href="../../../introduction/user-profile.html">Configure Your Profile</a></li><li><a href="../../../manager/accounts-cm.html">Configure Snap Accounts</a></li><li><a href="../../../monitor/monitor-about.html">Monitor Integrations</a></li></ul></li><li><a href="../../../goals/tutorials-about.html">Tutorials</a><ul><li><a href="../../../introduction/first-pipeline.html">Create Your First Pipeline in Designer</a></li><li><a href="../../../autosync/use-autosync.html">Create Your First AutoSync Pipeline</a></li><li><a href="../../../agentcreator/agentcreator-usecase-briefing-agent.html">Create Your First Agent</a></li><li><a href="../../../api-m/concepts/tutorial-hello-services.html">Create Your First APIM Service</a></li></ul></li></ul></li><li><a href="../../../goals/administer-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 7h6M5 10h4"/></svg> Administer the SnapLogic environment</a><ul><li><a href="../../../goals/control-plane-about.html">Control Plane</a><ul><li><a href="../../../manager/configure-custom-org-branding.html">Configure Custom Organization Branding</a></li><li><a href="../../../admin-manager/autosync-settings.html">AutoSync Settings: Snap Pack Versions &amp; Allow Nullable Columns</a></li><li><a href="../../../admin-manager/apim.html">APIM 3.0 Settings</a></li><li><a href="../../../admin-manager/designer-settings.html">Designer Settings: Pipeline Validation &amp; Data Preview</a></li><li><a href="../../../snapgpt/snapgpt-settings.html">SnapGPT Settings</a></li><li><a href="../../../admin-manager/admin-manager-sessions.html">User Session Timeouts</a></li><li><a href="../../../admin-manager/password-expiration.html">Password Expiration</a></li><li><a href="../../../admin-manager/create-user-account.html">Create User Accounts</a></li><li><a href="../../../admin-manager/create-team-account.html">Create Team Accounts</a></li><li><a href="../../../admin-manager/create-service-account.html">Create Service Accounts</a></li><li><a href="../../../admin-manager/edit-user-account.html">Edit User Accounts</a></li><li><a href="../../../autosync/account-groups.html">Organize Accounts into Groups</a></li></ul></li><li><a href="../../../goals/data-plane-about.html">Data Plane</a><ul><li><a href="../../../admin-manager/admin-manager-create-snaplex.html">Create a Snaplex</a></li><li><a href="../../../admin-manager/admin-manager-update-snaplex.html">Update a Snaplex</a></li><li><a href="../../../admin-manager/allowlist.html">Configure Snaplex Allowlists</a></li><li><a href="../../../admin-manager/cloud-triggered-allowlist.html">Add SnapLogic IPs to Client Allowlists</a></li><li><a href="../../../snaplexes/snaplex-auto-upgrade.html">Configure Snaplex Auto-Upgrade</a></li><li><a href="../../../snaplexes/groundplex-start-stop-on-linux.html">Start a Snaplex</a></li><li><a href="../../../snaplexes/groundplex-start-stop-on-linux.html">Start a Snaplex</a></li><li><a href="../../../snaplexes/groundplex-deployment-guides.html">Install a Groundplex</a></li><li><a href="../../../snaplexes/manage-groundplex-nodes-snaplex.html">Configure a Groundplex</a></li><li><a href="../../../designer/upgrade-to-a-new-snaplex-version.html">Upgrade to a New Snaplex Version</a></li></ul></li><li><span>Security</span><ul><li><a href="../../../admin-manager/create-idp-integration.html">Create Identity Provider Integration</a></li><li><a href="../../../admin-manager/configure-sso.html">Configure Single Sign-On</a></li><li><a href="../../../admin-manager/enhanced-encryption.html">Enable Enhanced Encryption (Admin)</a></li><li><a href="../../../autosync/enhanced-account-encryption.html">Enable Enhanced Encryption (AutoSync)</a></li></ul></li></ul></li><li><a href="../../../goals/develop-integrations-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 1.5"/></svg> Develop and Deploy Integrations</a><ul><li><a href="../../../goals/cdw-about.html">Automate data synchronization</a><ul><li><a href="../../../autosync/create-credentials.html">Create Data Source Credentials</a></li><li><a href="../../../autosync/create-data-pipeline.html">Create a Data Pipeline</a></li><li><a href="../../../autosync/choose-tables.html">Choose Tables to Sync</a></li><li><a href="../../../autosync/view-data-pipeline.html">View Data Pipeline Status</a></li><li><a href="../../../autosync/enable-notifications.html">Enable Data Pipeline Notifications</a></li></ul></li><li><a href="../../../goals/apps-databases-about.html">Design pipelines</a><ul><li><a href="../../../snapgpt/snapgpt-pipe-gen-rag.html">Generate a Pipeline with SnapGPT</a></li><li><a href="../../../snapgpt/snapgpt-generate-expressions-mapper-snap.html">Generate Expressions with SnapGPT</a></li><li><a href="../../../snapgpt/mapper-expr-example1.html">Generate Mapper Expressions with SnapGPT</a></li><li><a href="../../../snapgpt/generate-queries.html">Generate SQL Queries with SnapGPT</a></li><li><a href="../../../snapgpt/mapper-expr-example2.html">Extract Pipeline Parameters with SnapGPT</a></li><li><a href="../../../snapgpt/snapgpt-analyze-pipelines.html">Analyze Pipelines with SnapGPT</a></li><li><a href="../../../snapgpt/snapgpt-refine-pipelines.html">Refine Pipelines with SnapGPT</a></li><li><a href="../../../snapgpt/snapgpt-pipe-gen-image.html">Generate a Pipeline from an Image</a></li><li><a href="../../../designer/print-pipeline.html">Print a Pipeline</a></li><li><a href="../../../designer/using-pipeline-notes-in-designer.html">Use Pipeline Notes in Designer</a></li></ul></li><li><span>Set Up Git Integration</span><ul><li><a href="../../../git-integration/git-integration-about.html">Introduction</a></li><li><a href="../../../git-integration/git-authorize.html">Authorize Git Access</a></li><li><a href="../../../git-integration/git-integration-github.html">Connect to GitHub</a></li><li><a href="../../../git-integration/git-create-project-from-repo.html">Create a Project from a Repository</a></li></ul></li><li><span>Work with Assets in Git</span><ul><li><a href="../../../git-integration/git-operations.html">Git Operations Reference</a></li><li><a href="../../../git-integration/git-add-asset.html">Add an Asset to Git</a></li><li><a href="../../../git-integration/git-create-branch.html">Create a Branch</a></li><li><a href="../../../git-integration/git-commit-all-updates.html">Commit All Updates</a></li><li><a href="../../../git-integration/git-pull-from-repo.html">Pull from a Repository</a></li></ul></li></ul></li><li><a href="../../../goals/deploy-pipelines-about.html">Deploy Pipelines</a><ul><li><a href="../../../deploying-pipelines/task.html">Deploy pipelines</a><ul><li><a href="../../../deploying-pipelines/create-notifications.html">Configure task notifications</a></li><li><a href="../../../deploying-pipelines/scheduled-tasks.html">Scheduled Tasks</a><ul><li><a href="../../../deploying-pipelines/create-scheduled-tasks.html">Create a Scheduled Task</a><ul><li><a href="../../../deploying-pipelines/configure-regular-schedule.html">Configure Regular Schedule</a></li><li><a href="../../../deploying-pipelines/configure-blackout-dates.html"> Configure Blackout Dates</a></li></ul></li><li><a href="../../../deploying-pipelines/view-task-details.html">View task details</a></li><li><a href="../../../deploying-pipelines/set-repeatable-schedule.html">Set a repeatable schedule</a></li><li><a href="../../../deploying-pipelines/configure-timeouts-and-notifications.html">Configure timeouts</a></li><li><a href="../../../deploying-pipelines/view-scheduled-task-schedules-in-manager.html">View schedules</a></li><li><a href="../../../deploying-pipelines/task-queuing.html">Scheduled Task Queuing Preview</a></li></ul></li><li><a href="../../../deploying-pipelines/triggered-tasks.html">Triggered Tasks</a><ul><li><a href="../../../deploying-pipelines/create-triggered-task.html">Create a Triggered Task</a></li><li><a href="../../../deploying-pipelines/run-triggered-task.html">Run Triggered Task</a></li><li><a href="../../../deploying-pipelines/view-triggered-task-details.html">View Triggered Task details </a></li><li><a href="../../../deploying-pipelines/triggered-task-configuration-options.html">Configuration options</a></li><li><a href="../../../deploying-pipelines/stop-triggered-task.html">Stop Triggered Task</a></li><li><a href="../../../deploying-pipelines/design-triggered-task-pipelines.html">Design Triggered Task pipelines</a></li><li><a href="../../../deploying-pipelines/pass-pipeline-arguments-to-triggered-task.html">Pass pipeline arguments to Triggered Task</a></li><li><a href="../../../deploying-pipelines/deploy-tasks-from-on-premises-networks.html">Deploy tasks from on-premises networks</a></li><li><a href="../../../deploying-pipelines/triggered-task-execution.html">Synchronous and asynchronous Triggered Task execution</a></li><li><a href="../../../deploying-pipelines/using-triggered-tasks-with-enterprise-scheduler.html"> Triggered Tasks with Enterprise Scheduler</a></li><li><a href="../../../deploying-pipelines/monitor-and-troubleshoot-triggered-tasks.html">Monitor and Troubleshoot Triggered Tasks</a></li></ul></li><li><a href="../../../deploying-pipelines/ultra-task-pipelines.html">Ultra Tasks</a><ul><li><a href="../../../deploying-pipelines/types-ultra-pipelines.html">Pipeline requirements for Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/create-ultra-task.html">Create an Ultra Task</a></li><li><a href="../../../deploying-pipelines/invoke-ultra-pipelines-tasks.html">Invoke Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/headless-ultra-tasks.html">Headless Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/low-latency-ultra-tasks.html">Low-latency Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/overview-ultra-tasks.html">Ultra Tasks in production</a><ul><li><a href="../../../deploying-pipelines/deployment-architecture.html">Deployment architecture for Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/deploy-feedmaster-node.html">Deploy FeedMaster node</a></li><li><a href="../../../deploying-pipelines/configure-ultra-task-alias.html">Configure an alias for High Availability</a></li></ul></li><li><a href="../../../deploying-pipelines/monitor-ultra-pipeline-tasks.html">Monitor Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/best-practices-ultra-pipeline-tasks.html">Best Practices for Ultra Tasks </a></li><li><a href="../../../deploying-pipelines/snap-support-for-ultra-tasks.html">Snap Support for Ultra Tasks</a></li><li><a href="../../../deploying-pipelines/ultra-create-web-apps.html">Building Real-Time Web Apps</a></li></ul></li><li><a href="../../../deploying-pipelines/task-admin-operations.html">Common task administrative operations</a><ul><li><a href="../../../deploying-pipelines/edit-task.html">Edit a Task</a></li><li><a href="../../../deploying-pipelines/enable-and-disable-task.html">Enable and disable task</a></li><li><a href="../../../deploying-pipelines/task-details.html">Task details</a></li><li><a href="../../../deploying-pipelines/move-task.html">Move a task</a></li><li><a href="../../../deploying-pipelines/view-pipeline-apis.html">View pipeline APIs in Swagger</a></li></ul></li></ul></li></ul></li><li><a href="../../../goals/develop-agents-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 5v3l2 1.5"/></svg> Develop Agents</a><ul><li><span>Build Agents</span><ul><li><a href="../../../agentcreator/agentcreator-getstarted-build-agents.html">Get Started Building Agents</a></li><li><a href="../../../agentcreator/agentcreator-build-agents.html">Agent Architecture and Pipeline Design</a></li><li><a href="../../../agentcreator/agent-creator-tool-pipelines.html">Create Tool Pipelines</a></li></ul></li><li><span>Prompt Composition</span><ul><li><a href="../../../agentcreator/prompt-composer/agentcreator-promptcomposer-about.html">About Prompt Composer</a></li><li><a href="../../../agentcreator/prompt-composer/agentcreator-promptcomposer-launch.html">Get Started with Prompt Composer</a></li></ul></li><li><span>Use MCP</span><ul><li><a href="../../../mcp/mcp-quickstart.html">MCP Quickstart</a></li><li><a href="../../../mcp/mcp-server-setup.html">Set Up an MCP Server</a></li><li><a href="../../../mcp/mcp-client-setup.html">Set Up an MCP Client</a></li><li><a href="../../../mcp/mcp-connect-client.html">Connect a Client to Your Server</a></li></ul></li><li><span>Test &amp; Debug</span><ul><li><a href="../../../agentcreator/agentvis/agentcreator-agent-visualizer-about.html">Agent Visualizer</a></li><li><a href="../../../agentcreator/agentvis/agentvis-launch.html">Get Started with Agent Visualizer</a></li></ul></li><li><span>Deploy &amp; Use Cases</span><ul><li><a href="../../../agentcreator/agentcreator-usecase-briefing-agent.html">Use Case: Briefing Agent</a></li></ul></li></ul></li><li><a href="../../../goals/manage-apis-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8l2 4-2 4H4L2 6l2-4z"/><path d="M5 6h6"/></svg> Manage APIs</a></li><li><a href="../../../goals/configure-security-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="8" height="7" rx="1"/><path d="M6 7V5a2 2 0 014 0v2"/><circle cx="8" cy="10.5" r="1" fill="currentColor"/></svg> Configure Security</a><ul><li><span>Authentication</span><ul><li><span>Authentication for the SnapLogic environment</span><ul><li><a href="../../../admin-manager/create-idp-integration.html">Create Identity Provider Integration</a></li><li><a href="../../../admin-manager/configure-sso.html">Configure Single Sign-On</a></li><li><a href="../../../admin-manager/admin-manager-sessions.html">User Session Timeouts</a></li><li><a href="../../../admin-manager/password-expiration.html">Password Expiration</a></li></ul></li><li><a href="../../../goals/security/auth-public-apis.html">Authentication for Public APIs</a></li><li><a href="../../../goals/security/auth-apim-services.html">Authentication for APIM Services</a></li></ul></li><li><span>Encryption</span><ul><li><a href="../../../admin-manager/enhanced-encryption.html">Enable Enhanced Encryption (Admin)</a></li><li><a href="../../../autosync/enhanced-account-encryption.html">Enable Enhanced Encryption (AutoSync)</a></li><li><a href="../../../admin-manager/account-encryption.html">Account Encryption</a></li><li><a href="../../../admin-manager/email-encryption.html">Email Encryption</a></li></ul></li><li><span>Secrets Management</span><ul><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-about.html">Secrets Management Overview</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-config-accounts.html">Configure Accounts for Secrets Management</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-aws.html">AWS Secrets Manager</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-azure-kv.html">Azure Key Vault</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-hashicorp.html">HashiCorp Vault</a></li><li><a href="../../../cicd/secrets-mgmt/secrets-mgmt-cyberark.html">CyberArk Conjur</a></li></ul></li><li><span>Allowlists &amp; Certificates</span><ul><li><a href="../../../admin-manager/allowlist.html">Configure Snaplex Allowlists</a></li><li><a href="../../../admin-manager/groundplex-allowlist.html">Groundplex Allowlist</a></li><li><a href="../../../admin-manager/cloud-triggered-allowlist.html">Add SnapLogic IPs to Client Allowlists</a></li><li><a href="../../../admin-manager/cors-allowlist.html">CORS Allowlist</a></li><li><a href="../../../admin-manager/email-allowlist.html">Email Allowlist</a></li></ul></li></ul></li><li><a href="../../../goals/monitoring-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="2.5" width="13" height="9" rx="1"/><path d="M5 14h6"/><path d="M4 7l3 -2 2 3 3 -4"/></svg> Monitor the runtime</a><ul><li><span>APIs</span><ul><li><a href="../../../monitor/observe-api-metrics.html">View API Metrics</a></li></ul></li><li><span>Environment Assets</span><ul><li><a href="../../../monitor/catalog.html">Browse the Asset Catalog</a></li><li><a href="../../../monitor/view-metadata.html">View Asset Metadata</a></li><li><a href="../../../monitor/asset-table-config.html">Configure the Asset Table</a></li><li><a href="../../../monitor/custom-metadata.html">Manage Custom Metadata</a></li><li><a href="../../../monitor/download-upload-metadata.html">Download and Upload Metadata</a></li><li><a href="../../../monitor/add-supplemental-metadata.html">Add Supplemental Metadata</a></li><li><a href="../../../monitor/edit-task-metadata.html">Edit Task Metadata</a></li></ul></li><li><span>MCP</span><ul><li><a href="../../../monitor/mcp-servers.html">MCP Server Observability</a></li><li><a href="../../../monitor/mcp-metrics.html">MCP Server Metrics</a></li></ul></li><li><span>Pipelines</span><ul><li><a href="../../../monitor/monitor-analyze.html">Analyze Pipelines</a></li><li><a href="../../../monitor/insights.html">View Pipeline Insights</a></li><li><a href="../../../monitor/analyze-execution.html">Analyze Execution</a></li><li><a href="../../../monitor/find-executions.html">Find Executions</a></li><li><a href="../../../monitor/stop-executions.html">Stop Executions</a></li><li><a href="../../../monitor/download-executions.html">Download Executions</a></li><li><a href="../../../monitor/pipeline-details-panel.html">View Pipeline Details</a></li><li><a href="../../../monitor/snap-statistics-tab.html">View Snap Statistics</a></li><li><a href="../../../monitor/pipeline-logs-tab.html">View Pipeline Logs</a></li><li><a href="../../../monitor/pipeline-parameters-tab.html">View Pipeline Parameters</a></li><li><a href="../../../monitor/state-transition-tab.html">View State Transitions</a></li></ul></li><li><span>Snaplexes</span><ul><li><a href="../../../snaplexes/snaplex-monitoring.html">Snaplex Monitoring</a></li><li><a href="../../../snaplexes/monitor-snaplex-health.html">Monitor Snaplex Health</a></li><li><a href="../../../snaplexes/bp-use-snaplex-monitoring.html">Monitoring Best Practices</a></li></ul></li><li><span>Snaps</span><ul><li><a href="../../../monitor/snap-statistics-tab.html">View Snap Statistics</a></li></ul></li></ul></li><li><a href="../../../goals/observe-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="8" cy="8" r="6"/></svg> Observability</a><ul><li><a href="../../../otel/otel-collector-kubernetes.html">Integrate with Datadog</a><ul><li><a href="../../../otel/otel-k8s-datadog.html">Observe in Datadog</a></li></ul></li><li><a href="../../../otel/docker-new-relic.html">Integrate with New Relic</a></li><li><a href="../../../monitor/observe-api-metrics.html">View API Metrics</a></li><li><a href="../../../monitor/insights.html">View Pipeline Insights</a></li><li><a href="../../../monitor/analyze-metrics.html">Analyze Snaplex Metrics</a></li></ul></li><li><a href="../../../goals/troubleshoot-about.html"><svg class="nav-section-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="4.5"/><path d="M8 8v1"/><circle cx="8" cy="5" r="0.5" fill="currentColor"/><path d="M6.5 12h3l0.5 2h-4z"/></svg> Troubleshoot</a><ul><li><a href="../../../introduction/navigate-snaplogic-support.html">Get Support</a></li><li><span>Accounts</span></li><li><span>Agents</span><ul><li><a href="../../../agentcreator/agentcreator-troubleshooting.html">AgentCreator Troubleshooting</a></li><li><a href="../../../agentcreator/agentcreator-faq.html">AgentCreator FAQ</a></li></ul></li><li><span>APIM Services</span></li><li><span>MCP Servers</span><ul><li><a href="../../../mcp/mcp-troubleshooting.html">Troubleshooting MCP Server Errors</a></li></ul></li><li><span>Pipelines</span><ul><li><a href="../../../autosync/troubleshoot-data-pipelines.html">Troubleshoot AutoSync Pipelines</a></li><li><a href="../../../manager/troubleshooting-ultra-pipeline.html">Troubleshoot Ultra Tasks</a></li></ul></li><li><span>Runtime Behavior</span></li><li><span>Snaplexes</span><ul><li><a href="../../../snaplexes/groundplex-faq.html">Groundplex FAQ</a></li></ul></li><li><span>Snaps</span></li><li><span>Tasks</span><ul><li><a href="../../../manager/faq.html">Project Manager FAQs</a></li><li><a href="../../../deploying-pipelines/ultra-pipeline-faqs.html">Ultra Task FAQs</a></li><li><a href="../../../deploying-pipelines/monitor-and-troubleshoot-triggered-tasks.html">Monitor and Troubleshoot Triggered Tasks</a></li></ul></li></ul></li></ul></nav><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+  <h1 class="title topictitle1" id="ariaid-title1">HTTP Client</h1>
+  <div class="body refbody">
+    <section class="section">
+      
+      <p class="p">The HTTP Client Snap is an advanced REST Snap that enables you to send HTTP requests to a
+        server and receive corresponding HTTP responses. It integrates all commonly used HTTP
+        methods, including DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, and TRACE. </p>
+      <p class="p">This Snap processes and exchanges data with external systems via HTTP requests. It acts as
+        a gateway between SnapLogic pipelines and external REST APIs. It allows 50 concurrent
+        connections per route and 500 connections in the pool for all routes.</p>
+      <p class="p">This Snap uses the <a class="xref" href="https://hc.apache.org/httpcomponents-client-5.5.x/" target="_blank" rel="external noopener">Apache HTTP client5</a> library and strictly follows RFC
+        3986. According to <a class="xref" href="https://datatracker.ietf.org/doc/html/rfc3986#section-2.2" target="_blank" rel="external noopener">Section 2.2 of the RFC</a>, all reserved characters in
+        the URI path must be encoded.</p>
+      <br><img class="image noborder" src="../../../img/snaps/snaps-core/sp-api-suite/snap-http-client/http-client-overview.png" height="564" width="675"><br>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Supported Accounts<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-api-suite/http-client.html#supported-accounts"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <div class="p">
+        <ul class="ul">
+          <li class="li"><span class="ph">
+	        <a class="xref" href="../../../common/../snaps/snaps-core/sp-api-suite/aws-signature-v4-acct.html">AWS Signature V4
+	          Account</a>
+	      </span></li>
+          <li class="li"><span class="ph">
+	        <a class="xref" href="../../../common/../snaps/snaps-core/sp-api-suite/basic-authentication-acct.html">Basic
+	          Authentication Account</a>
+	      </span></li>
+          <li class="li"><span class="ph">
+	        <a class="xref" href="../../../common/../snaps/snaps-core/sp-api-suite/digest-authentication-acct.html">Digest
+	          Authentication Account</a>
+	      </span></li>
+          <li class="li"><span class="ph">
+	        <a class="xref" href="../../../common/../snaps/snaps-core/sp-api-suite/api-suite-google-service-acct.html">API Suite -
+	          Google Service Account</a>
+	      </span></li>
+          <li class="li"><span class="ph">
+	        <a class="xref" href="../../../common/../snaps/snaps-core/sp-api-suite/ntlm-acct.html">NTLM Account</a>
+	      </span></li>
+          <li class="li"><span class="ph">
+	        <a class="xref" href="../../../common/../snaps/snaps-core/sp-api-suite/secured-headers-acct.html">Secured Headers
+	          Account</a>
+	      </span></li>
+          <li class="li"><span class="ph">
+	        <a class="xref" href="../../../common/../snaps/snaps-core/sp-api-suite/ssl-acct.html">SSL Account</a>
+	      </span></li>
+          <li class="li"><span class="ph">
+	        <a class="xref" href="../../../common/../snaps/snaps-core/sp-api-suite/oauth2-acct.html">OAuth2 Account</a>
+	      </span></li>
+          <li class="li"><span class="ph">
+	        <a class="xref" href="../../../common/../snaps/snaps-core/sp-api-suite/ssl-oauth2-acct.html">SSL OAuth2 Account</a>
+	      </span></li>
+          <li class="li"><span class="ph">
+	        <a class="xref" href="../../../common/../snaps/snaps-core/sp-api-suite/in-memory-oauth2-acct.html">In Memory OAuth2
+	          Account</a>
+	      </span></li>
+        </ul>
+      </div>
+    </section>
+    <section class="section">
+      <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+				<strong class="ph b">Why use HTTP Client Snap in your pipelines?</strong><p class="p">When integrating APIs and services, you
+					can use either the <strong class="ph b">HTTP Client </strong>Snap or the <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-rest/sp-rest-about.html">REST Snap Pack</a>
+        </span>Snaps. While both Snaps facilitate HTTP
+					requests, the HTTP Client Snap offers multiple benefits. We highly recommend that you use
+					the HTTP Client Snap instead of the <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-rest/sp-rest-about.html">REST Snap Pack</a>
+        </span> Snaps
+					for connecting to REST-based APIs and applications. </p><p class="p">Enhanced performance and
+					efficiency</p><ul class="ul">
+					<li class="li">Optimized for faster execution of HTTP requests by supporting efficient bulk
+						processing capabilities.</li>
+					<li class="li">Asynchronous support for improved throughput and reduced execution time.</li>
+				</ul><p class="p">Learn more: Example: <a class="xref" href="../../examples/core/sp-api-suite/snap-http-client/example-send-records-in-a-batch-using-a-post-method/example-send-records-in-a-batch-using-a-post-method.html">Example : Send records in a batch using a POST method</a></p><div class="p">Extended protocol
+					and payload support<ul class="ul">
+						<li class="li">
+							<p class="p">Supports advanced HTTP methods (for example, PATCH and custom methods).</p>
+						</li>
+						<li class="li">
+							<p class="p">Better handling of raw HTTP responses and non-standard API interactions with
+								improved support for non-JSON payloads (for example, XML and multipart
+								form-data).</p>
+						</li>
+					</ul></div><p class="p">Learn more: <a class="xref" href="../../examples/core/sp-api-suite/snap-http-client/example-update-data-in-an-endpoint-using-patch-method/example-update-data-in-an-endpoint-using-patch-method.html">Example : Update data in the endpoint using a PATCH method</a></p><p class="p">Greater
+					flexibility and customization</p><ul class="ul">
+					<li class="li">
+						<p class="p">Provides additional control over request construction and modification by supporting
+							a wider range of authentication methods and header configurations.</p>
+					</li>
+					<li class="li">
+						<p class="p">Enables seamless integration with APIs requiring specific payload formats.</p>
+					</li>
+				</ul><p class="p">Learn more: <a class="xref" href="sp-api-suite-account-config.html">sp-api-suite-account-config.html</a></p><div class="p">Ideal for
+					comprehensive use cases<ul class="ul">
+						<li class="li">
+							<p class="p">Designed for complex integrations that require fine-grained control over HTTP
+								requests.</p>
+						</li>
+						<li class="li">
+							<p class="p">Designed for scenarios where REST Snaps' predefined configurations are
+								restrictive.</p>
+						</li>
+						<li class="li">
+							<p class="p">Useful for APIs with non-standard authentication or response structures.</p>
+						</li>
+					</ul></div><p class="p">Learn more: HTTP Client Examples - <a class="xref" href="sp-examples.html">sp-examples.html</a></p><p class="p">Improved debugging and error handling</p><ul class="ul">
+					<li class="li">
+						<p class="p">Provides detailed logging and troubleshooting options through advanced error-handling
+							and granular retries and timeouts.</p>
+					</li>
+				</ul><p class="p">Learn more : <a class="xref" href="#snap-http-client__troubleshooting">Troubleshooting</a></p><div class="p">Pagination
+					support due to its flexibility and configurability<ul class="ul">
+						<li class="li"><strong class="ph b">Supports various pagination methods</strong>: <ul class="ul">
+								<li class="li">
+									<p class="p">Page-based pagination (page or offset parameters in the URL)</p>
+								</li>
+								<li class="li">
+									<p class="p">Cursor-based pagination (next page token or cursor from API response)</p>
+								</li>
+								<li class="li">
+									<p class="p">Header-based pagination (pagination information provided in response
+										headers)</p>
+								</li>
+							</ul></li>
+						<li class="li">
+							<p class="p"><strong class="ph b">Dynamic token extraction</strong>: The HTTP Client Snap enables you to dynamically
+								extract the next page token from the API response (headers, body, or even a nested
+								field) and use it in the subsequent request. The <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-rest/sp-rest-about.html">REST Snap Pack</a>
+        </span> is more rigid in handling custom
+								pagination mechanisms.</p>
+						</li>
+						<li class="li">
+							<p class="p"><strong class="ph b">Full control over API calls</strong>: You can define the pagination limit, offset,
+								cursor, or token placement directly within the HTTP Client Snap’s request settings.
+								This is useful when working with APIs that require non-standard pagination
+								handling.</p>
+						</li>
+					</ul></div></div>
+      <ul class="sl simple ul-snaps-glance">
+        <li class="sli">This is a Transform-type Snap. Learn more about <a class="xref" href="../../../common/../snaps/snap-types.html" title="SnapLogic includes the following basic types of Snaps with distinct icons.">Snap Types</a>.</li>
+        <li class="sli"><span class="ph"><img class="image icon-green noexpand" src="../../../common/../img/icons/sluiv3/invocation/ultra.svg"></span> <span class="ph">Works in <a class="xref" href="../../../deploying-pipelines/ultra-task-pipelines.html">Ultra Tasks</a></span></li>
+      </ul>
+    </section>
+    <section class="section">
+      <p class="p sectiondivtitle">Prerequisites</p>
+      <p class="p">A valid <a class="xref" href="sp-api-suite-account-config.html">account</a> with the required
+        permissions.</p>
+    </section>
+    <section class="section">
+      <p class="p sectiondivtitle">Behavior changes</p>
+      <div class="p">
+        <ul class="ul">
+          <li class="li">
+            <p class="p">HTTP Client Snaps in a pipeline no longer share a connection pool; each Snap now
+              maintains its own dedicated pool. This change ensures that SSL certificates are
+              isolated per Snap, following the best practices recommended by Apache HttpClient 5. We
+              recommend that you configure a separate account for each HTTP Client Snap to avoid
+              connection or certificate conflicts.</p>
+          </li>
+          <li class="li">With 4.41 GA <code class="ph codeph">main31019</code> Snap Pack version, the HTTP Client Snap that
+            uses <a class="xref" href="https://datatracker.ietf.org/doc/html/rfc3986#section-2.2" target="_blank" rel="external noopener"><u class="ph u">reserved characters</u></a> in the Request API
+            might fail, as HttpClient5 library encodes all the reserved characters as part of RFC
+              3986.<p class="p">We recommend that you select the <strong class="ph b">Prevent URL encoding</strong> checkbox to
+              prevent encoding of special characters in the URL and run the pipeline.</p></li>
+          <li class="li">With the <code class="ph codeph">main31019</code> version, the HTTP Client Snap does not normalize
+            URLs by default. If you need to normalize a URL, you must perform this as a preliminary
+            step (by replacing double slashes with a single slash in the path) for the URL
+            preparation process.</li>
+          <li class="li">With the <code class="ph codeph">433patches21307</code> update, pagination evaluation occurs before
+            sending the output to the output view. Therefore, if
+              <code class="ph codeph">snap.out.totalCount</code> is part of the Has next or any other pagination
+            properties, the Snap will not include the count in the output corresponding to the
+            request that produced the output document.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="section">
+      <p class="p sectiondivtitle">Limitations</p>
+      <div class="p">The HTTP Client Snap hides the Authorization headers in the debug information for <a class="xref" href="basic-authentication-acct.html">basic-authentication-acct.html</a> and <a class="xref" href="digest-authentication-acct.html">digest-authentication-acct.html</a>
+        because of security considerations.<br><img class="image noborder" src="../../../img/snaps/snaps-core/sp-api-suite/snap-http-client/snap-http-client-auth-headers-hidden.png" height="666" width="1597"><br></div>
+      <div class="p">If you specify the Authorization headers manually in the Snap or through the <a class="xref" href="secured-headers-acct.html">secured-headers-acct.html</a>, then the headers are displayed in the debug
+        information, but the values are hidden as follows:<br><img class="image noborder" src="../../../img/snaps/snaps-core/sp-api-suite/snap-http-client/snap-http-client-auth-header-value-hidden.png" height="514" width="1361"><br></div>
+    </section>
+    <section class="section">
+      <p class="p sectiondivtitle">Known issues</p>
+      <div class="p">
+        <ul class="ul">
+          <li class="li">
+            <p class="p">This Snap fails with the <code class="ph codeph">Name may not be null</code> error when the
+              key-value pair values are empty for the <em class="ph i">x-www-form-urlencoded</em>
+              <strong class="ph b">Entity Type</strong>.</p>
+          </li>
+          <li class="li">
+            <p class="p">The <span class="ph">
+	        <a class="xref" href="../../../common/../snaps/snaps-core/sp-api-suite/aws-signature-v4-acct.html">AWS Signature V4
+	          Account</a>
+	      </span> does not
+							support Virtual Private Cloud for the HTTP Client Snap.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Snap views<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-api-suite/http-client.html#snap-views"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <table class="table snapreftable"><caption></caption><colgroup><col style="width:20%"><col style="width:40%"><col style="width:40%"></colgroup><thead class="thead">
+            <tr class="row">
+              <th class="entry valign-top" id="snap-http-client__entry__1">Type</th>
+              <th class="entry valign-top" id="snap-http-client__entry__2">Description</th>
+              <th class="entry valign-top" id="snap-http-client__entry__3">Examples of upstream and downstream Snaps</th>
+            </tr>
+          </thead><tbody class="tbody">
+            <tr class="row">
+              <td class="entry" headers="snap-http-client__entry__1">Input</td>
+              <td class="entry" headers="snap-http-client__entry__2"><div class="p">The input view supports both Binary and Document type.<div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> If the input
+                    view is binary, you must provide the header names in lower case.</div></div>Each
+                input document includes one of the following:<ul class="ul">
+                  <li class="li">
+                    <p class="p">Details associated with the data required from the target RESTful server.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p">Details associated with the data that must be replaced or created in the
+                      target RESTful server.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p">Object ID to be deleted at the REST API service endpoint.</p>
+                  </li>
+                </ul></td>
+              <td class="entry" headers="snap-http-client__entry__3">
+                <ul class="ul">
+                  <li class="li"><span class="ph"><a class="xref" href="../../../common/../snaps/snaps-core/sp-transform/snap-mapper.html">Mapper</a></span></li>
+                  <li class="li"><span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-binary/file-reader.html">File Reader</a>
+        </span></li>
+                  <li class="li"><span class="ph"><a class="xref" href="../../../common/../snaps/snaps-core/sp-transform/snap-json-parser.html">JSON Parser</a></span></li>
+                </ul>
+              </td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-http-client__entry__1">Output</td>
+              <td class="entry" headers="snap-http-client__entry__2">Each output document contains one of the following:<ul class="ul">
+                  <li class="li">
+                    <p class="p">Data retrieved from the RESTful web server.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p">Response data from the REST API service endpoint detailing the status of the
+                      request.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p">Details related to the business objects.</p>
+                  </li>
+                </ul><div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+                  <ul class="ul">
+                    <li class="li">
+                      <p class="p">When you include a second output view, the Snap uses this view to output
+                        the debug information by capturing the request and response.</p>
+                    </li>
+                    <li class="li">
+                      <p class="p">The special characters, if any, are encoded by the Snap.</p>
+                    </li>
+                  </ul>
+                </div></td>
+              <td class="entry" headers="snap-http-client__entry__3">
+                <ul class="ul">
+                  <li class="li"><span class="ph"><a class="xref" href="../../../common/../snaps/snaps-core/sp-transform/snap-mapper.html">Mapper</a></span></li>
+                  <li class="li"><span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-union.html">Union</a>
+        </span></li>
+                  <li class="li"><span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-copy.html">Copy</a>
+        </span></li>
+                  <li class="li"><span class="ph"><a class="xref" href="../../../common/../snaps/snaps-core/sp-transform/snap-join.html">Join</a></span></li>
+                  <li class="li"><span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-flow/snap-filter.html">Filter</a>
+        </span></li>
+                </ul>
+              </td>
+            </tr>
+            <tr class="row">
+              <td class="entry align-left" headers="snap-http-client__entry__1 snap-http-client__entry__2 snap-http-client__entry__3" colspan="3">
+              	Learn more about <span class="ph"><a class="xref" href="../../../common/../design-integrations/error-handling.html" title="Error handling is a crucial aspect of building reliable data integration pipelines in SnapLogic.">Error handling</a></span>.
+              	
+              </td>
+            </tr>
+          </tbody></table>
+    </section>
+    <section class="section snap-examples"><h2 class="title sectiontitle">Examples<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-api-suite/http-client.html#examples"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <div class="p">
+        <ul class="ul">
+          <li class="li"><a class="xref" href="../../examples/core/sp-api-suite/snap-graphql-client/example-insert-update-delete-query-a-graphql-endpoint/example-insert-update-delete-query-a-graphql-endpoint.html">
+              <span class="ph">Insert, Update, Delete, and Query a GraphQL Endpoint</span>
+            </a></li>
+          <li class="li"><a class="xref" href="../../examples/core/sp-api-suite/snap-graphql-client/example-pagination-fetch-star-wars-data-with-graphql/example-pagination-fetch-star-wars-data-with-graphql.html">
+              <span class="ph">Pagination: Fetch Star Wars data with GraphQL</span>
+            </a></li>
+          <li class="li"><a class="xref" href="../../examples/core/sp-api-suite/snap-http-client/example-use-pagination-to-fetch-records/example-use-pagination-to-fetch-records.html">
+              <span class="ph">Use Pagination to fetch records</span>
+            </a></li>
+          <li class="li"><a class="xref" href="../../examples/core/sp-api-suite/snap-http-client/example-http-client-get-pagination/example-http-client-get-pagination.html">
+              <span class="ph">HTTP Client GET Pagination </span>
+            </a></li>
+          <li class="li"><a class="xref" href="../../examples/core/sp-api-suite/snap-http-client/example-get-response-from-snaplogic/example-get-response-from-snaplogic.html">Get response from SnapLogic</a></li>
+          <li class="li"><a class="xref" href="../../examples/core/sp-api-suite/snap-http-client/example-add-data-in-an-endpoint-using-put-method/example-add-data-in-an-endpoint-using-put-method.html">Add data in the endpoint using a PATCH method</a></li>
+          <li class="li"><a class="xref" href="../../examples/core/sp-api-suite/snap-http-client/example-update-data-in-an-endpoint-using-patch-method/example-update-data-in-an-endpoint-using-patch-method.html">Update data in the endpoint using a PATCH method</a></li>
+          <li class="li"><a class="xref" href="../../examples/core/sp-api-suite/snap-http-client/example-update-data-using-a-post-method/example-update-data-using-a-post-method.html">Update data using a POST method</a></li>
+          <li class="li"><a class="xref" href="../../examples/core/sp-api-suite/snap-http-client/example-send-records-in-a-batch-using-a-post-method/example-send-records-in-a-batch-using-a-post-method.html">Send records in a batch using a POST method</a></li>
+          <li class="li"><a class="xref" href="../../examples/core/sp-api-suite/snap-http-client/example-upload-a-multipart-file-from-an-external-file-system/example-upload-a-multipart-file-from-an-external-file-system.html">Upload a multipart file from an external file system</a></li>
+        </ul>
+      </div>
+    </section>
+    <section class="section"><h2 class="title sectiontitle">Snap settings<span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-api-suite/http-client.html#snap-settings"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+    	<div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+    		Learn about the common controls in the <a class="xref" href="../../../common/../snaps/snap-settings-dialog.html">Snap settings dialog</a>.</div>
+      <table class="table snapreftable"><caption></caption><colgroup><col style="width:25%"><col style="width:75%"></colgroup><thead class="thead">
+            <tr class="row" id="snap-http-client__row-field-desc">
+            	<th class="entry valign-top" id="snap-http-client__row-field-desc__entry__1">Field/Field set</th>
+              <th class="entry valign-top" id="snap-http-client__row-field-desc__entry__2">Description</th>
+            </tr>
+          </thead><tbody class="tbody">
+            <tr class="row">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Label<p class="p"><code class="ph codeph"><span class="ph">String</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><p class="p"><span class="ph">
+                  <span class="ph"><strong class="ph b">Required.</strong></span> Specify a unique name for the Snap. Modify this
+                  to be more appropriate, especially if more than one of the same Snaps is in the
+                  pipeline. </span></p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">HTTP Client</em></p>
+                <span class="ph"><strong class="ph b">Example</strong>: </span>
+                <em class="ph i">HTTP Client</em></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Request Method<p class="p"><code class="ph codeph"><span class="ph">String/Expression/ Suggestion</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><span class="ph"><strong class="ph b">Required.</strong></span> Specify a custom
+                method or choose one of the following HTTP request methods:<ul class="ul">
+                  <li class="li"><em class="ph i">DELETE</em></li>
+                  <li class="li"><em class="ph i">GET</em></li>
+                  <li class="li"><em class="ph i">HEAD</em></li>
+                  <li class="li"><em class="ph i">OPTIONS</em></li>
+                  <li class="li"><em class="ph i">PATCH</em></li>
+                  <li class="li"><em class="ph i">POST</em></li>
+                  <li class="li"><em class="ph i">PUT</em></li>
+                  <li class="li"><em class="ph i">TRACE</em></li>
+                </ul><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                <em class="ph i">GET</em><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">HEAD</em></p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">URI<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><span class="ph"><strong class="ph b">Required.</strong></span> Specify the
+                service endpoint URL of the REST API. You can provide the URL in one of the
+                following ways:<ul class="ul">
+                  <li class="li">
+                    <p class="p">As a JavaScript expression in expression language. For example,
+                        <code class="ph codeph">http://coresnapsqa-v4.s3.us-east-2.amazonaws.com/S3Account/'+encodeURIComponent("Special_char_owner_!3)12.json")</code></p>
+                  </li>
+                  <li class="li">
+                    <div class="p">As a plain string that you should enclose in double quotes (""). For example,
+                      <pre class="pre codeblock"><code>&quot;https://www.example.com/slm/webservice/v2.0/defect/%s&quot;.replace(&quot;%s&quot;,
+$.widget.id)</code></pre></div>
+                  </li>
+                </ul><p class="p">You can use the canonical name (CNAME) for the <strong class="ph b">URI,</strong> so it's not
+                  necessary for the URL to end with <code class="ph codeph">amazonaws.com</code> or have the
+                  region and service provided in it. However, if you are using the CNAME you must
+                  provide it in the <strong class="ph b">AWS Region</strong> and <strong class="ph b">Service Name </strong>fields in the AWS
+                  Signature V4 account.</p><p class="p">The host name in the CNAME must be equal to the bucket
+                  name.For example:Previous URI:
+                    <code class="ph codeph">https://jsmith-bucket.nia3.snaplogic.net.s3.us-west-1.amazonaws.com/HttpClientTest/test1</code>New
+                  URI with CNAME:
+                    <code class="ph codeph">https://jsmith-sltest.nia3.snaplogic.net/HttpClientTest/test1</code>Here
+                  bucket name is <code class="ph codeph">jsmith-bucket.nia3.snaplogic.net</code></p><p class="p">The Snap
+                  finds the value at the JSON path "$.widget.id" in the input data and replaces "%s"
+                  in the URL with the value. You can connect the File Reader and JSON Parser Snaps
+                  upstream of the HTTP Client Snap and prepare the following JSON file to the File
+                  Reader Snap:</p><code class="ph codeph">[ { "widget": { "id": "111", "name": "foo" } } { "widget":
+                  { "id": "555", "name": "bar" } } ]
+                  "https://www.example.com/data/v27.0/sobjects/Account"</code><div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span>  The URL for
+                  this Snap must be valid. If the URL contains any special characters, such as
+                    <code class="ph codeph">!, =, %21, $,</code> and <code class="ph codeph">^</code>, the Snap displays an
+                  exception error. You can escape the special characters (using <span class="ph"><a class="xref" href="../../../common/../concepts/expressions-about.html">Using Expressions</a></span>) using one of the following methods:<ul class="ul">
+                    <li class="li">
+                      <p class="p">Use the global function <a class="xref" href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/1438183/Global+Functions+and+Properties#GlobalFunctionsandProperties-encodeURIComponent" target="_blank" rel="external noopener">encodeURIComponent</a> on any variables
+                        that might contain special characters so that they are encoded properly. For
+                        example, </p>
+                      <p class="p"><code class="ph codeph">'http://coresnapsqa-v4.s3.us-east-2.amazonaws.com/S3Account/'+encodeURIComponent(_fileName)</code></p>
+                    </li>
+                    <li class="li">
+                      <p class="p">If you are aware of the code, use the code directly in the <strong class="ph b">URL</strong>
+                        field. For example,
+                          <code class="ph codeph">http://coresnapsqa-v4.s3.us-east-2.amazonaws.com/S3Account/Special_char_owner_%213%2912.json</code>;
+                        where <code class="ph codeph">&lt;%213%2912&gt;</code> is the code.</p>
+                    </li>
+                  </ul><p class="p">We recommend that you use the former (encodeURIComponent) method to escape
+                    the special characters.</p></div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">https://elastic.snaplogic.com/api/1/rest/</em><em class="ph i">public/runtime/snaplogic?</em><em class="ph i">start=1230377200000&amp;end=1320450398700</em></p></td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Query Parameters</td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Use this field set to add query parameters to be
+                included in the request. This is optional and can either be defined directly in the
+                URL, as separate parameters or both. </td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Parameter Name<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the name of the query parameter.<p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">id</em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Parameter Value<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the value to assign to the parameter.<p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">$widget.id</em></p></td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">HTTP Headers</td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Use this field set to create the HTTP header
+                key-value pairs required for defining the headers for different types of input
+                (JSON, PDF, DOCX, and so on). If you want to specify only content-type headers, you
+                can configure the Multipart Content-Type property instead.</td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Header Name<p class="p"><code class="ph codeph"><span class="ph">String/Expression/ Suggestion</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the name of the HTTP header.
+                Alternatively, select one of the following options from the suggestion list:<ul class="ul">
+                  <li class="li">
+                    <p class="p"><em class="ph i">Content-Type: </em>You <em class="ph i">must</em> specify the
+                        <code class="ph codeph">content-type</code> in the header for an <code class="ph codeph">OPTIONS</code>
+                      request method.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">Accept</em></p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">User-Agent</em></p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">Content-Length</em></p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">Authorization</em></p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">Connection</em></p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">Accept-Encoding</em></p>
+                  </li>
+                </ul><div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span>  This Snap accepts default value <code class="ph codeph">*/*</code>for the
+                    <code class="ph codeph">Accept</code> header that enables the Snap to handle all forms of
+                  response content types.</div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">APIKey</em><em class="ph i">content-type</em>
+                </p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Header Value<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the value for the HTTP header.<p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i"><em class="ph i">uyfikhEugk2iKnJWPvG8Rv8sL73BgM2C</em><em class="ph i">application/json</em></em></p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Enable debug<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select this checkbox to include the information
+                about the executed request and response in the output document (under
+                  the<code class="ph codeph">_debug</code> key that helps you with debugging).<ul class="ul">
+                  <li class="li">
+                    <p class="p">When you select the <strong class="ph b">Enable debug</strong> checkbox, the information about the
+                      executed request and response is written to both error and output documents
+                      (under the <code class="ph codeph">_debug</code>key) and it also displays a Lint warning in
+                      case of errors.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p">When you deselect the <strong class="ph b">Enable debug</strong> checkbox, the history is neither
+                      written to error document nor output document and does not display any Lint
+                      warning.</p>
+                  </li>
+                </ul>
+              	<p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Deselected</p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Use form encoding for spaces<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select this checkbox to enable the Snap to encode
+                any space characters in query parameters using the plus sign (+). By default, the
+                Snap encodes space characters using percent-encoding (<code class="ph codeph">%20</code>). For
+                example, when the base HTTP Get URI is:
+                  <code class="ph codeph">https://httpbin.org/anything/!"$%&amp;'()*+,-.:;&lt;+&gt;?@[\]^_`{|}~</code><div class="p">after
+                  encoding, the URI will be: <pre class="pre codeblock"><code>GET
+/anything/%21%22%24%25%26%27%28%29%2A%2B%2C-.:%3B%3C%2B%3E?%40%5B%5C%5D%5E_%60%7B%7C%7D~</code></pre></div><p class="p">Selecting
+                  this checkbox preserves whatever encoding has already been made. So, if you place
+                  a plus symbol <img class="image plus-icon noexpand noborder" src="../../../common/../img/icons/docs-misc/plus-new.svg" alt="Plus Icon"> in the query portion
+                  URL or percent-encodes (<code class="ph codeph">%20</code>), the Snap preserves the
+                  same.</p><p class="p">Learn more about <a class="xref" href="https://issues.apache.org/jira/browse/HTTPCORE-628" target="_blank" rel="external noopener">encoding of query parameters</a>.</p><p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Deselected</p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Prevent URL encoding<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select this checkbox to prevent the Snap from
+                automatic URL encoding of the input URI. Enable this setting to use an already
+                encoded URI.<div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span>  URL encoding encodes the same character in different encodings
+                  based on its location within the URL. The specific segments of the URL that apply
+                  here are the PATH portion and the QUERY portion: <code class="ph codeph">URI =
+                    scheme:[//authority][/path][?query][#fragment]</code></div><p class="p">When you
+                  deselect this checkbox, the following are some of the characters that are
+                  automatically encoded by the Snap:</p><div class="p">
+                  <table class="table frame-all"><caption></caption><colgroup><col style="width:21.815008726003487%"><col style="width:17.452006980802793%"><col style="width:25.82897033158813%"><col style="width:34.904013961605585%"></colgroup><thead class="thead">
+                        <tr class="row">
+                          <th class="entry" id="snap-http-client__entry__37">Character name</th>
+                          <th class="entry" id="snap-http-client__entry__38">Character</th>
+                          <th class="entry" id="snap-http-client__entry__39">(in PATH segment) URL Encoded value</th>
+                          <th class="entry" id="snap-http-client__entry__40">(in QUERY segment) URL Encoded value</th>
+                        </tr>
+                      </thead><tbody class="tbody">
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Space</td>
+                          <td class="entry" headers="snap-http-client__entry__38"></td>
+                          <td class="entry" headers="snap-http-client__entry__39">%20</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%20</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Exclamation</td>
+                          <td class="entry" headers="snap-http-client__entry__38">!</td>
+                          <td class="entry" headers="snap-http-client__entry__39">!</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%21</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Double Quote</td>
+                          <td class="entry" headers="snap-http-client__entry__38">"</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%22</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%22</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Pound</td>
+                          <td class="entry" headers="snap-http-client__entry__38">#</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%23</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%23</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Dollar Sign</td>
+                          <td class="entry" headers="snap-http-client__entry__38">$</td>
+                          <td class="entry" headers="snap-http-client__entry__39">$</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%24</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Percent</td>
+                          <td class="entry" headers="snap-http-client__entry__38">%</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%25</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%25</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Ampersand</td>
+                          <td class="entry" headers="snap-http-client__entry__38">&amp;</td>
+                          <td class="entry" headers="snap-http-client__entry__39">&amp;</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%26</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Single Quote</td>
+                          <td class="entry" headers="snap-http-client__entry__38">'</td>
+                          <td class="entry" headers="snap-http-client__entry__39">'</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%27</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Left Parenthesis</td>
+                          <td class="entry" headers="snap-http-client__entry__38">(</td>
+                          <td class="entry" headers="snap-http-client__entry__39">(</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%28</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Right Parenthesis</td>
+                          <td class="entry" headers="snap-http-client__entry__38">)</td>
+                          <td class="entry" headers="snap-http-client__entry__39">)</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%29</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Asterisk</td>
+                          <td class="entry" headers="snap-http-client__entry__38">*</td>
+                          <td class="entry" headers="snap-http-client__entry__39">*</td>
+                          <td class="entry" headers="snap-http-client__entry__40">*</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Plus</td>
+                          <td class="entry" headers="snap-http-client__entry__38">+</td>
+                          <td class="entry" headers="snap-http-client__entry__39">+</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%2B</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Comma</td>
+                          <td class="entry" headers="snap-http-client__entry__38">,</td>
+                          <td class="entry" headers="snap-http-client__entry__39">,</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%2C</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Hyphen</td>
+                          <td class="entry" headers="snap-http-client__entry__38">-</td>
+                          <td class="entry" headers="snap-http-client__entry__39">-</td>
+                          <td class="entry" headers="snap-http-client__entry__40">-</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Period (dot)</td>
+                          <td class="entry" headers="snap-http-client__entry__38">.</td>
+                          <td class="entry" headers="snap-http-client__entry__39">.</td>
+                          <td class="entry" headers="snap-http-client__entry__40">.</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Forward Slash</td>
+                          <td class="entry" headers="snap-http-client__entry__38">/</td>
+                          <td class="entry" headers="snap-http-client__entry__39">/</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%2F</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Colon</td>
+                          <td class="entry" headers="snap-http-client__entry__38">:</td>
+                          <td class="entry" headers="snap-http-client__entry__39">:</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%3A</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Semicolon</td>
+                          <td class="entry" headers="snap-http-client__entry__38">;</td>
+                          <td class="entry" headers="snap-http-client__entry__39">;</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%3B</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Left-angle</td>
+                          <td class="entry" headers="snap-http-client__entry__38">&lt;</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%3C</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%3C</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Equals</td>
+                          <td class="entry" headers="snap-http-client__entry__38">=</td>
+                          <td class="entry" headers="snap-http-client__entry__39">=</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%3D</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Right-angle</td>
+                          <td class="entry" headers="snap-http-client__entry__38">&gt;</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%3E</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%3E</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Question Mark</td>
+                          <td class="entry" headers="snap-http-client__entry__38">?</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%3F</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%3F</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">At Sign</td>
+                          <td class="entry" headers="snap-http-client__entry__38">@</td>
+                          <td class="entry" headers="snap-http-client__entry__39">@</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%40</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Left Bracket</td>
+                          <td class="entry" headers="snap-http-client__entry__38">[</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%5B</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%5B</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Backslash</td>
+                          <td class="entry" headers="snap-http-client__entry__38">\</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%5C</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%5C</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Right Bracket</td>
+                          <td class="entry" headers="snap-http-client__entry__38">]</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%5D</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%5D</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Caret</td>
+                          <td class="entry" headers="snap-http-client__entry__38">^</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%5E</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%5E</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Underscore</td>
+                          <td class="entry" headers="snap-http-client__entry__38">_</td>
+                          <td class="entry" headers="snap-http-client__entry__39">_</td>
+                          <td class="entry" headers="snap-http-client__entry__40">_</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Backtick</td>
+                          <td class="entry" headers="snap-http-client__entry__38">`</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%60</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%60</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Left Brace</td>
+                          <td class="entry" headers="snap-http-client__entry__38">{</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%7B</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%7B</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Vertical Bar</td>
+                          <td class="entry" headers="snap-http-client__entry__38">|</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%7C</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%7C</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Right Brace</td>
+                          <td class="entry" headers="snap-http-client__entry__38">}</td>
+                          <td class="entry" headers="snap-http-client__entry__39">%7D</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%7D</td>
+                        </tr>
+                        <tr class="row">
+                          <td class="entry" headers="snap-http-client__entry__37">Tilde</td>
+                          <td class="entry" headers="snap-http-client__entry__38">~</td>
+                          <td class="entry" headers="snap-http-client__entry__39">~</td>
+                          <td class="entry" headers="snap-http-client__entry__40">%7E</td>
+                        </tr>
+                      </tbody></table>
+                </div><p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Deselected</p></td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">HTTP Entity</td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">An HTTP entity is the message body you can send in
+                a request or receive from a response. An entity represents both binary and character
+                content. The POST and PUT methods use entities. </td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Entity Type<p class="p"><code class="ph codeph"><span class="ph">Dropdown list</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Choose one of the following entity types to
+                include in the request body.<ul class="ul">
+                  <li class="li">
+                    <p class="p"><em class="ph i">none: </em>Select this option if you do not want to use any
+                        <code class="ph codeph">body</code> in your message.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">multipart: </em>This option enables you to send (form data) large binary or
+                      non-ASCII text to the server. Learn more about <a class="xref" href="../../examples/core/sp-api-suite/snap-http-client/example-upload-a-multipart-file-from-an-external-file-system/example-upload-a-multipart-file-from-an-external-file-system.html">../../examples/core/sp-api-suite/snap-http-client/example-upload-a-multipart-file-from-an-external-file-system/example-upload-a-multipart-file-from-an-external-file-system.html</a>.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">x-www-form-urlencoded:</em> This option enables you to send the URL-encoded
+                      data to the server. You must specify the key-value pairs to enable the Snap to
+                      send the encoded data in the request body to the server.</p>
+                  </li>
+                  <li class="li"><em class="ph i">raw: </em>This option enables you to send raw data without modifying it. It
+                    supports the following file types:<ul class="ul">
+                      <li class="li">
+                        <p class="p">Text</p>
+                      </li>
+                      <li class="li">
+                        <p class="p">Javascript</p>
+                      </li>
+                      <li class="li">
+                        <p class="p">JSON</p>
+                      </li>
+                      <li class="li">
+                        <p class="p">HTML</p>
+                      </li>
+                      <li class="li">
+                        <p class="p">XML</p>
+                      </li>
+                    </ul></li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">binary: </em>This option enables you to send binary data in the response
+                      body. It supports files from any external system, such as S3 and WASB. <a class="xref" href="../../examples/core/sp-api-suite/snap-http-client/example-upload-a-multipart-file-from-an-external-file-system/example-upload-a-multipart-file-from-an-external-file-system.html">Learn more</a>.</p>
+                  </li>
+                </ul><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> None.</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">multipart</em></p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Multipart Subtype<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><em class="ph i">Appears on selecting <strong class="ph b">multipart</strong> for
+                    <strong class="ph b">Entity Type</strong>.</em><p class="p">Specify the MIME subtype for multipart, which
+                  specifies the nature of the message parts and their interrelationship.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">form-data</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">form-data</em></p></td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Multipart Form</td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><em class="ph i">Appears on selecting <strong class="ph b">multipart</strong> for
+                    <strong class="ph b">Entity Type</strong>.</em><div class="p">Use this field set to configure the fields required to
+                  upload multiple files and text. Learn more about <a class="xref" href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html" target="_blank" rel="external noopener">Multipart Upload</a>. By default, the Snap
+                  Settings display the fields required to upload a file. The data that is sent to
+                  the server using this entity type uses the following encoding pattern:<ul class="ul">
+                    <li class="li">
+                      <p class="p">The control names and values are escaped. All space characters are replaced
+                        by the ‘+', and reserved characters follow the RFC 3986 notations.</p>
+                    </li>
+                    <li class="li">
+                      <p class="p">An equal symbol, ‘=', separates the key and value, and the key-value pairs
+                        use ‘&amp;' as a separator.</p>
+                    </li>
+                  </ul></div></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Type<p class="p"><code class="ph codeph"><span class="ph">Dropdown list</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><em class="ph i"> Appears on selecting multipart for Entity
+                  Type.</em><div class="p">Choose either of the following multipart types to initiate the upload:<ul class="ul">
+                    <li class="li"><em class="ph i">FILE</em></li>
+                    <li class="li">
+                      <p class="p"><em class="ph i">TEXT</em></p>
+                    </li>
+                  </ul></div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">FILE</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">TEXT</em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Key<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><em class="ph i">Appears on selecting <strong class="ph b">multipart</strong> for
+                    <strong class="ph b">Entity Type</strong>.</em><p class="p">Specify the key for the multipart form-data needed to
+                  upload a file. </p><p class="p">The HTTP Client uses multipart entity to achieve the file
+                  upload. The form-data of its multipart entity contains key-value pairs. Upload and
+                  multipart file key depend on the service endpoint.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">file</em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Value<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><em class="ph i">Appears on selecting <strong class="ph b">multipart</strong> for
+                    <strong class="ph b">Entity Type</strong>.</em><p class="p">Specify the file or text to be uploaded.</p><p class="p">If
+                    <strong class="ph b">Multipart Type</strong> is <em class="ph i">FILE</em>, the following are applicable:</p><ul class="ul">
+                  <li class="li">
+                    <p class="p">The file protocols supported for file values are 'sldb:///' and
+                      'file:///'.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p">If the file path is a relative path, it is considered an SLDB file.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p">If this field is not empty, <strong class="ph b">HTTP Entity</strong> and <strong class="ph b">Batch size</strong> fields
+                      are ignored and the <strong class="ph b">Multipart Key</strong> field is required.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p">If the value is an expression, the input document is used to evaluate the
+                      expression. Each input document results in one file upload.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p">This field does not support wildcard or glob patterns.</p>
+                  </li>
+                </ul><div class="p">If <strong class="ph b">Multipart Type</strong> is a <em class="ph i">TEXT</em>, then:<ul class="ul">
+                    <li class="li">
+                      <p class="p">The value should be expression-enabled and enclosed in double quotes.</p>
+                    </li>
+                  </ul></div><div class="note warning note_warning"><span class="note_warning_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/WARNING.svg" class="noborder" alt="icon"></span><span class="note_warning_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/WARNING.svg" class="noborder" alt="icon"></span><span class="note__title">Warning:</span>  For Text part upload using Form Upload, the <strong class="ph b">HTTP
+                    Entity </strong>and <strong class="ph b">Filename to be used</strong> are ignored.</div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><div class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <ul class="ul">
+                    <li class="li">
+                      <p class="p">FILE<em class="ph i">: persons.csv</em></p>
+                    </li>
+                    <li class="li">
+                      <p class="p">TEXT<em class="ph i">: “sldb://file.txt”, “sampletext”</em></p>
+                    </li>
+                  </ul></div></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Content Type<p class="p"><code class="ph codeph"><span class="ph">String/Expression/ Suggestion</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><em class="ph i">Appears on selecting <strong class="ph b">multipart</strong> for
+                    <strong class="ph b">Entity Type</strong>.</em><div class="p">Select the content type headers for the data in the
+                  body of the multipart HTTP request. <div class="note warning note_warning"><span class="note_warning_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/WARNING.svg" class="noborder" alt="icon"></span><span class="note_warning_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/WARNING.svg" class="noborder" alt="icon"></span><span class="note__title">Warning:</span> If you leave this field
+                    blank or enter an incorrect content type, some endpoints might respond with a
+                      <code class="ph codeph">500 - Internal Server Error</code>. </div></div><div class="p">The available
+                  options are:<ul class="ul">
+                    <li class="li">
+                      <p class="p"><em class="ph i">application/octet-stream</em></p>
+                    </li>
+                    <li class="li">
+                      <p class="p"><em class="ph i">text/plain</em></p>
+                    </li>
+                    <li class="li">
+                      <p class="p"><em class="ph i">application/json</em></p>
+                    </li>
+                    <li class="li">
+                      <p class="p"><em class="ph i">application/xml</em></p>
+                    </li>
+                    <li class="li">
+                      <p class="p"><em class="ph i">text/csv</em></p>
+                    </li>
+                    <li class="li">
+                      <p class="p"><em class="ph i">text/html</em></p>
+                    </li>
+                    <li class="li">
+                      <p class="p"><em class="ph i">image/jpeg</em></p>
+                    </li>
+                  </ul></div><div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+                  <ul class="ul">
+                    <li class="li">
+                      <p class="p">If the <strong class="ph b">Multipart Type</strong> is <strong class="ph b">TEXT</strong>, it is usually not required to
+                        specify any value in this field. When you do not specify any value, the API
+                        uses the default value <code class="ph codeph">text/plain; charset=UTF-8</code>.</p>
+                    </li>
+                    <li class="li">
+                      <p class="p">If you do not specify the content type, the payload is encoded in
+                          <code class="ph codeph">UTF-8</code> and the header is sent in accordance with the
+                        content type that is identified. </p>
+                    </li>
+                    <li class="li">
+                      <p class="p">If you specify only the content type, the <code class="ph codeph">charset</code> uses the
+                        HTTP1 default for the provided content-type, this is typically
+                          <code class="ph codeph">ISO-8859-1</code> (<code class="ph codeph">US-ASCII</code>).</p>
+                    </li>
+                    <li class="li">
+                      <p class="p">The best practice is to specify the <code class="ph codeph">charset</code> with your
+                        content-type, for example <code class="ph codeph">application/json;
+                        charset=utf8</code></p>
+                    </li>
+                  </ul>
+                </div><div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span> 
+                  <ul class="ul">
+                    <li class="li">
+                      <p class="p">To specify other HTTP headers, configure the headers in the <strong class="ph b">HTTP
+                          header</strong> field set.</p>
+                    </li>
+                    <li class="li">
+                      <p class="p">If you configure both <strong class="ph b">Multipart Content Type</strong> and <strong class="ph b">HTTP
+                        Headers</strong>, the value in the<strong class="ph b"> Multipart Content Type</strong> takes priority.
+                      </p>
+                    </li>
+                  </ul>
+                </div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">text/csv</em></p></td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Form</td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Use this field set to define key-value pairs for
+                the URL-encoded form entity type.</td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Key<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><em class="ph i">Appears on selecting<strong class="ph b"> x-www-form-urlencoded
+                  </strong>for <strong class="ph b">Entity Type.</strong></em><p class="p">Specify the key of the form entry.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">id</em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Value<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><em class="ph i">Appears on selecting<strong class="ph b"> x-www-form-urlencoded
+                  </strong>for <strong class="ph b">Entity Type.</strong></em><p class="p">Specify the value for the key defined
+                  above.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">$widget</em></p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Raw Entity<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><em class="ph i">Appears on selecting<strong class="ph b"> raw </strong>for <strong class="ph b">Entity
+                    Type.</strong></em><p class="p">Specify the body to send in the request. If the raw entity is
+                  from an input document, the document is converted into JSON.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">$</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">$</em></p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">File<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><em class="ph i">Appears on selecting<strong class="ph b"> binary </strong>for
+                    <strong class="ph b">Entity Type.</strong></em><p class="p">Specify or upload the file to send in the Post
+                  payload.</p><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p></td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Pagination</td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Properties to define pagination settings. Learn
+                more about <a class="xref" href="sp-api-suite-pagination.html#sp-api-suite-pagination__ph-title">Pagination</a>.</td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Has Next<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the boolean expression to indicate whether there is a next page. Learn
+								more about <strong class="ph b">Has Next </strong>in action, <span class="ph">
+          <a class="xref" href="../../../common/../snaps/snaps-core/sp-rest/snap-rest-get.html">REST Get</a>
+        </span>.<div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span>  HTTP client Snap evaluates the pagination properties before writing the
+									output document. Therefore, if <code class="ph codeph">snap.out.totalCount</code>is used as part
+									of the <strong class="ph b">Has Next</strong> expression, it must be used as <code class="ph codeph">snap.out.totalCount
+										+ 1</code><strong class="ph b">, </strong>for example, <code class="ph codeph">"snap.out.totalCount + 1 &lt;
+										$entity.total"</code></div><div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span>  With the <code class="ph codeph">433patches21307</code>,
+									pagination evaluation occurs before sending the output to the output view.
+									Therefore, if <code class="ph codeph">snap.out.totalCount</code> is part of the <strong class="ph b">Has Nex</strong>t
+									or any other pagination properties, the Snap will not include the count in the
+									output corresponding to the request that produced the output document.</div><div class="note warning note_warning"><span class="note_warning_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/WARNING.svg" class="noborder" alt="icon"></span><span class="note_warning_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/WARNING.svg" class="noborder" alt="icon"></span><span class="note__title">Warning:</span> This field is null-safe; if the evaluated value is null, or if
+									there is no value provided in <strong class="ph b">Has Next</strong> field, the Snap stops the
+									pagination. </div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+									<em class="ph i">$entity['has-more']</em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Total Pages to Fetch<p class="p"><code class="ph codeph"><span class="ph">Integer/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the maximum number of pages to fetch. The
+                Snap stops fetching the next page if either the maximum number of pages is reached
+                or the <strong class="ph b">Has Next</strong> condition evaluates to <code class="ph codeph">false</code>. <div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span>  This is
+                  the secondary limit, which is used only if it is set—if it is left blank the Snap
+                  continues to fetch pages until the <code class="ph codeph">next page</code> condition evaluates
+                  to <em class="ph i">false</em>.</div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">5</em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Override URI<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select this checkbox to enable the URI to be
+                overridden with the specified Next URI for each pagination request.<p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Deselected</p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Next URI<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify an expression to generate the URI for
+                reading the next page. The expression will be evaluated on the output
+                  document.<div class="note note note_note"><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note_note_icon"><img src="https://d3132s9xzuu9s8.cloudfront.net/k/img/NOTE.svg" class="noborder" alt="icon"></span><span class="note__title">Note:</span>  HTTP client Snap evaluates the pagination properties before
+                  writing the output document. Therefore, if the
+                    <code class="ph codeph">snap.out.totalCount</code>is used as part of the offset query
+                  parameter in the <strong class="ph b">Next URI</strong> expression, it must be used as
+                    <code class="ph codeph">snap.out.totalCount + 1</code><strong class="ph b">, </strong>for example,
+                    <code class="ph codeph">"snap.out.totalCount + 1 &lt; $entity.total"</code></div><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span> N/A</p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <code class="ph codeph">import { useRouter } from 'next/router';</code></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Reuse request parameters<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select this checkbox to enable the Snap to reuse
+                the specified URI parameters in the pagination requests. You can use the Override
+                Parameters table to override some of them.<p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Deselected</p></td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Override parameters</td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Configure the parameters to override the next
+                pagination URL.</td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Name<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the name of the parameter to
+                override.</td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Value<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the value for the parameter.</td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Override Headers</td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Define the headers to be overridden or added in the next pagination request.
+								Headers with the same name are overwritten and new headers are appended. If the
+								value is empty, the header is removed. The header value is evaluated against the
+								response document.</td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Name<p class="p"><code class="ph codeph"><span class="ph">String/Expression/ Suggestion</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the name of the header to be updated or
+                added.</td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Value<p class="p"><code class="ph codeph"><span class="ph">String/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the value of the header to be updated or
+                added.</td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Pagination Interval (seconds)<p class="p"><code class="ph codeph"><span class="ph">Integer</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the interval in seconds between the
+                requests for each page.<p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">0</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">5</em></p></td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Client Settings</td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Additional settings for the HTTP Client.</td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Connection</td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Configure the settings to establish the connection
+                to the server.</td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Cookie Policy<p class="p"><code class="ph codeph"><span class="ph">Dropdown list</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select a Cookie Policy from the following options:<ul class="ul">
+                  <li class="li">
+                    <p class="p"><em class="ph i">Browser Compatibility</em>: This policy is compatible with different
+                      servers even if they are not completely standards-compliant. If you have
+                      issues when parsing cookies, use this policy.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">Ignore Cookies: </em>This cookie policy ignores all cookies. Use this
+                      policy to prevent the HTTP Client from accepting and sending cookies.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">RFC Strict</em>: This policy uses the <code class="ph codeph">set-cookie</code>
+                      header</p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">RFC Lax</em>: This policy uses <code class="ph codeph">set-cookie</code> and
+                        <code class="ph codeph">set-cookie2</code> for parsing.</p>
+                  </li>
+                </ul><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">RFC Lax</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i"><em class="ph i">RFC Strict</em></em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Trust all certificates<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select this checkbox to trust all certificates,
+                such as self-signed certificates.<p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Deselected</p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Read Timeout (seconds)<p class="p"><code class="ph codeph"><span class="ph">Integer</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the number of seconds the Snap must wait
+                before terminating the request because of a failure to read from the target
+                    service.<p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">900</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">60</em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Connection Timeout (seconds)<p class="p"><code class="ph codeph"><span class="ph">Integer</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the number of seconds for which the Snap
+                must wait before aborting the request due to a failure to establish a connection to
+                the target endpoint or service.<p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">30</em>
+                </p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">60</em></p></td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Retry</td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Properties for handling retries.</td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Retry Condition<p class="p"><code class="ph codeph"><span class="ph">Dropdown list</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select one of the following options to handle
+                connection and error responses:<ul class="ul">
+                  <li class="li">
+                    <p class="p"><em class="ph i">Connection errors</em>: Occurs when a client fails to establish a secure
+                      connection to the server.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">Connection and auth errors (401/403)</em>: Occurs when either the user
+                      authorization fails or access to the page/resource is forbidden.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">Connection and client errors (4xx)</em>: Occurs when the request for the
+                      resource contains bad syntax, or when the resource is not found (404).</p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">Connection and server errors (5xx)</em>: Occurs when the server is unable
+                      to complete a request.</p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">All errors</em>: Applies to all of the above-listed errors.</p>
+                  </li>
+                </ul><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">Connection errors</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">All errors</em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Maximum Attempts<p class="p"><code class="ph codeph"><span class="ph">Integer</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the maximum number of attempts the Snap
+                must make to receive a response. If the attempts do not result in a response, the
+                Snap terminates the request.<p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">5</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">3</em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Retry Interval (seconds)<p class="p"><code class="ph codeph"><span class="ph">Integer</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the number of seconds the Snap must wait
+                between two successive requests. A retry happens only when the previous attempt
+                resulted in an exception.<p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">3</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">10</em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Automatically retry on 429 responses<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select this checkbox to automatically retry the
+                  <code class="ph codeph">429 Too Many Requests</code>.<p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Selected</p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Use Retry-After header for 429<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select this checkbox to enable the Snap to follow
+                the <code class="ph codeph">Retry-After</code> response header (if it exists) to retry the 429
+                  responses.<p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Selected</p></td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Redirects</td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Properties for handling redirections.</td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Follow redirects<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select this checkbox to accept the response and
+                redirect the request.</td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Follow original HTTP method<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><em class="ph i">Appears on selecting the<strong class="ph b"> Follow redirects
+                  </strong>checkbox.</em><p class="p">Select this checkbox to enable the Snap to use the original
+                  HTTP method to do the redirect request. Otherwise, the GET method is used.</p><p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Deselected</p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Maximum Number of Redirects<p class="p"><code class="ph codeph"><span class="ph">Integer/Expression</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Specify the maximum number of redirects to
+                    allow.<p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">10</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">5</em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Allow relative redirect<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select this checkbox to determine whether relative
+                redirects should be allowed. The HTTP specification requires the location value to
+                be an absolute URI.<p class="p"> </p><p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Selected</p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Allow circular redirect<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select this checkbox to allow circular redirects
+                to the same location.<p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Deselected</p></td>
+            </tr>
+            <tr class="row fieldset">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Output</td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Properties that define the display of the
+                output.</td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Response Type<p class="p"><code class="ph codeph"><span class="ph">Dropdown list</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Choose one of the following response types:<ul class="ul">
+                  <li class="li">
+                    <p class="p"><em class="ph i">JSON</em></p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">Text</em></p>
+                  </li>
+                  <li class="li">
+                    <p class="p"><em class="ph i">Raw</em></p>
+                  </li>
+                </ul><p class="p"><span class="ph"><strong class="ph b">Default value</strong>: </span>
+                  <em class="ph i">JSON</em></p><p class="p"><span class="ph"><strong class="ph b">Example</strong>: </span>
+                  <em class="ph i">Text</em></p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Extract entity as Documents<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2"><em class="ph i">Appears on selecting <strong class="ph b">JSON </strong>for
+                    <strong class="ph b">Response Type.</strong></em><p class="p">Select this checkbox to extract the response entity
+                  as an output document as per the specified JSON path. If the extracted value is a
+                  list, it is split.</p><p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Selected</p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Write unsuccessful response to Error View<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select this checkbox to treat all unsuccessful
+                responses (308, 4xx, and 5xx) as errors and write them to the error view.<p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Deselected</p></td>
+            </tr>
+            <tr class="row subfield">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Include current cookies<p class="p"><code class="ph codeph"><span class="ph">Checkbox</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Select this checkbox to include current cookies in
+                each output document.<p class="p"><span class="ph"><strong class="ph b">Default status</strong>: </span> Selected</p></td>
+            </tr>
+            <tr class="row">
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__1">Snap execution<p class="p"><code class="ph codeph"><span class="ph">Dropdown list</span></code></p></td>
+              <td class="entry" headers="snap-http-client__row-field-desc__entry__2">Choose one of the three modes in which the Snap
+                executes. Available options are: <ul class="ul">
+                  <li class="li"><span class="ph uicontrol">Validate &amp; Execute</span>: Performs limited execution of
+                    the Snap and generates a data preview during pipeline validation. Subsequently,
+                    performs full execution of the Snap (unlimited records) during pipeline runtime. </li>
+                  <li class="li"><span class="ph uicontrol">Execute only</span>: Performs full execution of the Snap
+                    during pipeline execution without generating preview data.</li>
+                  <li class="li"><span class="ph uicontrol">Disabled</span>: Disables the Snap and all Snaps that are
+                    downstream from it.</li>
+                </ul></td>
+            </tr>
+          </tbody></table>
+    </section>
+    <section class="section"><h2 class="title sectiontitle"><span class="ph" id="snap-http-client__troubleshooting">Troubleshooting</span><span class="permalinkmaintag" style="display:none;"><a class="permalink" href="tasks/snaps/snaps-core/sp-api-suite/http-client.html#troubleshooting"><img class="noborder permalinkicon" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/permalink-icon.svg" alt="permalink-icon"/></a><span class="permalinktext"></span></span></h2>
+      
+      <div class="p">
+        <table class="table frame-all"><caption></caption><colgroup><col style="width:33.33333333333333%"><col style="width:33.33333333333333%"><col style="width:33.33333333333333%"></colgroup><thead class="thead">
+              <tr class="row">
+                <th class="entry" id="snap-http-client__entry__273">Error</th>
+                <th class="entry" id="snap-http-client__entry__274">Reason</th>
+                <th class="entry" id="snap-http-client__entry__275">Resolution</th>
+              </tr>
+            </thead><tbody class="tbody">
+              <tr class="row">
+                <td class="entry" headers="snap-http-client__entry__273" rowspan="2">Error making HTTP call to the endpoint.</td>
+                <td class="entry" headers="snap-http-client__entry__274">With the Apache library upgrade from HttpClient4 to HttpClient5, the HTTP
+                  Client Snap encodes all reserved characters (defined in <a class="xref" href="https://datatracker.ietf.org/doc/html/rfc3986#section-2.2" target="_blank" rel="external noopener"><u class="ph u">RFC 3986, Section 2.2</u></a>) in a URL.</td>
+                <td class="entry" headers="snap-http-client__entry__275">Select the <strong class="ph b">Prevent URL encoding</strong> checkbox to prevent encoding of
+                  reserved characters in the URL and run the pipeline. This allows a request with
+                  reserved characters in the URL to succeed without failing.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-http-client__entry__274">Unable to find a valid certification path to the requested target.</td>
+                <td class="entry" headers="snap-http-client__entry__275">Each HTTP Client Snap must have its own account configured with the required
+                  certificate.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-http-client__entry__273">
+                  <p class="p">Stack trace error in the Snap:</p>
+                  <div class="p"><pre class="pre codeblock"><code>&quot;Caused by: java.io.EOFException at
+java.base/java.util.zip.GZIPInputStream.readUByte(Unknown Source</code></pre>)</div>
+                </td>
+                <td class="entry" headers="snap-http-client__entry__274">The HTTP Client Snap sends <code class="ph codeph">Accept-Encoding is "gzip,
+                    deflate"</code> in the request by default .</td>
+                <td class="entry" headers="snap-http-client__entry__275">Provide <code class="ph codeph">Accept-Encoding = *</code> in the HTTP header to prevent
+                  the error.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-http-client__entry__273">Failed to execute the HTTP request.</td>
+                <td class="entry" headers="snap-http-client__entry__274">The <strong class="ph b">Service URL </strong>must have a protocol, such as http://,
+                    https://.<p class="p">&lt;Service_URL&gt;: Name or service not known. This means that the
+                    service URL you entered is not accessible.</p></td>
+                <td class="entry" headers="snap-http-client__entry__275">Check the Snap properties. Specifically, check your entry in the <strong class="ph b">Service
+                    URL </strong>field.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-http-client__entry__273">Failure: Validation errors: property_map.settings.serviceUrl.value: Could not
+                  compile expression: &lt;Service_URL&gt;</td>
+                <td class="entry" headers="snap-http-client__entry__274">
+                  <p class="p">The Snap settings are not correct. Encountered extraneous input ':' at line
+                    1:5; expecting={&lt;EOF&gt;, '||', '&amp;&amp;', '^', '==', '!=', '&gt;', '&lt;',
+                    '&gt;=', '&lt;=', '+', '-', '*', '/', '%', '?', 'instanceof', 'in', 'matches', '[',
+                    '(', '.', PropertyRef}.</p>
+                  <p class="p">This means that you turned expressions on () when entering the string value
+                    into the <strong class="ph b">Service URL </strong>field.</p>
+                </td>
+                <td class="entry" headers="snap-http-client__entry__275">Fix the Snap configuration and try executing again. Check the expression
+                  syntax. Ensure that your service URL is a proper expression; or turn off the
+                  expression control (). </td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-http-client__entry__273">The provided URI is invalid.</td>
+                <td class="entry" headers="snap-http-client__entry__274">Illegal character in schema name.</td>
+                <td class="entry" headers="snap-http-client__entry__275">Verify that the URI and parameters that you provide are syntactically
+                  correct.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-http-client__entry__273 snap-http-client__entry__274 snap-http-client__entry__275" colspan="3"><strong class="ph b">Status codes</strong></td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-http-client__entry__273">URL Parse Exception - 403</td>
+                <td class="entry" headers="snap-http-client__entry__274">The Service URL path might be containing any of the following special
+                  characters: !, =, %, #, $, ^&amp;()_¢äâêîôûñç¡¿ÉÙËÇ¨°¸ðø©¢¾A+²½µ®§÷¶þ </td>
+                <td class="entry" headers="snap-http-client__entry__275">To escape the special characters, use the global function <a class="xref" href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/2614591489/HTTP+Client#" target="_blank" rel="external noopener">encodeURIComponent</a> on any variables that
+                  might contain special characters so that they are encoded properly.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-http-client__entry__273">status code = 404</td>
+                <td class="entry" headers="snap-http-client__entry__274">
+                  <p class="p">Phrase = NOT FOUND, refer to the error_entity field in the error view document
+                    for more details.</p>
+                  <p class="p">This means that your service URL does not point to the correct endpoint.</p>
+                </td>
+                <td class="entry" headers="snap-http-client__entry__275">Check the values of Snap properties. Specifically, check your service
+                  URL.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-http-client__entry__273">status code = 404</td>
+                <td class="entry" headers="snap-http-client__entry__274">
+                  <p class="p">Phrase = NOT FOUND, refer to the error_entity field in the error view document
+                    for more details.</p>
+                  <p class="p">This means that your service URL does not point to the endpoint that it
+                    should.</p>
+                </td>
+                <td class="entry" headers="snap-http-client__entry__275">Check the values of Snap properties. Specifically, check your service
+                  URL.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-http-client__entry__273">status code = 406</td>
+                <td class="entry" headers="snap-http-client__entry__274">
+                  <p class="p">NOT ACCEPTABLE.</p>
+                  <p class="p">This means that the endpoint is not receiving any details from upstream
+                    Snaps.</p>
+                </td>
+                <td class="entry" headers="snap-http-client__entry__275">Ensure that you have valid references in the <strong class="ph b">HTTP entity</strong>
+                  field.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-http-client__entry__273">status code = 409</td>
+                <td class="entry" headers="snap-http-client__entry__274">CONFLICT, refer to the error_entity field in the error view document for more
+                  details. This happens when you already have the resource that you want to create
+                  in the target endpoint.</td>
+                <td class="entry" headers="snap-http-client__entry__275">Verify the values in the Snap configuration.</td>
+              </tr>
+              <tr class="row">
+                <td class="entry" headers="snap-http-client__entry__273">Too many Requests - 429</td>
+                <td class="entry" headers="snap-http-client__entry__274">There are too many requests to the endpoint.</td>
+                <td class="entry" headers="snap-http-client__entry__275">
+                  <p class="p">Wait for the retry to succeed. The HTTP Client Snap extracts the response
+                    header and automatically retries when it encounters status 429.</p>
+                  <p class="p">By default, the retry interval (Retry-After) is specified in the HTTP response
+                    header. If no value is available for Retry-After, then the Snap’s <strong class="ph b">Retry
+                      Interval</strong> value is used.</p>
+                </td>
+              </tr>
+            </tbody></table>
+      </div>
+    </section>
+  </div>
+  <nav role="navigation" class="related-links"></nav>
+</article></main><footer role="contentinfo"><div class="footer">
+  <div class="ftrlegal">
+    <!-- <p class="copyright"><a href="/refs/copyright.html">© <ph class="copyrightyear"></ph> SnapLogic, Inc.</a></p> -->
+     <div class="footer_top">
+     <div>
+     <a href="../../../../index.html"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-indigo-icon.svg" alt="SnapLogic Logo"></a>
+     <a href="../../../../index.html">SnapLogic Documentation</a>
+     </div>
+     <div>
+     <ul>
+      <!-- <li><a href="/refs/copyright.html">© <ph class="copyrightyear"></ph> SnapLogic, Inc.</a></li>  <a class="xref" href="https://docs-snaplogic.atlassian.net/wiki/spaces/SD/pages/49855/SnapLogic+Releases" target="_blank" rel="external noopener">Release Notes</a>-->
+        <!-- <li><a href="https://learn.snaplogic.com/" target="_blank" rel="external noopener">SnapLogic Academy</a></li> -->
+        <li><span>Explore</span><span><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-up-white-icon.svg" alt="SnapLogic Logo"></span></li>
+        <li><a class="xref" href="https://learn.snaplogic.com/" target="_blank" rel="external noopener">SnapLogic Academy</a></li>
+        <li><a class="xref" href="https://community.snaplogic.com/" target="_blank" rel="external noopener">Integration Nation</a></li>
+        <li><a class="xref" href="https://www.snaplogic.com/" target="_blank" rel="external noopener">Company</a></li>
+    <!-- <li><a href="https://community.snaplogic.com/" target="_blank" rel="external noopener">Integration Nation</a></li> -->
+    <!-- <li><a href="mailto:support@snaplogic.com" target="_blank" rel="external noopener">Support</a></li> -->
+    <!-- <li><a href="https://www.snaplogic.com/" target="_blank" rel="external noopener">Company</a></li> -->
+    </ul>
+       <ul>
+      <li><span>Need Help?</span><span><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/chevron-up-white-icon.svg" alt="SnapLogic Logo"></span></li>
+      <li>
+      <!-- <a><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/envelope-icon.svg' alt='envelope-icon'/></a> -->
+      <a href="mailto:documentation@snaplogic.com">Documentation Team</a></li>
+      <li>
+      <!-- <a><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/envelope-icon.svg' alt='envelope-icon'/></a> -->
+      <a href="mailto:support@snaplogic.com">Customer Support Team</a></li>
+      </ul>
+      </div>
+    </div>
+    <div class="footer_bottom">
+     <!-- <p  class="footer_logo"> -->
+    <!-- <a href="../index.html"><img class="noborder" src="https://d3132s9xzuu9s8.cloudfront.net/ux/sl-logo-new.svg" alt="SnapLogic Logo"/></a> -->
+    <!-- <a href="../index.html"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/sl-logo-teal.svg" alt="SnapLogic Logo"/></a> -->
+    <!-- <a href="../../../../index.html"><img class="noborder" src="/img/icons/logo/sl_logo_combo_rev_rgb.svg" alt="SnapLogic Logo"/></a> -->
+    <!-- <ph class="footer-site-title">SnapLogic Documentation</ph> -->
+    <!-- </p> -->
+     <ul>
+      <li><a href="https://www.snaplogic.com/legal/copyright" target="_blank" rel="external noopener">Copyright</a></li>
+       <li class="copyright">© <ph class="copyrightyear"></ph> SnapLogic, Inc.</li>
+    </ul>
+     <!-- <ul> -->
+      <!-- <ul>
+      <li>Need Help?</li>
+      <li><a><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/envelope-icon.svg' alt='envelope-icon'/></a><a href="mailto:documentation@snaplogic.com">Documentation Team</a></li>
+      <li><a><img class='noborder noexpand' src='https://d3132s9xzuu9s8.cloudfront.net/k/img/envelope-icon.svg' alt='envelope-icon'/></a><a href="mailto:support@snaplogic.com">Customer Support Team</a></li>
+      </ul> -->
+    <!-- </ul> -->
+    <ul>
+      <li><a class="xref" href="https://www.facebook.com/SnapLogic" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-facebook.svg" alt="ftr-logo"></a></li>
+      <li><a class="xref" href="https://twitter.com/SnapLogic" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-twitter.svg" alt="ftr-logo"></a></li>
+      <li><a class="xref" href="https://www.linkedin.com/company/snaplogic" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-linkedin.svg" alt="ftr-logo"></a></li>
+      <li><a class="xref" href="https://www.instagram.com/snaplogicinc" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-instagram.svg" alt="ftr-logo"></a></li>
+      <li><a class="xref" href="https://www.youtube.com/snaplogic" target="_blank"><img class="noborder noexpand" src="https://d3132s9xzuu9s8.cloudfront.net/k/img/ftr-logo-youtube.svg" alt="ftr-logo"></a></li>
+    </ul>
+    </div>
+
+  </div>
+
+  <!-- <script src="https://d3132s9xzuu9s8.cloudfront.net/k/sldocs.js"/> -->
+  <script src="../../../../theme/sldocs.js"></script>
+
+</div></footer></body></html>
