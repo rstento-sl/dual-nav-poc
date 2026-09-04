@@ -141,6 +141,29 @@ function CopyrightYyyy()  {
 }
 
 
+// Inline icons
+// DITA-OT emits class="image" for inline and block images alike, so CSS cannot
+// size ".image" safely. Tag the ones that are icons in running text so
+// sldocs.css can size them. Icons top out at 52x52; anything bigger is a
+// screenshot placed inline on purpose and keeps its size.
+var INLINE_ICON_MAX_NATURAL = 64;  // px
+function TagInlineIcons()  {
+  var presized = /(^|\s)(inline-icon|inline-logo|card-icon|stamp-icon|img\d+pc|imageleft|imageright|imagecenter)(\s|$)/;
+  $('.body img.image').each( function() {
+    var img = this, $img = $(this);
+    if ( presized.test( img.className ) )  { return; }  // sized already, or block
+    if ( $img.prev().is('br') || $img.next().is('br') )  { return; }  // placement="break"
+    if ( !$img.parent().text().trim() )  { return; }  // no text beside it: a figure
+    var tag = function()  {
+      if ( img.naturalWidth  && img.naturalWidth  <= INLINE_ICON_MAX_NATURAL &&
+           img.naturalHeight && img.naturalHeight <= INLINE_ICON_MAX_NATURAL )  {
+        $img.addClass('inline-icon');
+      }
+    };
+    if ( img.complete )  { tag(); } else { $img.on( 'load', tag ); }  // needs naturalWidth
+  } );
+}
+
 // Modal images
 function AddModalDiv()  {
   var modalelem = "<div class='modal'><image class='modal-content'/><div class='modal-caption'/></div>"
@@ -149,10 +172,15 @@ function AddModalDiv()  {
 }
 // wires up the image-lightbox modal: click an image to open it, click outside or Esc to close
 function DisplayModal()  {
-  $('img:not(.noexpand):not(.inline-icon)').on("click", function() {
+  // Inline icons zoom too: at one em they are the same size in the modal, so
+  // .icon-zoom scales them up to make the detail worth a closer look. An author
+  // can still opt an image out entirely with outputclass="noexpand".
+  $('img:not(.noexpand)').on("click", function() {
+    var $img = $(this);
     if (!$('.modal').is(':visible')) {
     $('.modal').show();
-    $('.modal-content').attr( "src", this.src );
+    $('.modal-content').attr( "src", this.src )
+                       .toggleClass( 'icon-zoom', $img.hasClass('inline-icon') );
     $('.modal-caption').html( this.alt );
     }
   } );
@@ -1990,6 +2018,7 @@ $(document).ready(function() {
   // Beta badges - moved to build time (postprocess.py)
   // $('.tabs>li:first-child').trigger( 'click' );
   // $('.tabs>li:first-child').click( ShowTab( $(this) ) );
+  TagInlineIcons();  // before DisplayModal(), so icons are not bound to the zoom modal
   // Modal images
   AddModalDiv();
   DisplayModal();

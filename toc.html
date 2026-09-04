@@ -149,7 +149,6 @@
                   <li class="topicref"><a href="snapcode/snapcode-home.html">SnapCode</a><ul>
                         <li class="topicref"><a href="snapcode/snapcode-about.html">Introduction</a></li>
                         <li class="topicref"><a href="snapcode/snapcode-install.html">Install SnapCode</a></li>
-                        <li class="topicref"><a href="snapcode/snapcode-migrate.html">Migrate to the SnapCode plugin</a></li>
                         <li class="topicref"><a href="snapcode/snapcode-use.html">Use SnapCode</a></li>
                         <li class="topicref"><a href="snapcode/snapcode-troubleshooting.html">Troubleshoot SnapCode</a></li>
                      </ul>
@@ -158,7 +157,9 @@
                         <li class="topicref"><a href="snapgpt/snapgpt-about.html">Introduction</a></li>
                         <li class="topicref"><a href="snapgpt/snapgpt-use.html">Interact with SnapGPT</a><ul>
                               <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-rag.html">Generate pipeline</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-generate-agent-pipelines.html">Generate agent and MCP Server pipelines</a></li>
                               <li class="topicref"><a href="snapgpt/snapgpt-analyze-pipelines.html">Analyze pipeline</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-describe-pipeline.html">Describe a pipeline</a></li>
                               <li class="topicref"><a href="snapgpt/generate-queries.html">Generate queries</a></li>
                               <li class="topicref"><a href="snapgpt/snapgpt-copilot.html">Configure Snaps with Snap copilot</a><ul>
                                     <li class="topicref"><a href="snapgpt/snapgpt-copilot-snap-banner.html">Launch SnapGPT from Snap settings </a></li>
@@ -660,7 +661,9 @@
                         <li class="topicref"><a href="design-integrations/delete-pipeline.html">Delete a pipeline</a></li>
                         <li class="topicref"><a href="design-integrations/move-pipeline.html">Move a pipeline</a></li>
                         <li class="topicref"><a href="design-integrations/validate-pipeline.html">Validate a pipeline</a></li>
+                        <li class="topicref"><a href="designer/pipeline-execution-statistics.html">Pipeline execution statistics</a></li>
                         <li class="topicref"><a href="design-integrations/pipeline-queueing.html">Pipeline queueing</a></li>
+                        <li class="topicref"><a href="design-integrations/pipeline-presence.html">Pipeline presence</a></li>
                         <li class="topicref"><a href="design-integrations/manually-running-a-pipeline.html">Manually run a pipeline</a></li>
                         <li class="topicref"><a href="design-integrations/stopping-a-running-pipeline.html">Stop a running pipeline</a></li>
                         <li class="topicref"><a href="design-integrations/data-preview-from-pipeline.html">Data preview from pipeline</a></li>
@@ -2835,6 +2838,7 @@
                                           <li class="topicref"><a href="snaps/snaps-enterprise/sp-infor-m3/acct-infor-m3-oauth2.html">Infor M3 OAuth2 Account</a></li>
                                        </ul>
                                     </li>
+                                    <li class="topicref"><a href="snaps/snaps-enterprise/sp-infor-m3/snap-infor-data-fabric-compass.html">Infor Data Fabric Compass</a></li>
                                     <li class="topicref"><a href="snaps/snaps-enterprise/sp-infor-m3/snap-infor-m3.html">Infor M3</a></li>
                                     <li class="topicref"><a href="snaps/snaps-enterprise/sp-infor-m3/sp-examples.html">Snap Pack examples</a><ul>
                                           <li class="topicref"><a href="snaps/examples/enterprise/sp-infor-m3/example-infor-m3/ex-list-system-calendar.html">List the system calendar from Infor M3</a></li>
@@ -3277,6 +3281,9 @@
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-ac-on-aws-messages.html">Anthropic Claude on AWS Messages</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-ab-mm-contgen.html">Amazon Bedrock Multimodal Content Generator</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-invoke-agent.html">Invoke Agent</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-mkb-retrieve.html">Amazon Bedrock MKB Retrieve</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-mkb-agentic-retrieve.html">Amazon Bedrock MKB Agentic Retrieve</a></li>
+                                    <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/snap-mkb-ingest-documents.html">Amazon Bedrock MKB Ingest Documents</a></li>
                                     <li class="topicref"><a href="snaps/snaps-machine-learning/sp-amazon-bedrock-llm/sp-examples.html">Snap Pack examples</a><ul>
                                           <li class="topicref"><a href="snaps/examples/machine-learning/sp-amazon-bedrock-llm/example-agent-retrieve/example-agent-retrieve.html">Retrieve data from Knowledge base</a></li>
                                           <li class="topicref"><a href="snaps/examples/machine-learning/sp-amazon-bedrock-llm/example-agent-retrieve-generate/example-agent-retrieve-generate.html">Retrieve data and generate a response</a></li>
@@ -3690,7 +3697,9 @@
                         <li class="topicref"><a href="snapgpt/snapgpt-about.html">Introduction</a></li>
                         <li class="topicref"><a href="snapgpt/snapgpt-use.html">Interact with SnapGPT</a><ul>
                               <li class="topicref"><a href="snapgpt/snapgpt-pipe-gen-rag.html">Generate pipeline</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-generate-agent-pipelines.html">Generate agent and MCP Server pipelines</a></li>
                               <li class="topicref"><a href="snapgpt/snapgpt-analyze-pipelines.html">Analyze pipeline</a></li>
+                              <li class="topicref"><a href="snapgpt/snapgpt-describe-pipeline.html">Describe a pipeline</a></li>
                               <li class="topicref"><a href="snapgpt/generate-queries.html">Generate queries</a></li>
                               <li class="topicref"><a href="snapgpt/snapgpt-copilot.html">Configure Snaps with Snap copilot</a><ul>
                                     <li class="topicref"><a href="snapgpt/snapgpt-copilot-snap-banner.html">Launch SnapGPT from Snap settings </a></li>
@@ -3849,6 +3858,7 @@
                            </ul>
                         </li>
                         <li class="topicref"><a href="snaplexes/cache-svc-about.html">Cache Service Guide</a></li>
+                        <li class="topicref"><a href="snaplexes/snaplex-pipeline-interrupter.html">Snaplex pipeline interrupter</a></li>
                         <li class="topicref"><a href="snaplexes/cloudplexes-about.html">Cloudplexes</a></li>
                         <li class="topicref"><a href="snaplexes/groundplexes-about.html">Groundplexes</a><ul>
                               <li class="topicref"><a href="snaplexes/groundplex-deploy-plan.html">Groundplex Deployment Planning</a><ul>
@@ -3898,6 +3908,7 @@
                                              </ul>
                                           </li>
                                           <li class="topicref"><a href="snaplexes/snaplex-node-customizations.html">Snaplex node customizations</a></li>
+                                          <li class="topicref"><a href="snaplexes/jcc-hardened-mode.html">JCC hardened mode</a></li>
                                        </ul>
                                     </li>
                                  </ul>
@@ -4040,7 +4051,7 @@
                   </li>
                </ul>
             </li>
-            <li class="topicref"><a href="Chunk530433043.html#Chunk530433043">Glossary</a></li>
+            <li class="topicref"><a href="Chunk1204432901.html#Chunk1204432901">Glossary</a></li>
          </ul>
       </nav>
    </body>

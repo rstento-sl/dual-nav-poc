@@ -435,6 +435,8 @@
   --sectiontitle-textcolor: #063490;
   --shortdesc-textcolor: #5E6470;
   --body-font-size: 14px;
+  --body-line-height: 22px;
+  --inline-icon-size: 1em;  /* icons in running text: one em of the local font size */
   --rellinks-bgcolor: #FAFAFB;
   --page-bgcolor: #FAFAFB;
 
@@ -1585,7 +1587,7 @@ th{
 }
 
 .table td img.inline-icon {
-  vertical-align: middle;
+  vertical-align: text-bottom;  /* same seating as inline icons in running text */
 }
 .table-colhdr tr td:first-child {
   font-weight: 700;
@@ -2522,11 +2524,6 @@ img.noexpand:hover:not(.footer_top img),
 img.inline-icon:hover {
   transform: none !important;
 }
-img.inline-icon {
-  width: var(--body-font-size);
-  height: 100%;
-  cursor: context-menu;
-}
 img.inline-logo {
   max-width: 75% !important;
 }
@@ -2543,7 +2540,37 @@ section img,
   height: auto;
   max-width:100%;
   margin-left: 0;
-  transition: transform .5s;  
+  transition: transform .5s;
+}
+
+/* ------------------------------
+   Inline icons - icons in running text
+   ------------------------------ */
+/* Keep after the "section img / .conbody img / .step img" rule above, which sets
+   height:auto at the same specificity. */
+/* The icon is sized by the font, not by the line: height is one em of the local
+   font size, so the icon is never bigger than the text it sits in, whatever the
+   line-height. vertical-align: text-bottom seats it on the descender, inside the
+   text's own ascender-descender band - vertical-align: middle centred it on the
+   x-height instead, which pushed the icon above the cap height and below the
+   baseline and made it read as oversized. */
+img.inline-icon {
+  height: var(--inline-icon-size);
+  max-height: var(--inline-icon-size);
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  vertical-align: baseline;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+/* Every inline icon opens in the zoom modal, where .icon-zoom scales it up:
+   at one em it is too small to read, so the modal is where the detail shows.
+   Opt an icon out with outputclass="inline-icon noexpand". */
+img.inline-icon:not(.noexpand) {
+  cursor: zoom-in;
 }
 
 .img5pc   { max-width: 5% !important; }
@@ -2615,6 +2642,15 @@ section img,
 .modal img{
   border:1px solid #EBEDF1;
   border-radius: 4px;
+}
+/* An expanded inline icon is only ~30px wide, which is invisible in a full-screen
+   modal: scale it up, keeping the aspect ratio, so the zoom is worth opening. */
+.modal-content.icon-zoom {
+  width: auto;
+  height: auto;
+  min-width: 160px;
+  padding: 16px;
+  background-color: #FFFFFF;
 }
 /* Caption of modal image (image text) - same width as the image */
 .modal-caption  {
